@@ -1,0 +1,359 @@
+<resources>
+    <string name="app_name">"24 Hours</string>
+    <string name="User_info_Screen_title">Tell us more about You</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email(required)</string>
+    <string name="prompt_password">Password (required)</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_sign_up">Register</string>
+    <string name="action_sign_up_short">Register</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <string name="OK">✔</string>
+    <string name="result"></string>
+    <string name="fnHint">First name(optional)</string>
+    <string name="LnHint">Last name(optional)</string>
+    <string name="passwordCriteria1">Password is too short min (8)</string>
+    <string name="passwordCriteria2">An UPPERCASE letter is a must</string>
+    <string name="passwordCriteria3">Lowercase Letter missing</string>
+    <string name="passwordCriteria4">Must have a Number</string>
+    <string name="passwordMatching">Passwords Don\'t Match</string>
+    <string name="welcomeUser">Hi, %1$s </string>
+    <string name="existingUser">Already Registered? Login</string>
+    <string name="wait">\u23F3 Please wait while we sign you up...</string>
+    <string name="title_activity_main">MainActivity</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="guest">Guest</string>
+    <string name="error_match_failed">Password does not match</string>
+    <string name="sinup_dialog">Not a member? sign up here.</string>
+    <string name="signin_dialog">Already A memeber? sign in here</string>
+    <string name="user_not_found">User not Found</string>
+    <string name="verifyText">A Verification email has been sent to your email address.</string>
+    <string name="resend">Resend</string>
+    <string name="resetPassword">Forgot your password? reset here</string>
+    <string name="title_activity_login2">Reset Password</string>
+    <string name="reset">Reset Password</string>
+    <string name="password">New Password</string>
+    <string name="confirmpassword">Confirm Password</string>
+    <string name="confirm">Confirm ✔</string>
+    <string name="eVarification">24H | E- Varification</string>
+    <string name="wait1">\u23F3 Please Wait... While we register you</string>
+    <string name="wait2">\u23F3 Hold On Just A few, Gettin\' you ready...</string>
+    <string name="wait3">Welcome To 24 %1$s</string>
+    <string name="wait4">\u23F3 We Missed You, Setting you Up...</string>
+    <string name="wait5">Just a sec, %1$s</string>
+
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <!--These are string for the user information activity-->
+
+    <string name="first_name_query">What is your first name?</string>
+    <string name="last_name_query">What is your second name?</string>
+    <string name="phoneNumberQuery">Enter your Phone Number</string>
+    <string name="age_query">How old are You? </string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="other">Other</string>
+    <string name="next"><![CDATA[Next >]]></string>
+    <string name="skipOn">Skip>></string>
+    <string name="skip">Skip</string>
+    <string name="sexesTag">Gender</string>
+    <string name="error_invalid_age">Invalid age</string>
+
+    <string name="gymTitle">GYM/Sport</string>
+    <string name="studyTitle">Study</string>
+    <string name="meetingTitle">Meeting</string>
+    <string name="socialTitle">Social</string>
+    <string name="timetable">Timetable</string>
+    <string name="chillTitle">Chill</string>
+    <string name="goBack"><![CDATA[<< BACK]]></string>
+    <string name="ok">\u2713</string>
+
+    <!--Welcome screen-->
+    <string name="welcome_title">Welcome to 24 Hours</string>
+    <string name="welcome">Welcome %1$s,\nI am H-Bot Your 24H Guide.\n\nWe need to gather some information about your interests\nto create a more enjoyable experience.</string>
+    <string name="welcome_start">Sounds Good!</string>
+    <string name="welcome_later">Maybe Later</string>
+    <string name="username_Query">Create Username</string>
+    <string name="saving_username">Saving Username\\nJust a sec....</string>
+    <string name="title_gymactivity_list">Items</string>
+    <string name="title_gymactivity_detail">GymActivity Detail</string>
+
+    <!--Gym-->
+    <string name="defaultG">Default</string>
+    <string name="CustomG">Make Your own</string>
+    <string name="bodytype_thin">Ectomorph</string>
+    <string name="bodytype_fat">Endomorph</string>
+    <string name="bodytype_muscular">Mesomorph</string>
+    <string name="bodytype">Select A Body type</string>
+    <string name="bodytype_Ectomorph">Ectomorphs are characterized as having long, slim, and thin muscles/limbs and low fat storage. Ectomorphs are not predisposed to store fat nor build muscle.</string>
+    <string name="bodytype_Mesomorph">Mesomorphs are the “lucky ones.” They have medium bones, solid torso, low fat levels, wide shoulders with a narrow waist.</string>
+    <string name="bodytype_Endomorph">Endomorphs play the game of Weight Loss on extreme difficulty. These are people with wider waists, large bone structures, and are predisposed to storing fat instead of building muscle.</string>
+
+    <string name="chest">Chest</string>
+    <string name="back">Back</string>
+    <string name="arms">Arms</string>
+    <string name="shoulder">Shoulder</string>
+    <string name="quads">Quads</string>
+    <string name="calf">Calves</string>
+    <string name="core">Core</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="workout_type">Weight-Loss</string>
+    <string name="toning">I want to Tone Up</string>
+    <string name="goals">Select Your Focus</string>
+    <string name="lvl1">Beginner</string>
+    <string name="lvl2">Intermediate</string>
+    <string name="lvl3">Advanced</string>
+    <string name="o1">Version 1.0</string>
+    <string name="o2">Version 2.0</string>
+    <string name="o3">Version 3.0</string>
+    <string name="reps">Reps</string>
+    <string name="sets">Sets</string>
+    <string name="check">Check list</string>
+    <string name="close">Close</string>
+    <string name="save">Save</string>
+
+    <string name="day_mon">Monday</string>
+    <string name="day_tues">Tuesday</string>
+    <string name="day_wed">Wednesday</string>
+    <string name="day_thurs">Thursday</string>
+    <string name="day_fri">Friday</string>
+    <string name="day_sat">Saturday</string>
+    <string name="day_sun">Sunday</string>
+    <string name="pick_day">What Day(s) do you prefer to workout on?</string>
+    <string name="aboutgym">Selecting \"Setup now\"  will take to a special set-up page\nSelecting \"Use Default\" we will randomly create workouts for every body part, \nand disperse it around the CALENDER</string>
+    <string name="setup_now">Setup Now</string>
+    <string name="addPic">Choose PIC</string>
+    <string name="take_pic">TAKE PIC</string>
+    <string name="profile_pic">Profile Picture Setup</string>
+    <string name="welcome_guest">Hi, Guest</string>
+    <string name="socialInfo1">Welcome to Social setup.</string>
+    <string name="socailInfo2">By selecting \'Setup event\', \nYou will be teleported to an event creator zone which has been optimized based on your age,\n but hey don\'t worry you can also add your own event.\nIf you don't have time now do it later via the skip button. </string>
+    <string name="setup_event">Setup Event</string>
+    <string name="title_activity_social">socialActivity</string>
+    <string name="social_sport">Sport</string>
+    <string name="Social_cinema">Cinema</string>
+    <string name="social_birthday">Birthday</string>
+    <string name="Social_shopping">Shopping</string>
+    <string name="social_awards">Awards ceremony</string>
+    <string name="Social_date">Date</string>
+    <string name="social_gaming">Gaming</string>
+    <string name="Social_club">Club</string>
+    <string name="social_xmas">X-mas</string>
+    <string name="social_drink">Drink with buddy</string>
+    <string name="social_wedding">Wedding</string>
+    <string name="pickFrom">Pick from one of the templates</string>
+    <string name="social_sport_hint">Enter Sport</string>
+    <string name="or">Or</string>
+
+    <string name="location">At(Location):</string>
+    <string name="startTime">From:</string>
+    <string name="endTime">To:</string>
+    <string name="cine">Cinema</string>
+    <string name="movie">Movie Title:</string>
+    <string name="runtime">Duration:</string>
+    <string name="startingTime">Starting At:</string>
+    <string name="eet">We Estimated the end time as: </string>
+    <string name="birthday">Birthday</string>
+    <string name="whos">Who\'s Birthday? </string>
+    <string name="where">Where is it at:</string>
+    <string name="pic">Upload picture of invite</string>
+    <string name="cover">Cover</string>
+    <string-array name="occurance">
+        <item>Once</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+
+    </string-array>
+    <string-array name="occurance2">
+        <item>Once</item>
+        <item>Weekly</item>
+
+
+    </string-array>
+    <string name="sleepO">Sleep-Over</string>
+    <string name="extraInfo">Extra Info:</string>
+    <string name="notes">Notes:</string>
+    <string name="date">On(date):</string>
+    <string name="awardCeremony">Award Ceremony</string>
+    <string name="Dating">Date</string>
+    <string name="Clubling">Clubing</string>
+    <string name="Drink">Go For A Pint</string>
+    <string name="with">With </string>
+    <string name="wed">Wedding</string>
+    <string name="whosWed">Who\'s Wedding</string>
+    <string name="plusOne">Plus One:</string>
+    <string name="custom_s">Custom</string>
+    <string name="selectAday">Select A Day</string>
+    <string name="selectStart">Select Start Time</string>
+    <string name="selectEnd">Select End  at</string>
+    <string name="setTime">Set Ending time to %1$s</string>
+    <string name="setstarttime">Set Start time To %1$s</string>
+    <string name="setDate">Set Date to %1$s</string>
+    <string name="social_cinema_hint">Movie Title</string>
+    <string name="social_cinema">Cinema</string>
+    <string name="SetDuration">Enter Duration(in Mins):</string>
+    <string name="finishAt">Finished At:</string>
+    <string name="social_birthday_hint">Who\'s Birthday</string>
+    <string name="outside_of_invitation">Outside of invite(Cover)</string>
+    <string name="inside_of_invitation">inside of invite</string>
+    <string name="upload_invite">Upload Photos of Invite </string>
+    <string name="sportDefaultHeading">Sport, Location, Date,  From, To.</string>
+    <string name="b_heading">Who\'s Birthday, Location, Date, From, To</string>
+    <string name="c_tag">Movie title, Location, Date, From, To</string>
+    <string name="emptyField">This Field can\'t be empty</string>
+    <string name="g_tag">Gaming</string>
+    <string name="social_gaming_hint">Game, Location, Date, Start, End</string>
+    <string name="social_xmas_hint">Christmas Party</string>
+    <string name="x_heading">Xmas, Location, Date, Start, End</string>
+    <string name="social_shopping_hint">Host</string>
+    <string name="sO_heading">Host, Location, Date, Start, End</string>
+    <string name="social_ddate_hint">With</string>
+    <string name="d_heading">With, Location, Date, Start, End</string>
+    <string name="social_a_hint">Award for</string>
+    <string name="a_heading">For, Location, Date, Start, End</string>
+    <string name="w_heading">Who\', Location, On, From, To</string>
+    <string name="wCeremony">Who\'s Wedding</string>
+    <string name="activity_social">24H | Social</string>
+    <string name="clb_tag">Event Type</string>
+    <string name="social_club_hint">Type, Location, Date, Start, End</string>
+    <string name="logout">Log out</string>
+    <string name="login">Login</string>
+    <string name="reg">Register</string>
+    <string name="noEvents">NO EVENTS ON THIS DAY</string>
+    <string name="eventsFound">We Found %1$s Event(s)</string>
+    <string name="Event">Event</string>
+    <string name="progress">There is %1$s left in this DAY</string>
+    <string name="signout">Are You sure You Want To Logout?</string>
+    <string name="nope">Never Mind</string>
+    <string name="cancel">Cancel</string>
+    <string name="yeah">Yes Please!</string>
+    <string name="happyEm">0x1F60A</string>
+    <string name="sadEm">0x11F612</string>
+    <string name="cockyem">0x11F60C</string>
+    <string name="wantingEm">0x11F612</string>
+    <string name="mornEm">0x11F304</string>
+    <string name="nightEm">0x11F31B</string>
+    <string name="panicEm">0x11F62D</string>
+    <string name="greedyEm">0x11F60F</string>
+
+    <string name="w1">Welcome back, %1$s</string>
+    <string name="w2">Hey %1$s, How\'s it hangin\'</string>
+    <string name="w3">Umm %1$s, Why\'d you leave??</string>
+    <string name="w4">I knew You will be back %1$s </string>
+    <string name="missme">Did you miss me %1$s</string>
+    <string name="resetAll">Reset All</string>
+    <string-array name="Welcomes">
+
+
+        <item>Did you know u can see the day progression Below </item>
+        <item>Hey boo, </item>
+        <item>Did u know u can change the theme by long pressing me</item>
+    </string-array>
+
+    <string name="dm">0x11F304 Good Morning, %1$s</string>
+    <string name="dm2">0x11F304 Morning %1$s, You have a long day ahead of you </string>
+    <string name="dm3">0x11F31B Goodnight %1$s, What a Day!</string>
+    <string name="dm4">Night, %1$s i\'m popped 0x11F634</string>
+    <string name="dayAlreadyChoosen">Sorry, This day was already selected</string>
+    <string name="areyouSure">You will not be able to choose these days Again, Are You done?</string>
+    <string name="beforeThat">Confirmation</string>
+    <string name="finish">Finished</string>
+    <string name="areyouSure2">are You 100% sure? Next time you are here it\'s to override old data.</string>
+    <string name="deleteDialog">Are You sure You want to erase all data?</string>
+    <string name="newDefault">Turn out you\'ve alredy Created A Default Plan, Swipe Left to make a Custom Plan click Override</string>
+    <string name="override">Override Data</string>
+    <string name="existingEmail">Email Already registered.</string>
+    <string name="addWrkout">Add new plan</string>
+    <string name="createdby">Created by %1$s on %1$s</string>
+    <string name="noneFound">Sorry We Found no Records of you\'re looking for</string>
+    <string name="workouts">Workouts</string>
+    <string name="showAll">Show All Workouts</string>
+    <string name="myWorkouts">Just My Workouts</string>
+
+    <string-array name="progressComments">
+        <item>So much to do, but we have time.</item>
+        <item>Yh remember what i said before, 0x11F62D look at the pb </item>
+        <item>Yo !@h?, 0x11F62C Day is almost over</item>
+    </string-array>
+    <string name="title_activity_create_new_workout">Workout name</string>
+    <string name="title_showWorkout">View</string>
+    <string name="title_add">Add</string>
+    <string name="title_gallery">Gallery</string>
+    <string name="Public">Public</string>
+    <string name="Private">Private</string>
+    <string name="day">Day(Mon,Tue...)</string>
+    <string name="dd">Date</string>
+    <string name="newWorkout">Workout Name</string>
+    <string name="error_for_incorrect_day">Day should be writen as (e.g Mon or Monday)</string>
+    <string name="timeFormat">Format must be(00:00 or 00:00:00)</string>
+    <string name="settme">Set time</string>
+    <string name="acceptableDur">Choose from here: 0.10|0.20|0.30|0.40|0.50|1|1.10|1.20|1.30|1.40|1.50|2.00</string>
+    <string name="chooseExercise">Chose Exercises </string>
+    <string name="holdForInfo">Tap For Info</string>
+    <string name="Creation_Zone">24H.W Creation Zone</string>
+    <string name="Creation_Zone2">24H.B$</string>
+    <string name="seterror">Don\'t forget to add sets.</string>
+    <string name="repserror">Reps are required.</string>
+    <string name="delete">Delete</string>
+    <string name="swipetodelete">Swipe Left To Delete</string>
+    <string name="shopingDialog">Hey There, This Part is special \n here you can setup a shcedule and create a budget plan just hit the create Budget to get started ☺</string>
+    <string name="create_budget_shopper">Create Budget</string>
+    <string name="no_thanks">No Thanks</string>
+    <string name="wlletDialog">Welcome to Your Wallet %1$s\nHere you can set the Amount you want Budget Around</string>
+    <string name="currentWallet">Current  Wallet:  </string>
+    <string name="newWallet">New Wallet</string>
+    <string name="new_Balance">%1$s Enter new Balance</string>
+    <string name="enterItem">Enter Item</string>
+    <string name="savingDialog">Welcome to Your Wallet %1$s\nHere you can set the Amount you want Save</string>
+    <string name="currentSavings">Current  Limit:  </string>
+    <string name="newSavings">New Limit</string>
+    <string name="new_save">%1$s Enter new Limit</string>
+    <string name="limit_err">Your Limit can\'t be Lower than your wallet..</string>
+    <string name="addedToB">Your Item was added to your cart</string>
+    <string name="warning1">Woah! Cutting it close</string>
+    <string name="warning">Wow you are saving a lot!!</string>
+    <string name="warning0">You\'re doing good so far!</string>
+    <string name="warning2">Watch it!</string>
+    <string name="warning3">Be Carefull!!</string>
+    <string name="warning4">You do realize you have a limit Right?</string>
+    <string name="warning5">That\'s it!,  i\'m cutting you off!!!</string>
+    <string name="areyouSure4">Are you 100% sure.  You can\'t change this.</string>
+    <string name="title_video_list">Videos</string>
+    <string name="title_video_detail">Video Detail</string>
+    <string name="cpassword">RE. Password</string>
+    <string name="resetPasswordMsg">Hmmm Forgotten your password?</string>
+    <string name="subrpMsg">To reset your password just enter your email, press the "Reset Password" Button and check email to follow instruction ☺</string>
+    <string name="gymDesc">Hey There, This is 24H.GM A.K.A Gym. Ever want to create a workout plan for your daily/weekly trip to the Gym?\n
+    Here you have the ability to choose our default Gym plan our create one of you're very own. YOu can also View Workout Plans Made by the Community.</string>
+    <string name="socialDesc">Hi again, 24H.S is A Social organizer, where you create events for common social activities,\n You want to set up a plan to go to the Cinema well you can, or How about create a Budget for your grocceries, 24H.B$ allows you to just that.</string>
+    <string name="study">24H.SP allows you to create a study plan for any day of the week, fast and simple.</string>
+    <string name="timetableDesc">Dear Students, Good news you\'re able to create a Timetable for for classes ☺, No more confused about what classes you have and when. Not saying that you do.</string>
+   <string name="Calendar">View All Created events Here</string>
+    <string name="prev">Previous</string>
+    <string name="tutorialDesc">So that\'s it, Confused well visit our Tutorial segment for help</string>
+    <string name="setu">Your are all setup, hit that button and let\'s start!</string>
+    <string name="no_connection">Oops Seem Like you have Internet connection!</string>
+    <string name="exit">I\'ll be back</string>
+    <string name="no_network">Lost Connection</string>
+    <string name="thanks">Thank you</string>
+    <string name="setTimer">set Timer</string>
+    <string name="social_custom_hint">Name,At,On,From,To</string>
+    <string name="Social_custom">Custom</string>
+</resources>

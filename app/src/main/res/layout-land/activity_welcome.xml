@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="visible"
+    tools:context="ie.ul.o.daysaver.WelcomeActivity">
+
+    <ScrollView
+        android:id="@+id/PageTwo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="0dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingBottom="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/gymBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/default_button_selector"
+                        android:backgroundTint="@android:color/transparent"
+                        android:paddingBottom="12dp"
+                        android:paddingTop="40dp"
+                        app:srcCompat="@drawable/gym_small" />
+
+                    <CheckBox
+                        android:id="@+id/selectGym"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="false"
+                        android:duplicateParentState="false"
+                        android:fontFamily="@font/aldrich"
+                        android:onClick="onChkGym"
+                        android:text="@string/gymTitle"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/study"
+                        android:layout_width="match_parent"
+                        android:layout_height="174dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/default_button_selector"
+                        android:backgroundTint="@android:color/transparent"
+                        android:paddingLeft="30dp"
+                        android:paddingRight="12dp"
+                        app:srcCompat="@drawable/study_small" />
+
+                    <CheckBox
+                        android:id="@+id/selectStudy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/aldrich"
+                        android:onClick="onChkStudy"
+                        android:text="@string/studyTitle"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/meeting"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/default_button_selector"
+                        android:backgroundTint="@android:color/transparent"
+                        app:srcCompat="@drawable/meeting_small" />
+
+                    <CheckBox
+                        android:id="@+id/selectMeeting"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/aldrich"
+                        android:onClick="onChkMtns"
+                        android:text="@string/meetingTitle"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/social"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/default_button_selector"
+                        android:backgroundTint="@android:color/transparent"
+                        android:paddingBottom="12dp"
+                        app:srcCompat="@drawable/social_small" />
+
+                    <CheckBox
+                        android:id="@+id/selectSocial"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/aldrich"
+                        android:onClick="onChkSoc"
+                        android:text="@string/socialTitle"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingBottom="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/timetable"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/default_button_selector"
+                        android:backgroundTint="@android:color/transparent"
+                        app:srcCompat="@drawable/timetable_small" />
+
+                    <CheckBox
+                        android:id="@+id/selectTimetable"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/aldrich"
+                        android:onClick="onChkTt"
+                        android:text="@string/timetable"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/chill"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/default_button_selector"
+                        android:backgroundTint="@android:color/transparent"
+                        app:srcCompat="@drawable/chill_small" />
+
+                    <CheckBox
+                        android:id="@+id/selectChill"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/aldrich"
+                        android:onClick="onChkChill"
+                        android:text="@string/chillTitle"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/WelcomPage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/colorPrimary"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <!--ie.ul.o.daysaver.OurView
+                android:id="@+id/surfaceView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"></ie.ul.o.daysaver.OurView-->
+
+            <ImageView
+                android:id="@+id/HbotFrame"
+                android:layout_width="69dp"
+                android:layout_height="77dp"
+                android:layout_marginRight="250dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/hbot_wave"
+                android:cropToPadding="false" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary"
+                android:orientation="vertical">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/welcomeDialog"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/aldrich"
+                            android:paddingLeft="40dp"
+                            android:paddingTop="40dp"
+                            android:text="@string/welcome"
+                            android:textAlignment="viewStart"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/white"
+                            android:textSize="12sp"
+                            android:textStyle="italic" />
+                    </LinearLayout>
+                </ScrollView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingTop="10dp">
+
+                    <Button
+                        android:id="@+id/skip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/aldrich"
+                        android:onClick="onSkip"
+                        android:text="@string/welcome_later" />
+
+                    <Button
+                        android:id="@+id/startButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/colorAccent"
+                        android:fontFamily="@font/aldrich"
+                        android:onClick="onStartIntro"
+                        android:text="@string/welcome_start"
+                        android:textColor="@color/common_google_signin_btn_text_dark_default" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

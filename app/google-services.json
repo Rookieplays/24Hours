@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "542524598527",
+    "firebase_url": "https://hours-1a681.firebaseio.com",
+    "project_id": "hours-1a681",
+    "storage_bucket": "hours-1a681.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:542524598527:android:d323af5a766b74ae",
+        "android_client_info": {
+          "package_name": "ie.ul.o.daysaver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "542524598527-7lp7omns5bck26rmsk1guqmmir2d0p6t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZhqgRxt9TWxAkt1L56mV7WlzkPzHvzoA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

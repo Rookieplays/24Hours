@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/theme1"
+        android:icon="@drawable/midnight_header"
+        android:orderInCategory="100"
+        android:title="Midnight"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/theme2"
+        android:icon="@drawable/lava_header"
+        android:orderInCategory="100"
+        android:title="Lava"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/theme3"
+        android:icon="@drawable/forest_header"
+        android:orderInCategory="100"
+        android:title="Forest"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/theme4"
+        android:icon="@drawable/aqua_header"
+        android:orderInCategory="100"
+        android:title="AQua"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/theme5"
+        android:icon="@drawable/aqua_header"
+        android:orderInCategory="100"
+        android:title="Classic"
+        app:showAsAction="never" />
+</menu>

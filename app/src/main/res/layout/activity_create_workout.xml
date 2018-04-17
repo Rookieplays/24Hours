@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="ie.ul.o.daysaver.createWorkout">
+
+    <LinearLayout
+        android:id="@+id/wholeField"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/heading_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+
+            <LinearLayout
+                android:id="@+id/timecontainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <Button
+                    android:id="@+id/setTimebn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/settme"
+                    android:visibility="visible" />
+
+                <EditText
+                    android:id="@+id/time_spent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:fontFamily="@font/aldrich"
+                    android:hint="Dur(+.10)"
+                    android:inputType="textPersonName|number" />
+
+            </LinearLayout>
+
+            <Spinner
+                android:id="@+id/occurance_ofDay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:entries="@array/occurance2"
+                android:visibility="gone" />
+
+            <android.support.v4.view.ViewPager
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/black_overlay">
+
+            </android.support.v4.view.ViewPager>
+
+            <RadioGroup
+                android:id="@+id/days_rBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/aldrich"
+                    android:onClick="getDaysRB"
+                    android:text="@string/day" />
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/aldrich"
+                    android:onClick="getDaysRB"
+                    android:text="@string/dd"
+                    android:textSize="14sp" />
+            </RadioGroup>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/enterDay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Mon,Tue,Wed,Thurs,Fri  @Start time @duration(+.10-12.00)"
+                android:visibility="gone"
+                app:hintAnimationEnabled="true">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/enterDayText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/aldrich"
+                    android:textSize="12sp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.v4.view.ViewPager
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/black_overlay" />
+
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/aldrich"
+                android:text="@string/Private"
+                android:textOff="@string/Private"
+                android:textOn="@string/Private"
+                android:thumbTint="#ff290c"
+                android:trackTint="@color/save_red" />
+
+            <android.support.v4.view.ViewPager
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/black_overlay">
+
+            </android.support.v4.view.ViewPager>
+
+            <TextView
+                android:id="@+id/date_Result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/meeting_primaryColorDark" />
+
+            <android.support.v4.view.ViewPager
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/black_overlay">
+
+            </android.support.v4.view.ViewPager>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/hideBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:elevation="5dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/hideBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|left|end"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="60dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:rotation="180"
+                android:tint="?android:attr/colorAccent"
+                app:srcCompat="@android:drawable/ic_menu_more" />
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/listOfMadeWorkout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/ctb"
+
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimaryDark"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="280dp"
+            android:layout_height="match_parent"
+            android:textColorHint="@color/background_color">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/newPlanText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:hint="@string/newWorkout"
+                android:shadowColor="@color/black_overlay"
+                android:textColor="@color/background_color"
+                android:textColorHint="@android:color/white" />
+        </android.support.design.widget.TextInputLayout>
+    </android.support.v7.widget.Toolbar>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/addWorkoutBTN"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/background_mid_dark"
+            android:elevation="10dp"
+            android:fontFamily="@font/aldrich"
+            android:text="Add Exercise"
+            android:textColor="@color/aqua_textPrimary"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/CompleteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/forest_accent"
+            android:elevation="10dp"
+            android:text="@string/save"
+            android:textColor="@color/background_color"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+</FrameLayout>

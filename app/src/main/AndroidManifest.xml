@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ie.ul.o.daysaver">
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <application
+        android:allowBackup="true"
+        android:fontFamily="@font/aldrich"
+        android:hardwareAccelerated="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:textAllCaps="true"
+        android:theme="@style/AppTheme">
+
+        <service
+            android:name=".MyJobService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
+            </intent-filter>
+        </service>
+        <receiver android:name=".AlarmReceiver" android:process=":remote" />
+        <activity
+            android:name=".MainActivity"
+            android:fontFamily="@font/aldrich"
+            android:screenOrientation="portrait"
+            android:textAllCaps="true"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".calenderActivity"
+            android:fontFamily="@font/aldrich"
+            android:screenOrientation="locked"
+            android:textAllCaps="true"
+            android:theme="@style/AppTheme.Midnight">
+            <intent-filter>
+                <action android:name="ie.ul.o.daysaver.calenderActivity" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="locked"
+            android:theme="@style/AppTheme.Midnight">
+            <intent-filter>
+                <action android:name="ie.ul.o.daysaver.LoginActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".RegisterActivity"
+            android:screenOrientation="locked"
+            android:theme="@style/AppTheme.Midnight">
+            <intent-filter>
+                <action android:name="ie.ul.o.daysaver.RegisterActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".EmailVarification"
+            android:screenOrientation="locked"
+            android:theme="@style/AppTheme.PopupView">
+            <intent-filter>
+                <action android:name="ie.ul.o.daysaver.EmailVarification" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ResetPasswordActivity"
+            android:label="@string/title_activity_login2">
+            <intent-filter>
+                <action android:name="ie.ul.o.daysaver.ResetPasswordActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".FullscreenActivity"
+            android:fontFamily="@font/aldrich"
+            android:label="@string/welcome_title"
+            android:screenOrientation="locked"
+            android:theme="@style/FullscreenTheme">
+            <intent-filter>
+                <action android:name="ie.ul.o.daysaver.FullscreenActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <activity
+            android:name=".WelcomeActivity"
+            android:label="@string/welcome_title">
+            <intent-filter>
+                <action android:name="ie.ul.o.daysaver.WelcomeActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".GymActivity"
+            android:label="Gym Planner"
+            android:screenOrientation="locked"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="ie.ul.o.daysaver.GymActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".DefaultGymplan"
+            android:theme="@style/AppTheme.PopupView2">
+            <intent-filter>
+                <action android:name="ie.ul.o.daysaver.DefaultGymplan" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".socialActivity"
+            android:label="@string/activity_social"
+            android:screenOrientation="locked"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="ie.ul.o.daysaver.socialActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".createWorkout"
+            android:noHistory="true" />
+        <activity
+            android:name=".AddNewWorkout"
+            android:label="@string/Creation_Zone"
+            android:noHistory="true"
+            android:screenOrientation="locked"
+            android:theme="@style/AppTheme.Midnight">
+            <intent-filter>
+                <action android:name="ie.ul.o.daysaver.AddNewWorkout" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".BudgetShopper"
+            android:label="@string/Creation_Zone2"
+            android:screenOrientation="locked"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="ie.ul.o.daysaver.BudgetShopper" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".StudyActivity"
+            android:screenOrientation="locked"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="ie.ul.o.daysaver.StudyActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".QuickAddActivity"
+            android:screenOrientation="locked"
+            android:theme="@style/AppTheme.Midnight">
+            <intent-filter>
+                <action android:name="ie.ul.o.daysaver.QuickAddActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".VideoListActivity"
+            android:label="@string/title_video_list"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ie.ul.o.daysaver.MainActivity" />
+        </activity>
+        <activity
+            android:name=".VideoDetailActivity"
+            android:label="@string/title_video_detail"
+            android:parentActivityName=".VideoListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ie.ul.o.daysaver.VideoListActivity" />
+        </activity>
+        <activity android:name=".getttingStartedActivity"
+            android:theme="@style/AppTheme.Midnight"
+            android:screenOrientation="portrait"></activity>
+    </application>
+
+</manifest>

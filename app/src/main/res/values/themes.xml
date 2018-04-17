@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme.Midnight" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/mainscreen_color</item>
+        <item name="colorPrimaryDark">@color/mainscreen_dark</item>
+        <item name="colorAccent">@color/midnight_accent</item>
+        <item name="colorControlHighlight">@color/midnight_controlhightlight</item>
+        <item name="android:textColorPrimary">@color/midnight_textPrimary</item>
+        <item name="android:textColorSecondary">@color/midnight_textSecondary</item>
+
+    </style>
+
+    <style name="AppTheme.Lava" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/lava_theme_y</item>
+        <item name="colorPrimaryDark">@color/lava_theme_</item>
+        <item name="colorAccent">@color/lava_theme_o</item>
+        <item name="colorControlHighlight">@color/lava_theme_y</item>
+        <item name="android:textColorPrimary">@color/lava_textPrimary</item>
+        <item name="android:textColorSecondary">@color/lava_textSecondary</item>
+    </style>
+
+    <style name="AppTheme.Forest" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/forest_mid</item>
+        <item name="colorPrimaryDark">@color/forest_dark</item>
+        <item name="colorAccent">@color/forest_accent</item>
+        <item name="colorControlHighlight">@color/forest_controlhighlight</item>
+        <item name="android:textColorPrimary">@color/forest_textPrimary</item>
+        <item name="android:textColorSecondary">@color/forest_textsecondary</item>
+    </style>
+
+    <style name="AppTheme.Aqua" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/aqua_primary</item>
+        <item name="colorPrimaryDark">@color/aqua_secondary</item>
+        <item name="colorAccent">@color/aqua_accent</item>
+        <item name="colorControlHighlight">@color/aqua_controlHight</item>
+        <item name="android:textColorPrimary">@color/aqua_textPrimary</item>
+        <item name="android:textColorSecondary">@color/aqua_textSecondary</item>
+
+    </style>
+    <style name="AppTheme.Classic" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/classic_primary</item>
+        <item name="colorPrimaryDark">@color/classic_secondary</item>
+        <item name="colorAccent">@color/classic_accent</item>
+        <item name="colorControlHighlight">@color/classic_controlHighlight</item>
+        <item name="android:textColorPrimary">@color/classic_textPrimary</item>
+        <item name="android:textColorSecondary">@color/classic_secondary</item>
+
+    </style>
+
+
+</resources>

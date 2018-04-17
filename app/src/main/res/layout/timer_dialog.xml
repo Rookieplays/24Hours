@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorPrimaryDark">
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/transparent"
+        android:progressTint="@color/holo_purple_light" />
+
+    <TextView
+        android:id="@+id/timerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignBottom="@+id/resetTimer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="@font/aldrich"
+        android:text="0:00"
+        android:textColor="@android:color/white"
+        android:textSize="40sp" />
+
+    <Button
+        android:id="@+id/startTimer"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+
+
+        android:layout_alignBaseline="@+id/stopTimer"
+        android:layout_alignBottom="@+id/stopTimer"
+        android:layout_centerHorizontal="true"
+        android:background="@android:drawable/ic_media_play"
+        android:backgroundTint="@color/forest_controlhighlight" />
+
+    <Button
+        android:id="@+id/resetTimer"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/progressBar2"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="178dp"
+        android:background="@android:drawable/ic_menu_rotate"
+        android:backgroundTint="@android:color/white" />
+
+    <Button
+        android:id="@+id/stopTimer"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/resetTimer"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="115dp"
+        android:background="@color/common_google_signin_btn_text_dark_focused" />
+</RelativeLayout>

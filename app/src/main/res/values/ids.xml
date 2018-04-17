@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="addLater" type="id">Add Event Now</item>
+    <item name="beforeThat" type="id">Confirmation</item>
+    <item name="showAll" type="id">Show All</item>
+</resources>

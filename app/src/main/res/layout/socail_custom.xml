@@ -1,0 +1,734 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/setupPage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/chill_color"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/aldrich"
+            android:text="Setup"
+            android:textAlignment="center"
+            android:textSize="18sp" />
+
+        <RadioGroup
+            android:id="@+id/timeSelected"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checkedButton="@+id/r1"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/r1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="timesRB"
+                android:text="Duration" />
+
+            <RadioButton
+                android:id="@+id/r2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="timesRB"
+                android:text="Time Clock" />
+        </RadioGroup>
+
+        <android.support.v4.view.ViewPager
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/holo_gray_light" />
+
+        <CheckBox
+            android:id="@+id/invites"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Invite photos?"
+            android:textAlignment="textStart" />
+
+        <android.support.v4.view.ViewPager
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <CheckBox
+            android:id="@+id/addItems"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Items/List" />
+
+        <Button
+            android:id="@+id/begin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Done" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/customPage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:id="@+id/customTimeSelector"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TimePicker
+                android:id="@+id/customtp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/customsetStartingTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/aldrich"
+                android:text="@string/setstarttime" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/customTimeSelector2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TimePicker
+                android:id="@+id/customtp2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/customsetStartingTime2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/aldrich"
+                android:text="@string/setstarttime" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/customDateSelector"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <DatePicker
+                android:id="@+id/customdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:datePickerMode="calendar"
+                android:spinnersShown="false"
+                android:startYear="2018" />
+
+            <Button
+                android:id="@+id/customsetDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/setDate" />
+        </LinearLayout>
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/holo_purple"
+            app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
+
+
+            <LinearLayout
+                android:id="@+id/custom_Field"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:background="@color/social_primaryColorDark"
+                    android:keepScreenOn="false"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/social_primaryColorDark"
+                        android:orientation="horizontal"
+                        android:paddingBottom="15dp"
+                        android:paddingTop="10dp">
+
+                        <TextView
+                            android:id="@+id/custom_heading"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/aldrich"
+                            android:text="@string/Social_custom"
+                            android:textAlignment="viewStart"
+                            android:textAllCaps="true"
+                            android:textColor="@color/common_google_signin_btn_text_dark_default"
+                            android:textSize="30sp" />
+
+                        <Button
+                            android:id="@+id/cancel10"
+                            android:layout_width="14dp"
+                            android:layout_height="68dp"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/aldrich"
+                            android:text="X"
+                            android:textColor="@color/save_red"
+                            android:textSize="30sp"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:id="@+id/social_save_custom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="?attr/colorControlActivated"
+                            android:fontFamily="@font/aldrich"
+                            android:maxWidth="15dp"
+                            android:minWidth="5dp"
+                            android:text="@string/save"
+                            android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+                    </LinearLayout>
+
+
+                    <AutoCompleteTextView
+                        android:id="@+id/custom_name_field"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/aldrich"
+                        android:hint="Title"
+                        android:textColor="@color/common_google_signin_btn_text_dark_default"
+                        android:textColorHint="@color/common_google_signin_btn_text_dark_default"
+                        android:textSize="18sp" />
+
+
+                    <TextView
+                        android:id="@+id/customEvent_tag"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="cursive"
+                        android:text="@string/social_custom_hint"
+                        android:textColor="@android:color/background_light"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/customItemField"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/addItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/aldrich"
+                            android:text="Add Item (Max 20)" />
+
+                        <Button
+                            android:id="@+id/removeItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@color/save_red"
+                            android:fontFamily="@font/aldrich"
+                            android:text="Remove Item (min 1)"
+                            android:textColor="@color/common_google_signin_btn_text_dark_default" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/il"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:ems="10"
+                        android:fontFamily="@font/aldrich"
+                        android:hint="Item 1"
+                        android:inputType="textPersonName"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="italic" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="9dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical">
+
+
+                    <EditText
+                        android:id="@+id/custom_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:ems="10"
+                        android:fontFamily="@font/aldrich"
+                        android:hint="@string/location"
+                        android:inputType="textPostalAddress"
+                        android:textColor="@android:color/white" />
+
+                    <android.support.v4.view.ViewPager
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/holo_gray_light" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/custom_mon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@android:color/holo_red_light"
+                            android:fontFamily="@font/aldrich"
+                            android:text="Mon"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/custom_tue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@android:color/holo_orange_light"
+                            android:fontFamily="@font/aldrich"
+                            android:text="Tues"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/custom_wed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@color/holo_yellow"
+                            android:fontFamily="@font/aldrich"
+                            android:text="Wed"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/custom_thurs"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@android:color/holo_green_light"
+                            android:fontFamily="@font/aldrich"
+                            android:text="Thurs"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/custom_fri"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@android:color/holo_blue_light"
+                            android:fontFamily="@font/aldrich"
+                            android:text="Fri"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/custom_sat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@color/holo_purple_light"
+                            android:fontFamily="@font/aldrich"
+                            android:text="sat"
+                            android:textAllCaps="true"
+                            android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+                        <TextView
+                            android:id="@+id/custom_sun"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@color/holo_indigo_dark"
+                            android:fontFamily="@font/aldrich"
+                            android:text="sun"
+                            android:textAllCaps="true"
+                            android:textColor="@color/common_google_signin_btn_text_dark_default" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/custom_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="20dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:ems="10"
+                            android:fontFamily="@font/aldrich"
+                            android:hint="@string/date"
+                            android:inputType="date"
+                            android:textColor="@android:color/white" />
+
+                        <Button
+                            android:id="@+id/customdatePicker"
+                            android:layout_width="300dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:background="@color/holo_yellow"
+                            android:fontFamily="@font/aldrich"
+                            android:text="@string/selectAday" />
+                    </LinearLayout>
+
+                    <android.support.v4.view.ViewPager
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/holo_gray_light" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="15dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/custom_stime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="12dp"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:ems="10"
+                            android:fontFamily="@font/aldrich"
+                            android:hint="@string/startTime"
+                            android:inputType="time"
+                            android:textColor="@android:color/white" />
+
+                        <Button
+                            android:id="@+id/customtimepicker1"
+                            android:layout_width="225dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:background="?attr/colorControlActivated"
+                            android:fontFamily="@font/aldrich"
+                            android:maxWidth="50dp"
+                            android:minWidth="50dp"
+                            android:text="@string/selectStart"
+                            android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+                    </LinearLayout>
+
+                    <android.support.v4.view.ViewPager
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginRight="12dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/darker_gray" />
+
+                    <LinearLayout
+                        android:id="@+id/timeClockBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="15dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <EditText
+                            android:id="@+id/custom_etime"
+                            android:layout_width="231dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="12dp"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:ems="10"
+                            android:fontFamily="@font/aldrich"
+                            android:hint="@string/endTime"
+                            android:inputType="time"
+                            android:textColor="@android:color/white"
+                            android:textSize="14sp" />
+
+                        <Button
+                            android:id="@+id/customtimepicker2"
+                            android:layout_width="288dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:background="@android:color/holo_blue_light"
+                            android:fontFamily="@font/aldrich"
+                            android:paddingRight="20dp"
+                            android:text="@string/selectEnd"
+                            android:textAlignment="center"
+                            android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/durationBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="15dp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/customDuration"
+                                android:layout_width="231dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="12dp"
+                                android:layout_weight="1"
+                                android:background="@android:color/transparent"
+                                android:ems="10"
+                                android:fontFamily="@font/aldrich"
+                                android:hint="@string/SetDuration"
+                                android:inputType="time"
+                                android:textColor="@android:color/white"
+                                android:textSize="14sp" />
+
+                            <Button
+                                android:id="@+id/customtimepicker2_plus"
+                                android:layout_width="200dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:background="@android:color/holo_blue_light"
+                                android:fontFamily="@font/aldrich"
+                                android:text="@string/selectEnd"
+                                android:textAlignment="center"
+                                android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+                        </LinearLayout>
+
+                        <android.support.v4.view.ViewPager
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/holo_gray_light" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/textView14"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/finishAt" />
+
+                            <TextView
+                                android:id="@+id/c_etime"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="20dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/aldrich"
+                                android:textAllCaps="true"
+                                android:textColor="@android:color/holo_blue_light"
+                                android:textSize="24sp" />
+                        </LinearLayout>
+
+                        <android.support.v4.view.ViewPager
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/holo_gray_light">
+
+                        </android.support.v4.view.ViewPager>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/invitesBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/textView18"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/aldrich"
+                            android:text="@string/upload_invite"
+                            android:textAlignment="textStart"
+                            android:textAllCaps="false"
+                            android:textSize="18sp"
+                            android:textStyle="italic" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:orientation="horizontal">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <ImageButton
+                                            android:id="@+id/coverOfcustom_invite"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            app:srcCompat="@drawable/inside_invite_dark" />
+
+                                        <TextView
+                                            android:id="@+id/textView21"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/aldrich"
+                                            android:text="@string/outside_of_invitation"
+                                            android:textColor="@android:color/holo_orange_dark"
+                                            android:textStyle="italic" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <ImageButton
+                                            android:id="@+id/insideOfcustomInvite"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            app:srcCompat="@drawable/inside_invite" />
+
+                                        <TextView
+                                            android:id="@+id/textView80"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/aldrich"
+                                            android:text="@string/inside_of_invitation"
+                                            android:textAlignment="textEnd"
+                                            android:textColor="@color/holo_purple_light"
+                                            android:textStyle="italic" />
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <android.support.v4.view.ViewPager
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/holo_gray_light">
+
+                    </android.support.v4.view.ViewPager>
+
+                    <Spinner
+                        android:id="@+id/custom_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="1"
+                        android:entries="@array/occurance2" />
+
+
+                    <EditText
+                        android:id="@+id/custom_notes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:fontFamily="casual"
+                        android:hint="@string/notes"
+                        android:inputType="textMultiLine"
+                        android:lineSpacingExtra="6sp"
+                        android:textAlignment="textStart"
+                        android:textColor="@android:color/holo_blue_dark"
+                        android:textSize="10sp"
+                        android:textStyle="italic" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </LinearLayout>
+</LinearLayout>

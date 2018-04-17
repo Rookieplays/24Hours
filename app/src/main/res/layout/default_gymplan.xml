@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ProgressBar
+                android:id="@+id/loading_lists"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/Default_settings"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/holo_red_light"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/DefaultView_heading"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/aldrich"
+                        android:paddingTop="20dp"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textColor="@color/common_google_signin_btn_text_dark_default"
+                        android:textSize="30sp"
+                        android:textStyle="italic" />
+
+                    <Button
+                        android:id="@+id/saveBtn"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="?android:attr/colorControlActivated"
+                        android:fontFamily="@font/aldrich"
+                        android:maxWidth="30dp"
+                        android:minHeight="60dp"
+                        android:minWidth="20dp"
+                        android:text="@string/save"
+                        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <SeekBar
+                    android:id="@+id/seekBar"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:max="10"
+                    android:progress="4"
+                    android:tickMarkTint="@color/common_google_signin_btn_text_dark_focused" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/d_beginner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/aldrich"
+                        android:paddingLeft="40dp"
+                        android:text="@string/lvl1"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/holo_green_dark"
+                        android:textSize="12sp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:id="@+id/d_intermidiate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="30dp"
+                        android:text="@string/lvl2"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/holo_orange_dark"
+                        android:textSize="12sp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:id="@+id/d_advanced"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="30dp"
+                        android:text="@string/lvl3"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/holo_red_dark"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/dayView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/days_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/aldrich"
+                            android:text="@string/pick_day"
+                            android:textAlignment="center"
+                            android:textColor="@color/holo_teal"
+                            android:textStyle="italic" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:id="@+id/d_mon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:checked="true"
+                                android:fontFamily="@font/aldrich"
+                                android:text="@string/day_mon"
+                                android:textAllCaps="true"
+                                android:textColor="@android:color/holo_red_light"
+                                android:textSize="10sp" />
+
+                            <CheckBox
+                                android:id="@+id/d_tues"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:checked="true"
+                                android:fontFamily="@font/aldrich"
+                                android:text="@string/day_tues"
+                                android:textAllCaps="true"
+                                android:textColor="@android:color/holo_orange_dark"
+                                android:textSize="10sp" />
+
+                            <CheckBox
+                                android:id="@+id/d_wed"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:checked="true"
+                                android:fontFamily="@font/aldrich"
+                                android:text="@string/day_wed"
+                                android:textAllCaps="true"
+                                android:textColor="@android:color/holo_orange_light"
+                                android:textSize="10sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:id="@+id/d_thurs"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:checked="true"
+                                android:fontFamily="@font/aldrich"
+                                android:text="@string/day_thurs"
+                                android:textAllCaps="true"
+                                android:textColor="@android:color/holo_green_light"
+                                android:textSize="8sp" />
+
+                            <CheckBox
+                                android:id="@+id/d_fri"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:checked="true"
+                                android:fontFamily="@font/aldrich"
+                                android:text="@string/day_fri"
+                                android:textAllCaps="true"
+                                android:textColor="@android:color/holo_blue_dark"
+                                android:textSize="8sp" />
+
+                            <CheckBox
+                                android:id="@+id/d_sat"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/aldrich"
+                                android:text="@string/day_sat"
+                                android:textAllCaps="true"
+                                android:textColor="@android:color/holo_purple"
+                                android:textSize="8sp" />
+
+                            <CheckBox
+                                android:id="@+id/d_sun"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/aldrich"
+                                android:text="@string/day_sun"
+                                android:textAlignment="center"
+                                android:textAllCaps="true"
+                                android:textColor="@color/holo_indigo_dark"
+                                android:textSize="8sp" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/option1_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:buttonTint="@android:color/holo_blue_bright"
+                            android:checked="true"
+                            android:fontFamily="@font/aldrich"
+                            android:text="@string/o1"
+                            android:textSize="12sp" />
+
+                        <CheckBox
+                            android:id="@+id/option2_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/holo_teal"
+                            android:checked="true"
+                            android:fontFamily="@font/aldrich"
+                            android:text="@string/o2"
+                            android:textSize="12sp" />
+
+                        <CheckBox
+                            android:id="@+id/option3_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/holo_indigo_dark"
+                            android:checked="false"
+                            android:fontFamily="@font/aldrich"
+                            android:text="@string/o3"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/seeV1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/aldrich"
+                            android:text="@string/check"
+                            android:textSize="12sp"
+                            android:textStyle="italic" />
+
+                        <Button
+                            android:id="@+id/seeV2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/aldrich"
+                            android:text="@string/check"
+                            android:textSize="12sp"
+                            android:textStyle="italic" />
+
+                        <Button
+                            android:id="@+id/seeV3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/aldrich"
+                            android:text="@string/check"
+                            android:textSize="12sp"
+                            android:textStyle="italic" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/d_reps"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/aldrich"
+                            android:paddingBottom="2dp"
+                            android:text="@string/reps"
+                            android:textAlignment="center"
+                            android:textAllCaps="true"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="24sp"
+                            android:textStyle="italic" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:id="@+id/low_reps"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:checked="true"
+                                android:fontFamily="@font/aldrich"
+                                android:text="6-8"
+                                android:textAllCaps="true"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                            <CheckBox
+                                android:id="@+id/mid_reps"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:checked="true"
+                                android:fontFamily="@font/aldrich"
+                                android:text="8-12"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:id="@+id/mid2_reps"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="12-15"
+                                android:textSize="12sp" />
+
+                            <CheckBox
+                                android:id="@+id/high_reps"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="15-20"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="5dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/sets_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/aldrich"
+                                android:paddingBottom="2dp"
+                                android:text="@string/sets"
+                                android:textAlignment="center"
+                                android:textAllCaps="true"
+                                android:textColor="@android:color/holo_orange_light"
+                                android:textSize="24sp"
+                                android:textStyle="italic" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <CheckBox
+                                    android:id="@+id/low_sets"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:checked="true"
+                                    android:fontFamily="@font/aldrich"
+                                    android:text="1-2"
+                                    android:textAllCaps="true"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold" />
+
+                                <CheckBox
+                                    android:id="@+id/mid_sets"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:checked="true"
+                                    android:fontFamily="@font/aldrich"
+                                    android:text="3-4"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <CheckBox
+                                    android:id="@+id/mid2_sets"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="6-8"
+                                    android:textSize="12sp" />
+
+                                <CheckBox
+                                    android:id="@+id/high_sets"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="8-10"
+                                    android:textSize="12sp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/WorkoutList_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/save_red"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/close"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/close" />
+
+                    <TextView
+                        android:id="@+id/wv_muscleGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/aldrich"
+                        android:text="TextView"
+                        android:textAllCaps="true"
+                        android:textColor="@color/background_color"
+                        android:textSize="30sp" />
+                </LinearLayout>
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/maingym_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="vertical" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+

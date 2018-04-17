@@ -1,0 +1,1041 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ie.ul.o.daysaver.DefaultView">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/defaultG"
+        android:layout_centerInParent="true"
+        android:textSize="30dp"
+        android:fontFamily="@font/aldrich"/>
+
+    <FrameLayout
+        android:id="@android:id/tabcontent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent">
+
+        <LinearLayout
+            android:id="@+id/Default"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/common_google_signin_btn_text_dark_default"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:id="@+id/mainDefault"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center_horizontal|center"
+                    android:lineSpacingExtra="8sp"
+                    android:text="@string/newDefault"
+                    android:textAlignment="center"
+                    android:textColor="@color/cardview_dark_background"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/override"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/override" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/NewDefault"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/selectABodyType"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/bodytype"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textSize="18sp"
+                        android:textStyle="italic" />
+
+                    <android.support.v4.view.ViewPager
+                        android:layout_width="300dp"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="150dp"
+                        android:background="@android:color/darker_gray" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <ImageButton
+                                android:id="@+id/endomorphImgBtn"
+                                android:layout_width="102dp"
+                                android:layout_height="152dp"
+                                android:layout_marginLeft="30dp"
+
+                                android:layout_marginTop="12dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/fat_man_shadow" />
+
+                            <TextView
+                                android:id="@+id/bodyTypeA"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/aldrich"
+                                android:text="@string/bodytype_fat"
+                                android:textAlignment="center"
+                                android:textAllCaps="true"
+                                android:textColor="@android:color/holo_red_light"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                            <ScrollView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/textView7"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_weight="1"
+                                        android:text="@string/bodytype_Endomorph"
+                                        android:textAlignment="textStart"
+                                        android:textSize="10sp" />
+                                </LinearLayout>
+                            </ScrollView>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <ImageButton
+                                android:id="@+id/mesomorphImgBtn"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@android:color/transparent"
+
+                                android:paddingTop="12dp"
+                                app:srcCompat="@drawable/strong_man_shadow" />
+
+                            <TextView
+                                android:id="@+id/bodyTypeB"
+                                android:layout_width="match_parent"
+                                android:layout_height="3dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/aldrich"
+                                android:text="@string/bodytype_muscular"
+                                android:textAlignment="center"
+                                android:textAllCaps="true"
+                                android:textColor="@android:color/holo_blue_light"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                            <ScrollView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/textView8"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="@string/bodytype_Mesomorph"
+                                        android:textSize="10sp" />
+                                </LinearLayout>
+                            </ScrollView>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <ImageButton
+                                android:id="@+id/ectomorphImgBtn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="177dp"
+                                android:layout_marginLeft="60dp"
+                                android:layout_weight="1"
+
+                                android:background="@drawable/skinny_man_shadow" />
+
+                            <TextView
+                                android:id="@+id/bodyType"
+                                android:layout_width="match_parent"
+                                android:layout_height="33dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/aldrich"
+                                android:text="@string/bodytype_thin"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/holo_green_light"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <ScrollView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/textView9"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:paddingLeft="12dp"
+                                        android:text="@string/bodytype_Ectomorph"
+                                        android:textSize="12sp" />
+                                </LinearLayout>
+                            </ScrollView>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ectomorph_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/mesomorph_view"
+                    android:layout_toEndOf="@+id/mesomorph_view"
+                    android:visibility="gone">
+
+                    <CheckBox
+                        android:id="@+id/weight_Loss3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/workout_type"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/holo_red_light"
+                        android:textSize="15sp"
+                        android:textStyle="italic" />
+
+                    <CheckBox
+                        android:id="@+id/tone_up3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/toning"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15sp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:id="@+id/choosePlan3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/weight_Loss3"
+                        android:layout_alignStart="@+id/textView16"
+                        android:layout_marginBottom="16dp"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/goals"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="true"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imageView9"
+                        android:layout_width="400dp"
+                        android:layout_height="400dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        app:srcCompat="@drawable/skinny_man" />
+
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="13dp"
+                        android:layout_marginTop="14dp"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/bodytype_thin"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/holo_blue_light"
+                        android:textSize="24sp"
+                        android:textStyle="italic" />
+
+                    <Button
+                        android:id="@+id/e_chest"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/textView16"
+                        android:layout_marginStart="65dp"
+                        android:layout_marginTop="44dp"
+                        android:layout_toEndOf="@+id/choosePlan3"
+                        android:background="@android:color/transparent"
+                        android:maxHeight="20dp"
+                        android:maxWidth="50dp"
+                        android:minHeight="30dp"
+                        android:minWidth="30dp" />
+
+                    <Button
+                        android:id="@+id/e_chest1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/textView16"
+                        android:layout_toEndOf="@+id/e_chest"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/chest"
+                        android:textColor="@android:color/holo_blue_light"
+                        android:textStyle="italic" />
+
+                    <Button
+                        android:id="@+id/e_core"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/e_chest"
+                        android:layout_centerHorizontal="true"
+                        android:background="@android:color/transparent"
+                        android:minHeight="30dp"
+                        android:minWidth="30dp" />
+
+                    <Button
+                        android:id="@+id/e_core1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/e_core"
+                        android:layout_alignBottom="@+id/e_core"
+                        android:layout_marginStart="28dp"
+                        android:layout_toEndOf="@+id/e_chest"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/core"
+                        android:textColor="@android:color/holo_blue_light"
+                        android:textStyle="italic" />
+
+                    <Button
+                        android:id="@+id/e_arm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/e_core1"
+                        android:layout_toStartOf="@+id/e_core"
+                        android:background="@android:color/transparent"
+                        android:minHeight="60dp"
+                        android:minWidth="30dp" />
+
+                    <Button
+                        android:id="@+id/e_arms1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/e_chest"
+                        android:layout_marginEnd="14dp"
+                        android:layout_toStartOf="@+id/e_chest"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/arms"
+                        android:textColor="@android:color/holo_blue_light"
+                        android:textStyle="italic" />
+
+                    <Button
+                        android:id="@+id/e_shoulder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/e_chest1"
+                        android:layout_toStartOf="@+id/e_chest1"
+                        android:background="@android:color/transparent"
+                        android:minHeight="20dp" />
+
+                    <Button
+                        android:id="@+id/e_shoulder1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/e_shoulder"
+                        android:layout_toEndOf="@+id/textView16"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/shoulder"
+                        android:textColor="@android:color/holo_blue_light"
+                        android:textStyle="italic" />
+
+                    <Button
+                        android:id="@+id/e_Quads"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/e_core"
+                        android:layout_centerHorizontal="true"
+                        android:background="@android:color/transparent"
+                        android:minHeight="60dp"
+                        android:minWidth="50dp" />
+
+                    <Button
+                        android:id="@+id/e_quads1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/e_core1"
+                        android:layout_toEndOf="@+id/e_chest"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/quads"
+                        android:textColor="@android:color/holo_blue_light"
+                        android:textStyle="italic" />
+
+                    <Button
+                        android:id="@+id/e_calves"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/choosePlan3"
+                        android:layout_alignStart="@+id/e_arm"
+                        android:background="@android:color/transparent" />
+
+                    <Button
+                        android:id="@+id/e_calf1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/choosePlan3"
+                        android:layout_alignEnd="@+id/e_shoulder1"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/calf"
+                        android:textColor="@android:color/holo_blue_light"
+                        android:textStyle="italic" />
+
+                    <Button
+                        android:id="@+id/e_turn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/e_core1"
+                        android:layout_alignTop="@+id/e_core1"
+                        android:layout_toEndOf="@+id/imageView9"
+                        android:background="@android:drawable/ic_menu_rotate"
+                        android:backgroundTint="@android:color/holo_blue_bright"
+                        android:minHeight="50dp"
+                        android:minWidth="50dp" />
+
+                    <Button
+                        android:id="@+id/e_return"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignEnd="@+id/tone_up3"
+                        android:layout_alignParentTop="true"
+                        android:background="@android:color/transparent"
+                        android:text="@string/goBack"
+                        android:textColor="@android:color/holo_blue_bright" />
+
+                    <Button
+                        android:id="@+id/finishedBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/e_arm"
+                        android:layout_alignStart="@+id/e_return"
+                        android:background="@color/save_green"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/finish"
+                        android:textColor="@android:color/white"
+                        android:visibility="gone" />
+
+                    <Button
+                        android:id="@+id/resetAll3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/e_calves"
+                        android:layout_alignParentEnd="true"
+                        android:background="@color/save_red"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/resetAll"
+                        android:textColor="@android:color/white"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/mesomorph_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/imageView8"
+                        android:layout_width="400dp"
+                        android:layout_height="400dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        app:srcCompat="@drawable/strong_man" />
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="13dp"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/bodytype_muscular"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="24sp" />
+
+
+                    <CheckBox
+                        android:id="@+id/weight_Loss"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/workout_type"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/holo_red_light"
+                        android:textSize="15sp"
+                        android:textStyle="italic" />
+
+                    <CheckBox
+                        android:id="@+id/tone_up"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="14dp"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/toning"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15sp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:id="@+id/choosePlan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/weight_Loss"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginBottom="14dp"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/goals"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="true"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/m_chest"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_toEndOf="@+id/choosePlan"
+                        android:background="@android:color/transparent" />
+
+                    <Button
+                        android:id="@+id/m_chest2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/m_chest"
+                        android:layout_marginBottom="14dp"
+                        android:layout_toEndOf="@+id/weight_Loss"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/chest"
+                        android:textColor="@color/save_green"
+                        android:textStyle="italic" />
+
+                    <Button
+                        android:id="@+id/m_core"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@+id/m_chest"
+                        android:layout_below="@+id/m_chest"
+                        android:background="@android:color/transparent" />
+
+                    <Button
+                        android:id="@+id/m_core2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/m_core"
+                        android:layout_alignStart="@+id/imageView8"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/core"
+                        android:textColor="@color/save_green"
+                        android:textStyle="italic" />
+
+                    <Button
+                        android:id="@+id/m_shoulder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/m_core"
+                        android:layout_marginBottom="24dp"
+                        android:layout_marginEnd="12dp"
+                        android:layout_toStartOf="@+id/tone_up"
+                        android:background="@android:color/transparent" />
+
+                    <Button
+                        android:id="@+id/m_shoulder2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/m_chest"
+                        android:layout_toEndOf="@+id/m_shoulder"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/shoulder"
+                        android:textColor="@color/save_green"
+                        android:textStyle="italic" />
+
+                    <Button
+                        android:id="@+id/m_arms"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/m_chest"
+                        android:layout_marginTop="22dp"
+                        android:layout_toEndOf="@+id/m_chest"
+                        android:background="@android:color/transparent"
+                        android:minHeight="30dp"
+                        android:minWidth="60dp" />
+
+                    <Button
+                        android:id="@+id/m_arms2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/m_arms"
+                        android:layout_alignEnd="@+id/imageView8"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/arms"
+                        android:textColor="@color/save_green"
+                        android:textStyle="italic" />
+
+                    <Button
+                        android:id="@+id/m_quads"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/choosePlan"
+                        android:layout_alignStart="@+id/m_core"
+                        android:background="@android:color/transparent" />
+
+                    <Button
+                        android:id="@+id/m_quads2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/choosePlan"
+                        android:layout_alignEnd="@+id/textView15"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/quads"
+                        android:textColor="@color/save_green"
+                        android:textStyle="italic" />
+
+                    <Button
+                        android:id="@+id/m_calves"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignStart="@+id/m_quads"
+                        android:background="@android:color/transparent" />
+
+                    <Button
+                        android:id="@+id/m_calf2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/tone_up"
+                        android:layout_toEndOf="@+id/m_arms"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/calf"
+                        android:textColor="@color/save_green"
+                        android:textStyle="italic" />
+
+                    <Button
+                        android:id="@+id/m_turn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/m_core"
+                        android:layout_toEndOf="@+id/imageView8"
+                        android:background="@android:drawable/ic_menu_rotate"
+                        android:backgroundTint="@android:color/holo_green_light"
+                        android:minWidth="50dp" />
+
+                    <Button
+                        android:id="@+id/m_back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/goBack"
+                        android:textColor="@android:color/holo_green_light"
+                        android:textStyle="italic" />
+
+                    <Button
+                        android:id="@+id/finishedBtn2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/m_shoulder2"
+                        android:layout_alignStart="@+id/m_back"
+                        android:background="@color/save_green"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/finish"
+                        android:textColor="@android:color/white"
+                        android:visibility="gone" />
+
+                    <Button
+                        android:id="@+id/resetAll2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/m_arms2"
+                        android:layout_alignParentEnd="true"
+                        android:background="@color/save_red"
+                        android:text="@string/resetAll"
+                        android:textColor="@android:color/white"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/endomorph_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                    <CheckBox
+                        android:id="@+id/weight_Loss5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/workout_type"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/holo_red_light"
+                        android:textSize="15sp"
+                        android:textStyle="italic" />
+
+                    <CheckBox
+                        android:id="@+id/tone_up5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentStart="true"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/toning"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15sp"
+                        android:textStyle="italic" />
+
+                    <ImageView
+                        android:id="@+id/imageView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        app:srcCompat="@drawable/fat_man" />
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="17dp"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/bodytype_fat"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/holo_red_light"
+                        android:textSize="24sp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:id="@+id/choosePlan5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/weight_Loss5"
+
+                        android:layout_marginBottom="11dp"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/goals"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="true"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/chest"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/textView10"
+                        android:layout_marginTop="12dp"
+                        android:layout_toEndOf="@+id/choosePlan5"
+                        android:background="@android:color/transparent"
+                        android:maxHeight="50dp"
+                        android:minHeight="70dp"
+                        android:minWidth="110dp" />
+
+                    <Button
+                        android:id="@+id/chest2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/chest"
+                        android:layout_marginTop="13dp"
+                        android:layout_toEndOf="@+id/chest"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/chest"
+                        android:textColor="@color/save_red"
+                        android:textStyle="italic" />
+
+                    <Button
+                        android:id="@+id/arm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/chest2"
+                        android:layout_marginEnd="19dp"
+                        android:layout_toStartOf="@+id/chest"
+                        android:background="@android:color/transparent"
+                        android:minHeight="90dp"
+                        android:minWidth="30dp" />
+
+                    <Button
+                        android:id="@+id/arms2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/arm"
+                        android:layout_marginEnd="18dp"
+                        android:layout_toStartOf="@+id/arm"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/arms"
+                        android:textColor="@color/save_red"
+                        android:textStyle="italic" />
+
+                    <Button
+                        android:id="@+id/b_shoulder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/arms2"
+                        android:layout_toEndOf="@+id/chest"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/shoulder"
+                        android:textColor="@color/save_red"
+                        android:textStyle="italic" />
+
+                    <Button
+                        android:id="@+id/shouder2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/arms2"
+                        android:layout_alignBottom="@+id/arms2"
+                        android:layout_toEndOf="@+id/tone_up5"
+                        android:background="@android:color/transparent"
+                        android:minHeight="30dp"
+                        android:minWidth="30dp" />
+
+                    <Button
+                        android:id="@+id/b_core"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/choosePlan5"
+                        android:layout_marginBottom="29dp"
+                        android:layout_toStartOf="@+id/chest2"
+                        android:background="@android:color/transparent"
+                        android:minHeight="80dp"
+                        android:minWidth="150dp" />
+
+                    <Button
+                        android:id="@+id/core2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/b_core"
+                        android:layout_toEndOf="@+id/b_core"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/core"
+                        android:textColor="@color/save_red"
+                        android:textStyle="italic" />
+
+                    <Button
+                        android:id="@+id/quads"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/choosePlan5"
+                        android:layout_toEndOf="@+id/choosePlan5"
+                        android:background="@android:color/transparent"
+                        android:minHeight="30dp"
+                        android:minWidth="110dp" />
+
+                    <Button
+                        android:id="@+id/quads1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/quads"
+                        android:layout_alignBottom="@+id/quads"
+                        android:layout_alignStart="@+id/arms2"
+                        android:layout_marginStart="86dp"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/quads"
+                        android:textColor="@color/save_red"
+                        android:textStyle="italic" />
+
+                    <Button
+                        android:id="@+id/calves"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/b_core"
+                        android:layout_toEndOf="@+id/quads1"
+                        android:background="@android:color/transparent" />
+
+                    <Button
+                        android:id="@+id/calf2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/weight_Loss5"
+                        android:layout_marginStart="16dp"
+                        android:layout_toEndOf="@+id/quads"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/calf"
+                        android:textColor="@color/save_red"
+                        android:textStyle="italic" />
+
+                    <Button
+                        android:id="@+id/en_turn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_below="@+id/chest"
+                        android:layout_marginEnd="23dp"
+                        android:background="@android:drawable/ic_menu_rotate"
+                        android:backgroundTint="@color/save_red"
+                        android:minWidth="50dp" />
+
+                    <Button
+                        android:id="@+id/backBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignTop="@+id/textView10"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/goBack"
+                        android:textColor="@color/save_red" />
+
+                    <Button
+                        android:id="@+id/finished3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignTop="@+id/chest"
+                        android:layout_marginEnd="10dp"
+                        android:background="@color/save_green"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/finish"
+                        android:textColor="@android:color/white"
+                        android:visibility="gone" />
+
+                    <Button
+                        android:id="@+id/resetAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/quads"
+                        android:layout_alignStart="@+id/finished3"
+                        android:background="@color/save_red"
+                        android:text="@string/resetAll"
+                        android:textColor="@android:color/white"
+                        android:visibility="gone" />
+
+
+                </RelativeLayout>
+
+                <ProgressBar
+                    android:id="@+id/gProgBar"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:progressTint="?attr/colorAccent"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/prText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:visibility="gone" />
+
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </FrameLayout>
+
+</FrameLayout>

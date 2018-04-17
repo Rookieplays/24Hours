@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_menu_send"
+    android:backgroundTint="@color/colorAccent"
+    android:fadingEdge="horizontal|vertical">
+
+    <TextView
+        android:id="@+id/verifyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="104dp"
+        android:shadowColor="@color/common_google_signin_btn_text_light_default"
+        android:text="@string/verifyText"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/resendBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/verifyText"
+        android:layout_marginEnd="54dp"
+        android:layout_marginTop="20dp"
+        android:onClick="onResend"
+        android:text="@string/resend"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/resendBtn"
+        android:layout_marginEnd="64dp"
+        android:layout_toStartOf="@+id/resendBtn"
+        android:onClick="onConfirm"
+        android:text="@string/OK" />
+
+</RelativeLayout>

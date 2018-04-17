@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimaryDark"
+        app:elevation="20dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/calendarToolBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?attr/colorPrimaryDark"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:title="Calendar(Swipe below for month/year)"/>
+
+        <com.github.sundeepk.compactcalendarview.CompactCalendarView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/mainCalendar"
+            android:layout_width="fill_parent"
+            android:layout_height="250dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            app:compactCalendarBackgroundColor="?attr/colorPrimary"
+            app:compactCalendarCurrentDayBackgroundColor="#B71C1C"
+            app:compactCalendarCurrentSelectedDayBackgroundColor="?attr/colorPrimaryDark"
+            app:compactCalendarMultiEventIndicatorColor="#f1f1f1"
+            app:compactCalendarTargetHeight="250dp"
+            app:compactCalendarTextColor="?android:attr/textColorPrimary"
+            app:compactCalendarTextSize="12sp" />
+
+        <!--CalendarView
+            android:id="@+id/mainCalendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?attr/colorPrimary"
+            android:clipToPadding="true"
+            android:defaultFocusHighlightEnabled="false"
+            android:elevation="30dp"
+            android:fadeScrollbars="true"
+            android:nestedScrollingEnabled="false"
+            android:weekDayTextAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+            android:weekNumberColor="@color/colorAccent" /-->
+
+    </android.support.design.widget.AppBarLayout>
+
+    <TextView
+        android:id="@+id/dayNotice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/aldrich"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textStyle="italic" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="10dp">
+
+        <ProgressBar
+            android:id="@+id/progbar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progressTint="?android:attr/colorAccent"
+            android:visibility="gone" />
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:id="@+id/eventView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+        <!--Button
+            android:id="@+id/button7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_weight="1"
+            android:text="ADD EVENT" /-->
+
+        <com.nightonke.boommenu.BoomMenuButton
+            android:id="@+id/bmb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentRight="true"
+            app:bmb_buttonEnum="simpleCircle"
+            app:bmb_piecePlaceEnum="piecePlace_dot_6_3"
+            app:bmb_buttonPlaceEnum="buttonPlace_sc_6_3"/>
+            <!--app:bmb_buttonEnum="textInsideCircle"
+            app:bmb_buttonEnum="textOutsideCircle"
+            app:bmb_buttonEnum="ham"-->
+
+        <!--android.support.design.widget.FloatingActionButton
+            android:id="@+id/floatingActionButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            app:srcCompat="@android:drawable/ic_menu_agenda" /-->
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_gym"
+            android:icon="@drawable/female_runner_painted"
+            android:title="Gym" />
+        <item
+            android:id="@+id/nav_social"
+            android:icon="@drawable/ref5"
+            android:title="Social" />
+        <item
+            android:id="@+id/nav_study"
+            android:icon="@android:drawable/ic_input_get"
+            android:title="Study" />
+        <item
+            android:id="@+id/nav_timetable"
+            android:icon="@android:drawable/ic_menu_today"
+            android:title="School Timetable" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>
+    <item android:title="User">
+        <menu>
+            <item
+                android:id="@+id/nav_login"
+                android:icon="@android:drawable/ic_partial_secure"
+                android:title="Logout"
+                />
+            <item
+                android:id="@+id/nav_register"
+                android:icon="@android:drawable/ic_menu_edit"
+                android:title="Register" />
+        </menu>
+    </item>
+
+</menu>

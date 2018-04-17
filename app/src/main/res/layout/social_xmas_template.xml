@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/xTimeSelector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TimePicker
+            android:id="@+id/xtp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/xsetStartingTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/aldrich"
+            android:text="@string/setstarttime" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/xTimeSelector2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TimePicker
+            android:id="@+id/xtp2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/xsetStartingTime2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/aldrich"
+            android:text="@string/setstarttime" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/xDateSelector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:soundEffectsEnabled="true"
+        android:visibility="gone">
+
+        <DatePicker
+            android:id="@+id/xdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:datePickerMode="calendar"
+            android:soundEffectsEnabled="true"
+            android:spinnersShown="false"
+            android:startYear="2018" />
+
+        <Button
+            android:id="@+id/xsetDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/setDate" />
+    </LinearLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
+
+
+        <LinearLayout
+            android:id="@+id/xmasField"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/xmas"
+                android:keepScreenOn="false"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingBottom="15dp"
+                    android:paddingTop="10dp">
+
+                    <TextView
+                        android:id="@+id/xmas_heading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/social_xmas"
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="true"
+                        android:textColor="@color/holo_yellow"
+                        android:textSize="30sp" />
+
+                    <Button
+                        android:id="@+id/cancel3"
+                        android:layout_width="14dp"
+                        android:layout_height="68dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/aldrich"
+                        android:text="X"
+                        android:textColor="@color/save_red"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/social_save_x"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="?attr/colorControlActivated"
+                        android:fontFamily="@font/aldrich"
+                        android:maxWidth="15dp"
+                        android:minWidth="5dp"
+                        android:text="@string/save"
+                        android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+                </LinearLayout>
+
+
+                <AutoCompleteTextView
+                    android:id="@+id/xmas_name_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/aldrich"
+                    android:hint="@string/social_xmas_hint"
+                    android:textColor="@color/common_google_signin_btn_text_light_pressed"
+                    android:textColorHint="@color/save_red"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:textColor="@color/save_red" />
+
+                <TextView
+                    android:id="@+id/xmasEvent_tag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="cursive"
+                    android:text="@string/x_heading"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="9dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/xmas_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:ems="10"
+                    android:fontFamily="@font/aldrich"
+                    android:hint="@string/location"
+                    android:inputType="textPostalAddress" />
+
+                <android.support.v4.view.ViewPager
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/holo_gray_light" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/x_mon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@android:color/holo_red_light"
+                        android:fontFamily="@font/aldrich"
+                        android:text="Mon"
+                        android:textAllCaps="true" />
+
+                    <TextView
+                        android:id="@+id/x_tue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@android:color/holo_orange_light"
+                        android:fontFamily="@font/aldrich"
+                        android:text="Tues"
+                        android:textAllCaps="true" />
+
+                    <TextView
+                        android:id="@+id/x_wed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/holo_yellow"
+                        android:fontFamily="@font/aldrich"
+                        android:text="Wed"
+                        android:textAllCaps="true" />
+
+                    <TextView
+                        android:id="@+id/x_thurs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@android:color/holo_green_light"
+                        android:fontFamily="@font/aldrich"
+                        android:text="Thurs"
+                        android:textAllCaps="true" />
+
+                    <TextView
+                        android:id="@+id/x_fri"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@android:color/holo_blue_light"
+                        android:fontFamily="@font/aldrich"
+                        android:text="Fri"
+                        android:textAllCaps="true" />
+
+                    <TextView
+                        android:id="@+id/x_sat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/holo_purple_light"
+                        android:fontFamily="@font/aldrich"
+                        android:text="sat"
+                        android:textAllCaps="true"
+                        android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+                    <TextView
+                        android:id="@+id/x_sun"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/holo_indigo_dark"
+                        android:fontFamily="@font/aldrich"
+                        android:text="sun"
+                        android:textAllCaps="true"
+                        android:textColor="@color/common_google_signin_btn_text_dark_default" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/xmas_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:ems="10"
+                        android:fontFamily="@font/aldrich"
+                        android:hint="@string/date"
+                        android:inputType="date" />
+
+                    <Button
+                        android:id="@+id/xdatePicker"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:background="@color/holo_yellow"
+                        android:fontFamily="@font/aldrich"
+                        android:text="@string/selectAday" />
+                </LinearLayout>
+
+                <android.support.v4.view.ViewPager
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/holo_gray_light" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/xmas_stime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="12dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:ems="10"
+                        android:fontFamily="@font/aldrich"
+                        android:hint="@string/startTime"
+                        android:inputType="time"
+                        android:textColor="@color/colorAccent" />
+
+                    <Button
+                        android:id="@+id/xtimepicker1"
+                        android:layout_width="225dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:background="?attr/colorControlActivated"
+                        android:fontFamily="@font/aldrich"
+                        android:maxWidth="50dp"
+                        android:minWidth="50dp"
+                        android:text="@string/selectStart"
+                        android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+                </LinearLayout>
+
+                <android.support.v4.view.ViewPager
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/darker_gray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/xmas_etime"
+                        android:layout_width="231dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="12dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:ems="10"
+                        android:fontFamily="@font/aldrich"
+                        android:hint="@string/endTime"
+                        android:inputType="time"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="14sp" />
+
+                    <Button
+                        android:id="@+id/xtimepicker2"
+                        android:layout_width="288dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/holo_blue_light"
+                        android:fontFamily="@font/aldrich"
+                        android:paddingRight="20dp"
+                        android:text="@string/selectEnd"
+                        android:textAlignment="center"
+                        android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+                </LinearLayout>
+
+                <android.support.v4.view.ViewPager
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/darker_gray">
+
+                </android.support.v4.view.ViewPager>
+
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/aldrich"
+                    android:text="@string/upload_invite"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="false"
+                    android:textSize="18sp"
+                    android:textStyle="italic" />
+
+                <android.support.v4.view.ViewPager
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/darker_gray">
+
+                </android.support.v4.view.ViewPager>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/coverOfx_invite"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/inside_invite_dark" />
+
+                        <TextView
+                            android:id="@+id/textView21"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/aldrich"
+                            android:text="@string/outside_of_invitation"
+                            android:textColor="@android:color/holo_orange_dark"
+                            android:textStyle="italic" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/insideOfxInvite"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/inside_invite" />
+
+                        <TextView
+                            android:id="@+id/textView22"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/aldrich"
+                            android:text="@string/inside_of_invitation"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/holo_purple_light"
+                            android:textStyle="italic" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <android.support.v4.view.ViewPager
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/holo_gray_light" >
+
+                </android.support.v4.view.ViewPager>
+
+                <Spinner
+                    android:id="@+id/x_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:entries="@array/occurance" />
+
+
+                <EditText
+                    android:id="@+id/xmas_notes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:fontFamily="casual"
+                    android:hint="@string/notes"
+                    android:inputType="textMultiLine"
+                    android:lineSpacingExtra="6sp"
+                    android:textAlignment="textStart"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="10sp"
+                    android:textStyle="italic" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>

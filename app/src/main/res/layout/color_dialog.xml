@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/theme_midnight"
+        android:layout_width="match_parent"
+        android:layout_height="102dp"
+        android:layout_weight="1"
+        android:background="@drawable/midnight_header"
+        android:fontFamily="@font/aldrich"
+        android:maxHeight="120dp"
+        android:maxWidth="120dp"
+        android:minHeight="60dp"
+        android:minWidth="60dp"
+        android:text="M1dn1ght"
+        android:textAlignment="textEnd"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="24sp"
+        android:textStyle="italic" />
+
+    <Button
+        android:id="@+id/theme_lava"
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+        android:layout_weight="1"
+        android:background="@drawable/lava_header"
+        android:fontFamily="@font/aldrich"
+        android:maxHeight="120dp"
+        android:maxWidth="120dp"
+        android:minHeight="60dp"
+        android:text="Lava"
+        android:textColor="@color/lava_theme_y"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/theme_forest"
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+        android:layout_weight="1"
+        android:background="@drawable/forest_header"
+        android:fontFamily="@font/aldrich"
+        android:text="Forest"
+        android:textAlignment="textStart"
+        android:textColor="@android:color/holo_green_light"
+        android:textSize="24sp"
+        android:textStyle="italic" />
+
+    <Button
+        android:id="@+id/theme_aqua"
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+        android:layout_weight="1"
+        android:background="@drawable/aqua_header"
+        android:fontFamily="@font/aldrich"
+        android:text="AQuA"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
+</LinearLayout>

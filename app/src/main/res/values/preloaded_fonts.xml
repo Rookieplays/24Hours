@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/aguafina_script</item>
+        <item>@font/aldrich</item>
+        <item>@font/almendra_display</item>
+        <item>@font/bilbo_swash_caps</item>
+        <item>@font/euphoria_script</item>
+    </array>
+</resources>
