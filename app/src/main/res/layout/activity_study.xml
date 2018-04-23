@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@color/mainscreen_color"
     android:orientation="vertical"
     tools:context="ie.ul.o.daysaver.StudyActivity">
 
@@ -13,17 +14,17 @@
         android:layout_height="wrap_content"
         android:background="@android:color/holo_orange_light"
         android:theme="?attr/actionBarTheme"
-        app:title="24H.SP"
         app:subtitle="Study Plan"
         app:subtitleTextColor="@color/classic_primary"
-        app:titleTextColor="@color/background_mid_dark"/>
+        app:title="24H.SP"
+        app:titleTextColor="@color/background_mid_dark" />
 
     <LinearLayout
         android:id="@+id/viewFLipper"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="visible"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible">
 
         <LinearLayout
             android:id="@+id/nextPage"
@@ -66,6 +67,7 @@
                     android:background="@color/forest_accent"
                     android:fontFamily="@font/aldrich"
                     android:text="Add Subject" />
+
                 <Button
                     android:id="@+id/remSub"
                     android:layout_width="match_parent"
@@ -97,21 +99,23 @@
                         android:layout_marginTop="20dp"
                         android:layout_weight="1"
                         android:ems="10"
+                        android:hint="Subject"
                         android:inputType="textPersonName"
-                        android:text="Name"
-                        android:textColor="@color/background_mid_dark" />
+                        android:textColor="@color/cardview_light_background"
+                        android:textColorHint="@color/background_color" />
 
-                    <Button
-                        android:id="@+id/saveSubjects"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@color/save_green"
-                        android:text="@string/next"
-                        android:textColor="@android:color/white" />
                 </LinearLayout>
 
             </ScrollView>
+
+            <Button
+                android:id="@+id/saveSubjects"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/save_green"
+                android:text="@string/next"
+                android:textColor="@android:color/white" />
 
         </LinearLayout>
     </LinearLayout>

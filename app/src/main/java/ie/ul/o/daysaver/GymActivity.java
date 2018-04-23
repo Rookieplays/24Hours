@@ -19,12 +19,18 @@ public class GymActivity extends MainActivity implements DefaultView.OnFragmentI
     private DefaultView dv;
 
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        CustomView.progressDialog.dismiss();
 
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_gym);
         Log.d(TAG, "onCreate: Starting.");
         sectionPageAdapter = new SectionPageAdapter(getSupportFragmentManager());

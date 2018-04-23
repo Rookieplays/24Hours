@@ -32,23 +32,47 @@
             android:textSize="13dp" />
 
     </RelativeLayout>
+
     <RelativeLayout
         android:id="@+id/view_foreground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
+        android:background="#fbf8e5"
         android:padding="@dimen/padd_10">
+
+        <TextView
+            android:id="@+id/textView46"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="250dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:text="Hold for info"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            android:textStyle="italic" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
             <CheckBox
                 android:id="@+id/shoppingLists"
-                android:layout_width="match_parent"
+                android:layout_width="140dp"
                 android:layout_height="wrap_content"
-                android:text="CheckBox" />
+                android:fontFamily="cursive"
+                android:text="CheckBox"
+                android:textSize="18sp" />
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="190dp"
+                android:background="@android:color/transparent"
+                app:srcCompat="@android:drawable/ic_menu_info_details" />
+
         </LinearLayout>
     </RelativeLayout>
 </FrameLayout>

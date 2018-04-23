@@ -2,6 +2,8 @@ package ie.ul.o.daysaver;
 
 import android.text.TextUtils;
 
+import java.util.ArrayList;
+
 /**
  * Created by Ollie on 14/03/2018.
  */
@@ -17,10 +19,10 @@ public class Social {
     public String val8="";
     private String type="";
     private String Discription;
-    private Object obj;
+    private ArrayList<ShoppingList> obj;
     private  String id="SOCIAL";
 
-    public Social(String heading, String location, String date, String startTime, String endTime, String val6, String val7, String val8, String type, Object obj, String occurance,String id) {
+    public Social(String heading, String location, String date, String startTime, String endTime, String val6, String val7, String val8, String type, ArrayList<ShoppingList> obj, String occurance,String id) {
         this.heading = heading;
         this.location = location;
         this.date = date;
@@ -30,7 +32,7 @@ public class Social {
         this.val7 = val7;
         this.val8 = val8;
         this.type = type;
-        this.obj = obj;
+        this.obj=obj;
         this.occurance = occurance;
         this.id=id;
     }
@@ -39,6 +41,13 @@ public class Social {
         return id;
     }
 
+    public ArrayList<ShoppingList> getObj() {
+        return obj;
+    }
+
+    public void setObj(ArrayList<ShoppingList> obj) {
+        this.obj = obj;
+    }
 
     public void setId(String id) {
         this.id = id;
@@ -72,6 +81,8 @@ public class Social {
                 this.Discription += "\nGames To Play: " + getVal7();
             else
             this.Discription += "\nInvite BACK Image Link: " + getVal7();
+            if(getType().equalsIgnoreCase("Shopping")||getType().equalsIgnoreCase("Sleep-over"))
+                this.Discription+=obj;
         }
 
 

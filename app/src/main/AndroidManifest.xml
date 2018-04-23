@@ -11,6 +11,10 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SET_ALARM"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS_PRIVILEGED"/>
+    <uses-permission android:name="com.google.android.gm.permission.WRITE_GMAIL"/>
+    <uses-permission android:name="com.google.android.gm.permission.AUTO_SEND"/>
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -27,7 +31,6 @@
         android:supportsRtl="true"
         android:textAllCaps="true"
         android:theme="@style/AppTheme">
-
         <service
             android:name=".MyJobService"
             android:exported="false">
@@ -35,7 +38,11 @@
                 <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
             </intent-filter>
         </service>
-        <receiver android:name=".AlarmReceiver" android:process=":remote" />
+
+        <receiver
+            android:name=".AlarmReceiver"
+            android:process=":remote" />
+
         <activity
             android:name=".MainActivity"
             android:fontFamily="@font/aldrich"
@@ -215,14 +222,19 @@
             android:name=".VideoDetailActivity"
             android:label="@string/title_video_detail"
             android:parentActivityName=".VideoListActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.Midnight">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ie.ul.o.daysaver.VideoListActivity" />
         </activity>
-        <activity android:name=".getttingStartedActivity"
-            android:theme="@style/AppTheme.Midnight"
-            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".getttingStartedActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Midnight" />
+        <activity
+            android:name=".createNote"
+            android:label="@string/title_activity_create_note"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

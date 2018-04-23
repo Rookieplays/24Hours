@@ -2,6 +2,7 @@ package ie.ul.o.daysaver;
 
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
@@ -387,7 +388,7 @@ public class QuickAddActivity extends calenderActivity{
          saveToDataBase(qA);
          if(startAlarm.isChecked())
          {
-           start(cal);
+           scheduleNotification(getNotification(desc),sT);
          }
             finish();
         });
@@ -415,6 +416,13 @@ public class QuickAddActivity extends calenderActivity{
 
 
                         day = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
+                        String temp[];
+                            temp=day.split("/");
+                            if(temp[0].length()!=2)
+                            {temp[0]="0"+temp[0];}
+                        if(temp[1].length()!=2)
+                        {temp[1]="0"+temp[1];}
+                        day=temp[0]+"/"+temp[1]+"/"+temp[2];
                         System.out.println(day);
                         //dateView.setText(day + " " + dayTime);
                         //  dayTimeToLong(day+" "+dayTime);
@@ -476,12 +484,49 @@ public class QuickAddActivity extends calenderActivity{
     TimePickerDialog timePickerDialog;
     String UID=FirebaseAuth.getInstance().getCurrentUser().getUid();
     final static int RQS_1 = 1;
-    public void start(Calendar ms) {
+   /* public void start(Calendar ms) {
 
         Intent intent = new Intent(getBaseContext(), AlarmReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getBaseContext(), RQS_1, intent, 0);
         AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, ms.getTimeInMillis(), pendingIntent);
+
+    }*/
+    private void scheduleNotification(Notification notification, long delay) {
+
+
+
+        Intent notificationIntent = new Intent(this, AlarmManager.class);
+
+        notificationIntent.putExtra(AlarmReceiver.NOTIFICATION_ID, 1);
+
+        notificationIntent.putExtra(AlarmReceiver.NOTIFICATION, notification);
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+
+
+        long futureInMillis = delay;
+
+        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+
+        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
+
+    }
+
+
+
+    private Notification getNotification(String content) {
+
+        Notification.Builder builder = new Notification.Builder(this);
+
+        builder.setContentTitle(eventTitle.getText().toString());
+
+        builder.setContentText(content);
+
+        builder.setSmallIcon(R.drawable.ic_launcher);
+
+        return builder.build();
 
     }
     Calendar cal=Calendar.getInstance();

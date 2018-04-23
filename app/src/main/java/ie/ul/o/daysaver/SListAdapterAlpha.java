@@ -7,7 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -18,11 +21,13 @@ import java.util.ArrayList;
 public class SListAdapterAlpha extends RecyclerView.Adapter<SListAdapterAlpha.ViewHolder> {
     private String[] mDataset,mDescSets;
     private ArrayList<ShoppingList> shoppingLists=new ArrayList<>();
+    private ArrayList<ShoppingList> selectedList=new ArrayList<>();
     private Context context;
     private  LayoutInflater inflater;
+
     public static class ViewHolder extends RecyclerView.ViewHolder
     {
-        public TextView mTextView;
+        public CheckBox mTextView;
         // public ImageView mImageView;
         public TextView aTextView;
         public ViewHolder(View v)
@@ -52,15 +57,13 @@ public class SListAdapterAlpha extends RecyclerView.Adapter<SListAdapterAlpha.Vi
             for(int i=0;i<myDataset.size();i++)
             {
                 mDataset[i]=myDataset.get(i).getName();
-                for(Item it:myDataset.get(i).getItems())
-                mDescSets[i]="Entered item: "+it.getItemName()+" into "+myDataset.get(i).getName()+"\nAmount: "+it.getAmount()+"\nPrice: "+it.getPrice()+"\nOn "+it.getTimeCreated();
-
-            }
+                mDescSets[i]=myDataset.get(i).getDescription();
             System.out.println("£$TG£%GG%$^UJ%J%Y "+mDataset[0]);
         }
 
 
 
+    }
     }
     public void infodialog(String msg,String title)
     {
@@ -76,7 +79,7 @@ public class SListAdapterAlpha extends RecyclerView.Adapter<SListAdapterAlpha.Vi
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view=inflater.inflate(R.layout.shopping_list_as_created,parent,false);
+        View view=inflater.inflate(R.layout.shopping_lists,parent,false);
         ViewHolder holder=new ViewHolder(view);
 
         return holder;
@@ -89,11 +92,40 @@ public class SListAdapterAlpha extends RecyclerView.Adapter<SListAdapterAlpha.Vi
     @Override
     public void onBindViewHolder(ViewHolder holder, int position)
     {
+        System.out.println("_____"+mDataset[position]+"____________");
         holder.mTextView.setText(mDataset[position]);
-        holder.aTextView.setText(mDescSets[position]);
-        //holder.mTextView.setOnLongClickListener(e->{
-           // infodialog(mDescSets[position], holder.mTextView.getText().toString());
-            //return true;});
+        //holder.aTextView.setText(mDescSets[position]);
+        holder.mTextView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (compoundButton.isChecked()) {
+                    Toast.makeText(context, "Selected " + mDataset[position], Toast.LENGTH_SHORT).show();
+                    selectedList.add(shoppingLists.get(position));
+                }
+                else{
+                    refreshWorkout(shoppingLists.get(position).getName());
+                }
+            }
+        });
+        holder.itemView.setOnLongClickListener(e->{
+           infodialog(mDescSets[position], holder.mTextView.getText().toString());
+            return true;});
+    }
+    public void refreshWorkout(String str)
+    {
+        System.out.println("Checking if: "+str+" is among: "+selectedList);
+        for(ShoppingList s: selectedList)
+        {
+            if(s.getName().equals(str))
+            {
+                selectedList.remove(s);
+                System.out.println("Removed: "+s+" from: "+selectedList);
+            }
+            else
+                System.out.println(s+" is not among: "+selectedList);
+
+        }
+
     }
     public void removeItem(int position) {
         shoppingLists.remove(position);

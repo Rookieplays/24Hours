@@ -67,26 +67,7 @@ public class getttingStartedActivity extends AppCompatActivity {
         tv=findViewById(R.id.textView37);
         pb3=findViewById(R.id.progressBar3);
         msg.setText(getString(R.string.setu));
-        if(FirebaseAuth.getInstance().getCurrentUser()!=null){
-        DatabaseReference dref= FirebaseDatabase.getInstance().getReference("Users/"+ FirebaseAuth.getInstance().getCurrentUser().getUid());
 
-        dref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                UserInformation uinfo=dataSnapshot.getValue(UserInformation.class);
-                RoundImage ri=new RoundImage(covertLinkToImg(uinfo.getImage()));
-                profilePic.setImageDrawable(ri);
-                name=uinfo.getUsername();
-
-
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });}
 
 
         mslideAdapter=new slideAdapter(this);
@@ -101,6 +82,20 @@ public class getttingStartedActivity extends AppCompatActivity {
             mSlidePager.setCurrentItem(mCurrentPage+1);
             if(next.getText().toString().equalsIgnoreCase(getString(R.string.finish)))
             {
+                if(FirebaseAuth.getInstance().getCurrentUser()!=null){
+                    DatabaseReference dref= FirebaseDatabase.getInstance().getReference("Users/"+ FirebaseAuth.getInstance().getCurrentUser().getUid());
+
+                    dref.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            UserInformation uinfo=dataSnapshot.getValue(UserInformation.class);
+                            RoundImage ri=new RoundImage(covertLinkToImg(uinfo.getImage()));
+                            profilePic.setImageDrawable(ri);
+                            name=uinfo.getUsername();
+
+
+
+
                // startAnimation2(msg,'o');
                 new CountDownTimer(10000,1000)
                 {
@@ -129,7 +124,6 @@ public class getttingStartedActivity extends AppCompatActivity {
                     }
                 }.start();
                 welcom.setVisibility(View.GONE);
-                this.setTheme(R.style.AppTheme_Forest);
                 doneSetup.setVisibility(View.VISIBLE);
                 fin.setOnClickListener(v->{
                     msg.setText(getString(R.string.wait3,name));
@@ -157,6 +151,15 @@ public class getttingStartedActivity extends AppCompatActivity {
             }.start();
 
                 });
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+
+                    });
+                }
             }
         });
         prev.setOnClickListener(e->{
@@ -207,6 +210,25 @@ public class getttingStartedActivity extends AppCompatActivity {
         else
             animatorSet2.play(shrink);
         animatorSet2.setDuration(10000);
+        animatorSet2.start();
+    }
+    public void startAnimation3(View v,char type)
+    {
+
+        ObjectAnimator grow=ObjectAnimator.ofPropertyValuesHolder(v,
+                PropertyValuesHolder.ofFloat("scaleY",1.5f),
+                PropertyValuesHolder.ofFloat("scaleX",1.5f));
+
+        grow.setDuration(10000);
+        ObjectAnimator shrink=ObjectAnimator.ofPropertyValuesHolder(v,
+                PropertyValuesHolder.ofFloat("scaleY",1f),
+                PropertyValuesHolder.ofFloat("scaleX",1f));
+        grow.setRepeatMode(ObjectAnimator.RESTART);
+        grow.setRepeatCount(ObjectAnimator.INFINITE);
+
+        AnimatorSet animatorSet2=new AnimatorSet();
+        animatorSet2.playSequentially(grow,shrink);
+        animatorSet2.setDuration(600);
         animatorSet2.start();
     }
     public void startAnimation2(View v,char type)

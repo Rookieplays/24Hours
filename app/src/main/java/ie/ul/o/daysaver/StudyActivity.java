@@ -1,6 +1,7 @@
 package ie.ul.o.daysaver;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -494,9 +495,8 @@ private ViewFlipper viewFlipper;
 
         if(nextPage.getVisibility()==View.VISIBLE)
         {
-            cSub.setVisibility(View.VISIBLE);
-           nextPage.setVisibility(View.GONE);
-            saveAll.setVisibility(View.GONE);
+            finish();
+            startActivity(new Intent(this,StudyActivity.class));
            // viewFlipper.showPrevious();
         }
         else {
@@ -514,7 +514,7 @@ private ViewFlipper viewFlipper;
         {
             subjectViews[i]=new EditText(this);
             subjectViews[i].setHint("New Subject");
-            subjectViews[i].setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+            subjectViews[i].setTextColor(Color.WHITE);
           subjectViews[i].addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

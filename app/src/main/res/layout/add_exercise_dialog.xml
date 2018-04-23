@@ -9,7 +9,8 @@
         android:id="@+id/muscleSelectionpage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
+        android:background="@color/forest_textPrimary"
+        android:visibility="visible">
 
         <ImageView
             android:id="@+id/imageView4"
@@ -213,7 +214,7 @@
         android:id="@+id/ex_chooser_page"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <LinearLayout
             android:id="@+id/b1"

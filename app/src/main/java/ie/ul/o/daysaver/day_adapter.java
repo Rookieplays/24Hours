@@ -159,7 +159,7 @@ import java.util.ArrayList;
                     {
                         holder.dur.setError(null);
                         holder.done.setEnabled(true);
-                        studies.get(position).setDuration(Double.parseDouble(holder.dur.getText().toString()));
+
                     }
 
                 }
@@ -192,6 +192,7 @@ import java.util.ArrayList;
           }*/
 
             holder.done.setOnClickListener(e->{
+                studies.get(position).setDuration(Double.parseDouble(holder.dur.getText().toString()));
                 if(position==0)
                 {
                     subjects=subjects_for_day.mSubs;

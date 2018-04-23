@@ -18,21 +18,21 @@
             android:icon="@android:drawable/ic_input_get"
             android:title="Study" />
         <item
-            android:id="@+id/nav_timetable"
-            android:icon="@android:drawable/ic_menu_today"
-            android:title="School Timetable" />
+            android:id="@+id/nav_share"
+            android:icon="@android:drawable/ic_menu_agenda"
+            android:title="Fast Agenda" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Tools">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
                 android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:icon="@drawable/ic_dashboard_black_24dp"
+                android:title="Notes" />
+            <item
+                android:id="@+id/tutorial"
+                android:icon="@android:drawable/ic_media_play"
+                android:title="24H TUT" />
         </menu>
     </item>
     <item android:title="User">

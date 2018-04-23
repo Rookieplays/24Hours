@@ -449,7 +449,7 @@
                     android:inputType="textMultiLine"
                     android:lineSpacingExtra="6sp"
                     android:textAlignment="textStart"
-                    android:textColor="@android:color/holo_blue_dark"
+                    android:textColor="@android:color/white"
                     android:textColorHint="@color/common_google_signin_btn_text_dark_pressed"
                     android:textSize="10sp"
                     android:textStyle="italic" />

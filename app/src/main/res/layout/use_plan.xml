@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="10dp"
+    android:paddingLeft="10dp">
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/button8"
+        android:text="@string/date"
+        android:textColor="@color/background_mid_dark" />
+
+    <TextView
+        android:id="@+id/textView42"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button7"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp"
+        android:fontFamily="@font/aldrich"
+        android:textColor="@color/background_color"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button7"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/startTime"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/textView43"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView42"
+        android:layout_below="@+id/button8"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/aldrich"
+        android:textColor="@color/background_color"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/button8"
+        android:layout_below="@+id/textView43"
+        android:layout_marginTop="10dp"
+        android:text="@string/endTime"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/textView44"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textView43"
+        android:layout_below="@+id/button9"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/aldrich"
+        android:textColor="@color/background_color"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView44"
+        android:layout_marginTop="13dp"
+        android:layout_toEndOf="@+id/button7"
+        android:background="@color/save_green"
+        android:fontFamily="@font/aldrich"
+        android:text="@string/ok"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+</LinearLayout>

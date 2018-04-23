@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -59,5 +60,16 @@
         android:layout_below="@+id/resetTimer"
         android:layout_marginStart="27dp"
         android:layout_marginTop="115dp"
-        android:background="@color/common_google_signin_btn_text_dark_focused" />
+        android:background="@android:drawable/ic_menu_manage"
+        android:backgroundTint="@color/holo_yellow" />
+
+    <ImageButton
+        android:id="@+id/notifyMe"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignEnd="@+id/resetTimer"
+        android:layout_alignTop="@+id/startTimer"
+        android:background="@drawable/ic_notifications_black_24dp"
+        android:tint="@color/aqua_textPrimary" />
+
 </RelativeLayout>

@@ -11,12 +11,75 @@ import java.util.Locale;
 public class ShoppingList {
     private String name="UNKNOWN";
     private ArrayList<Item>items=new ArrayList<>();
-    private String dateCreated=new SimpleDateFormat("dd/MMM/yy HH:mm", Locale.getDefault()).format(System.currentTimeMillis());
+    private final String dateCreated=new SimpleDateFormat("dd/MMM/yy HH:mm", Locale.getDefault()).format(System.currentTimeMillis());
+    private String status="public";
+    private String uid;
+    private String description;
+    private String author;
 
-    public ShoppingList(String name, ArrayList<Item> items, String dateCreated) {
+    public ShoppingList(String name, ArrayList<Item> items) {
         this.name = name;
         this.items = items;
-        this.dateCreated = dateCreated;
+
+    }
+
+    public ShoppingList(String name, ArrayList<Item> items, String status, String uid, String author) {
+        this.name = name;
+        this.items = items;
+        this.status = status;
+        this.uid = uid;
+        this.author = author;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getDescription() {
+        this.description="List Name: "+name+
+                "\n"+"Created On: "+dateCreated+
+                "\n"+"Created by: "+author+
+                "\n"+"Status: "+status+
+                "\n"+"Items: "+items;
+        return description;
+    }
+
+    public ShoppingList(String name, ArrayList<Item> items, String status, String uid) {
+        this.name = name;
+        this.items = items;
+        this.status = status;
+        this.uid = uid;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public ShoppingList(String name, ArrayList<Item> items, String status) {
+
+        this.name = name;
+        this.items = items;
+        this.status = status;
     }
 
     public ShoppingList() {
@@ -43,9 +106,7 @@ public class ShoppingList {
         return dateCreated;
     }
 
-    public void setDateCreated(String dateCreated) {
-        this.dateCreated = dateCreated;
-    }
+
 
     @Override
     public String toString() {

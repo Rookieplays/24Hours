@@ -2,6 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="ie.ul.o.daysaver.BudgetShopper">
@@ -22,7 +23,7 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:title="@string/Creation_Zone2"/>
+        app:title="@string/Creation_Zone2" />
 
     <TextView
         android:id="@+id/comment"
@@ -123,6 +124,26 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <android.support.v4.view.ViewPager
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/transparent"
+                android:text="@string/enterItem"
+                android:textColor="@android:color/black" />
+
+            <android.support.v4.view.ViewPager
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/holo_gray_light" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -158,21 +179,6 @@
                     android:drawableTint="?attr/colorControlNormal"
                     android:rotation="270" />
             </LinearLayout>
-
-            <AutoCompleteTextView
-                android:id="@+id/autoCompleteTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="10dp"
-                android:background="@android:color/transparent"
-                android:text="@string/enterItem"
-                android:textColor="@android:color/black" />
-
-            <android.support.v4.view.ViewPager
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/holo_gray_light" />
 
 
             <LinearLayout
@@ -279,7 +285,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/listView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent">
 
             </android.support.v7.widget.RecyclerView>
 

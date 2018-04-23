@@ -4,6 +4,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.media.MediaPlayer;
@@ -37,6 +38,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -54,7 +56,7 @@ public class BudgetShopper extends socialActivity implements  shopRecyclerItemTo
     private EditText priceView;
     private EditText itemView;
     private Button priceplusBtn,itemplusBtn,minusPrice,minusItem,saveShoppingLists,addItem;
-    private String status;
+    private String status="public";
     private CreateList listMan;
     private CreateList newList;
     private AddItems itemMan;
@@ -79,6 +81,12 @@ public class BudgetShopper extends socialActivity implements  shopRecyclerItemTo
      String currency;
     private double fb;
     private FrameLayout frameLayout;
+    private String author;
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,15 +118,19 @@ public class BudgetShopper extends socialActivity implements  shopRecyclerItemTo
         totalPrice=findViewById(R.id.total);
         sizeofB=findViewById(R.id.cart);
         c3=findViewById(R.id.c3);
-
+        frameLayout=findViewById(R.id.fl);
         handleStuff();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new shopRecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this);
+        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 UserInformation info=dataSnapshot.getValue(UserInformation.class);
                 System.out.println(dataSnapshot+"<<<<");
                 user=info.getUsername();
+                author=user;
                 try {
                     wal=new Wallet(info.getUsername(),getApplicationContext());
                 } catch (IOException e) {
@@ -219,6 +231,8 @@ public class BudgetShopper extends socialActivity implements  shopRecyclerItemTo
         }
         return true;
     }
+    int amnt=0;
+    private ShoppingList shoppingList;
     public void handleStuff()
     {
         priceplusBtn.setOnClickListener(e->
@@ -384,7 +398,7 @@ public class BudgetShopper extends socialActivity implements  shopRecyclerItemTo
         {
             try
             {
-                if(!(item.getText().toString().toString().equals(""))||item.getText().toString()!=null)
+                if(!(item.getText().toString().toString().equals(""))&&item.getText().toString()!=null)
                 {
                     added.setText("\u2713 "+item.getText().toString().toString()+" was added to "+listname);
 
@@ -395,54 +409,83 @@ public class BudgetShopper extends socialActivity implements  shopRecyclerItemTo
                     animatorSet.playTogether(rotate);
                     animatorSet.start();
                     MediaPlayer ring= MediaPlayer.create(this,R.raw.budget_shopper_add_item_sound);
-                    ring.prepareAsync();
-                    ring.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                    ring.start();
+                    ring.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                         @Override
-                        public void onPrepared(MediaPlayer mediaPlayer) {
-                            ring.start();
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+                            mediaPlayer.stop();
+                            mediaPlayer.release();
                         }
                     });
 
                     // added.setTextFill(Color.GREEN);
-
-                    updateBal(Double.parseDouble(currentSavings.getText().toString()),wal.unWrapBal(currentWalletLbl.getText().toString()),itemsOnList,priceplusBtn,itemplusBtn);
-                    if(wal.unWrapBal(currentWalletLbl.getText().toString())>=0)
+                    Item newItem=new Item(item.getText().toString(),
+                            Double.parseDouble(priceView.getText().toString()), Integer.parseInt(itemView.getText().toString()));
+                    System.out.println("List of items: "+itemList+"\nNew Item: "+newItem);
+                    int FLAG=0;
+                    if(itemList.isEmpty())
                     {
-                        for(int i=0;i<Integer.parseInt(itemView.getText().toString());i++) {
+                        itemList.add(newItem);
+                    }else{
+                        for(Item it: itemList)
+                        {
+                            System.out.println("Checking if "+newItem+" is Similar to: "+it);
+                            if(it.getItemName().equals(newItem.getItemName()))
+                            {
+                                System.out.println("Amount Before: "+it.getAmount());
+                                it.setAmount(it.getAmount()+newItem.getAmount());
+                                System.out.println("Amount After: "+it.getAmount());
+                                FLAG=1;
 
-                            itemsOnList.add(new Item(item.getText().toString(),
-                                    Double.parseDouble(priceView.getText().toString()), Integer.parseInt(itemView.getText().toString())));//listView.getItems().clear();
+                            }
+
+
+                        }
+                        if(FLAG!=1)
+                        {
+                            itemList.add(newItem);
+                            amnt=+newItem.getAmount();
+                            sizeofB.setText(amnt+"");
                         }
 
-                        AddItems it=new AddItems(itemsOnList);
-                        itemList.addAll(it.getNewItem());
-                        listadapter = new shoppingListAdapter(this,itemList);
-                        frameLayout=findViewById(R.id.frameLayout2);
-                        recyclerView.setAdapter(listadapter);
+                    }
+                    listadapter = new shoppingListAdapter(this,itemList);
+                    recyclerView.setAdapter(listadapter);
+
+                    System.out.println("Lists?????"+shoppingListAdapter.ITEMLISTS);
+                    int amt=0;
+                    for(Item it:shoppingListAdapter.ITEMLISTS)
+                    {
+                        amt+=it.getAmount();
+                        sizeofB.setText(amt+"");
+                    }
+                   /* if(listadapter!=null)
+                        listadapter.notifyDataSetChanged();
+                        */
+
+
                         // adding item touch helper
                         // only ItemTouchHelper.LEFT added to detect Right to Left swipe
                         // if you want both Right -> Left and Left -> Right
                         // add pass ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT as param
-                        ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new shopRecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this);
-                        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
+
 
                         // making http call and fetching menu json
-                        sizeofB.setText(itemList.size()+"");
+
+
                         prepareList();//AddItemsTOList();
+                        updateBal(wal.unWrapBal(currentSavings.getText().toString()),wal.unWrapBal(currentWalletLbl.getText().toString()),itemList,priceplusBtn,itemplusBtn);
+
                     }
                     else{
                         added.setText("X Oops Your Wallet is empty!!\n"+item.getText().toString()+" was not added to "+listname);
                         added.setTextColor(Color.RED);
                     }
                 }
-                else {
-                    added.setText("X Ooops I dont like your input.\n"+item.getText().toString()+" was not to "+listname);
 
-                }
-            }
             catch(IOException ee){}
         });
-        saveShoppingLists.setOnClickListener(e->{});
+        saveShoppingLists.setOnClickListener(e->{saveListToDatabase();finish();startActivity(new Intent(this,socialActivity.class));});
     }
 
 
@@ -463,9 +506,19 @@ private void displayComments(int str)
     animatorSet.start();
 }
 
+    private FirebaseFirestore mFstore=FirebaseFirestore.getInstance();
+
 private void saveListToDatabase()
 {
-
+    shoppingList=new ShoppingList(listName.getText().toString(),shoppingListAdapter.ITEMLISTS,status,UID,user);
+    if(status.equalsIgnoreCase("private"))
+    {
+        mFstore.collection("Private_shopping").add(shoppingList);
+    }
+    else
+    {
+        mFstore.collection("Public_shopping").add(shoppingList);
+    }
 }
     private void prepareList() {
         if(itemList!=null) {
@@ -529,7 +582,8 @@ private void saveListToDatabase()
         animatorSet2.playSequentially(grow,shrink);
         animatorSet2.setDuration(200);
         animatorSet2.start();
-        totalPrice.setText(total+"");
+        NumberFormat nf=new DecimalFormat("##.##");
+        totalPrice.setText(nf.format(total)+"");
         
         double change=budget-total;
         System.out.println("Change="+change);
@@ -627,8 +681,10 @@ private void saveListToDatabase()
             final Item deletedItem = itemList.get(viewHolder.getAdapterPosition());
             final int deletedIndex = viewHolder.getAdapterPosition();
 
+
             // remove the item from recycler view
             listadapter.removeItem(viewHolder.getAdapterPosition());
+
             //itemsOnList.remove(itemsOnList.indexOf(deletedItem));
 
             // showing snack bar with Undo option
@@ -640,6 +696,8 @@ private void saveListToDatabase()
 
                     // undo is selected, restore the deleted item
                     listadapter.restoreItem(deletedItem, deletedIndex);
+
+
                     //  workoutList.add(deletedIndex,deletedItem);
 
                 }

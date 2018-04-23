@@ -1,6 +1,7 @@
 package ie.ul.o.daysaver;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
@@ -37,13 +39,17 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.io.File;
 import java.io.IOException;
@@ -180,6 +186,13 @@ Button addG,removeG;
 
     /**social Objects*/
     Social cinema,birthday,sport,gaming,xmas,shopping,dating,wedding,award,custom,clubing,drink;
+    private char type;
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -190,9 +203,10 @@ Button addG,removeG;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_social);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar24);
         setSupportActionBar(toolbar);
         toolbar.setTitle("24h:Social");
+        pdd=new ProgressDialog(context);
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -203,8 +217,8 @@ Button addG,removeG;
             }
         });
 
-        //rv=findViewById(R.id.listviewer);
-        //rv.setLayoutManager(new LinearLayoutManager(this));
+
+
 
         sportBtn=(ImageButton)findViewById(R.id.sportBtn);
         bDayBtn=(ImageButton)findViewById(R.id.bdayBtn);
@@ -231,32 +245,32 @@ Button addG,removeG;
         checkAge();
 
 
-        sportBtn.setOnClickListener(e->{show_templates(R.layout.social_sport_template,1);});
-        asportBtn.setOnClickListener(e->{show_templates(R.layout.social_sport_template,1);});
+        sportBtn.setOnClickListener(e->{show_templates(R.layout.social_sport_template,1);type='x';});
+        asportBtn.setOnClickListener(e->{show_templates(R.layout.social_sport_template,1);type='x';});
 
-        bDayBtn.setOnClickListener(e->{show_templates(R.layout.social_birthday_template,2);});
-        abDayBtn.setOnClickListener(e->{show_templates(R.layout.social_birthday_template,2);});
+        bDayBtn.setOnClickListener(e->{show_templates(R.layout.social_birthday_template,2);type='x';});
+        abDayBtn.setOnClickListener(e->{show_templates(R.layout.social_birthday_template,2);type='x';});
 
-        cineBtn.setOnClickListener(e->{show_templates(R.layout.social_cinema_template,3);});
-        acineBtn.setOnClickListener(e->{show_templates(R.layout.social_cinema_template,3);});
+        cineBtn.setOnClickListener(e->{show_templates(R.layout.social_cinema_template,3);type='x';});
+        acineBtn.setOnClickListener(e->{show_templates(R.layout.social_cinema_template,3);type='x';});
 
-        gamingBtn.setOnClickListener(e->{show_templates(R.layout.social_gaming_template,4);});
-        gamingBtn.setOnClickListener(e->{show_templates(R.layout.social_gaming_template,4);});
+        gamingBtn.setOnClickListener(e->{show_templates(R.layout.social_gaming_template,4);type='x';});
+        gamingBtn.setOnClickListener(e->{show_templates(R.layout.social_gaming_template,4);type='x';});
 
-        XmasBtn.setOnClickListener(e->{show_templates(R.layout.social_xmas_template,5);});
-        aXmasBtn.setOnClickListener(e->{show_templates(R.layout.social_xmas_template,5);});
+        XmasBtn.setOnClickListener(e->{show_templates(R.layout.social_xmas_template,5);type='x';});
+        aXmasBtn.setOnClickListener(e->{show_templates(R.layout.social_xmas_template,5);type='x';});
 
-        sleepOBtn.setOnClickListener(e->{showconfirmationBox2();});
+        sleepOBtn.setOnClickListener(e->{showconfirmationBox2();type='O';});
 
 
 
-        datingBtn.setOnClickListener(e->{show_templates(R.layout.social_ddate_template,7);});
-        adatingBtn.setOnClickListener(e->{show_templates(R.layout.social_ddate_template,7);});
+        datingBtn.setOnClickListener(e->{show_templates(R.layout.social_ddate_template,7);type='x';});
+        adatingBtn.setOnClickListener(e->{show_templates(R.layout.social_ddate_template,7);type='x';});
 
-        ACBtn.setOnClickListener(e->{show_templates(R.layout.social_award_template,8);});
-       wedBtn.setOnClickListener(e->{show_templates(R.layout.social_wedding_template,9);});
+        ACBtn.setOnClickListener(e->{show_templates(R.layout.social_award_template,8);type='x';});
+       wedBtn.setOnClickListener(e->{show_templates(R.layout.social_wedding_template,9);type='x';});
 
-        clubBtn.setOnClickListener(e->{show_templates(R.layout.social_clubing_template,10);});
+        clubBtn.setOnClickListener(e->{show_templates(R.layout.social_clubing_template,10);type='x';});
 
 
 
@@ -270,6 +284,74 @@ Button addG,removeG;
 
 
     }
+private SListAdapterAlpha mAdapter;
+    private ArrayList<ShoppingList>shoppingLists=new ArrayList<>();
+    private FirebaseFirestore fstore=FirebaseFirestore.getInstance();
+    private void initRV() {
+        mAdapter=new SListAdapterAlpha(context,shoppingLists);
+        rv.setAdapter(mAdapter);
+    }
+    private ProgressDialog pdd;
+    private void LoadPublicLists()
+    {
+
+        fstore.collection("Public_shopping").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    ArrayList<ShoppingList> lists = new ArrayList<>();
+
+                    for (DocumentSnapshot doc : task.getResult()) {
+                        System.out.println("#123xx" + doc.getData());
+                        ShoppingList sl = doc.toObject(ShoppingList.class);
+                        //  System.out.println(wp+"***********"+wp.getUID());
+                        shoppingLists.add(sl);
+                    }
+                    initRV();
+
+                }
+            }
+        });
+    }
+    private void LoadMyLists()
+    {
+        pdd.setMessage("Loading...");
+        pdd.show();
+        fstore.collection("Public_shopping").whereEqualTo("uid",UID).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    ArrayList<ShoppingList> lists = new ArrayList<>();
+
+                    for (DocumentSnapshot doc : task.getResult()) {
+                        System.out.println("#123xx" + doc.getData());
+                        ShoppingList sl = doc.toObject(ShoppingList.class);
+                        //  System.out.println(wp+"***********"+wp.getUID());
+                        shoppingLists.add(sl);
+                    }
+                    initRV();
+                }
+            }
+        });
+        fstore.collection("Private_shopping").whereEqualTo("uid",UID).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    ArrayList<ShoppingList> lists = new ArrayList<>();
+
+                    for (DocumentSnapshot doc : task.getResult()) {
+                        System.out.println("#123xx" + doc.getData());
+                        ShoppingList sl = doc.toObject(ShoppingList.class);
+                        //  System.out.println(wp+"***********"+wp.getUID());
+                        shoppingLists.add(sl);
+                    }
+                    initRV();
+                    pdd.dismiss();
+                }
+            }
+        });
+    }
+
     boolean duration=true;
     private EditText itemOne;
     private EditText custom_eTime;
@@ -291,6 +373,8 @@ Button addG,removeG;
         timeClockField=v.findViewById(R.id.timeClockBox);
         durationBox=v.findViewById(R.id.durationBox);
         inviteBox=v.findViewById(R.id.invitesBox);
+
+
 
         timeSetting=v.findViewById(R.id.timeSelected);
         invite=v.findViewById(R.id.invites);
@@ -337,6 +421,8 @@ Button addG,removeG;
         custom_f=(TextView)v.findViewById(R.id.custom_fri);
         custom_st=(TextView)v.findViewById(R.id.custom_sat);
         custom_sd=(TextView)v.findViewById(R.id.custom_sun);
+
+        /**Shopppingb lists*/
 
 
         setupPage.setVisibility(View.VISIBLE);
@@ -388,8 +474,8 @@ Button addG,removeG;
         save=(Button)v.findViewById(R.id.social_save_custom);
         cancl=(Button)v.findViewById(R.id.cancel10);
         save.setEnabled(isCompleted(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,save,"Unknown name"));
-        save.setOnClickListener(e->{handleSaveButtonForAll(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,cus_et,null,null,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"custom",custom_spinner);alertDialog.dismiss();});
-        handleTemplatestuff(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,cus_et,null,null,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"custom",custom_spinner);
+        save.setOnClickListener(e->{handleSaveButtonForAll(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,cus_et,null,null,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"customD",custom_spinner);alertDialog.dismiss();});
+        handleTemplatestuff(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,cus_et,null,null,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"customD",custom_spinner);
         selectDay(custom_m,custom_t,custom_w,custom_th,custom_f,custom_st,custom_sd,custom_d);
             addMoreItems(itemBox,addC,removeC,custom_tag);
       //  setInvites(customOutside,customInside);
@@ -403,8 +489,8 @@ Button addG,removeG;
             save=(Button)v.findViewById(R.id.social_save_custom);
             cancl=(Button)v.findViewById(R.id.cancel10);
             save.setEnabled(isCompleted(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,save,"Unknown name"));
-            save.setOnClickListener(e->{handleSaveButtonForAll(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,cus_et,customInside,customOutside,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"custom",custom_spinner);alertDialog.dismiss();});
-            handleTemplatestuff(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,cus_et,customInside,customOutside,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"custom",custom_spinner);
+            save.setOnClickListener(e->{handleSaveButtonForAll(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,cus_et,customInside,customOutside,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"customD",custom_spinner);alertDialog.dismiss();});
+            handleTemplatestuff(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,cus_et,customInside,customOutside,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"customD",custom_spinner);
             selectDay(custom_m,custom_t,custom_w,custom_th,custom_f,custom_st,custom_sd,custom_d);
           //  addMoreItems(customField,addC,removeC,custom_tag);
             setInvites(customOutside,customInside);
@@ -417,8 +503,8 @@ Button addG,removeG;
             save=(Button)v.findViewById(R.id.social_save_custom);
             cancl=(Button)v.findViewById(R.id.cancel10);
             save.setEnabled(isCompleted(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,save,"Unknown name"));
-            save.setOnClickListener(e->{handleSaveButtonForAll(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,cus_et,null,null,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"custom",custom_spinner);alertDialog.dismiss();});
-            handleTemplatestuff(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,cus_et,null,null,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"custom",custom_spinner);
+            save.setOnClickListener(e->{handleSaveButtonForAll(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,cus_et,null,null,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"customD",custom_spinner);alertDialog.dismiss();});
+            handleTemplatestuff(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,cus_et,null,null,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"customD",custom_spinner);
             selectDay(custom_m,custom_t,custom_w,custom_th,custom_f,custom_st,custom_sd,custom_d);
             setUpAGeneralEventHandlerForTheTimeSelection(customDatePicker,customTimePicker1,customTimePicker3,customsetDate,customsetStartingTime,customsetEndingTime,customtp,customField,customDateSelector,customTimeSelector,customTimeSelector2,customtp2,customdp,custom_d,custom_sT,custom_dur,cus_et,save);
           //  addMoreItems(customField,addC,removeC,custom_tag);
@@ -431,8 +517,8 @@ Button addG,removeG;
             save=(Button)v.findViewById(R.id.social_save_custom);
             cancl=(Button)v.findViewById(R.id.cancel10);
             save.setEnabled(isCompleted(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,save,"Unknown name"));
-            save.setOnClickListener(e->{handleSaveButtonForAll(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,cus_et,customInside,customOutside,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"custom",custom_spinner);alertDialog.dismiss();});
-            handleTemplatestuff(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,cus_et,customInside,customOutside,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"custom",custom_spinner);
+            save.setOnClickListener(e->{handleSaveButtonForAll(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,cus_et,customInside,customOutside,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"customDl",custom_spinner);alertDialog.dismiss();});
+            handleTemplatestuff(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,cus_et,customInside,customOutside,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"customDl",custom_spinner);
             selectDay(custom_m,custom_t,custom_w,custom_th,custom_f,custom_st,custom_sd,custom_d);
             addMoreItems(itemBox,addC,removeC,custom_tag);
             setInvites(customOutside,customInside);
@@ -444,8 +530,8 @@ Button addG,removeG;
             save=(Button)v.findViewById(R.id.social_save_custom);
             cancl=(Button)v.findViewById(R.id.cancel10);
             save.setEnabled(isCompleted(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,save,"Unknown name"));
-            save.setOnClickListener(e->{handleSaveButtonForAll(customnameField,custom_loc,custom_d,custom_sT,custom_eTime,custom_n,null,null,null,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"custom",custom_spinner);alertDialog.dismiss();});
-            handleTemplatestuff(customnameField,custom_loc,custom_d,custom_sT,custom_eTime,custom_n,null,null,null,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"custom",custom_spinner);
+            save.setOnClickListener(e->{handleSaveButtonForAll(customnameField,custom_loc,custom_d,custom_sT,custom_eTime,custom_n,null,null,null,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"customL",custom_spinner);alertDialog.dismiss();});
+            handleTemplatestuff(customnameField,custom_loc,custom_d,custom_sT,custom_eTime,custom_n,null,null,null,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"customL",custom_spinner);
             selectDay(custom_m,custom_t,custom_w,custom_th,custom_f,custom_st,custom_sd,custom_d);
             addMoreItems(itemBox,addC,removeC,custom_tag);
             setUpAGeneralEventHandlerForTheTimeSelection(customDatePicker,customTimePicker1,customTimepicker2,customsetDate,customsetStartingTime,customsetEndingTime,customtp,customField,customDateSelector,customTimeSelector,customTimeSelector2,customtp2,customdp,custom_d,custom_sT,custom_eTime,null,save);
@@ -1108,6 +1194,10 @@ Button addG,removeG;
       //  getsO_invite_inside=(ImageButton)dialogView.findViewById(R.id.insideOfsOInvite);
         sOtag=(TextView)dialogView.findViewById(R.id.shopping_Event_tag);
         sO_spinner=(Spinner)dialogView.findViewById(R.id.sO_spinner);
+        if(type=='O'){
+        rv=(RecyclerView) dialogView.findViewById(R.id.listviewer);
+        rv.setLayoutManager(new LinearLayoutManager(this));
+        LoadMyLists();}
 
         ddatenameField=(AutoCompleteTextView)dialogView.findViewById(R.id.ddate__name_field);
         d_loc=(EditText)dialogView.findViewById(R.id.ddate__location);
@@ -1262,8 +1352,8 @@ Button addG,removeG;
                 save=(Button)dialogView.findViewById(R.id.social_save_sO);
                 save.setEnabled(isCompleted(shoppingnameField,sO_loc,sO_d,sO_sT,sO_eT,sO_n,save,"Sleep-over"));
                 cancl=(Button)dialogView.findViewById(R.id.cancel3);
-                save.setOnClickListener(e->{handleSaveButtonForAll(shoppingnameField,sO_loc,sO_d,sO_sT,sO_eT,sO_n,null,null,null,sODateSelector,sOTimeSelector,sOTimeSelector2,sOtp,sOtp2,sOdp,shopping,sOtag,"Sleep Over",sO_spinner);alertDialog.dismiss();});
-                handleTemplatestuff(shoppingnameField,sO_loc,sO_d,sO_sT,sO_eT,sO_n,null,null,null,sODateSelector,sOTimeSelector,sOTimeSelector2,sOtp,sOtp2,sOdp,shopping,sOtag,"Sleep Over",sO_spinner);
+                save.setOnClickListener(e->{handleSaveButtonForAll(shoppingnameField,sO_loc,sO_d,sO_sT,sO_eT,sO_n,null,null,null,sODateSelector,sOTimeSelector,sOTimeSelector2,sOtp,sOtp2,sOdp,shopping,sOtag,"Shopping",sO_spinner);alertDialog.dismiss();});
+                handleTemplatestuff(shoppingnameField,sO_loc,sO_d,sO_sT,sO_eT,sO_n,null,null,null,sODateSelector,sOTimeSelector,sOTimeSelector2,sOtp,sOtp2,sOdp,shopping,sOtag,"Shopping",sO_spinner);
                 selectDay(sO_m,sO_t,sO_w,sO_th,sO_f,sO_st,sO_sd,sO_d);
                 //setInvites(null,null);
             }
@@ -2616,7 +2706,7 @@ Button addG,removeG;
                     }
                 }  else  if (!TextUtils.isEmpty(et.getText().toString()))
                 {tag.setText(tags[0]+ ", "+tags[1]+", "+ tags[2]+", "+ tags[3]+", "+tags[4]);}
-                else   if(x.equals("custom")) {
+                else   if(x.equals("customD")||x.equals("customDl")) {
                     if (!TextUtils.isEmpty(et.getText().toString()))
                         tag.setText(tags[0] + ", " + tags[1] + ", " + tags[2] + ", " + tags[3] + ", " + tags[4] + "\n" + itemViews[j].getText().toString() + " | ");
 
@@ -2624,7 +2714,7 @@ Button addG,removeG;
                 // if (!TextUtils.isEmpty(et.getText().toString()))
 
                 System.out.println(tag.getText().toString());
-                    if(x.equals("Birthday")||x.equals("Christmas")||x.equals("Sleep Over"))
+                    if(x.equals("Birthday")||x.equals("Christmas")||x.equals("Shopping"))
                         tag.setText(tags[0]+ "\'s, "+tags[1]+", "+ tags[2]+", "+ tags[3]+", "+tags[4]);
 
 
@@ -2650,7 +2740,7 @@ Button addG,removeG;
                 } else if (!TextUtils.isEmpty(et.getText().toString())) {
                     tag.setText(tags[0] + ", " + tags[1] + ", " + tags[2] + ", " + tags[3] + ", " + tags[4]);
                 }
-                else   if(x.equals("custom")) {
+                else   if(x.equals("customD")) {
                     if (!TextUtils.isEmpty(et2.getText().toString()))
                         tag.setText(tags[0] + ", " + tags[1] + ", " + tags[2] + ", " + tags[3] + ", " + tags[4] + "\n" + itemViews[j].getText().toString() + " | ");
 
@@ -2679,7 +2769,7 @@ Button addG,removeG;
                     }
                 } else if(!TextUtils.isEmpty(et3.getText().toString()))
                     {tag.setText(tags[0]+ ", "+tags[1]+", "+ tags[2]+", "+ tags[3]+", "+tags[4]);}
-                else   if(x.equals("custom")) {
+                else   if(x.equals("customD")) {
                     if (!TextUtils.isEmpty(et3.getText().toString()))
                         tag.setText(tags[0] + ", " + tags[1] + ", " + tags[2] + ", " + tags[3] + ", " + tags[4] + "\n" + itemViews[j].getText().toString() + " | ");
 
@@ -2708,7 +2798,7 @@ Button addG,removeG;
                     }
                 }else if(!TextUtils.isEmpty(et4.getText().toString()))
                     {tag.setText(tags[0]+ ", "+tags[1]+", "+ tags[2]+", "+ tags[3]+", "+tags[4]);}
-                else   if(x.equals("custom")) {
+                else   if(x.equals("customD")) {
                     if (!TextUtils.isEmpty(et4.getText().toString()))
                         tag.setText(tags[0] + ", " + tags[1] + ", " + tags[2] + ", " + tags[3] + ", " + tags[4] + "\n" + itemViews[j].getText().toString() + " | ");
 
@@ -2740,7 +2830,7 @@ Button addG,removeG;
                     }
                 }else if(!TextUtils.isEmpty(et5.getText().toString()))
                    {tag.setText(tags[0]+ ", "+tags[1]+", "+ tags[2]+", "+ tags[3]+", "+tags[4]);}
-                else   if(x.equals("custom")) {
+                else   if(x.equals("customD")) {
                     if (!TextUtils.isEmpty(et5.getText().toString()))
                         tag.setText(tags[0] + ", " + tags[1] + ", " + tags[2] + ", " + tags[3] + ", " + tags[4] + "\n" + itemViews[j].getText().toString() + " | ");
 
@@ -2784,8 +2874,10 @@ Button addG,removeG;
        if(TextUtils.isEmpty(occ))
            occ="Once";
        System.out.println("OCC: "+occ);
+
+//        System.out.printf("%s\n%s\n%s\n%s\n%s\n",et2.getText().toString(),et3.getText().toString(),et4.getText().toString(),et5.getText().toString(),et6.getText().toString());
         if(tv!=null)
-        endTime=durationToTime(et5,et4);
+        endTime=tv.getText().toString();
         else
             endTime=et5.getText().toString();
 
@@ -2798,9 +2890,15 @@ Button addG,removeG;
                 val7 = ib2.toString();
         else if(x.equals("Gaming"))
             val7=G2P;
-        else if(x.equals("custom"))
+        else if(x.equals("customL"))
             val7=I2M;
         else val7="";
+        if(x.equals("Shopping"))
+        {
+            if(!shoppingLists.isEmpty())
+            key.setObj(shoppingLists);
+        }
+        
         val8=et6.getText().toString();
         key.setHeading(heading);
         key.setType(x);

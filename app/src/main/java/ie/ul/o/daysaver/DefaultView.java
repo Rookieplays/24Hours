@@ -1651,7 +1651,7 @@ public class DefaultView extends Fragment {
               System.out.println(v1List);
 
 
-            plan = new WorkoutPlan("Default GYM - " + MUSCLEGROUP + " - " + presets.get(3).get(i),ConvertFromDateToLong(presets.get(0).get(i)),(ArrayList<Workout>) workouttoSave,System.currentTimeMillis() ,UID,"GYM",presets.get(0).get(i));
+            plan = new WorkoutPlan("Default GYM - " + MUSCLEGROUP + " - " + presets.get(3).get(i),ConvertFromDateToLong(presets.get(0).get(i)),(ArrayList<Workout>) workouttoSave,System.currentTimeMillis() ,UID,"GYM",presets.get(0).get(i),"18:00","19:00");
 
             mFirestore.collection(UID)
                     .add(plan)

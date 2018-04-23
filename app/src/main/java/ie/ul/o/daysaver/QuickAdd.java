@@ -1,16 +1,22 @@
 package ie.ul.o.daysaver;
 
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 /**
  * Created by Ali on 17/04/2018.
  */
 
 public class QuickAdd {
     private String id="QUICKADD";
-    private String title;
-    private String description;
+    private String title="Untitled_"+new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault()).format(System.currentTimeMillis());
+    private String description="";
     private long startTime;
     private long endTime;
     private String date;
+
+    public QuickAdd() {
+    }
 
     public QuickAdd(String id, String title, String description, long startTime, long endTime, String date) {
         this.id = "QUICKADD";
@@ -38,6 +44,10 @@ public class QuickAdd {
     }
 
     public String getDescription() {
+        description="Title: "+title+
+                "\nDate: "+date+
+                "\nStart Time: "+startTime+
+                "\nEnd Time: "+endTime;
         return description;
     }
 

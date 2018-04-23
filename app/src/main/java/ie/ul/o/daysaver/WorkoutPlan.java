@@ -1,6 +1,8 @@
 package ie.ul.o.daysaver;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by Ollie on 28/03/2018.
@@ -15,14 +17,16 @@ public class WorkoutPlan {
     private String UID="Hbot";
     private String id="public";
     private String Discription;
-    private String date="";
+    private String date=new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(System.currentTimeMillis());
+    private String startTime="18:00";
+    private String endTime="19:30";
 
 
     public void setWorkout(ArrayList<Workout> Workouts) {
         this.Workouts = Workouts;
     }
 
-    public WorkoutPlan(String name, long Day, ArrayList<Workout> Workouts, long d_O_C, String authurId, String id,String date) {
+    public WorkoutPlan(String name, long Day, ArrayList<Workout> Workouts, long d_O_C, String authurId, String id,String date,String startTime,String endTime) {
 
         this.name = name;
         this.Day = Day;
@@ -31,6 +35,24 @@ public class WorkoutPlan {
         UID = authurId;
     this.date=date;
         this.id = id;
+        this.startTime=startTime;
+        this.endTime=endTime;
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 
     public ArrayList<Workout> getWorkouts() {
@@ -105,7 +127,12 @@ public class WorkoutPlan {
     }
     public String getDiscription()
     {
-        this.Discription="Workout Name: "+getName();
+        this.Discription="Workout Name: "+getName()+
+                        "\nDate: "+getDate()+
+                        "\nStart Time: "+getStartTime()+
+                        "\nEnd Time: "+getEndTime();
+        if(getWorkouts()!=null)
+                        Discription+="\nWorkouts: "+getWorkouts().toString();
         return Discription;
     }
 

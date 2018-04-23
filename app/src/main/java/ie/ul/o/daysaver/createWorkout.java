@@ -3,17 +3,22 @@ package ie.ul.o.daysaver;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.view.MotionEventCompat;
@@ -26,10 +31,12 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -38,12 +45,14 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -61,6 +70,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
 /**75% working few kinks left*/
 public class createWorkout extends GymActivity implements  RecyclerItemTouchHelper.RecyclerItemTouchHelperListener {
 
@@ -88,7 +98,7 @@ public class createWorkout extends GymActivity implements  RecyclerItemTouchHelp
     private Date date;
     private SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
     private String occ="Once",occures="Only On";
-    private String workoutname="Unkonwn"+simpleDateFormat.format(System.currentTimeMillis()),day="Mon",dd,dayTime="18:00",status="public";
+    private String workoutname="Unkonwn"+simpleDateFormat.format(System.currentTimeMillis()),day="Mon",dd,dayTime="18:00",status="private";
     private EditText duration;
     private TextInputLayout enterDay;
     private String dur="1.30";
@@ -105,6 +115,8 @@ public class createWorkout extends GymActivity implements  RecyclerItemTouchHelp
     private FrameLayout frameLayout;
     private ArrayList<Workout>wL;
     private Button completeBtn;
+    public static boolean addWorkout;
+    private ImageButton helpBtn;
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,13 +142,17 @@ public class createWorkout extends GymActivity implements  RecyclerItemTouchHelp
         switcher=findViewById(R.id.switch1);
         dateView=findViewById(R.id.date_Result);
         enterDay=findViewById(R.id.enterDay);
+        helpBtn=findViewById(R.id.help);
         addNewWrkout=findViewById(R.id.addWorkoutBTN);
         completeBtn=findViewById(R.id.CompleteBtn);
+        completeBtn.setEnabled(false);
+        completeBtn.setAlpha(0.4f);
         completeBtn.setOnClickListener(e->{
-            saveNewWorkoutPlan();
-            finish();workoutName.getText().clear();enterDay.getEditText().getText().clear();switcher.setChecked(true);
-            for(int i=0;i<startTimes.size();i++)
-                System.out.println(new WorkoutPlan(workoutname,startTimes.get(i),wL,endTimes.get(i),UID, status,new SimpleDateFormat("dd/MM/yyyy",Locale.getDefault()).format(startTimes.get(i))));
+
+             for(int i=0;i<startTimes.size();i++)
+                System.out.println(new WorkoutPlan(workoutname,startTimes.get(i),wL,endTimes.get(i),UID, "GYM", new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(startTimes.get(i)),new SimpleDateFormat("HH:mm",Locale.getDefault()).format(startTimes.get(i)),new SimpleDateFormat("HH:mm",Locale.getDefault()).format(endTimes.get(i))));
+            saveNewWorkoutPlan(); finish();workoutName.getText().clear();enterDay.getEditText().getText().clear();switcher.setChecked(true);
+
         });
 
         settimeBtn=findViewById(R.id.setTimebn);
@@ -144,6 +160,8 @@ public class createWorkout extends GymActivity implements  RecyclerItemTouchHelp
         ll=findViewById(R.id.wholeField);//heading_layout
         timeContainer=findViewById(R.id.timecontainer);
         duration=findViewById(R.id.time_spent);
+
+
         collectDataP1();
         System.out.println("workout name: +"+workoutName+"\nStart time: "+simpleDateFormat.format(startTime)+"\nEndTime: "+simpleDateFormat.format(convertDurationToTimeDone(startTime))+"\n");
         hideBox.setOnTouchListener((view, event) -> {
@@ -267,6 +285,7 @@ public class createWorkout extends GymActivity implements  RecyclerItemTouchHelp
             return true;
 
         });
+        helpBtn.setOnClickListener(e->{alertBox();});
 
         hideBtn.setOnClickListener(e->{
             if(hide==false)
@@ -482,61 +501,142 @@ public class createWorkout extends GymActivity implements  RecyclerItemTouchHelp
 WorkoutPlan event;
     public void saveNewWorkoutPlan()
     {
-       try{ for (int i = 0; i < startTimes.size(); i++)
+        if(!startTimes.isEmpty()) {
+            event = new WorkoutPlan(workoutname, startTimes.get(0), wL, endTimes.get(0), UID, "GYM", new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(startTimes.get(0)), new SimpleDateFormat("HH:mm", Locale.getDefault()).format(startTimes.get(0)), new SimpleDateFormat("HH:mm", Locale.getDefault()).format(endTimes.get(0)));
 
-        {
-            List<Workout>workouttoSave=new ArrayList<>();
-            System.out.println("*****"+wL);   System.out.println("++++++**"+workoutList);
+            if (status.equalsIgnoreCase("public")) {
 
-
-            event = new WorkoutPlan(workoutname,startTimes.get(i),(ArrayList<Workout>) workoutList ,endTimes.get(i),UID ,status.toLowerCase(),new SimpleDateFormat("dd/MM/yyyy HH:mm",Locale.getDefault()).format(startTimes.get(i)));
-            if(status.equalsIgnoreCase("public"))
-            {firebaseFirestore.collection("Public_workouts")
-                    .add(event)
-                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                        @Override
-                        public void onSuccess(DocumentReference documentReference) {
+                firebaseFirestore.collection("Public_workouts")
+                        .add(event)
+                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
 
                            /* Toast.makeText(getActivity(),
                                     "Event document has been added",
                                     Toast.LENGTH_SHORT).show();*/
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.w(TAG, "Error adding event documtent", e);
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w(TAG, "Error adding event documtent", e);
                            /* Toast.makeText(getActivity(),
                                     "Event document could not be added",
                                     Toast.LENGTH_SHORT).show();*/
-                        }
-                    });}
-            else
-            {firebaseFirestore.collection(UID)
-                    .add(event)
-                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                        @Override
-                        public void onSuccess(DocumentReference documentReference) {
+                            }
+                        });
+
+            } else {
+                System.out.println("Status: " + status);
+                firebaseFirestore.collection("Private_workouts")
+                        .add(event)
+                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
 
                            /* Toast.makeText(getActivity(),
                                     "Event document has been added",
                                     Toast.LENGTH_SHORT).show();*/
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.w(TAG, "Error adding event documtent", e);
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w(TAG, "Error adding event documtent", e);
                            /* Toast.makeText(getActivity(),
                                     "Event document could not be added",
                                     Toast.LENGTH_SHORT).show();*/
-                        }
-                    });}
+                            }
+                        });
+            }
+            try {
+                for (int i = 0; i < startTimes.size(); i++)
 
-        }
-       }catch (NullPointerException n){Log.w(TAG,n.getMessage());}
+                {
+                    List<Workout> workouttoSave = new ArrayList<>();
+                    System.out.println("*****" + wL);
+                    System.out.println("++++++**" + workoutList);
+
+
+                    event = new WorkoutPlan(workoutname, startTimes.get(i), wL, endTimes.get(i), UID, "GYM", new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(startTimes.get(i)), new SimpleDateFormat("HH:mm", Locale.getDefault()).format(startTimes.get(i)), new SimpleDateFormat("HH:mm", Locale.getDefault()).format(endTimes.get(i)));
+                    firebaseFirestore.collection(UID)
+                            .add(event)
+                            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                @Override
+                                public void onSuccess(DocumentReference documentReference) {
+
+                           /* Toast.makeText(getActivity(),
+                                    "Event document has been added",
+                                    Toast.LENGTH_SHORT).show();*/
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.w(TAG, "Error adding event documtent", e);
+                           /* Toast.makeText(getActivity(),
+                                    "Event document could not be added",
+                                    Toast.LENGTH_SHORT).show();*/
+                                }
+                            });
+                }
+            } catch (NullPointerException n) {
+                Log.w(TAG, n.getMessage());
+            }
+        }else
+            Toast.makeText(context,"oops Didnt save",Toast.LENGTH_SHORT).show();
 
     }
+    private final Context context=this;
+    public void alertBox()
+    {
+        AlertDialog.Builder builder=new AlertDialog.Builder(context);
+        LayoutInflater inflater=getLayoutInflater();
+        View dialogView=inflater.inflate(R.layout.info1, null);
+        builder.setView(dialogView);
+        Button yes,no;
+        yes=(Button)dialogView.findViewById(R.id.button6);
+        System.out.println("Here");
+        AlertDialog adialog=builder.create();
+
+        adialog.show();
+
+        yes.setOnClickListener(e->{adialog.dismiss();});
+
+
+    }
+    public void showPopUpBox()
+    {
+        View popupContentView = LayoutInflater.from(context).inflate(R.layout.info1, null);
+        Button yes,no;
+        yes=(Button)popupContentView.findViewById(R.id.button6);
+        System.out.println("Here");
+
+
+        PopupWindow popupWindow = new PopupWindow(context);
+        popupWindow.setContentView(popupContentView);
+        popupWindow.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setAnimationStyle(R.style.popup_window_animation_sign_out);
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.showAsDropDown(addNewWrkout,0,0);
+        popupWindow.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+
+        popupWindow.update();
+        yes.setOnClickListener(e-> {
+
+            popupWindow.dismiss();
+
+        });
+
+        // Show popup window offset 1,1 to smsBtton.
+        // popupWindow.showAsDropDown(, 1, 1);
+
+
+
+    }
+
 
        // setHasOptionsMenu(true)}
 
@@ -550,8 +650,37 @@ WorkoutPlan event;
     @Override
     public void onStart() {
         super.onStart();
-        addNewWrkout.setOnClickListener(e->{
+        System.out.println("clicked? "+addWorkout);
+        System.out.println("\n\n\nstart..............");
 
+        if(addWorkout==false) {
+            hideBox.setVisibility(View.GONE);
+            ll.setVisibility(View.GONE);
+            new CountDownTimer(2000,1000) {
+
+                @RequiresApi(api = Build.VERSION_CODES.M)
+                public void onTick(long milliUntilFinish) {
+                    System.out.println(milliUntilFinish);
+
+                }
+
+                public void onFinish() {
+                   alertBox();
+                    System.out.println("Finished");
+
+                }
+            }.start();
+
+
+        }
+        else{
+            hideBox.setVisibility(View.VISIBLE);
+            ll.setVisibility(View.VISIBLE);
+        }
+        addNewWrkout.setOnClickListener(e->{
+            addWorkout=true;
+            completeBtn.setEnabled(true);
+            completeBtn.setAlpha(1f);
             startActivity(new Intent(this,AddNewWorkout.class));
 
 
@@ -634,7 +763,7 @@ WorkoutPlan event;
         switch (id)
         {
             case  R.id.save_id:
-            {saveWorkout();}
+            {if(completeBtn.isEnabled())saveWorkout();completeBtn.setAlpha(1f);}
             break;
             case R.id.exit_id: {
                 finish();
@@ -738,6 +867,8 @@ WorkoutPlan event;
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 workoutname=workoutName.getText().toString();
+                completeBtn.setEnabled(true);
+                completeBtn.setAlpha(1f);
             }
 
             @Override
@@ -1052,6 +1183,10 @@ WorkoutPlan event;
                 p3 = "0" + splits[2];
             } else p3 = splits[2];*/
             parts = part1 + "/" + p2 + "/" + splits[2];
+        }
+        else
+        {
+            parts=dateT;
         }
         System.out.println(parts);
 

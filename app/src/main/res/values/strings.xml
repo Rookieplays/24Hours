@@ -320,6 +320,7 @@
     <string name="currentWallet">Current  Wallet:  </string>
     <string name="newWallet">New Wallet</string>
     <string name="new_Balance">%1$s Enter new Balance</string>
+    <string name="euro">\u20AC</string>
     <string name="enterItem">Enter Item</string>
     <string name="savingDialog">Welcome to Your Wallet %1$s\nHere you can set the Amount you want Save</string>
     <string name="currentSavings">Current  Limit:  </string>
@@ -345,9 +346,10 @@
     <string name="socialDesc">Hi again, 24H.S is A Social organizer, where you create events for common social activities,\n You want to set up a plan to go to the Cinema well you can, or How about create a Budget for your grocceries, 24H.B$ allows you to just that.</string>
     <string name="study">24H.SP allows you to create a study plan for any day of the week, fast and simple.</string>
     <string name="timetableDesc">Dear Students, Good news you\'re able to create a Timetable for for classes ☺, No more confused about what classes you have and when. Not saying that you do.</string>
-   <string name="Calendar">View All Created events Here</string>
+    <string name="quickevent">Create an ordinary plan for an ordinary day.</string>
+    <string name="Calendar">View All Created events Here</string>
     <string name="prev">Previous</string>
-    <string name="tutorialDesc">So that\'s it, Confused well visit our Tutorial segment for help</string>
+    <string name="tutorialDesc">So that\'s it, 🤔Confused well visit our Tutorial segment for help</string>
     <string name="setu">Your are all setup, hit that button and let\'s start!</string>
     <string name="no_connection">Oops Seem Like you have Internet connection!</string>
     <string name="exit">I\'ll be back</string>
@@ -356,4 +358,49 @@
     <string name="setTimer">set Timer</string>
     <string name="social_custom_hint">Name,At,On,From,To</string>
     <string name="Social_custom">Custom</string>
+    <string name="title_activity_create_note">createNote</string>
+    <string name="dele">Are you sure you want to delete this item?</string>
+    <string name="remindme">Set Remider</string>
+    <string-array name="fontsize">
+        <item>8</item>
+        <item>12</item>
+        <item>14</item>
+        <item>16</item>
+        <item>18</item>
+        <item>22</item>
+        <item>24</item>
+        <item>32</item>
+    </string-array>
+    <string-array name="fontcolor">
+        <item>BLACK</item>
+        <item>RED</item>
+        <item>BLUE</item>
+        <item>GREEN</item>
+        <item>GRAY</item>
+
+    </string-array>
+    <color name="colorarray">#00fff2</color>
+   <string name="v_name_login_reg">Login, Registration and Setup in 24H</string>
+    <string name="v_name_themes">Themes in 24H</string>
+    <string name="v_name_gym">How to use Gym in 24H</string>
+    <string name="v_name_social">How to use Social in 24H</string>
+    <string name="v_name_study">How to use Study in 24H</string>
+    <string name="v_name_quick">How to use Quick note in 24H</string>
+    <string name="v_namwe_notes">How to use Notes in 24H</string>
+    <string name="v_name_cal">How to use Calendar in 24H</string>
+
+    <string name="v_desc_login_reg">Login • If You are Registered with us,You will be directed to your Main Screen otherwise if you\'ve forgotten Your Password click sign in and you would be return to this page, then click on the forgot password link.\n\n
+    Register • Click on the new members link to sign in. fill in the field and Hey presto! that\'s it \n
+    Setup • Enter Username, Click the icon to set profile pictures, ! make sure your file isn\'t too big aim for 100kb or lower, click next fill in the gap and click done, read through the setup page, be patient and you're ready to Start</string>>
+    <string name="v_desc_themes">Themes • click the top left side corner menu for a dropdown of option ar hold Hbot for different themes</string>
+    <string name="v_desc_gym">Gym •
+    \nDefault: select a body type, select a muscle group, hit save or change setting to your prefrence, hold the top for default option or tap to select all. When you are done hit finshed or if you need to change anything hit reset.
+    \nCustom: select one of your own workout or one from the community, you can add it to your calender if you want. Add your own plan by hitting the add Plan button. reload to see changes and Boom you're Done!</string>
+    <string name="v_desc_soc">Select one of the provided Templates or Create Your Own via the circular Button Thingy, the rest is simple</string>
+    <string name="v_desc_s">Enter Your Subjects, select subjects to study hit the CHECK MARK AFTER EVERY DAY to save, the  blue button to save and close</string>
+    <string name="v_desc_q">Too easy! </string>
+    <string name="v_desc_notes">Watch the Video</string>
+    <string name="v_desc_Calendar">Watch the Video</string>
+    <string name="v_desc_main">Watch the Video</string>
+    <string name="info1"> Hey there, Remember..\nstep 1. Add Workout\nstep 2. Enter workout name\nstep 3. Do the extra bits\nstep 4.Save\nGot it?</string>
 </resources>

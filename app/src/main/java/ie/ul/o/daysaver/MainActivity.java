@@ -2,7 +2,9 @@ package ie.ul.o.daysaver;
 
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -18,6 +20,7 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -62,13 +65,14 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
 import java.net.URL;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import ie.ul.o.daysaver.utils.*;
+import ie.ul.o.daysaver.utils.Utils;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -112,6 +116,7 @@ public class MainActivity extends AppCompatActivity
     private ArrayList<ArrayList<String>> AllEvents=new ArrayList<>();
 
 private Utils utils=new Utils(this);
+    private int ID=0;
 
 
     @Override
@@ -141,7 +146,7 @@ private Utils utils=new Utils(this);
         pb=new ProgressDialog(this);
         firebaseAuth=FirebaseAuth.getInstance();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar24);
       setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -192,7 +197,7 @@ private Utils utils=new Utils(this);
        // main_activity_view=(ScrollView)findViewById(R.id.main_activity_view);
         nav_header=(LinearLayout)headerView.findViewById(R.id.navi_header);
         fullscreen=(RelativeLayout)findViewById(R.id.fullScreen);
-        msin_toolbar=(Toolbar)findViewById(R.id.toolbar);
+        msin_toolbar=(Toolbar)findViewById(R.id.toolbar24);
         emailView=(TextView)headerView.findViewById(R.id.email);
        //pp=(ImageButton) headerView.findViewById(R.id.PROFILEPICTUREBTN);
         eventViwer=findViewById(R.id.mainRV);
@@ -331,7 +336,7 @@ private Utils utils=new Utils(this);
 
 
 
-
+                                updateAlarm(nowTime);
                                 SimpleDateFormat sdf = new SimpleDateFormat("E, MMM dd yyyy ");
                                 SimpleDateFormat sdf1 = new SimpleDateFormat("HH:mm a");
 
@@ -364,6 +369,19 @@ private Utils utils=new Utils(this);
         //email.setText(mail);
         //pp.setBackground(image);
         //System.out.println("Username "+welcome_to.getText().toString()+"\nEmail "+email);
+    }ArrayList<Long>ev=new ArrayList<>();
+
+    private void updateAlarm(long nowTime) {
+        if(!ev.isEmpty())
+        {
+            for(Long l:ev)
+            {
+                if(l==nowTime)
+                {
+                    startAlarm(l);
+                }
+            }
+        }
     }
 
 
@@ -415,12 +433,14 @@ private Utils utils=new Utils(this);
                 .whereEqualTo("date", date)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @RequiresApi(api = Build.VERSION_CODES.M)
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             List<CE> eventList = new ArrayList<>();
 
                             for(DocumentSnapshot doc : task.getResult()){
+                                System.out.println("{{"+doc.getData().values());
                                 System.out.println("-->"+doc.getData().values().contains("SOCIAL"));
                                 if(doc.getData().values().contains("SOCIAL"))
                                 {
@@ -453,15 +473,28 @@ private Utils utils=new Utils(this);
                             }
                             System.out.println(wp+"\n"+sl+"\n"+st);
                             for(WorkoutPlan w: wp) {
-                                AllEvents.get(0).add(w.getName());
+                                if(!w.getName().equalsIgnoreCase("unknown"))
+                                {AllEvents.get(0).add(w.getName());
                                 //  for(Workout ww:w.getWorkouts())
                                 if(w.getWorkouts()!=null)
                                 AllEvents.get(1).add(w.getWorkouts().toString());
                                 else
-                                    AllEvents.get(1).add("No Info");
-                                AllEvents.get(2).add(new SimpleDateFormat("HH:mm", Locale.getDefault()).format(w.getDay()));
-                                AllEvents.get(3).add(new SimpleDateFormat("HH:mm", Locale.getDefault()).format(w.getD_O_C()));
+                                    AllEvents.get(1).add(w.getDiscription());
+                                AllEvents.get(2).add(w.getStartTime());
+                                AllEvents.get(3).add(w.getEndTime());
                                 AllEvents.get(4).add(Color.RED + "");
+                                 try {
+                                        ev.add(new SimpleDateFormat("HH:mm", Locale.getDefault()).parse(w.getStartTime()).getTime());
+                                    } catch (ParseException e) {
+                                        e.printStackTrace();
+                                    }
+                                    try {
+                                        ev.add(new SimpleDateFormat("HH:mm", Locale.getDefault()).parse(w.getEndTime()).getTime());
+                                    } catch (ParseException e) {
+                                        e.printStackTrace();
+                                    }
+
+                            }
                             }
                             for(Social s:sl)
                             {
@@ -470,6 +503,17 @@ private Utils utils=new Utils(this);
                                 AllEvents.get(2).add(s.startTime);
                                 AllEvents.get(3).add(s.endTime);
                                 AllEvents.get(4).add(Color.MAGENTA+"");
+                                wp.add(new WorkoutPlan());
+                                try {
+                                    ev.add(new SimpleDateFormat("HH:mm", Locale.getDefault()).parse(s.startTime).getTime());
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+                                try {
+                                    ev.add(new SimpleDateFormat("HH:mm", Locale.getDefault()).parse(s.endTime).getTime());
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
                             }
                             //Description and stuff...
                             for(Study s:st)
@@ -479,19 +523,25 @@ private Utils utils=new Utils(this);
                                 AllEvents.get(2).add("Undefined");
                                 AllEvents.get(3).add(s.getDuration()+"");
                                 AllEvents.get(4).add(Color.YELLOW+"");
+                                wp.add(new WorkoutPlan());
                             }
+                            System.out.println(qua);
                             for(QuickAdd s:qua)
                             {
+                                System.out.println("!!!!"+s);
                                 AllEvents.get(0).add("Quick Add");
                                 AllEvents.get(1).add(s.getDescription());
                                 AllEvents.get(2).add(new SimpleDateFormat("HH:mm", Locale.getDefault()).format(s.getStartTime()));
                                 AllEvents.get(3).add(new SimpleDateFormat("HH:mm", Locale.getDefault()).format(s.getEndTime()));
                                 AllEvents.get(4).add(getColor(android.R.color.holo_blue_light)+"");
+                                ev.add(s.getStartTime());
+                                ev.add(s.getEndTime());
+                                wp.add(new WorkoutPlan());
                             }
                             System.out.println(AllEvents);
                             if(context!=null)
                             {
-                                mainAdapter=new MainAdapter(context,AllEvents);
+                                mainAdapter=new MainAdapter(context,AllEvents,wp);
                                 eventViwer.setAdapter(mainAdapter);
                             }
                             pb.dismiss();
@@ -505,12 +555,113 @@ private Utils utils=new Utils(this);
                         }
                     }
                 });
+        mFireStore.collection("Private_workouts")
+                .whereEqualTo("uid", UID)
+                .whereEqualTo("date", date)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @RequiresApi(api = Build.VERSION_CODES.M)
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            List<CE> eventList = new ArrayList<>();
 
+                            for(DocumentSnapshot doc : task.getResult()){
+                                System.out.println("-->"+doc.getData().values().contains("SOCIAL"));
+                                if(doc.getData().values().contains("GYM"))
+                                {
+                                    WorkoutPlan e=doc.toObject(WorkoutPlan.class);
+                                    wp.add(e);
+
+
+                                }
+                            }
+                            System.out.println(wp+"\n"+sl+"\n"+st);
+                            for(WorkoutPlan w: wp) {
+                                AllEvents.get(0).add(w.getName());
+                                //  for(Workout ww:w.getWorkouts())
+                                if(w.getWorkouts()!=null)
+                                    AllEvents.get(1).add(w.getWorkouts().toString());
+                                else
+                                    AllEvents.get(1).add(w.getDiscription());
+                                AllEvents.get(2).add(w.getStartTime());
+                                AllEvents.get(3).add(w.getEndTime());
+                                AllEvents.get(4).add(Color.RED + "");
+                                try {
+                                    ev.add(new SimpleDateFormat("HH:mm", Locale.getDefault()).parse(w.getStartTime()).getTime());
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+                                try {
+                                    ev.add(new SimpleDateFormat("HH:mm", Locale.getDefault()).parse(w.getEndTime()).getTime());
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                    }
+                });
+        mFireStore.collection("Public_workouts")
+                .whereEqualTo("uid", UID)
+                .whereEqualTo("date", date)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @RequiresApi(api = Build.VERSION_CODES.M)
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            List<CE> eventList = new ArrayList<>();
+
+                            for(DocumentSnapshot doc : task.getResult()){
+                                System.out.println("-->"+doc.getData().values().contains("SOCIAL"));
+                                if(doc.getData().values().contains("GYM"))
+                                {
+                                    WorkoutPlan e=doc.toObject(WorkoutPlan.class);
+                                    wp.add(e);
+
+
+                                }
+                            }
+                            System.out.println(wp+"\n"+sl+"\n"+st);
+                            for(WorkoutPlan w: wp) {
+                                AllEvents.get(0).add(w.getName());
+                                //  for(Workout ww:w.getWorkouts())
+                                if(w.getWorkouts()!=null)
+                                    AllEvents.get(1).add(w.getWorkouts().toString());
+                                else
+                                    AllEvents.get(1).add(w.getDiscription());
+                                AllEvents.get(2).add(w.getStartTime());
+                                AllEvents.get(3).add(w.getEndTime());
+                                AllEvents.get(4).add(Color.RED + "");
+                                try {
+                                    ev.add(new SimpleDateFormat("HH:mm", Locale.getDefault()).parse(w.getStartTime()).getTime());
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+                                try {
+                                    ev.add(new SimpleDateFormat("HH:mm", Locale.getDefault()).parse(w.getEndTime()).getTime());
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                    }
+                });
 
 
 
     }
+public void startAlarm(long start)
+{
+    AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
+    Intent intent = new Intent(this,AlarmReceiver.class);
+
+    PendingIntent pendingIntent = PendingIntent.getBroadcast(this, ID, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+    alarmManager.set(AlarmManager.RTC_WAKEUP, start, pendingIntent);
+
+}
     public void changeTheme(View v)
     {
         switch(v.getId())
@@ -781,15 +932,17 @@ private Utils utils=new Utils(this);
         } else if (id == R.id.nav_social) {
             startActivity(new Intent(this,socialActivity.class));
 
-        } else if (id == R.id.nav_timetable) {
+        } else if (id == R.id.tutorial) {
+            startActivity(new Intent(this,VideoListActivity.class));
 
 
         } else if (id == R.id.nav_study) {
             startActivity(new Intent(this,StudyActivity.class));
         } else if (id == R.id.nav_share) {
+            startActivity(new Intent(this,QuickAddActivity.class));
 
         } else if (id == R.id.nav_send) {
-
+            startActivity(new Intent(this,createNote.class));
         }
         else if (id == R.id.nav_login) {
             if(LOGGED==false)

@@ -433,7 +433,7 @@
                 android:inputType="textMultiLine"
                 android:lineSpacingExtra="6sp"
                 android:textAlignment="textStart"
-                android:textColor="@android:color/holo_blue_dark"
+                android:textColor="@android:color/white"
                 android:textSize="10sp"
                 android:textStyle="italic" />
 

@@ -88,6 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
 
+                android:background="?attr/colorPrimaryDark"
                 android:keepScreenOn="false"
                 android:orientation="vertical">
 
@@ -180,7 +181,8 @@
                     android:fontFamily="@font/aldrich"
                     android:hint="@string/location"
                     android:inputType="textPostalAddress"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@color/background_color" />
 
                 <android.support.v4.view.ViewPager
                     android:layout_width="match_parent"
@@ -286,7 +288,8 @@
                         android:fontFamily="@font/aldrich"
                         android:hint="@string/date"
                         android:inputType="date"
-                        android:textColor="@android:color/white" />
+                        android:textColor="@android:color/white"
+                        android:textColorHint="@color/background_color" />
 
                     <Button
                         android:id="@+id/sOdatePicker"
@@ -324,7 +327,8 @@
                         android:fontFamily="@font/aldrich"
                         android:hint="@string/startTime"
                         android:inputType="time"
-                        android:textColor="@color/colorAccent" />
+                        android:textColor="@android:color/white"
+                        android:textColorHint="@android:color/white" />
 
                     <Button
                         android:id="@+id/sOtimepicker1"
@@ -367,7 +371,8 @@
                         android:fontFamily="@font/aldrich"
                         android:hint="@string/endTime"
                         android:inputType="time"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@android:color/white"
+                        android:textColorHint="@android:color/white"
                         android:textSize="14sp" />
 
                     <Button
@@ -402,9 +407,11 @@
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/aldrich"
-                    android:text="@string/upload_invite"
+                    android:text="Shopping Lists"
                     android:textAlignment="textStart"
                     android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@android:color/white"
                     android:textSize="18sp"
                     android:textStyle="italic" />
 
@@ -466,7 +473,7 @@
                     android:inputType="textMultiLine"
                     android:lineSpacingExtra="6sp"
                     android:textAlignment="textStart"
-                    android:textColor="@android:color/holo_blue_dark"
+                    android:textColor="@android:color/white"
                     android:textSize="10sp"
                     android:textStyle="italic" />
             </LinearLayout>

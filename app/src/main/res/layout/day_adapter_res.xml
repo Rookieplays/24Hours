@@ -10,8 +10,8 @@
     android:paddingLeft="5dp"
     android:paddingRight="5dp"
     android:paddingTop="5dp"
-    app:cardBackgroundColor="@color/cardview_light_background"
-    app:cardCornerRadius="10dp"
+    app:cardBackgroundColor="@color/lava_theme_y"
+    app:cardCornerRadius="5dp"
     app:cardElevation="20dp">
 
     <LinearLayout
@@ -21,7 +21,7 @@
         android:background="@color/save_red"
         android:gravity="center_vertical|center_horizontal|center"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/textView32"
@@ -39,13 +39,19 @@
         android:id="@+id/layer2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp">
 
         <TextView
             android:id="@+id/dayLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
 
         <android.support.v4.view.ViewPager
             android:layout_width="match_parent"
@@ -81,6 +87,7 @@
                 android:fontFamily="@font/aldrich"
                 android:inputType="number|numberDecimal"
                 android:text="2"
+                android:textColor="@color/mainscreen_dark"
                 android:textSize="12sp" />
 
             <TextView
@@ -91,6 +98,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/aldrich"
                 android:text="Hr"
+                android:textColor="@android:color/black"
                 android:textSize="12sp" />
 
             <Button

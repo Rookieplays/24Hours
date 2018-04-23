@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -52,7 +53,7 @@ import java.util.List;
  * Use the {@link CustomView#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CustomView extends Fragment {
+public class CustomView extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -81,7 +82,7 @@ public class CustomView extends Fragment {
    private TextView noneFound;
     DatabaseReference ref;
     boolean showAll=true;
-    ProgressDialog progressDialog;
+    static  ProgressDialog progressDialog;
     private OnFragmentInteractionListener mListener;
 
     public CustomView() {
@@ -124,17 +125,46 @@ public class CustomView extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
 
         menuInflater.inflate(R.menu.searh_menu,menu);
+
         super.onCreateOptionsMenu(menu,menuInflater);
 
         MenuItem search = menu.findItem(R.id.search);
-  SearchView searchView = (SearchView) MenuItemCompat.getActionView(search);
-      search(searchView);
-
+       SearchView searchView = (SearchView) MenuItemCompat.getActionView(search);
+       search(searchView);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.desc) {
+            if(mAdapter!=null) {mAdapter.sortInAlphabeticalOrder('a');
+                mAdapter.notifyDataSetChanged();
+            }
+            //   headerView.setBackground(getResources().getDrawable(R.drawable.midnight_header));
+
+            return true;
+        }
+        else  if (id == R.id.asc) {
+            if(mAdapter!=null) {mAdapter.sortInAlphabeticalOrder('z');
+                mAdapter.notifyDataSetChanged();
+            }
+
+            //   headerView.setBackground(getResources().getDrawable(R.drawable.midnight_header));
+
+            return true;
+        }
+        else  if (id == R.id.day) {
+            if(mAdapter!=null) {mAdapter.filterByDay();
+                mAdapter.notifyDataSetChanged();
+            }
+
+            //   headerView.setBackground(getResources().getDrawable(R.drawable.midnight_header));
+
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
     private void buttonChanger()
@@ -166,37 +196,53 @@ public class CustomView extends Fragment {
     {
         progressDialog.setMessage("Getting All Plans...");
         progressDialog.show();
+        progressDialog.setCanceledOnTouchOutside(false);
         gymWorkouts.clear();
         uinfo.clear();
         //TODO: Create a doc for every person that creates a new workout.
         /**create a doc for every workout added containing the @WorkoutPlan class, this method get that data...*/
-      fStore.collection("Public_workouts").whereEqualTo("id","public").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+      fStore.collection("Public_workouts").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
           @Override
           public void onComplete(@NonNull Task<QuerySnapshot> task) {
               if (task.isSuccessful()) {
                   List<WorkoutPlan> workoutplans = new ArrayList<>();
 
                   for (DocumentSnapshot doc : task.getResult()) {
-                      System.out.println(doc.getData());
+                      System.out.println("#123xx"+doc.getData());
                       WorkoutPlan wp = doc.toObject(WorkoutPlan.class);
-                      System.out.println(wp+"***********"+wp.getUID());
+                    //  System.out.println(wp+"***********"+wp.getUID());
+                      System.out.println("___"+wp.getWorkouts());
                       workoutplans.add(wp);
                   }
-                  System.out.println(workoutplans);
+                 // System.out.println("=="+workoutplans);
+
                   gymWorkouts.addAll(workoutplans);
+
                   for(WorkoutPlan wp:gymWorkouts)
                   {
+                      Log.d("WP",wp.getName()+" Was made by "+wp.getUID()+",");
                       ref=firebaseDatabase.getReference("Users").child(wp.getUID()).child("UserInformation");
                       ref.addValueEventListener(new ValueEventListener() {
                           @Override
                           public void onDataChange(DataSnapshot dataSnapshot) {
-                              System.out.println(dataSnapshot.getValue());
+                              //System.out.println(dataSnapshot.getValue());
                               UserInformation user=dataSnapshot.getValue(UserInformation.class);
-                              System.out.println(user);
+                             // System.out.println("◘"+user);
+                              Log.d("WP",wp.getName()+" Was made by "+user.getUsername()+","+"Img:"+user.getImage());
                               if(user!=null)
                               {
                                   uinfo.add(user);
                               }
+                              else
+                              {
+
+                                //  uinfo.add(new UserInformation("ojdevs.gmail.com", "Hbot","gs://hours-1a681.appspot.com/hbot_wave_lava_sml.png" ));
+                              }
+                              firebaseDatabase.getReference("Users");
+                              mAdapter = new DataAdapter(gymWorkouts,uinfo,getActivity());
+                              recyclerView.setAdapter(mAdapter);
+                              STATIC_ADAPTER=mAdapter;
+                              progressDialog.hide();
                           }
 
                           @Override
@@ -204,29 +250,82 @@ public class CustomView extends Fragment {
 
                           }
                       });
-                      if(uinfo.isEmpty())
-                      {
 
-                          uinfo.add(new UserInformation("ojdevs.gmail.com", "Hbot","gs://hours-1a681.appspot.com/hbot_wave_lava_sml.png" ));
-                      }
-                      firebaseDatabase.getReference("Users");
-                      mAdapter = new DataAdapter(gymWorkouts,uinfo,getActivity());
-                      recyclerView.setAdapter(mAdapter);
-                      STATIC_ADAPTER=mAdapter;
 
 
                   }
+                  System.out.println("Finshed **");
                   progressDialog.hide();
 
               }
           }
       });
+        fStore.collection("Private_workouts").whereEqualTo("uid",UID).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    List<WorkoutPlan> workoutplans = new ArrayList<>();
+
+                    for (DocumentSnapshot doc : task.getResult()) {
+                        System.out.println("#123xx"+doc.getData());
+                        WorkoutPlan wp = doc.toObject(WorkoutPlan.class);
+                        //  System.out.println(wp+"***********"+wp.getUID());
+                        workoutplans.add(wp);
+                    }
+                    // System.out.println("=="+workoutplans);
+
+                    gymWorkouts.addAll(workoutplans);
+
+                    for(WorkoutPlan wp:gymWorkouts)
+                    {
+                        Log.d("WP",wp.getName()+" Was made by "+wp.getUID()+",");
+                        ref=firebaseDatabase.getReference("Users").child(wp.getUID()).child("UserInformation");
+                        ref.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                //System.out.println(dataSnapshot.getValue());
+                                UserInformation user=dataSnapshot.getValue(UserInformation.class);
+                                // System.out.println("◘"+user);
+                                Log.d("WP",wp.getName()+" Was made by "+user.getUsername()+","+"Img:"+user.getImage());
+                                if(user!=null)
+                                {
+                                    uinfo.add(user);
+                                }
+                                else
+                                {
+
+                                    //  uinfo.add(new UserInformation("ojdevs.gmail.com", "Hbot","gs://hours-1a681.appspot.com/hbot_wave_lava_sml.png" ));
+                                }
+                                firebaseDatabase.getReference("Users");
+                                mAdapter = new DataAdapter(gymWorkouts,uinfo,getActivity());
+                                recyclerView.setAdapter(mAdapter);
+                                STATIC_ADAPTER=mAdapter;
+                                progressDialog.hide();
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+
+
+
+                    }
+                    System.out.println("Finshed **");
+                    progressDialog.hide();
+
+                }
+            }
+        });
     }
+    SwipeRefreshLayout mSwipeRefreshLayout;
+
     public void getWorkouts(int switchTo)
     {
        switch(switchTo){
         case 2: {
-            loadMyWorkouts();
+           // loadMyWorkouts();
 
         }
         break;
@@ -257,34 +356,47 @@ public class CustomView extends Fragment {
         progressDialog.show();
         gymWorkouts.clear();
         uinfo.clear();
-        fStore.collection(UID).whereEqualTo("id","private").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        fStore.collection("Private_workouts").whereEqualTo("uid",UID).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     List<WorkoutPlan> workoutplans = new ArrayList<>();
 
-
                     for (DocumentSnapshot doc : task.getResult()) {
-                        System.out.println(doc.getData());
+                        System.out.println("private workouts______________________________"+doc.getData());
                         WorkoutPlan wp = doc.toObject(WorkoutPlan.class);
-                        System.out.println(wp+"***********"+wp.getUID());
+                        //  System.out.println(wp+"***********"+wp.getUID());
                         workoutplans.add(wp);
                     }
-                    System.out.println(workoutplans);
+                    // System.out.println("=="+workoutplans);
+
                     gymWorkouts.addAll(workoutplans);
+
                     for(WorkoutPlan wp:gymWorkouts)
                     {
-                        ref=firebaseDatabase.getReference("Users").child(UID).child("UserInformation");
+                        Log.d("WP",wp.getName()+" Was made by "+wp.getUID()+",");
+                        ref=firebaseDatabase.getReference("Users").child(wp.getUID()).child("UserInformation");
                         ref.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
-                                System.out.println(dataSnapshot.getValue());
+                                //System.out.println(dataSnapshot.getValue());
                                 UserInformation user=dataSnapshot.getValue(UserInformation.class);
-                                System.out.println(user);
+                                // System.out.println("◘"+user);
+                                Log.d("WP",wp.getName()+" Was made by "+user.getUsername()+","+"Img:"+user.getImage());
                                 if(user!=null)
                                 {
                                     uinfo.add(user);
                                 }
+                                else
+                                {
+
+                                    //  uinfo.add(new UserInformation("ojdevs.gmail.com", "Hbot","gs://hours-1a681.appspot.com/hbot_wave_lava_sml.png" ));
+                                }
+                                firebaseDatabase.getReference("Users");
+                                mAdapter = new DataAdapter(gymWorkouts,uinfo,getActivity());
+                                recyclerView.setAdapter(mAdapter);
+                                STATIC_ADAPTER=mAdapter;
+                                progressDialog.hide();
                             }
 
                             @Override
@@ -292,20 +404,72 @@ public class CustomView extends Fragment {
 
                             }
                         });
-                       /* if(uinfo.isEmpty())
-                        {
 
-                            uinfo.add(new UserInformation("ojdevs.gmail.com", "Hbot","gs://hours-1a681.appspot.com/hbot_wave_lava_sml.png" ));
-                        }*/
-                        firebaseDatabase.getReference("Users");
-                        mAdapter = new DataAdapter(gymWorkouts,uinfo,getActivity());
-                        recyclerView.setAdapter(mAdapter);
-                        STATIC_ADAPTER=mAdapter;
 
 
                     }
+                    System.out.println("Finshed **");
+                    progressDialog.hide();
 
-                }progressDialog.hide();
+                }
+            }
+        });
+        fStore.collection("Public_workouts").whereEqualTo("uid",UID).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    List<WorkoutPlan> workoutplans = new ArrayList<>();
+
+                    for (DocumentSnapshot doc : task.getResult()) {
+                        System.out.println("public workouts_xxxxxx_______________________"+doc.getData());
+                        WorkoutPlan wp = doc.toObject(WorkoutPlan.class);
+                        //  System.out.println(wp+"***********"+wp.getUID());
+                        workoutplans.add(wp);
+                    }
+                    // System.out.println("=="+workoutplans);
+
+                    gymWorkouts.addAll(workoutplans);
+
+                    for(WorkoutPlan wp:gymWorkouts)
+                    {
+                        Log.d("WP",wp.getName()+" Was made by "+wp.getUID()+",");
+                        ref=firebaseDatabase.getReference("Users").child(wp.getUID()).child("UserInformation");
+                        ref.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                //System.out.println(dataSnapshot.getValue());
+                                UserInformation user=dataSnapshot.getValue(UserInformation.class);
+                                // System.out.println("◘"+user);
+                                Log.d("WP",wp.getName()+" Was made by "+user.getUsername()+","+"Img:"+user.getImage());
+                                if(user!=null)
+                                {
+                                    uinfo.add(user);
+                                }
+                                else
+                                {
+
+                                    //  uinfo.add(new UserInformation("ojdevs.gmail.com", "Hbot","gs://hours-1a681.appspot.com/hbot_wave_lava_sml.png" ));
+                                }
+                                firebaseDatabase.getReference("Users");
+                                mAdapter = new DataAdapter(gymWorkouts,uinfo,getActivity());
+                                recyclerView.setAdapter(mAdapter);
+                                STATIC_ADAPTER=mAdapter;
+                                progressDialog.hide();
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+
+
+
+                    }
+                    System.out.println("Finshed **");
+                    progressDialog.hide();
+
+                }
             }
         });
 
@@ -329,9 +493,24 @@ public class CustomView extends Fragment {
         noneFound=view.findViewById(R.id.noResult);
         addNewButton.setOnClickListener(e->{startActivity(new Intent(getContext(),createWorkout.class));});
         progressDialog=new ProgressDialog(getActivity());
-        loadAllWorkouts();
+      //  loadAllWorkouts();
+        mSwipeRefreshLayout =view.findViewById(R.id.activity_main_swipe_refresh_layout);
+        mSwipeRefreshLayout.setOnRefreshListener(this);
+
+
 
         initViews();
+
+        mSwipeRefreshLayout.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        mSwipeRefreshLayout.setRefreshing(true);
+
+                                        fetchPlans();
+                                    }
+                                }
+        );
+
         buttonChanger();
         //getWorkouts();
 
@@ -342,6 +521,31 @@ public class CustomView extends Fragment {
 
 
         return view;
+    }
+    @Override
+    public void onRefresh() {
+        fetchPlans();
+    }
+
+    private void fetchPlans() {
+        if(showAll==true){
+            filterBtn.setText(getString(R.string.myWorkouts));
+            gymWorkouts.clear();
+            uinfo.clear();
+            loadAllWorkouts();
+            showAll=false;
+        }
+        else{
+            filterBtn.setText(getString(R.string.showAll));
+            gymWorkouts.clear();
+            uinfo.clear();
+           loadMyWorkouts();
+            showAll=true;
+        }
+        if(mAdapter!=null)
+        mAdapter.notifyDataSetChanged();
+        mSwipeRefreshLayout.setRefreshing(false);
+
     }
 
 
@@ -376,7 +580,7 @@ public class CustomView extends Fragment {
      * to the activity and potentially other fragments contained in that
      * activity.
      * <p>
-     * See the Android Training lesson <a href=
+     * See the Android Training lesson <a href=fsave
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */

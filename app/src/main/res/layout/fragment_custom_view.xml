@@ -35,6 +35,10 @@
         android:textSize="12sp"
         android:textStyle="italic"
         android:visibility="gone" />
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/activity_main_swipe_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -92,5 +96,6 @@
         </LinearLayout>
 
     </LinearLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </android.support.design.widget.CoordinatorLayout>

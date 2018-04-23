@@ -11,6 +11,7 @@ class Item
     private String itemName="UNKNOWN";
     private double price=0.0;
     private int amount=0;
+    private String description="";
     private String timeCreated=new SimpleDateFormat("dd/MMM/yyyy HH:mm").format(System.currentTimeMillis());
     public Item()
     {
@@ -41,6 +42,23 @@ class Item
         this.amount=amount;
         this.timeCreated=timeCreated;
     }
+
+    public Item(String itemName, double price, int amount, String description, String timeCreated) {
+        this.itemName = itemName;
+        this.price = price;
+        this.amount = amount;
+        this.description = description;
+        this.timeCreated = timeCreated;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getItemName()
     {
         return itemName;

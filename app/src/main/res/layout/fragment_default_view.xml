@@ -54,7 +54,9 @@
                     android:id="@+id/override"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/override" />
+                    android:text="@string/override"
+                    android:textColor="@color/background_mid_dark"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <RelativeLayout

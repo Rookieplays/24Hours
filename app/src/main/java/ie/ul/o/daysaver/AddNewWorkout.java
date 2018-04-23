@@ -2,6 +2,7 @@ package ie.ul.o.daysaver;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -9,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AlertDialog;
@@ -73,7 +75,7 @@ public class AddNewWorkout extends createWorkout {
     private Context context=this;
     private ProgressBar pb;
     private List WorkoutsChosen;
-    private ProgressDialog pd;
+   // private ProgressDialog pd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -110,6 +112,8 @@ public class AddNewWorkout extends createWorkout {
         saveWorkouts=findViewById(R.id.saveWorkout);
         saveWorkouts.setOnClickListener(e->{finish();
        // createWorkout.SETWORKOUTS(WorkoutsChosen);
+            createWorkout.addWorkout=true;
+            //TODO:this is a temp solution
             finish();finish();startActivity(new Intent(this,createWorkout.class));
         });
         //lView=findViewById(R.id.lView);
@@ -135,61 +139,95 @@ public class AddNewWorkout extends createWorkout {
 
 
 
-
+     //   showWorkoutList(,1);
 
 
         animateButtonsIn();
         b_shoulder.setOnClickListener(e -> {
-            startWorkoutActivity("SHOULDER");
+          b_shoulder.setText("LOADING...");  b_shoulder.setTextColor(Color.RED);
+         // startAnimation(b_shoulder).start();
+         startWorkoutActivity("SHOULDER");
         });
         b_arms.setOnClickListener(e -> {
-            startWorkoutActivity("ARMS");
+           b_arms.setText("LOADING...");
+          b_arms.setTextColor(Color.RED);
+          startWorkoutActivity("ARMS");
         });
         b_arms2.setOnClickListener(e -> {
-            startWorkoutActivity("ARMS");
+            b_arms.setText("LOADING...");
+          startWorkoutActivity("ARMS");
         });
         b_arms3.setOnClickListener(e -> {
-            startWorkoutActivity("ARMS");
+            b_arms.setText("LOADING...");
+          startWorkoutActivity("ARMS");
         });
         b_arms4.setOnClickListener(e -> {
-            startWorkoutActivity("ARMS");
+            b_arms.setText("LOADING...");
+          startWorkoutActivity("ARMS");
         });
         b_quads.setOnClickListener(e -> {
+            //startAnimation(b_quads).start();
+
+            b_quads2.setText("LOADING...");
+          b_quads2.setTextColor(Color.RED);
             startWorkoutActivity("QUADS");
         });
         b_chest.setOnClickListener(e -> {
-            startWorkoutActivity("CHEST");
+
+            b_chest.setText("LOADING...");
+            //startAnimation(b_chest).start();
+          startWorkoutActivity("CHEST");
+          b_chest.setTextColor(Color.RED);
         });
         b_calves.setOnClickListener(e -> {
-            startWorkoutActivity("CALVES");
+            b_calves.setText("LOADING...");
+            b_calves.setTextColor(Color.RED);
+          startWorkoutActivity("CALVES");
         });
         b__core.setOnClickListener(e -> {
-            startWorkoutActivity("CORE");
+            b__core.setText("LOADING...");
+            b__core.setTextColor(Color.RED);
+          startWorkoutActivity("CORE");
         });
         b_back.setOnClickListener(e -> {
-            startWorkoutActivity("BACK");
+            b_back1.setBackgroundColor(Color.RED);
+          startWorkoutActivity("BACK");
         });
         b_back1.setOnClickListener(e -> {
-            startWorkoutActivity("~BACK");
+
+            b_back1.setBackgroundColor(Color.RED);
+          startWorkoutActivity("BACKg");
         });
 
         b_shoulder2.setOnClickListener(e -> {
-            startWorkoutActivity("SHOULDER");
+            b_shoulder.setText("LOADING...");
+            b_shoulder.setTextColor(Color.RED);
+          startWorkoutActivity("SHOULDER");
         });
         b_arms2.setOnClickListener(e -> {
-            startWorkoutActivity("ARMS");
+          //  waiter().show();
+            b_arms.setTextColor(Color.RED);
+          startWorkoutActivity("ARMS");
         });
         b_quads2.setOnClickListener(e -> {
-            startWorkoutActivity("QUADS");
+            b_quads2.setText("LOADING...");
+            b_quads2.setTextColor(Color.RED);
+          startWorkoutActivity("QUADS");
         });
         b_chest2.setOnClickListener(e -> {
-            startWorkoutActivity("CHEST");
+            b_chest.setText("LOADING...");
+            b_chest.setTextColor(Color.RED);
+          startWorkoutActivity("CHEST");
         });
         b_calves2.setOnClickListener(e -> {
-            startWorkoutActivity("CALVES");
+            b_calves.setText("LOADING...");
+          startWorkoutActivity("CALVES");
         });
         b__core2.setOnClickListener(e -> {
-            startWorkoutActivity("CORE");
+            b__core.setText("LOADING...");
+            b__core.setTextColor(Color.RED);
+
+          startWorkoutActivity("CORE");
         });
       /**Low Priority Error */ /* try {
             WORKOUTS = createWorkout.getList();
@@ -199,21 +237,44 @@ public class AddNewWorkout extends createWorkout {
 
 
     }
-
-    public void createWorkoutField()
+    private ObjectAnimator startAnimation(View v)
     {
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = getLayoutInflater();
-
-        View view = inflater.inflate(R.layout.add_exercise_dialog, null);
-        dialogBuilder.setView(view);
 
 
+
+        ObjectAnimator grow=ObjectAnimator.ofPropertyValuesHolder(v,
+                PropertyValuesHolder.ofFloat("scaleY",2f),
+                PropertyValuesHolder.ofFloat("scaleX",2f));
+
+        grow.setDuration(200);
+
+        grow.setRepeatMode(ObjectAnimator.REVERSE);
+        grow.setRepeatCount(10);
+
+      return grow;
     }
 
+    public AlertDialog waiter()
+    {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        dialogBuilder.setMessage("Please wait...");
+        System.out.println("Waiter here___________________________");
+        AlertDialog dialog=dialogBuilder.create();
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialogInterface) {
+                finish();
+            }
+        });
+        return dialog;
+
+    }
+    private ProgressDialog pd;
     public void loadChestWorkouts() {
 
         pb.setVisibility(View.VISIBLE);
+       //pd.show();
 
         DatabaseReference db=firebaseDatabase.getReference("EXERCISES").child("CHEST");
         db.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -225,8 +286,9 @@ public class AddNewWorkout extends createWorkout {
                     chestList.add(workout);
                     System.out.println(workout.getName());
                 }
-                pb.setVisibility(View.GONE);pd.dismiss();
+
                 viewerSetup(MUSCLEGROUP);
+               // waiter().dismiss();pd.dismiss();
             }
 
             @Override
@@ -240,6 +302,7 @@ public class AddNewWorkout extends createWorkout {
 
     public void loadShoulderWorkouts() {
         pb.setVisibility(View.VISIBLE);
+       //pd.show();
         DatabaseReference db=firebaseDatabase.getReference("EXERCISES").child("SHOULDER");
         db.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -250,8 +313,9 @@ public class AddNewWorkout extends createWorkout {
                     shoulderList.add(workout);
                     //System.out.println(workout.getName());
                 }
-                pb.setVisibility(View.GONE);pd.dismiss();
+
                 viewerSetup("Shoulder");
+               // waiter().dismiss();pd.dismiss();
             }
 
             @Override
@@ -264,6 +328,7 @@ public class AddNewWorkout extends createWorkout {
 
     public void loadBackWorkouts() {
         pb.setVisibility(View.VISIBLE);
+       //pd.show();
         DatabaseReference db=firebaseDatabase.getReference("EXERCISES").child("BACK");
         db.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -274,8 +339,9 @@ public class AddNewWorkout extends createWorkout {
                     backList.add(workout);
                     //System.out.println(workout.getName());
                 }
-                pb.setVisibility(View.GONE);pd.dismiss();
+
                 viewerSetup(MUSCLEGROUP);
+               // waiter().dismiss();pd.dismiss();
             }
 
             @Override
@@ -288,6 +354,7 @@ public class AddNewWorkout extends createWorkout {
 
     public void loadARMSWorkouts() {
         pb.setVisibility(View.VISIBLE);
+       //pd.show();
         DatabaseReference db=firebaseDatabase.getReference("EXERCISES").child("Triceps");
         db.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -316,8 +383,9 @@ public class AddNewWorkout extends createWorkout {
                     armsList.add(workout);
                     System.out.println(workout.getName());
                 }
-                pb.setVisibility(View.GONE);pd.dismiss();
+
                 viewerSetup("Arms");
+               // waiter().dismiss();pd.dismiss();
             }
 
             @Override
@@ -330,6 +398,7 @@ public class AddNewWorkout extends createWorkout {
 
     public void loadCOREWorkouts() {
         pb.setVisibility(View.VISIBLE);
+        //pd.show();
         DatabaseReference db=firebaseDatabase.getReference("EXERCISES").child("CORE");
         db.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -340,8 +409,9 @@ public class AddNewWorkout extends createWorkout {
                     coreList.add(workout);
                     //System.out.println(workout.getName());
                 }
-                pb.setVisibility(View.GONE);pd.dismiss();
+
                 viewerSetup(MUSCLEGROUP);
+               // waiter().dismiss();pd.dismiss();
             }
 
             @Override
@@ -377,7 +447,7 @@ public class AddNewWorkout extends createWorkout {
     }
 
     public void loadQuadsWorkouts() {
-        pb.setVisibility(View.VISIBLE);
+      //b.setVisibility(View.VISIBLE);pd.show();
         DatabaseReference db=firebaseDatabase.getReference("EXERCISES").child("QUADS");
         db.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -388,8 +458,9 @@ public class AddNewWorkout extends createWorkout {
                     quadsList.add(workout);
                     //System.out.println(workout.getName());
                 }
-                pb.setVisibility(View.GONE);pd.dismiss();
+
                 viewerSetup("Quads");
+               // waiter().dismiss();pd.dismiss();
             }
 
             @Override
@@ -400,7 +471,7 @@ public class AddNewWorkout extends createWorkout {
     }
 
     public void loadCalvesWorkouts() {
-        pb.setVisibility(View.VISIBLE);
+      //pd.show();
         DatabaseReference db=firebaseDatabase.getReference("EXERCISES").child("Calves");
         db.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -411,8 +482,9 @@ public class AddNewWorkout extends createWorkout {
                     calvesList.add(workout);
                     //System.out.println(workout.getName());
                 }
-                pb.setVisibility(View.GONE);pd.dismiss();
+
                 viewerSetup(MUSCLEGROUP);
+
             }
 
             @Override
@@ -423,10 +495,11 @@ public class AddNewWorkout extends createWorkout {
     }
 
     public void startWorkoutActivity(String muscleGroup) {//TODO: create workout Activity
+        System.out.println("SWA++++++++++++++++++++++++++");
         System.out.println(muscleGroup);
         /*Intent intent=new Intent(this,DefaultGymplan.class);
         startActivity(intent);*/
-        pd.show();
+        //pd.show();
        // pb.setVisibility(View.VISIBLE);
         MUSCLEGROUP = muscleGroup;
 
@@ -449,8 +522,9 @@ public class AddNewWorkout extends createWorkout {
     Activity activityX;
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-      //  startActivity(new Intent(this,createWorkout.class));
+        //super.onBackPressed();
+        addWorkout=false;
+        startActivity(new Intent(this,createWorkout.class));
     }
 
     private void showCreationCenter(String muscleGroup) {
@@ -461,16 +535,18 @@ public class AddNewWorkout extends createWorkout {
         RelativeLayout e_chooser=dialogView.findViewById(R.id.ex_chooser_page);
         RelativeLayout musclegp=dialogView.findViewById(R.id.muscleSelectionpage);
         rView=dialogView.findViewById(R.id.rView);
+        showWorkoutList(muscleGroup,1);
         e_chooser.setVisibility(View.VISIBLE);
         musclegp.setVisibility(View.GONE);
         gridLayoutManager = new GridLayoutManager(this,2);
         rView.setLayoutManager(gridLayoutManager);
-        showWorkoutList(muscleGroup,1);
+
         Button save=dialogView.findViewById(R.id.workoutsChoosen);
 
         AlertDialog dialog=dialogBuilder.create();
 
         save.setOnClickListener(e->{
+            addWorkout=false;
             System.out.println(WORKOUTS+" Before SelectWorkourAdapter");
             WORKOUTS=selectWorkoutAdapter.getWorkoutMade();
             System.out.println(WORKOUTS+" After SelectWorkourAdapter");
@@ -641,6 +717,12 @@ public class AddNewWorkout extends createWorkout {
 
 
         rView.setAdapter(new selectWorkoutAdapter(this,musclegroup,myDataset,imgSets));
+        b_shoulder.setText(getString(R.string.shoulder));
+        b_arms.setText(getString(R.string.arms));
+        b_quads.setText(getString(R.string.quads));
+        b_chest.setText(getString(R.string.chest));
+        b_calves.setText(getString(R.string.calf));
+        b_back.setText(getString(R.string.back));
 
         System.out.println("There is "+WorkoutsChosen.size()+" Workouts");
 
@@ -659,7 +741,7 @@ public class AddNewWorkout extends createWorkout {
             loadChestWorkouts();
         else  if(mg.equalsIgnoreCase("arms"))
             loadARMSWorkouts();
-        else  if(mg.equalsIgnoreCase("back"))
+        else  if(mg.equalsIgnoreCase("back1"))
             loadBackWorkouts();
         else  if(mg.equalsIgnoreCase("calves"))
             loadCalvesWorkouts();

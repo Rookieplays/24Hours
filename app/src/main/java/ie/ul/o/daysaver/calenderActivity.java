@@ -87,7 +87,7 @@ public class calenderActivity extends MainActivity {
                 R.drawable.social_gaming,
                 R.drawable.social_sleepover,
                 R.drawable.social_sport,
-                */R.drawable.ref5,
+                */R.drawable.quick_event,
                 R.drawable.hbot_wave,
                 R.drawable.studying_gal,
                 R.drawable.chill,
@@ -98,8 +98,8 @@ public class calenderActivity extends MainActivity {
         int[] colorResourses=new int[]{
                 R.color.gym_primaryColor,
                 R.color.social_primaryColor,
-                R.color.meeting_primaryColor,
                 R.color.colorPrimary,
+                R.color.meeting_primaryColor,
                 R.color.study_primaryColor,
                 R.color.chill_color,
                 R.color.time_primaryColor,
@@ -115,8 +115,10 @@ public class calenderActivity extends MainActivity {
                                 startActivity(new Intent(calenderActivity.this,GymActivity.class));
                             else  if(index==1)
                                 startActivity(new Intent(calenderActivity.this,socialActivity.class));
-                            else  if(index==3)
+                            else  if(index==2)
                                 startActivity(new Intent(calenderActivity.this,QuickAddActivity.class));
+                            else  if(index==3)
+                                startActivity(new Intent(calenderActivity.this,getttingStartedActivity.class));
                             else if(index==4)
                                 startActivity(new Intent(calenderActivity.this,StudyActivity.class));
                             Toast.makeText(calenderActivity.this, "Clicked " + index, Toast.LENGTH_SHORT).show();
@@ -199,6 +201,7 @@ public class calenderActivity extends MainActivity {
                        // eButton[i].setTextColor(android.R.attr.textColorSecondary);
                         eButton[i].setBackgroundColor(events.get(i).getColor());
                         eButton[i].setAlpha(0.7F);
+                        eButton[i].setTextColor(getResources().getColor(R.color.mainscreen_dark));
                         eventView.addView(eButton[i],lp);
                     }
                }
@@ -499,7 +502,7 @@ private ProgressDialog progressDialog;
 
   private void LoadEvents(String date)
   {
-      System.out.printf(date);
+      System.out.println("DDD"+date);
 
       progressBar.setVisibility(View.VISIBLE);
       mFireStore.collection(UID)
@@ -512,7 +515,7 @@ private ProgressDialog progressDialog;
                           List<CE> eventList = new ArrayList<>();
 
                           for(DocumentSnapshot doc : task.getResult()){
-                              System.out.println("-->"+doc.getData().values().contains("QUICKADD"));
+                              System.out.println("--**>"+doc.getData().values().contains("QUICKADD"));
                               if(doc.getData().values().contains("SOCIAL"))
                               {
                                   Social e=doc.toObject(Social.class);
@@ -535,8 +538,10 @@ private ProgressDialog progressDialog;
                               }
                               else if(doc.getData().values().contains("QUICKADD"))
                               {
+                                  System.out.println("HiTTTER");
                                   QuickAdd e=doc.toObject(QuickAdd.class);
                                   qas.add(e);
+                                  System.out.println("<<<"+qas);
 
                                   calendarView.addEvent(setEvent(date,e.getId(),null,null,null,e));
 
@@ -548,7 +553,7 @@ private ProgressDialog progressDialog;
                              // calendarView.addEvent(setEvent(date,e.getType(),e.getType()));
                           }
                           progressBar.setVisibility(View.GONE);
-                          Toast.makeText(context, "Events Loaded Success", Toast.LENGTH_SHORT).show();
+                         // Toast.makeText(context, "Events Loaded Success", Toast.LENGTH_SHORT).show();
                             /*EventsRecyclerViewAdapter recyclerViewAdapter = new
                                     EventsRecyclerViewAdapter(eventList,
                                     getActivity(), firestoreDB);
@@ -556,7 +561,92 @@ private ProgressDialog progressDialog;
 
                       } else {
                           Log.d("TAG", "Error getting documents: ", task.getException());
-                          Toast.makeText(context, "Something went Wrong", Toast.LENGTH_SHORT).show();
+                        //  Toast.makeText(context, "Something went Wrong", Toast.LENGTH_SHORT).show();
+                          progressBar.setVisibility(View.GONE);
+                      }
+                  }
+              });
+      mFireStore.collection("Public_workouts")
+              .whereEqualTo("uid", UID)
+              .whereEqualTo("date", date)
+              .get()
+              .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                  @Override
+                  public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                      if (task.isSuccessful()) {
+                          List<CE> eventList = new ArrayList<>();
+
+                          for(DocumentSnapshot doc : task.getResult()){
+                              System.out.println("-->"+doc.getData().values().contains("QUICKADD"));
+
+                               if(doc.getData().values().contains("GYM"))
+                              {
+                                  WorkoutPlan e=doc.toObject(WorkoutPlan.class);
+                                  wp.add(e);
+                                  calendarView.addEvent(setEvent(date,e.getId(),e,null,null,null));
+
+                              }
+
+
+                              //  CE e = doc.toObject(CE.class);
+                              //System.out.println(e);
+                              //e.setType(doc.getString("type"));
+                              //eventList.add(e);
+                              // calendarView.addEvent(setEvent(date,e.getType(),e.getType()));
+                          }
+                          progressBar.setVisibility(View.GONE);
+                          //Toast.makeText(context, "Events Loaded Success", Toast.LENGTH_SHORT).show();
+                            /*EventsRecyclerViewAdapter recyclerViewAdapter = new
+                                    EventsRecyclerViewAdapter(eventList,
+                                    getActivity(), firestoreDB);
+                            eventsRecyclerView.setAdapter(recyclerViewAdapter);*/
+
+                      } else {
+                          Log.d("TAG", "Error getting documents: ", task.getException());
+                         // Toast.makeText(context, "Something went Wrong", Toast.LENGTH_SHORT).show();
+                          progressBar.setVisibility(View.GONE);
+                      }
+                  }
+              });
+
+      mFireStore.collection("Private_workouts")
+              .whereEqualTo("uid", UID)
+              .whereEqualTo("date", date)
+              .get()
+              .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                  @Override
+                  public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                      if (task.isSuccessful()) {
+                          List<CE> eventList = new ArrayList<>();
+
+                          for(DocumentSnapshot doc : task.getResult()){
+                              System.out.println("-->"+doc.getData().values().contains("QUICKADD"));
+
+                              if(doc.getData().values().contains("GYM"))
+                              {
+                                  WorkoutPlan e=doc.toObject(WorkoutPlan.class);
+                                  wp.add(e);
+                                  calendarView.addEvent(setEvent(date,e.getId(),e,null,null,null));
+
+                              }
+
+
+                              //  CE e = doc.toObject(CE.class);
+                              //System.out.println(e);
+                              //e.setType(doc.getString("type"));
+                              //eventList.add(e);
+                              // calendarView.addEvent(setEvent(date,e.getType(),e.getType()));
+                          }
+                          progressBar.setVisibility(View.GONE);
+                         // Toast.makeText(context, "Events Loaded Success", Toast.LENGTH_SHORT).show();
+                            /*EventsRecyclerViewAdapter recyclerViewAdapter = new
+                                    EventsRecyclerViewAdapter(eventList,
+                                    getActivity(), firestoreDB);
+                            eventsRecyclerView.setAdapter(recyclerViewAdapter);*/
+
+                      } else {
+                          Log.d("TAG", "Error getting documents: ", task.getException());
+                         // Toast.makeText(context, "Something went Wrong", Toast.LENGTH_SHORT).show();
                           progressBar.setVisibility(View.GONE);
                       }
                   }
@@ -581,7 +671,7 @@ private ProgressDialog progressDialog;
         else if(type.contains("MEETING"))
         {color=Color.GREEN;}
         else if(type.contains("QUICKADD"))
-        {color=android.R.color.holo_blue_light;}
+        {color=Color.BLUE;}
         else {color=R.attr.colorAccent;}
         System.out.println(e1);
         Event ev=null;

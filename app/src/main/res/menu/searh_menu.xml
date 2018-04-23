@@ -10,4 +10,13 @@
         android:title="Search"
         app:actionViewClass="android.support.v7.widget.SearchView"
         app:showAsAction="ifRoom|collapseActionView" />
+    <item
+        android:id="@+id/desc"
+        android:title="A-Z" />
+    <item
+        android:id="@+id/asc"
+        android:title="Z-A" />
+    <item
+        android:id="@+id/day"
+        android:title="Day" />
 </menu>
