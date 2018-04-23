@@ -35,17 +35,17 @@ public class GymActivity extends MainActivity implements DefaultView.OnFragmentI
         Log.d(TAG, "onCreate: Starting.");
         sectionPageAdapter = new SectionPageAdapter(getSupportFragmentManager());
 
-        viewPager = (ViewPager) findViewById(R.id.pager);
+        viewPager = findViewById(R.id.pager);
         setupViewPager(viewPager);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
+        TabLayout tabLayout = findViewById(R.id.tablayout);
         tabLayout.setupWithViewPager(viewPager);
         dv = new DefaultView();
 
-        m_r = (RelativeLayout) findViewById(R.id.mesomorph_view);
-        endo_r = (RelativeLayout) findViewById(R.id.endomorph_view);
-        ecto_r = (RelativeLayout) findViewById(R.id.ectomorph_view);
-        b_r = (LinearLayout) findViewById(R.id.selectABodyType);
+        m_r = findViewById(R.id.mesomorph_view);
+        endo_r = findViewById(R.id.endomorph_view);
+        ecto_r = findViewById(R.id.ectomorph_view);
+        b_r = findViewById(R.id.selectABodyType);
         FragmentManager fragmentManager=getSupportFragmentManager();
 
 

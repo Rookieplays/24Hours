@@ -72,8 +72,8 @@ public class Registration extends LoginActivity
         this.password=password;
         this.wallet=wallet;
         this.savings=0.00;
-        this.date=date.now();
-        this.time=time.now();
+        this.date= LocalDate.now();
+        this.time= LocalTime.now();
         // encript=new Encryptor(this.password,this.userName);
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -87,8 +87,8 @@ public class Registration extends LoginActivity
         this.password=password;
         this.wallet=wallet;
         this.savings=savings;
-        this.date=date.now();
-        this.time=time.now();
+        this.date= LocalDate.now();
+        this.time= LocalTime.now();
         // encript=new Encryptor(this.password,this.userName);
     }
     public ArrayList<ArrayList<String>> listOfUsers()
@@ -134,15 +134,15 @@ public class Registration extends LoginActivity
         boolean emailMatched = true;
         eName = mail.split("@");
         address = mail.split("\\.");
-        System.out.println("Analyzing " + mail + "....");
-        System.out.println("checking email for @...");
+        //System.out.println()("Analyzing " + mail + "....");
+        //System.out.println()("checking email for @...");
         if (mail.contains("@"))
 
         {
-            System.out.println("checking if email is valid ..");
+            //System.out.println()("checking if email is valid ..");
             if (eName[0].length() >= 4) {
-                System.out.println("Analyzing Extention.");
-                System.out.println(eName.length);
+                //System.out.println()("Analyzing Extention.");
+                //System.out.println()(eName.length);
                 return true;
             }else {
                 mailField.setError(eName[0] + " is not a valid email name.");
@@ -156,16 +156,14 @@ public class Registration extends LoginActivity
     public boolean validUsername()
 
     {
-        System.out.println("Username: "+userName);
+        //System.out.println()("Username: "+userName);
         String format="[(([A-Z]+)*([a-z]+)*([0-9]+))]";
-        if(userName.length()>=3 || !(userName.contains("->")))
-            return true;
-        else return false;
+        return userName.length() >= 3 || !(userName.contains("->"));
     }
     public boolean validPassword(EditText et)
     {
 
-        System.out.println(password);
+        //System.out.println()(password);
         password=password.trim();
         password=password.replaceAll(" ","");
         // userDetails.add(new ArrayList<String>());
@@ -173,28 +171,28 @@ public class Registration extends LoginActivity
 
         if (password.length()>=6)
         {
-            System.out.println("Test 1 complete.. Password: "+password+" length: "+password.length()+" >= 6");
+            //System.out.println()("Test 1 complete.. Password: "+password+" length: "+password.length()+" >= 6");
             if (password.matches(".*[A-Z]+.*"))
             {
-                System.out.println("Test 2 complete.. Password: "+password+" has uppercase letters.");
+                //System.out.println()("Test 2 complete.. Password: "+password+" has uppercase letters.");
 
                 if(password.matches(".*[a-z]+.*"))
                 {
-                    System.out.println("Test 3 complete.. Password: "+password+" has lowerCase letters.");
+                    //System.out.println()("Test 3 complete.. Password: "+password+" has lowerCase letters.");
 
                     if(password.matches(".*[0-9].*"))
                     {
-                        System.out.println("Test 4 complete.. Password: "+password+" has  numbers.");
-                        System.out.println("Good Password");
+                        //System.out.println()("Test 4 complete.. Password: "+password+" has  numbers.");
+                        //System.out.println()("Good Password");
                         return true;
-                    }else {System.out.println("Test 4 Failed");et.setError("Must have a Number");return false;}
-                }else {System.out.println("Test 3 Failed");et.setError("Lowercase Letter missing");return false;}
-            }else {System.out.println("Test 2 Failed ");et.setError("An UPPERCASE letter is a must");return false;}
+                    }else {et.setError("Must have a Number");return false;}
+                }else {et.setError("Lowercase Letter missing");return false;}
+            }else {et.setError("An UPPERCASE letter is a must");return false;}
 
         }
         else
         {
-            System.out.println("Test 1 Failed .. Password: "+password+" length: "+password.length()+" !>= 6");et.setError("Password is too short min (6)");return false;
+           et.setError("Password is too short min (6)");return false;
         }
     }
     public String printErrorMsg(char type)
@@ -209,19 +207,19 @@ public class Registration extends LoginActivity
     /*public double getSaving()
     {
         int userNameIndex=loginCredentials.get(0).indexOf(userName);
-       System.out.println(userName+":"+userNameIndex);
+       //System.out.println()(userName+":"+userNameIndex);
        savings=Double.parseDouble(loginCredentials.get(3).get(userNameIndex));
        return savings;
     }*/
     @RequiresApi(api = Build.VERSION_CODES.O)
     public LocalDate getDate()
     {
-        return date.now();
+        return LocalDate.now();
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
     public LocalTime getTime()
     {
-        return time.now();
+        return LocalTime.now();
     }
     public boolean saveDetails()throws IOException
     {
@@ -245,7 +243,7 @@ public class Registration extends LoginActivity
     {
 
         int userNameIndex=loginCredentials.get(0).indexOf(userName);
-        System.out.println(userName+":"+userNameIndex);
+        //System.out.println()(userName+":"+userNameIndex);
         wallet=Double.parseDouble(loginCredentials.get(2).get(userNameIndex));
         return wallet;
     }*/
@@ -255,16 +253,14 @@ public class Registration extends LoginActivity
             return true;
         else if (input!=null&&input.equals(""))
             return false;
-        else if (input.matches(pattern))
-            return true;
-        else return false;
+        else return input.matches(pattern);
     }
     public boolean existingAccount()
     {
-        System.out.println(userName+"-"+password);
+        //System.out.println()(userName+"-"+password);
         if (loginCredentials.get(0).contains(userName))
         {
-            System.out.println(userName+" Was Last seen on: "+loginCredentials.get(2).get((loginCredentials.get(0).indexOf(userName))));
+            //System.out.println()(userName+" Was Last seen on: "+loginCredentials.get(2).get((loginCredentials.get(0).indexOf(userName))));
             return true;
         }
 
@@ -290,7 +286,7 @@ public class Registration extends LoginActivity
                 temp=filereader.nextLine().split("->");
                 for (int i=1;i<loginCredentials.size();i++ )
                 {
-                    loginCredentials.get(i).add(temp[i]);//System.out.println(loginCredentials);
+                    loginCredentials.get(i).add(temp[i]);////System.out.println()(loginCredentials);
                 }
             }filereader.close();
         }

@@ -83,25 +83,25 @@ public class DefaultGymplan extends AppCompatActivity {
         final View dialogView=inflater.inflate(R.layout.default_gymplan,null);
         dialogBuilder.setView(dialogView);
 
-        final TextView editText=(TextView)findViewById(R.id.DefaultView_heading);
-        final Button saveBtn=(Button)findViewById(R.id.saveBtn);
-        seekbar=(SeekBar)findViewById(R.id.seekBar);
-        d_beginner=(TextView)findViewById(R.id.d_beginner);
-        d_intermidiate=(TextView)findViewById(R.id.d_intermidiate);
-        d_advanced=(TextView)findViewById(R.id.d_advanced);
-        seeV1=(Button)findViewById(R.id.seeV1);
-        seeV2=(Button)findViewById(R.id.seeV2);
-        seeV3=(Button)findViewById(R.id.seeV3);
-        close=(Button)findViewById(R.id.seeV3);
+        final TextView editText= findViewById(R.id.DefaultView_heading);
+        final Button saveBtn= findViewById(R.id.saveBtn);
+        seekbar= findViewById(R.id.seekBar);
+        d_beginner= findViewById(R.id.d_beginner);
+        d_intermidiate= findViewById(R.id.d_intermidiate);
+        d_advanced= findViewById(R.id.d_advanced);
+        seeV1= findViewById(R.id.seeV1);
+        seeV2= findViewById(R.id.seeV2);
+        seeV3= findViewById(R.id.seeV3);
+        close= findViewById(R.id.seeV3);
 
-        low_reps=(CheckBox) findViewById(R.id.low_reps);
-        mid_reps=(CheckBox) findViewById(R.id.mid_reps);
-        mid_high_reps=(CheckBox) findViewById(R.id.mid2_reps);
-        high_reps=(CheckBox) findViewById(R.id.high_reps);
-        low_sets=(CheckBox) findViewById(R.id.low_sets);
-        mid_sets=(CheckBox) findViewById(R.id.mid_sets);
-        mid_high_sets=(CheckBox) findViewById(R.id.mid2_sets);
-        high_sets=(CheckBox) findViewById(R.id.high_sets);
+        low_reps= findViewById(R.id.low_reps);
+        mid_reps= findViewById(R.id.mid_reps);
+        mid_high_reps= findViewById(R.id.mid2_reps);
+        high_reps= findViewById(R.id.high_reps);
+        low_sets= findViewById(R.id.low_sets);
+        mid_sets= findViewById(R.id.mid_sets);
+        mid_high_sets= findViewById(R.id.mid2_sets);
+        high_sets= findViewById(R.id.high_sets);
 
         if(low_reps.isChecked())reps[0]=low_reps.getText().toString();
         else reps[0]="";
@@ -121,10 +121,10 @@ public class DefaultGymplan extends AppCompatActivity {
         if(high_sets.isChecked())sets[3]=high_sets.getText().toString();
         else sets[3]="";
 
-        wv_muscleGroup=(TextView)findViewById(R.id.wv_muscleGroup);
+        wv_muscleGroup= findViewById(R.id.wv_muscleGroup);
 
-        workout_view=(LinearLayout)findViewById(R.id.WorkoutList_view);
-        defaultSettingd=(LinearLayout)findViewById(R.id.Default_settings);
+        workout_view= findViewById(R.id.WorkoutList_view);
+        defaultSettingd= findViewById(R.id.Default_settings);
 
         seeV1.setOnClickListener(e->{showWorkoutList(muscleGroup,1);});
         seeV2.setOnClickListener(e->{showWorkoutList(muscleGroup,2);});
@@ -138,7 +138,7 @@ public class DefaultGymplan extends AppCompatActivity {
                 else if(seekbar.getProgress()<8){seekbar.setBackgroundColor(Color.RED);d_beginner.setTextSize(TypedValue.COMPLEX_UNIT_DIP,12);d_intermidiate.setTextSize(TypedValue.COMPLEX_UNIT_DIP,12);d_advanced.setTextSize(TypedValue.COMPLEX_UNIT_DIP,14);}
 
                 difficultLvl=seekbar.getProgress();
-                System.out.println("The Current Lvl is: "+seekbar.getProgress()+" or "+i);
+                //System.out.println()("The Current Lvl is: "+seekbar.getProgress()+" or "+i);
             }
 
             @Override
@@ -190,19 +190,19 @@ public class DefaultGymplan extends AppCompatActivity {
     }
 
     private void showData(DataSnapshot dataSnapshot) {
-        System.out.println("Getting data....");
+        //System.out.println()("Getting data....");
         for(DataSnapshot ds: dataSnapshot.getChildren())
         {
             Workout workout=new Workout();
            String workoutNAme= String.valueOf(ds.child("EXERCISES").child("CHEST").getValue());
-    System.out.println(workoutNAme);
+    //System.out.println()(workoutNAme);
             workout.setName(ds.child("EXERCISES").child("CHEST").child(workoutNAme).getValue(Workout.class).getName());
             chestList.add(workout);
         }
     }
     public  List<Workout> getWorkouts()
     {
-        System.out.println("Changing value of switch.... to off");
+        //System.out.println()("Changing value of switch.... to off");
         myRefrence.child("EXERCISES").setValue("Switch","off");
         return list;
     }
@@ -213,7 +213,7 @@ public class DefaultGymplan extends AppCompatActivity {
         myRefrence.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                System.out.println("onDataChanged Database....");
+                //System.out.println()("onDataChanged Database....");
                 Log.d(TAG,"onDatachanged, Added Information to database");
                 showData(dataSnapshot);
 

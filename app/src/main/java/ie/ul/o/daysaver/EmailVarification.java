@@ -25,7 +25,7 @@ public class EmailVarification extends RegisterActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     setContentView(R.layout.popup_layout);
-        resendBtn=(Button)findViewById(R.id.resendBtn);
+        resendBtn= findViewById(R.id.resendBtn);
         progressDialog=new ProgressDialog(this);
         progressDialog.setMessage("Waiting for conformation....");
         DisplayMetrics dm=new DisplayMetrics();
@@ -41,7 +41,7 @@ public class EmailVarification extends RegisterActivity{
 
 
                 this.user.sendEmailVerification();
-        System.out.println("Resending Email...");
+        //System.out.println()("Resending Email...");
         Toast.makeText(EmailVarification.this,"Resending Email...",Toast.LENGTH_LONG).show();
 
 
@@ -63,15 +63,15 @@ public class EmailVarification extends RegisterActivity{
         final FirebaseUser currentUser;
         currentUser = this.user;
         //showProgress();
-        System.out.println("Waiting for " + this.user.getEmail());
+        //System.out.println()("Waiting for " + this.user.getEmail());
 
 
-                    System.out.println(currentUser.isEmailVerified());
+                    //System.out.println()(currentUser.isEmailVerified());
                     Intent intentA = null;
                    /* if(currentUser!=null)
                     {
-                        System.out.println(currentUser.getEmail()+" Has been sent a Verification email");
-                        fAuthTask.getInstance().getCurrentUser().reload().addOnCompleteListener(t->{System.out.println("****Ststus: "+currentUser.isEmailVerified());
+                        //System.out.println()(currentUser.getEmail()+" Has been sent a Verification email");
+                        fAuthTask.getInstance().getCurrentUser().reload().addOnCompleteListener(t->{//System.out.println()("****Ststus: "+currentUser.isEmailVerified());
                        //  if (currentUser.isEmailVerified()) {
                              Toast.makeText(EmailVarification.this,"Email Verified "+getString(R.string.ok),Toast.LENGTH_LONG).show();
                              startActivity(new Intent("ie.ul.o.daysaver.FullscreenActivity"));
@@ -88,7 +88,7 @@ public class EmailVarification extends RegisterActivity{
                        // }
                        // });
                         startActivity(new Intent("ie.ul.o.daysaver.FullscreenActivity"));
-                        System.out.println("Emailed has been confirmed");
+                        //System.out.println()("Emailed has been confirmed");
                     //}
 
             //startActivity(new Intent("ie.ul.o.daysaver.MainActivity"));

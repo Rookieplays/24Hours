@@ -34,7 +34,7 @@ public class WrkoutHisAdapter extends RecyclerView.Adapter<WrkoutHisAdapter.View
         public ViewHolder(View v)
         {
             super(v);
-            mTextView=(CheckBox) v.findViewById(R.id.returnItem);
+            mTextView= v.findViewById(R.id.returnItem);
 
         }
     }

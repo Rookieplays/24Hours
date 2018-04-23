@@ -48,7 +48,7 @@ import java.util.ArrayList;
             public ViewHolder(View v)
             {
                 super(v);
-                mTextView=(TextView)v.findViewById(R.id.dayLabel);
+                mTextView= v.findViewById(R.id.dayLabel);
                 done=v.findViewById(R.id.doneDay);
                 dur=v.findViewById(R.id.dur);
                 layer1=v.findViewById(R.id.layer1);//resetLayer
@@ -222,11 +222,11 @@ import java.util.ArrayList;
                     subjects=subjects_for_day.sunSub;
                 }
                 //subjects=subjects_for_day.GETDAYSUBJECTS();
-                System.out.println("These are the subjects...."+subjects);
+                //System.out.println()("These are the subjects...."+subjects);
 
                 studies.get(position).setSubjects(subjects);
                 studs=studies;
-                System.out.println("These is the Study Plan...."+studies);
+                //System.out.println()("These is the Study Plan...."+studies);
 
                     startAnimation(holder.itemView);
                     //subjects_for_day.ViewHolder.mTextView.setEnabled(false);

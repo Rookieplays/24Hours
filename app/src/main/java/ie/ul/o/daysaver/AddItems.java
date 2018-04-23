@@ -18,7 +18,7 @@ class AddItems
 
     public AddItems(String creator,String listName,Context context)throws IOException
     {
-        System.out.println("I've entered AddItems");
+        ////System.out.println()()("I've entered AddItems");
         this.context=context;
         contxt=context;
 
@@ -31,7 +31,7 @@ class AddItems
         man.loadShoppingLists();
         items=new ArrayList<Item>();
         items=man.getShoppingLists();
-        System.out.println("All items->"+items);
+        ////System.out.println()()("All items->"+items);
 
     }
 
@@ -49,25 +49,25 @@ class AddItems
         boolean duplicate=false;
         ArrayList<Item>newItems=new ArrayList<>();
         for(Item i:items) {
-            System.out.println("List found");
-            System.out.println("There are " + items.size() + " in there");
-            System.out.println("This is your item -> " + i);
-            System.out.println("This is All the items->" + items);
+            ////System.out.println()()("List found");
+            ////System.out.println()()("There are " + items.size() + " in there");
+            ////System.out.println()()("This is your item -> " + i);
+            ////System.out.println()()("This is All the items->" + items);
             int indexOfItem = 0;
             ArrayList<String> temp = new ArrayList<String>();
             for (Item it : items) {
                 temp.add(it.getItemName());
             }
             indexOfItem = temp.indexOf(i.getItemName());
-            System.out.println("Item entered is at: " + indexOfItem);
-            System.out.println(temp);
+            ////System.out.println()()("Item entered is at: " + indexOfItem);
+            ////System.out.println()()(temp);
             if (temp.contains(i.getItemName())) {
-                System.out.println("your item is duplicated");
+                ////System.out.println()()("your item is duplicated");
                 //items.add(it);
                 duplicate = true;
             } else items.add(i);
 
-            System.out.println("This All the items now-> " + items);
+            ////System.out.println()()("This All the items now-> " + items);
             if (duplicate == true) {
                 i.setAmount(items.get(indexOfItem).getAmount() + i.getAmount());
             }

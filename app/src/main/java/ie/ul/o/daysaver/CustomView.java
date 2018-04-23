@@ -208,13 +208,13 @@ public class CustomView extends Fragment implements SwipeRefreshLayout.OnRefresh
                   List<WorkoutPlan> workoutplans = new ArrayList<>();
 
                   for (DocumentSnapshot doc : task.getResult()) {
-                      System.out.println("#123xx"+doc.getData());
+                      //System.out.println()("#123xx"+doc.getData());
                       WorkoutPlan wp = doc.toObject(WorkoutPlan.class);
-                    //  System.out.println(wp+"***********"+wp.getUID());
-                      System.out.println("___"+wp.getWorkouts());
+                    //  //System.out.println()(wp+"***********"+wp.getUID());
+                      //System.out.println()("___"+wp.getWorkouts());
                       workoutplans.add(wp);
                   }
-                 // System.out.println("=="+workoutplans);
+                 // //System.out.println()("=="+workoutplans);
 
                   gymWorkouts.addAll(workoutplans);
 
@@ -225,9 +225,9 @@ public class CustomView extends Fragment implements SwipeRefreshLayout.OnRefresh
                       ref.addValueEventListener(new ValueEventListener() {
                           @Override
                           public void onDataChange(DataSnapshot dataSnapshot) {
-                              //System.out.println(dataSnapshot.getValue());
+                              ////System.out.println()(dataSnapshot.getValue());
                               UserInformation user=dataSnapshot.getValue(UserInformation.class);
-                             // System.out.println("◘"+user);
+                             // //System.out.println()("◘"+user);
                               Log.d("WP",wp.getName()+" Was made by "+user.getUsername()+","+"Img:"+user.getImage());
                               if(user!=null)
                               {
@@ -254,7 +254,7 @@ public class CustomView extends Fragment implements SwipeRefreshLayout.OnRefresh
 
 
                   }
-                  System.out.println("Finshed **");
+                  //System.out.println()("Finshed **");
                   progressDialog.hide();
 
               }
@@ -267,12 +267,12 @@ public class CustomView extends Fragment implements SwipeRefreshLayout.OnRefresh
                     List<WorkoutPlan> workoutplans = new ArrayList<>();
 
                     for (DocumentSnapshot doc : task.getResult()) {
-                        System.out.println("#123xx"+doc.getData());
+                        //System.out.println()("#123xx"+doc.getData());
                         WorkoutPlan wp = doc.toObject(WorkoutPlan.class);
-                        //  System.out.println(wp+"***********"+wp.getUID());
+                        //  //System.out.println()(wp+"***********"+wp.getUID());
                         workoutplans.add(wp);
                     }
-                    // System.out.println("=="+workoutplans);
+                    // //System.out.println()("=="+workoutplans);
 
                     gymWorkouts.addAll(workoutplans);
 
@@ -283,9 +283,9 @@ public class CustomView extends Fragment implements SwipeRefreshLayout.OnRefresh
                         ref.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
-                                //System.out.println(dataSnapshot.getValue());
+                                ////System.out.println()(dataSnapshot.getValue());
                                 UserInformation user=dataSnapshot.getValue(UserInformation.class);
-                                // System.out.println("◘"+user);
+                                // //System.out.println()("◘"+user);
                                 Log.d("WP",wp.getName()+" Was made by "+user.getUsername()+","+"Img:"+user.getImage());
                                 if(user!=null)
                                 {
@@ -312,7 +312,7 @@ public class CustomView extends Fragment implements SwipeRefreshLayout.OnRefresh
 
 
                     }
-                    System.out.println("Finshed **");
+                    //System.out.println()("Finshed **");
                     progressDialog.hide();
 
                 }
@@ -363,12 +363,12 @@ public class CustomView extends Fragment implements SwipeRefreshLayout.OnRefresh
                     List<WorkoutPlan> workoutplans = new ArrayList<>();
 
                     for (DocumentSnapshot doc : task.getResult()) {
-                        System.out.println("private workouts______________________________"+doc.getData());
+                        //System.out.println()("private workouts______________________________"+doc.getData());
                         WorkoutPlan wp = doc.toObject(WorkoutPlan.class);
-                        //  System.out.println(wp+"***********"+wp.getUID());
+                        //  //System.out.println()(wp+"***********"+wp.getUID());
                         workoutplans.add(wp);
                     }
-                    // System.out.println("=="+workoutplans);
+                    // //System.out.println()("=="+workoutplans);
 
                     gymWorkouts.addAll(workoutplans);
 
@@ -379,9 +379,9 @@ public class CustomView extends Fragment implements SwipeRefreshLayout.OnRefresh
                         ref.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
-                                //System.out.println(dataSnapshot.getValue());
+                                ////System.out.println()(dataSnapshot.getValue());
                                 UserInformation user=dataSnapshot.getValue(UserInformation.class);
-                                // System.out.println("◘"+user);
+                                // //System.out.println()("◘"+user);
                                 Log.d("WP",wp.getName()+" Was made by "+user.getUsername()+","+"Img:"+user.getImage());
                                 if(user!=null)
                                 {
@@ -408,7 +408,7 @@ public class CustomView extends Fragment implements SwipeRefreshLayout.OnRefresh
 
 
                     }
-                    System.out.println("Finshed **");
+                    //System.out.println()("Finshed **");
                     progressDialog.hide();
 
                 }
@@ -421,12 +421,12 @@ public class CustomView extends Fragment implements SwipeRefreshLayout.OnRefresh
                     List<WorkoutPlan> workoutplans = new ArrayList<>();
 
                     for (DocumentSnapshot doc : task.getResult()) {
-                        System.out.println("public workouts_xxxxxx_______________________"+doc.getData());
+                        //System.out.println()("public workouts_xxxxxx_______________________"+doc.getData());
                         WorkoutPlan wp = doc.toObject(WorkoutPlan.class);
-                        //  System.out.println(wp+"***********"+wp.getUID());
+                        //  //System.out.println()(wp+"***********"+wp.getUID());
                         workoutplans.add(wp);
                     }
-                    // System.out.println("=="+workoutplans);
+                    // //System.out.println()("=="+workoutplans);
 
                     gymWorkouts.addAll(workoutplans);
 
@@ -437,9 +437,9 @@ public class CustomView extends Fragment implements SwipeRefreshLayout.OnRefresh
                         ref.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
-                                //System.out.println(dataSnapshot.getValue());
+                                ////System.out.println()(dataSnapshot.getValue());
                                 UserInformation user=dataSnapshot.getValue(UserInformation.class);
-                                // System.out.println("◘"+user);
+                                // //System.out.println()("◘"+user);
                                 Log.d("WP",wp.getName()+" Was made by "+user.getUsername()+","+"Img:"+user.getImage());
                                 if(user!=null)
                                 {
@@ -466,7 +466,7 @@ public class CustomView extends Fragment implements SwipeRefreshLayout.OnRefresh
 
 
                     }
-                    System.out.println("Finshed **");
+                    //System.out.println()("Finshed **");
                     progressDialog.hide();
 
                 }
@@ -483,7 +483,7 @@ public class CustomView extends Fragment implements SwipeRefreshLayout.OnRefresh
     View view=inflater.inflate(R.layout.fragment_custom_view, container, false);
         fAuth=FirebaseAuth.getInstance();
         fStore=FirebaseFirestore.getInstance();
-        Toolbar tool = (Toolbar)view.findViewById(R.id.stb);
+        Toolbar tool = view.findViewById(R.id.stb);
         ((AppCompatActivity)getActivity()).setSupportActionBar(tool);
         firebaseDatabase=FirebaseDatabase.getInstance();
         gymWorkouts=new ArrayList<WorkoutPlan>();

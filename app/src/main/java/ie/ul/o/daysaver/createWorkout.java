@@ -134,7 +134,7 @@ public class createWorkout extends GymActivity implements  RecyclerItemTouchHelp
        // refreshListOfWorkouts();
         frameLayout=findViewById(R.id.frameLayout);
          hideBox=findViewById(R.id.hideBox);
-        Toolbar tool = (Toolbar)findViewById(R.id.ctb);
+        Toolbar tool = findViewById(R.id.ctb);
         setSupportActionBar(tool);
         workoutName=findViewById(R.id.newPlanText);
         daytype=findViewById(R.id.days_rBtn);
@@ -150,7 +150,7 @@ public class createWorkout extends GymActivity implements  RecyclerItemTouchHelp
         completeBtn.setOnClickListener(e->{
 
              for(int i=0;i<startTimes.size();i++)
-                System.out.println(new WorkoutPlan(workoutname,startTimes.get(i),wL,endTimes.get(i),UID, "GYM", new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(startTimes.get(i)),new SimpleDateFormat("HH:mm",Locale.getDefault()).format(startTimes.get(i)),new SimpleDateFormat("HH:mm",Locale.getDefault()).format(endTimes.get(i))));
+                //System.out.println()(new WorkoutPlan(workoutname,startTimes.get(i),wL,endTimes.get(i),UID, "GYM", new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(startTimes.get(i)),new SimpleDateFormat("HH:mm",Locale.getDefault()).format(startTimes.get(i)),new SimpleDateFormat("HH:mm",Locale.getDefault()).format(endTimes.get(i))));
             saveNewWorkoutPlan(); finish();workoutName.getText().clear();enterDay.getEditText().getText().clear();switcher.setChecked(true);
 
         });
@@ -163,7 +163,7 @@ public class createWorkout extends GymActivity implements  RecyclerItemTouchHelp
 
 
         collectDataP1();
-        System.out.println("workout name: +"+workoutName+"\nStart time: "+simpleDateFormat.format(startTime)+"\nEndTime: "+simpleDateFormat.format(convertDurationToTimeDone(startTime))+"\n");
+        //System.out.println()("workout name: +"+workoutName+"\nStart time: "+simpleDateFormat.format(startTime)+"\nEndTime: "+simpleDateFormat.format(convertDurationToTimeDone(startTime))+"\n");
         hideBox.setOnTouchListener((view, event) -> {
             int action = MotionEventCompat.getActionMasked(event);
 
@@ -181,7 +181,7 @@ public class createWorkout extends GymActivity implements  RecyclerItemTouchHelp
                             ranimatorSet.playTogether(rotate);
                             ranimatorSet.start();
 
-                            System.out.println("hide");
+                            //System.out.println()("hide");
                             ObjectAnimator animatorY=ObjectAnimator.ofFloat(ll,"y",-555f);
                             animatorY.setDuration(350);
                             AnimatorSet animatorSet=new AnimatorSet();
@@ -197,7 +197,7 @@ public class createWorkout extends GymActivity implements  RecyclerItemTouchHelp
                             ranimatorSet.playTogether(rotate);
                             ranimatorSet.start();
 
-                            System.out.println("hide");
+                            //System.out.println()("hide");
                             ObjectAnimator animatorY=ObjectAnimator.ofFloat(ll,"y",-720);
                             animatorY.setDuration(350);
                             AnimatorSet animatorSet=new AnimatorSet();
@@ -213,7 +213,7 @@ public class createWorkout extends GymActivity implements  RecyclerItemTouchHelp
                             ranimatorSet.playTogether(rotate);
                             ranimatorSet.start();
 
-                            System.out.println("hide");
+                            //System.out.println()("hide");
                             ObjectAnimator animatorY = ObjectAnimator.ofFloat(ll, "y", -380f);
                             animatorY.setDuration(350);
                             AnimatorSet animatorSet = new AnimatorSet();
@@ -230,7 +230,7 @@ public class createWorkout extends GymActivity implements  RecyclerItemTouchHelp
                 case (MotionEvent.ACTION_DOWN) : {
                     Log.d(DEBUG_TAG, "Action was UP");
                     if (hide == true) {
-                        System.out.println("Show");
+                        //System.out.println()("Show");
                         hide = false;
                         if (timeContainer.getVisibility() != View.GONE) {
 
@@ -240,7 +240,7 @@ public class createWorkout extends GymActivity implements  RecyclerItemTouchHelp
                             ranimatorSet.playTogether(rotate);
                             ranimatorSet.start();
 
-                            System.out.println("hide");
+                            //System.out.println()("hide");
                             ObjectAnimator animatorY = ObjectAnimator.ofFloat(ll, "y", 0f);
                             animatorY.setDuration(350);
                             AnimatorSet animatorSet = new AnimatorSet();
@@ -254,7 +254,7 @@ public class createWorkout extends GymActivity implements  RecyclerItemTouchHelp
                             ranimatorSet.playTogether(rotate);
                             ranimatorSet.start();
 
-                            System.out.println("hide");
+                            //System.out.println()("hide");
                             ObjectAnimator animatorY = ObjectAnimator.ofFloat(ll, "y", 0f);
                             animatorY.setDuration(350);
                             AnimatorSet animatorSet = new AnimatorSet();
@@ -270,7 +270,7 @@ public class createWorkout extends GymActivity implements  RecyclerItemTouchHelp
                             ranimatorSet.playTogether(rotate);
                             ranimatorSet.start();
 
-                            System.out.println("hide");
+                            //System.out.println()("hide");
                             ObjectAnimator animatorY = ObjectAnimator.ofFloat(ll, "y", 0);
                             animatorY.setDuration(350);
                             AnimatorSet animatorSet = new AnimatorSet();
@@ -299,7 +299,7 @@ public class createWorkout extends GymActivity implements  RecyclerItemTouchHelp
                     ranimatorSet.playTogether(rotate);
                     ranimatorSet.start();
 
-                    System.out.println("hide");
+                    //System.out.println()("hide");
                     ObjectAnimator animatorY=ObjectAnimator.ofFloat(ll,"y",-555f);
                     animatorY.setDuration(350);
                     AnimatorSet animatorSet=new AnimatorSet();
@@ -315,7 +315,7 @@ public class createWorkout extends GymActivity implements  RecyclerItemTouchHelp
                     ranimatorSet.playTogether(rotate);
                     ranimatorSet.start();
 
-                    System.out.println("hide");
+                    //System.out.println()("hide");
                     ObjectAnimator animatorY=ObjectAnimator.ofFloat(ll,"y",-720);
                     animatorY.setDuration(350);
                     AnimatorSet animatorSet=new AnimatorSet();
@@ -331,7 +331,7 @@ public class createWorkout extends GymActivity implements  RecyclerItemTouchHelp
                     ranimatorSet.playTogether(rotate);
                     ranimatorSet.start();
 
-                    System.out.println("hide");
+                    //System.out.println()("hide");
                     ObjectAnimator animatorY = ObjectAnimator.ofFloat(ll, "y", -380f);
                     animatorY.setDuration(350);
                     AnimatorSet animatorSet = new AnimatorSet();
@@ -352,7 +352,7 @@ public class createWorkout extends GymActivity implements  RecyclerItemTouchHelp
             }
             else
             {
-                System.out.println("Show");
+                //System.out.println()("Show");
                 hide=false;
                 if(timeContainer.getVisibility()!=View.GONE){
 
@@ -362,7 +362,7 @@ public class createWorkout extends GymActivity implements  RecyclerItemTouchHelp
                     ranimatorSet.playTogether(rotate);
                     ranimatorSet.start();
 
-                    System.out.println("hide");
+                    //System.out.println()("hide");
                     ObjectAnimator animatorY=ObjectAnimator.ofFloat(ll,"y",0f);
                     animatorY.setDuration(350);
                     AnimatorSet animatorSet=new AnimatorSet();
@@ -378,7 +378,7 @@ public class createWorkout extends GymActivity implements  RecyclerItemTouchHelp
                     ranimatorSet.playTogether(rotate);
                     ranimatorSet.start();
 
-                    System.out.println("hide");
+                    //System.out.println()("hide");
                     ObjectAnimator animatorY=ObjectAnimator.ofFloat(ll,"y",0f);
                     animatorY.setDuration(350);
                     AnimatorSet animatorSet=new AnimatorSet();
@@ -394,7 +394,7 @@ public class createWorkout extends GymActivity implements  RecyclerItemTouchHelp
                     ranimatorSet.playTogether(rotate);
                     ranimatorSet.start();
 
-                    System.out.println("hide");
+                    //System.out.println()("hide");
                     ObjectAnimator animatorY = ObjectAnimator.ofFloat(ll, "y", 0);
                     animatorY.setDuration(350);
                     AnimatorSet animatorSet = new AnimatorSet();
@@ -412,7 +412,7 @@ public class createWorkout extends GymActivity implements  RecyclerItemTouchHelp
       //  recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
-        System.out.println("Create workoutsSays.../."+AddNewWorkout.getOldWorkouts());
+        //System.out.println()("Create workoutsSays.../."+AddNewWorkout.getOldWorkouts());
         myAdapter = new AdapterA(this, workoutList);
 
         recyclerView.setAdapter(myAdapter);
@@ -437,7 +437,7 @@ public class createWorkout extends GymActivity implements  RecyclerItemTouchHelp
             WORKOUTZ=workoutList;
 
         }//refreshListOfWorkouts();
-            System.out.println("-------------------------------------->" + workoutList);
+            //System.out.println()("-------------------------------------->" + workoutList);
         wL.addAll(workoutList);
 
     }
@@ -528,7 +528,7 @@ WorkoutPlan event;
                         });
 
             } else {
-                System.out.println("Status: " + status);
+                //System.out.println()("Status: " + status);
                 firebaseFirestore.collection("Private_workouts")
                         .add(event)
                         .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -555,8 +555,8 @@ WorkoutPlan event;
 
                 {
                     List<Workout> workouttoSave = new ArrayList<>();
-                    System.out.println("*****" + wL);
-                    System.out.println("++++++**" + workoutList);
+                    //System.out.println()("*****" + wL);
+                    //System.out.println()("++++++**" + workoutList);
 
 
                     event = new WorkoutPlan(workoutname, startTimes.get(i), wL, endTimes.get(i), UID, "GYM", new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(startTimes.get(i)), new SimpleDateFormat("HH:mm", Locale.getDefault()).format(startTimes.get(i)), new SimpleDateFormat("HH:mm", Locale.getDefault()).format(endTimes.get(i)));
@@ -596,8 +596,8 @@ WorkoutPlan event;
         View dialogView=inflater.inflate(R.layout.info1, null);
         builder.setView(dialogView);
         Button yes,no;
-        yes=(Button)dialogView.findViewById(R.id.button6);
-        System.out.println("Here");
+        yes= dialogView.findViewById(R.id.button6);
+        //System.out.println()("Here");
         AlertDialog adialog=builder.create();
 
         adialog.show();
@@ -610,8 +610,8 @@ WorkoutPlan event;
     {
         View popupContentView = LayoutInflater.from(context).inflate(R.layout.info1, null);
         Button yes,no;
-        yes=(Button)popupContentView.findViewById(R.id.button6);
-        System.out.println("Here");
+        yes= popupContentView.findViewById(R.id.button6);
+        //System.out.println()("Here");
 
 
         PopupWindow popupWindow = new PopupWindow(context);
@@ -650,8 +650,8 @@ WorkoutPlan event;
     @Override
     public void onStart() {
         super.onStart();
-        System.out.println("clicked? "+addWorkout);
-        System.out.println("\n\n\nstart..............");
+        //System.out.println()("clicked? "+addWorkout);
+        //System.out.println()("\n\n\nstart..............");
 
         if(addWorkout==false) {
             hideBox.setVisibility(View.GONE);
@@ -660,13 +660,13 @@ WorkoutPlan event;
 
                 @RequiresApi(api = Build.VERSION_CODES.M)
                 public void onTick(long milliUntilFinish) {
-                    System.out.println(milliUntilFinish);
+                    //System.out.println()(milliUntilFinish);
 
                 }
 
                 public void onFinish() {
                    alertBox();
-                    System.out.println("Finished");
+                    //System.out.println()("Finished");
 
                 }
             }.start();
@@ -717,7 +717,7 @@ WorkoutPlan event;
     public long convertDurationToTimeDone(long Timestrt)
     {
 
-        System.out.println("Timstrt**"+dur+"*+Timestrt+\n"+((long)(Double.parseDouble(dur))*3600000)+Timestrt);
+        //System.out.println()("Timstrt**"+dur+"*+Timestrt+\n"+((long)(Double.parseDouble(dur))*3600000)+Timestrt);
         return (long)(Double.parseDouble(dur)*3600000)+Timestrt;
     }
 
@@ -730,7 +730,7 @@ WorkoutPlan event;
     }
     private long converttoLong(String t)
     {
-        System.out.println(t);
+        //System.out.println()(t);
         Date d=new Date();
         SimpleDateFormat sdf=new SimpleDateFormat("hh:mm",Locale.getDefault());
         try {
@@ -738,7 +738,7 @@ WorkoutPlan event;
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        System.out.println("*****"+d.getTime());
+        //System.out.println()("*****"+d.getTime());
         return  d.getTime();
     }
 
@@ -785,14 +785,9 @@ WorkoutPlan event;
         String pattern3="([0-9]:([0-9]|([0-5][0-9])):([0-9]|([0-5][0-9])))";
         String pattern4="(([0-9]:[0]:[0])|([0-9]:[0-5][0-9])|([0-9]:[0]))";
         String pattern2="(?:[01][0-9]|2[0-3]):([0-5][0-9])";
-        System.out.println(time);
-        if(time.matches(pattern)||(time.matches(pattern2))||
-                time.matches(pattern3)||time.matches(pattern4))
-        {return true;}
-        else
-        {
-            return false;
-        }
+        //System.out.println()(time);
+        return time.matches(pattern) || (time.matches(pattern2)) ||
+                time.matches(pattern3) || time.matches(pattern4);
 
 
 
@@ -803,18 +798,18 @@ WorkoutPlan event;
 
 
         int radioID=daytype.getCheckedRadioButtonId();//2131362481
-        RadioButton singleButton=(RadioButton)findViewById(radioID);
+        RadioButton singleButton= findViewById(radioID);
 
         switch (radioID) {
             case R.id.radioButton: {
-                System.out.println("Enabling dropdown selection..");
+                //System.out.println()("Enabling dropdown selection..");
                 occurance.setVisibility(View.VISIBLE);
                 enterDay.setVisibility(View.VISIBLE);
                 timeContainer.setVisibility(View.GONE);
                 occurance.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                        System.out.println("OCC: " + occurance.getSelectedItem().toString());
+                        //System.out.println()("OCC: " + occurance.getSelectedItem().toString());
                         occ = occurance.getSelectedItem().toString();
                         if (occ.equalsIgnoreCase("Once"))
                             occures = "Only on ";
@@ -840,7 +835,7 @@ WorkoutPlan event;
             }
             break;
             case R.id.radioButton2: {
-                System.out.println("Getting.. th Date picker");
+                //System.out.println()("Getting.. th Date picker");
                 occurance.setVisibility(View.GONE);
                 enterDay.setVisibility(View.GONE);
                 timeContainer.setVisibility(View.VISIBLE);
@@ -851,7 +846,7 @@ WorkoutPlan event;
         }
 
 
-        System.out.println(radioID);
+        //System.out.println()(radioID);
         return 0;
     }
 
@@ -1010,7 +1005,7 @@ WorkoutPlan event;
                /* if(occ.equalsIgnoreCase("Once"))
                 {
                     storeInfo("once");
-                    System.out.println("workout name:  "+workoutname+"\nstartTime: "+simpleDateFormat.format(dayToLong(day,converttoLong(dayTime))+"End Time: "+ convertDurationToTimeDone(dayToLong(day,converttoLong(dayTime)))));
+                    //System.out.println()("workout name:  "+workoutname+"\nstartTime: "+simpleDateFormat.format(dayToLong(day,converttoLong(dayTime))+"End Time: "+ convertDurationToTimeDone(dayToLong(day,converttoLong(dayTime)))));
                 }*/
 
             }
@@ -1039,7 +1034,7 @@ WorkoutPlan event;
 
 
                         day = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
-                        System.out.println(day);
+                        //System.out.println()(day);
                         //dateView.setText(day + " " + dayTime);
                       //  dayTimeToLong(day+" "+dayTime);
                         startTime=dayTimeToLong(day+" "+dayTime);
@@ -1061,7 +1056,7 @@ WorkoutPlan event;
                                               int minute) {
 
                             dayTime = hourOfDay + ":" + minute;
-                            System.out.println(dayTime);
+                            //System.out.println()(dayTime);
                             //dateView.setText(day + " " + dayTime);
                             //dayTimeToLong(day+" "+dayTime);
                             startTime=dayTimeToLong(day+" "+dayTime);
@@ -1121,7 +1116,7 @@ WorkoutPlan event;
                         status=switcher.getText().toString();
                     }
                 }
-                System.out.println("Status is "+status);
+                //System.out.println()("Status is "+status);
             }
         });
 
@@ -1147,14 +1142,14 @@ WorkoutPlan event;
     private long getEndTime(long l, String dur) {
         long ms=(long)(Double.parseDouble(dur)*3600000);
         //ms=ms+480000;
-        System.out.println(ms+"+"+l+"="+simpleDateFormat.format(l+ms));
+        //System.out.println()(ms+"+"+l+"="+simpleDateFormat.format(l+ms));
         return l+ms;
     }
 
     public Date dateFormat(String dte)
     {
         String myDate =dte;
-        System.out.println("MyDate: "+myDate);
+        //System.out.println()("MyDate: "+myDate);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm",Locale.getDefault());
         Date d=null;
         try {
@@ -1162,7 +1157,7 @@ WorkoutPlan event;
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        System.out.println("Date is: "+d);
+        //System.out.println()("Date is: "+d);
 
 
         return  d;
@@ -1172,7 +1167,7 @@ WorkoutPlan event;
         String part1,p2,p3,parts="";
         if(dateT.contains("/")) {
             String[] splits = dateT.split("/");
-            System.out.println(splits[0].length());
+            //System.out.println()(splits[0].length());
             if (splits[0].length() != 2) {
                 part1 = "0" + splits[0];
             } else part1 = splits[0];
@@ -1188,13 +1183,13 @@ WorkoutPlan event;
         {
             parts=dateT;
         }
-        System.out.println(parts);
+        //System.out.println()(parts);
 
         SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy",Locale.getDefault());
         Calendar c = Calendar.getInstance();
         c.setTime(dateFormat(parts));
 
-        System.out.println(c.getTimeInMillis()+"<------>"+f.format(c.getTimeInMillis()));
+        //System.out.println()(c.getTimeInMillis()+"<------>"+f.format(c.getTimeInMillis()));
         return c.getTimeInMillis();
     }
     public List<String> getAllMondaysInAyear(int year, int day, String x) {
@@ -1294,7 +1289,7 @@ WorkoutPlan event;
 
             }
 
-            System.out.println("Number of x : " + mondays);
+            //System.out.println()("Number of x : " + mondays);
 
 
         }
@@ -1477,7 +1472,7 @@ WorkoutPlan event;
 
         SimpleDateFormat sdf = new SimpleDateFormat("E",Locale.getDefault());
         td=sdf.format(dateInLong);
-        System.out.println("Today is "+td);
+        //System.out.println()("Today is "+td);
 
         String dayz[][]={{"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"},{"Mon","Tue","Wed","Thur"+"Fri"+"Sat"+"Sun"}};
        /** for(int i=0;i<dayz.length;i++)

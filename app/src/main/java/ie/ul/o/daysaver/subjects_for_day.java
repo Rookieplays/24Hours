@@ -62,7 +62,7 @@ public class subjects_for_day extends RecyclerView.Adapter<subjects_for_day.View
             {
                 mDataset[i]=myDataset.get(i);
             }
-            System.out.println("£$TG£%GG%$^UJ%J%Y "+mDataset[0]);
+            //System.out.println()("£$TG£%GG%$^UJ%J%Y "+mDataset[0]);
         }
         study.setDay(day);
         days=day;
@@ -100,7 +100,7 @@ public class subjects_for_day extends RecyclerView.Adapter<subjects_for_day.View
     @Override
     public void onBindViewHolder(ViewHolder holder, int position)
     {x=position;
-        holder.mTextView.setText(mDataset[position]);
+        ViewHolder.mTextView.setText(mDataset[position]);
 
     ArrayList<Subjects>temp=new ArrayList<>();
     mSubs.clear();
@@ -110,22 +110,22 @@ public class subjects_for_day extends RecyclerView.Adapter<subjects_for_day.View
     fSubs.clear();
     sSubs.clear();
     sunSub.clear();
-        holder.mTextView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        ViewHolder.mTextView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
                 if(compoundButton.isChecked())
                 {
-                    System.out.println("day? "+days);
+                    //System.out.println()("day? "+days);
                     if(days.equalsIgnoreCase("Monday"))
                     {
                         mSubs.add(new Subjects(compoundButton.getText().toString()));
-                        System.out.println("********"+mSubs);
+                        //System.out.println()("********"+mSubs);
                     }
                     else  if(days.equalsIgnoreCase("Tuesday"))
                     {
                         tSubs.add(new Subjects(compoundButton.getText().toString()));
-                        System.out.println("********"+tSubs);
+                        //System.out.println()("********"+tSubs);
                     }
                     else  if(days.equalsIgnoreCase("Wednesday"))
                     {
@@ -183,7 +183,7 @@ public class subjects_for_day extends RecyclerView.Adapter<subjects_for_day.View
                 }
             }
         });
-        System.out.println("Day of Subject: "+days+"temp: "+temp);
+        //System.out.println()("Day of Subject: "+days+"temp: "+temp);
 
     }
     public void saveToDatabase()
@@ -195,12 +195,12 @@ public class subjects_for_day extends RecyclerView.Adapter<subjects_for_day.View
         return SUBJECTS;
     }
     private Subjects gatherInfo(String name) {
-        System.out.println(new Subjects(name));
+        //System.out.println()(new Subjects(name));
         return new Subjects(name);
     }
     public static void clearListFor(String day)
     {
-        System.out.println("Pos: "+x);
+        //System.out.println()("Pos: "+x);
         if(day.equalsIgnoreCase("Monday"))
         {
             mSubs.clear();
@@ -233,7 +233,7 @@ public class subjects_for_day extends RecyclerView.Adapter<subjects_for_day.View
     }
     public ArrayList<Subjects> refreshSubjects(ArrayList<Subjects> subjects1,String s)
     {
-        System.out.println("Checking if: "+s+" is among: "+subjects1);
+        //System.out.println()("Checking if: "+s+" is among: "+subjects1);
         ArrayList<Subjects> temp=new ArrayList<>();
         temp.addAll(subjects1);
         subjects1.clear();
@@ -242,7 +242,7 @@ public class subjects_for_day extends RecyclerView.Adapter<subjects_for_day.View
             if(sub.getName().equals(s))
             {
                 //subjects1.remove(s);
-                System.out.println("Removed: "+s+" from: "+temp);
+                //System.out.println()("Removed: "+s+" from: "+temp);
             }
             else
                 subjects1.add(sub);

@@ -128,7 +128,7 @@ public class BudgetShopper extends socialActivity implements  shopRecyclerItemTo
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 UserInformation info=dataSnapshot.getValue(UserInformation.class);
-                System.out.println(dataSnapshot+"<<<<");
+                //System.out.println()(dataSnapshot+"<<<<");
                 user=info.getUsername();
                 author=user;
                 try {
@@ -159,14 +159,14 @@ public class BudgetShopper extends socialActivity implements  shopRecyclerItemTo
                if (compoundButton.isChecked()) {
                     switcher.setText(getString(R.string.Public));
                             status=getString(R.string.Public);
-                            System.out.println("Public list");
+                            //System.out.println()("Public list");
                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                        switcher.setThumbTintList(ColorStateList.valueOf(Color.GREEN));
                    }
                }else{
                    switcher.setText(getString(R.string.Private));
                    status=getString(R.string.Private);
-                   System.out.println("Private list");
+                   //System.out.println()("Private list");
                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                        switcher.setThumbTintList(ColorStateList.valueOf(Color.LTGRAY));
                    }
@@ -182,7 +182,7 @@ public class BudgetShopper extends socialActivity implements  shopRecyclerItemTo
         }
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
-        //System.out.println("Create workoutsSays.../."+AddNewWorkout.getOldWorkouts());
+        ////System.out.println()("Create workoutsSays.../."+AddNewWorkout.getOldWorkouts());
 
 
 
@@ -421,7 +421,7 @@ public class BudgetShopper extends socialActivity implements  shopRecyclerItemTo
                     // added.setTextFill(Color.GREEN);
                     Item newItem=new Item(item.getText().toString(),
                             Double.parseDouble(priceView.getText().toString()), Integer.parseInt(itemView.getText().toString()));
-                    System.out.println("List of items: "+itemList+"\nNew Item: "+newItem);
+                    //System.out.println()("List of items: "+itemList+"\nNew Item: "+newItem);
                     int FLAG=0;
                     if(itemList.isEmpty())
                     {
@@ -429,12 +429,12 @@ public class BudgetShopper extends socialActivity implements  shopRecyclerItemTo
                     }else{
                         for(Item it: itemList)
                         {
-                            System.out.println("Checking if "+newItem+" is Similar to: "+it);
+                            //System.out.println()("Checking if "+newItem+" is Similar to: "+it);
                             if(it.getItemName().equals(newItem.getItemName()))
                             {
-                                System.out.println("Amount Before: "+it.getAmount());
+                                //System.out.println()("Amount Before: "+it.getAmount());
                                 it.setAmount(it.getAmount()+newItem.getAmount());
-                                System.out.println("Amount After: "+it.getAmount());
+                                //System.out.println()("Amount After: "+it.getAmount());
                                 FLAG=1;
 
                             }
@@ -452,7 +452,7 @@ public class BudgetShopper extends socialActivity implements  shopRecyclerItemTo
                     listadapter = new shoppingListAdapter(this,itemList);
                     recyclerView.setAdapter(listadapter);
 
-                    System.out.println("Lists?????"+shoppingListAdapter.ITEMLISTS);
+                    //System.out.println()("Lists?????"+shoppingListAdapter.ITEMLISTS);
                     int amt=0;
                     for(Item it:shoppingListAdapter.ITEMLISTS)
                     {
@@ -528,7 +528,7 @@ private void saveListToDatabase()
             //  AddNewWorkout.setWORKOUTS(workoutList);
 
         }//refreshListOfWorkouts();
-        System.out.println("0000000**"+listadapter);
+        //System.out.println()("0000000**"+listadapter);
        // itemList.addAll(itemsOnList);
 
     }
@@ -553,13 +553,13 @@ private void saveListToDatabase()
     }
     public void updateBal(double limit,double budget,ArrayList<Item>items,Button addPrice,Button addItem)throws IOException
     {
-       
-       // System.out.println("Bal=" +this.change+",Save Bal="+limit);
+
+       // //System.out.println()("Bal=" +this.change+",Save Bal="+limit);
         double amountSaved=budget-limit;
-        System.out.println("amountsaved="+amountSaved);
-        double total=0;System.out.println("total befor loop:"+total);
+        //System.out.println()("amountsaved="+amountSaved);
+        double total=0;//System.out.println()("total befor loop:"+total);
         ArrayList<String>temp=new ArrayList<String>();
-        System.out.println(items);
+        //System.out.println()(items);
         for(int i=0;i<items.size();i++)
         {
             //if(!(temp.contains(itemsOnList.get(i).getItemName())))
@@ -567,7 +567,7 @@ private void saveListToDatabase()
             //temp.add(itemsOnList.get(i).getItemName());
         }
 
-        System.out.println("total="+total);
+        //System.out.println()("total="+total);
         ObjectAnimator grow=ObjectAnimator.ofPropertyValuesHolder(totalPrice,
                 PropertyValuesHolder.ofFloat("scaleY",2f),
         PropertyValuesHolder.ofFloat("scaleX",2f));
@@ -584,9 +584,9 @@ private void saveListToDatabase()
         animatorSet2.start();
         NumberFormat nf=new DecimalFormat("##.##");
         totalPrice.setText(nf.format(total)+"");
-        
+
         double change=budget-total;
-        System.out.println("Change="+change);
+        //System.out.println()("Change="+change);
         //Wallet wallet=new Wallet(user,change);
         if(change>=limit)
         {
@@ -595,7 +595,7 @@ private void saveListToDatabase()
             ObjectAnimator up=ObjectAnimator.ofPropertyValuesHolder(currentWalletLbl,
             PropertyValuesHolder.ofFloat("y",50f));
                     //PropertyValuesHolder.ofFloat("Y",0.2f));
-            
+
             grow.setDuration(200);
             ObjectAnimator down=ObjectAnimator.ofPropertyValuesHolder(currentWalletLbl,
                     PropertyValuesHolder.ofFloat("y",70f));
@@ -613,13 +613,13 @@ private void saveListToDatabase()
 
 
         String newWal=currentWalletLbl.getText().toString();
-        System.out.println("newWal="+newWal);
-        System.out.println(currentWalletLbl.getText().toString());
+        //System.out.println()("newWal="+newWal);
+        //System.out.println()(currentWalletLbl.getText().toString());
         //currentWalletLbl.setText(change);
 
         if(budget==limit)
         {
-            System.out.println("wal==save");
+            //System.out.println()("wal==save");
               //addPrice.setEnabled(true);addItem.setEnabled(true);
             currentWalletLbl.setTextColor(Color.parseColor("#cc0000"));
             displayComments(R.string.warning5);
@@ -629,9 +629,9 @@ private void saveListToDatabase()
         }
         else if(change>=limit&&change<(limit*0.2)+limit)
         {
-            System.out.println("wal>=save");
+            //System.out.println()("wal>=save");
             displayComments(R.string.warning4);
-            
+
               //addPrice.setEnabled(true);addItem.setEnabled(true);
             currentWalletLbl.setTextColor(Color.parseColor("#ff0000"));
             addPrice.setEnabled(true);addItem.setEnabled(true);
@@ -639,28 +639,28 @@ private void saveListToDatabase()
         else if(change>=(limit*0.2)&&change<(limit*0.5)+limit)
         {
             displayComments(R.string.warning3);
-            System.out.println("wal>=save"+30);
+            //System.out.println()("wal>=save"+30);
               addPrice.setEnabled(true);addItem.setEnabled(true);
             currentWalletLbl.setTextColor(Color.parseColor("#ff9933"));
         }
         else if(change>=(limit*0.5)&&change<(limit*0.8)+limit)
         {
             displayComments(R.string.warning2);
-            System.out.println("wal>=save"+0);
+            //System.out.println()("wal>=save"+0);
               addPrice.setEnabled(true);addItem.setEnabled(true);
             currentWalletLbl.setTextColor(Color.parseColor("#ffff66"));
         }
         else if(change>=(limit*0.8)&&change<(limit*0.9)+limit)
         {
             displayComments(R.string.warning1);
-            System.out.println("wal>=save"+30);
+            //System.out.println()("wal>=save"+30);
               addPrice.setEnabled(true);addItem.setEnabled(true);
             currentWalletLbl.setTextColor(Color.parseColor("#88ff4d"));
         }
         else if(change>=(limit*0.90)&&change<(limit*1))
         {
             displayComments(R.string.warning0);
-            System.out.println("wal>=save"+40);
+            //System.out.println()("wal>=save"+40);
               addPrice.setEnabled(true);addItem.setEnabled(true);
             currentWalletLbl.setTextColor(Color.parseColor("#88ff4d"));
         }
@@ -675,7 +675,7 @@ private void saveListToDatabase()
         if (viewHolder instanceof shoppingListAdapter.ViewHolder) {
             // get the removed item name to display it in snack bar
             String name =itemList.get(viewHolder.getAdapterPosition()).getItemName();
-            System.out.println(name+"<<<><>");
+            //System.out.println()(name+"<<<><>");
 
             // backup of removed item for undo purpose
             final Item deletedItem = itemList.get(viewHolder.getAdapterPosition());

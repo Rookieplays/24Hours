@@ -45,13 +45,13 @@ public class createNote extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_note);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar24);
+        Toolbar toolbar = findViewById(R.id.toolbar24);
         setSupportActionBar(toolbar);
         rView=findViewById(R.id.listOfNotes);
         rView.setLayoutManager(new LinearLayoutManager(this));
         cl=findViewById(R.id.cl);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabb);
+        FloatingActionButton fab = findViewById(R.id.fabb);
         getAllInDatabase();
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,13 +63,13 @@ public class createNote extends MainActivity {
     }
     private void createNotes()
     {
-        System.out.println("click");
+        ////System.out.println()()("click");
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
         View v = LayoutInflater.from(createNote.this).inflate(R.layout.creatednotes, null);
-        System.out.println(v);
+        ////System.out.println()()(v);
         dialogBuilder.setView(v);
-        sizes=(Spinner)v.findViewById(R.id.fontsize);
-        color=(Spinner)v.findViewById(R.id.fontcolor);
+        sizes= v.findViewById(R.id.fontsize);
+        color= v.findViewById(R.id.fontcolor);
          title=v.findViewById(R.id.note_Title);
          text=v.findViewById(R.id.note_text);
         finish=v.findViewById(R.id.saveNote);
@@ -154,15 +154,15 @@ public class createNote extends MainActivity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for(DataSnapshot ds: dataSnapshot.getChildren())
                     {
-                        System.out.println(ds.getValue());
+                        ////System.out.println()()(ds.getValue());
                         SubNotes n=ds.getValue(SubNotes.class);
                        notes.add(n);
                     }
 
-                    System.out.println("notes: "+notes);
+                    ////System.out.println()()("notes: "+notes);
                     if(notes!=null)
                     {
-                        System.out.println("------>"+notes);
+                        ////System.out.println()()("------>"+notes);
                         mAdapter=new NotesAdapter(notes,context,cl);
                         rView.setAdapter(mAdapter);
                     }

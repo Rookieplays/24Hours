@@ -64,8 +64,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         public ViewHolder(View v)
         {
             super(v);
-            mTextView=(TextView)v.findViewById(R.id.eventName);
-            mEndView=(TextView)v.findViewById(R.id.met);
+            mTextView= v.findViewById(R.id.eventName);
+            mEndView= v.findViewById(R.id.met);
             mStartView=v.findViewById(R.id.mst);
             cardview=v.findViewById(R.id.cardViewmain);
             icon=v.findViewById(R.id.apppic);
@@ -97,7 +97,7 @@ this.context=context;
                 mEndTime[i]=myDataset.get(3).get(i);
                 mColor[i]=myDataset.get(4).get(i);
             }
-           // System.out.println("£$TG£%GG%$^UJ%J%Y "+mDataset[0]);
+           // //System.out.println()("£$TG£%GG%$^UJ%J%Y "+mDataset[0]);
         }
         if(!wps.isEmpty())
         {
@@ -166,13 +166,13 @@ this.context=context;
 
         }
         else{
-            System.out.println(wp+"!!!!!!!!!");
+            //System.out.println()(wp+"!!!!!!!!!");
             holder.itemView.setOnLongClickListener(e->{  GymSchedule(wp.get(position).getName(),wp.get(position).getWorkouts(),position);return  true;});
 
             temp=new String[]{"2.00"};
         }
         for (String str:temp)
-        System.out.println("W☺W"+str);
+        //System.out.println()("W☺W"+str);
        //    if(!holder.mTextView.getText().toString().contains("Gym"))
          itView=holder.itemView;
         new Thread(new Runnable() {
@@ -185,7 +185,7 @@ this.context=context;
 
                     }
                 }
-                else System.out.println(" ,NO II CANT ");
+
             }
         }).start();
 
@@ -354,7 +354,7 @@ public void createnotificationChannel()
     private long mTimeLeftInMillis=max;
     private CountDownTimer mCountDownTimer;
     private void startTimer(Double dur) {
-        //System.out.println("£££ "+mTimeLeftInMillis);
+        ////System.out.println()("£££ "+mTimeLeftInMillis);
         anim.removeAllListeners();
         anim.cancel();
         timer.setAlpha(1f);
@@ -404,13 +404,13 @@ public void createnotificationChannel()
          max=(long)(dur*60*60*1000);
         int rst = (int) (100 - (((max-mTimeLeftInMillis) * 100) / max));
         pb.setProgress((rst));
-        //System.out.println(rst);
-        //  System.out.println(milliUntilFinish);
+        ////System.out.println()(rst);
+        //  //System.out.println()(milliUntilFinish);
 
         int hr = (int) (TimeUnit.MILLISECONDS.toHours(mTimeLeftInMillis) % 24);
         int min = (int) (TimeUnit.MILLISECONDS.toMinutes(mTimeLeftInMillis) % 60);
         int sec = (int) (TimeUnit.MILLISECONDS.toSeconds(mTimeLeftInMillis) % 60);
-        //System.out.println(hr+":"+min+":"+sec);
+        ////System.out.println()(hr+":"+min+":"+sec);
         timer.setText(hr + ":" + min + ":" + sec);
         if (rst >= 50) {
             pb.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
@@ -426,7 +426,7 @@ public void createnotificationChannel()
     public void setAlarm(long timeinMillis)
     {
         long alertTime=timeinMillis;
-        System.out.println(alertTime);
+        //System.out.println()(alertTime);
         Intent alertIntent=new Intent(context,AlarmReceiver.class);
 
         AlarmManager alarmManager=(AlarmManager) context.getSystemService(Context.ALARM_SERVICE);

@@ -71,16 +71,16 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> im
 
                 for(int j=i+1; j<temp.size(); j++)
                 {
-                    System.out.println(j+")"+temp.get(i).getName().compareToIgnoreCase(temp.get(j).getName())+"?< 0 ("+temp.get(i).getName()+" is being compared to "+ temp.get(j).getName()+")");
+                    //System.out.println()(j+")"+temp.get(i).getName().compareToIgnoreCase(temp.get(j).getName())+"?< 0 ("+temp.get(i).getName()+" is being compared to "+ temp.get(j).getName()+")");
                     if(temp.get(j).getName().compareToIgnoreCase(temp.get(i).getName()) < 0)
                     {
 
-                        //System.out.println(temp);
+                        ////System.out.println()(temp);
                         tempStr=temp.get(j).getName();
 
 
                         temp.get(j).setName(temp.get(i).getName());
-                        //System.out.println(list);
+                        ////System.out.println()(list);
                         temp.get(i).setName(tempStr);
 
                     }
@@ -94,16 +94,16 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> im
 
                 for(int j=i+1; j<temp.size(); j++)
                 {
-                    System.out.println(j+")"+temp.get(i).getName().compareToIgnoreCase(temp.get(j).getName())+"?< 0 ("+temp.get(i).getName()+" is being compared to "+ temp.get(j).getName()+")");
+                    //System.out.println()(j+")"+temp.get(i).getName().compareToIgnoreCase(temp.get(j).getName())+"?< 0 ("+temp.get(i).getName()+" is being compared to "+ temp.get(j).getName()+")");
                     if(temp.get(j).getName().compareToIgnoreCase(temp.get(i).getName()) > 0)
                     {
 
-                        //System.out.println(temp);
+                        ////System.out.println()(temp);
                         tempStr=temp.get(j).getName();
 
 
                         temp.get(j).setName(temp.get(i).getName());
-                        //System.out.println(list);
+                        ////System.out.println()(list);
                         temp.get(i).setName(tempStr);
 
                     }
@@ -176,10 +176,10 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> im
             super(view);
             view.setOnClickListener(this);
 
-            workoutName = (TextView)view.findViewById(R.id.workoutname);
-            dateCreated = (TextView)view.findViewById(R.id.createdby);
-            username = (TextView)view.findViewById(R.id.community_nam);
-            profileImg=(ImageView)view.findViewById(R.id.community_pic);
+            workoutName = view.findViewById(R.id.workoutname);
+            dateCreated = view.findViewById(R.id.createdby);
+            username = view.findViewById(R.id.community_nam);
+            profileImg= view.findViewById(R.id.community_pic);
 
 
 
@@ -221,9 +221,9 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> im
 
         viewHolder.workoutName.setText(mFilteredList.get(i).getName());
         viewHolder.dateCreated.setText( sdf.format(mFilteredList.get(i).getD_O_C()));
-        System.out.println("Amount "+i);
+        //System.out.println()("Amount "+i);
        if(uArrayList.size()>i){
-           System.out.println("Amount "+i);
+           //System.out.println()("Amount "+i);
             viewHolder.username.setText(uArrayList.get(i).getUsername());
             viewHolder.profileImg.setImageDrawable(new RoundImage(covertLinkToImg(uArrayList.get(i).getImage())));
            viewHolder.itemView.setOnClickListener(e->{
@@ -302,12 +302,12 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> im
             {
                 for(UserInformation  ui: uArrayList)
                 {
-                    if (ui.getUsername().toLowerCase().contains(charString.toLowerCase()) ||
+                    /**A future feature*/
+                    return ui.getUsername().toLowerCase().contains(charString.toLowerCase()) ||
                             ui.getEmail().toLowerCase().contains(charString.toLowerCase()) ||
                             ui.getFirstName().toLowerCase().contains(charString.toLowerCase()) ||
                             ui.getLastName().toLowerCase().contains(charString.toLowerCase()) ||
-                            ui.getGender().toLowerCase().contains(charString.toLowerCase()))return true;
-                    /**A future feature*/else return  false;
+                            ui.getGender().toLowerCase().contains(charString.toLowerCase());
 
 
                 }
@@ -325,15 +325,15 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> im
     }//TODO: import my round image usage  and my method changelongtodate?
     public Bitmap covertLinkToImg(String imgUrl)
     {
-        System.out.println(imgUrl);
+        //System.out.println()(imgUrl);
         URL url = null;
         Bitmap bitmap= BitmapFactory.decodeResource(context.getResources(),R.drawable.gym_small);
         if(imgUrl!=null) {
             try {try {
                 url = new URL(imgUrl);
             } catch (MalformedURLException e) {
-                System.out.println("The URL is not valid.");
-                System.out.println(e.getMessage());
+                //System.out.println()("The URL is not valid.");
+                //System.out.println()(e.getMessage());
             }
 
 
@@ -428,8 +428,8 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> im
     {
         View popupContentView = LayoutInflater.from(context).inflate(R.layout.use_plan, null);
         Button yes,no,date,time1,time2;
-        yes=(Button)popupContentView.findViewById(R.id.button10);
-        no=(Button)popupContentView.findViewById(R.id.signout_cancelBtn);
+        yes= popupContentView.findViewById(R.id.button10);
+        no= popupContentView.findViewById(R.id.signout_cancelBtn);
         date=popupContentView.findViewById(R.id.button7);
         time1=popupContentView.findViewById(R.id.button8);
         time2=popupContentView.findViewById(R.id.button9);
@@ -460,7 +460,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> im
 
 
                         day = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
-                        System.out.println(day);
+                        //System.out.println()(day);
                         //dateView.setText(day + " " + dayTime);
                         //  dayTimeToLong(day+" "+dayTime);
                         dateView.setText(day);
@@ -477,7 +477,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> im
                                           int minute) {
 
                         dayTime = hourOfDay + ":" + minute;
-                        System.out.println(dayTime);
+                        //System.out.println()(dayTime);
                         //dateView.setText(day + " " + dayTime);
                         //dayTimeToLong(day+" "+dayTime);
 
@@ -497,7 +497,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> im
                                           int minute) {
 
                         dayTime = hourOfDay + ":" + minute;
-                        System.out.println(dayTime);
+                        //System.out.println()(dayTime);
 
                         etime.setText(dayTime);
 
@@ -512,7 +512,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> im
 
         stime.setText(wp.getStartTime());
         etime.setText(wp.getEndTime());
-        System.out.println("@@wp.getDate()");
+        //System.out.println()("@@wp.getDate()");
         dateView.setText(wp.getDate());
 
 
@@ -567,12 +567,12 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> im
     TimePickerDialog timePickerDialog;
     private Long convertFromTimeToLong(String date) {
         long milliseconds = System.currentTimeMillis();
-        System.out.println("system Time: " + milliseconds);
+        //System.out.println()("system Time: " + milliseconds);
         SimpleDateFormat f = new SimpleDateFormat("HH:mm", Locale.getDefault());
         try {
             Date d = f.parse(date);
             milliseconds = d.getTime();
-            System.out.println("Date Time: " + milliseconds);
+            //System.out.println()("Date Time: " + milliseconds);
         } catch (ParseException e) {
             e.printStackTrace();
         }

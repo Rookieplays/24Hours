@@ -69,7 +69,7 @@ public class socialActivity extends MainActivity {
 
     private final Context context=this;
     private long daTime,daTime2;
-    private String date,startTime,endTime,occurance;;
+    private String date,startTime,endTime,occurance;
     private  String tags[];
     private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy ");
     private final long todaysDate=System.currentTimeMillis();
@@ -203,13 +203,13 @@ Button addG,removeG;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_social);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar24);
+        Toolbar toolbar = findViewById(R.id.toolbar24);
         setSupportActionBar(toolbar);
         toolbar.setTitle("24h:Social");
         pdd=new ProgressDialog(context);
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -220,28 +220,28 @@ Button addG,removeG;
 
 
 
-        sportBtn=(ImageButton)findViewById(R.id.sportBtn);
-        bDayBtn=(ImageButton)findViewById(R.id.bdayBtn);
-        cineBtn=(ImageButton)findViewById(R.id.Cinemabtn);
-        sleepOBtn=(ImageButton)findViewById(R.id.shoppingBtn);
-       gamingBtn=(ImageButton)findViewById(R.id.gameBtn);
-        ACBtn=(ImageButton)findViewById(R.id.aDrinkBtn);
-        datingBtn=(ImageButton)findViewById(R.id.dateBtn);
-        XmasBtn=(ImageButton)findViewById(R.id.xmasBtn);
+        sportBtn= findViewById(R.id.sportBtn);
+        bDayBtn= findViewById(R.id.bdayBtn);
+        cineBtn= findViewById(R.id.Cinemabtn);
+        sleepOBtn= findViewById(R.id.shoppingBtn);
+       gamingBtn= findViewById(R.id.gameBtn);
+        ACBtn= findViewById(R.id.aDrinkBtn);
+        datingBtn= findViewById(R.id.dateBtn);
+        XmasBtn= findViewById(R.id.xmasBtn);
         //defaultBtn=(ImageButton)findViewById(R.id.defautBtn);
 
-        asportBtn=(ImageButton)findViewById(R.id.asportBtn);
-        abDayBtn=(ImageButton)findViewById(R.id.aBirthdayBtn);
-        acineBtn=(ImageButton)findViewById(R.id.aCinemaBtn);
-        clubBtn=(ImageButton)findViewById(R.id.aClub);
-        wedBtn=(ImageButton)findViewById(R.id.aWedBtn);
-        dringBtn=(ImageButton)findViewById(R.id.aDrinkBtn);
+        asportBtn= findViewById(R.id.asportBtn);
+        abDayBtn= findViewById(R.id.aBirthdayBtn);
+        acineBtn= findViewById(R.id.aCinemaBtn);
+        clubBtn= findViewById(R.id.aClub);
+        wedBtn= findViewById(R.id.aWedBtn);
+        dringBtn= findViewById(R.id.aDrinkBtn);
       //  aDefaultBtn=(ImageButton)findViewById(R.id.aNewBtn);
-        aXmasBtn=(ImageButton)findViewById(R.id.aXmasBtn);
-        adatingBtn=(ImageButton)findViewById(R.id.aDateBtn);
+        aXmasBtn= findViewById(R.id.aXmasBtn);
+        adatingBtn= findViewById(R.id.aDateBtn);
 
-        adultTemplates=(LinearLayout)findViewById(R.id.Adult_Default);
-        adolecentTemplates=(LinearLayout)findViewById(R.id.Adolecent_Defaults);
+        adultTemplates= findViewById(R.id.Adult_Default);
+        adolecentTemplates= findViewById(R.id.Adolecent_Defaults);
         checkAge();
 
 
@@ -302,9 +302,9 @@ private SListAdapterAlpha mAdapter;
                     ArrayList<ShoppingList> lists = new ArrayList<>();
 
                     for (DocumentSnapshot doc : task.getResult()) {
-                        System.out.println("#123xx" + doc.getData());
+                        //System.out.println()("#123xx" + doc.getData());
                         ShoppingList sl = doc.toObject(ShoppingList.class);
-                        //  System.out.println(wp+"***********"+wp.getUID());
+                        //  //System.out.println()(wp+"***********"+wp.getUID());
                         shoppingLists.add(sl);
                     }
                     initRV();
@@ -324,9 +324,9 @@ private SListAdapterAlpha mAdapter;
                     ArrayList<ShoppingList> lists = new ArrayList<>();
 
                     for (DocumentSnapshot doc : task.getResult()) {
-                        System.out.println("#123xx" + doc.getData());
+                        //System.out.println()("#123xx" + doc.getData());
                         ShoppingList sl = doc.toObject(ShoppingList.class);
-                        //  System.out.println(wp+"***********"+wp.getUID());
+                        //  //System.out.println()(wp+"***********"+wp.getUID());
                         shoppingLists.add(sl);
                     }
                     initRV();
@@ -340,9 +340,9 @@ private SListAdapterAlpha mAdapter;
                     ArrayList<ShoppingList> lists = new ArrayList<>();
 
                     for (DocumentSnapshot doc : task.getResult()) {
-                        System.out.println("#123xx" + doc.getData());
+                        //System.out.println()("#123xx" + doc.getData());
                         ShoppingList sl = doc.toObject(ShoppingList.class);
-                        //  System.out.println(wp+"***********"+wp.getUID());
+                        //  //System.out.println()(wp+"***********"+wp.getUID());
                         shoppingLists.add(sl);
                     }
                     initRV();
@@ -380,47 +380,47 @@ private SListAdapterAlpha mAdapter;
         invite=v.findViewById(R.id.invites);
         addItems=v.findViewById(R.id.addItems);
         begin=v.findViewById(R.id.begin);
-        customnameField=(AutoCompleteTextView)v.findViewById(R.id.custom_name_field);
-       custom_loc=(EditText)v.findViewById(R.id.custom_location);
-       custom_d=(EditText)v.findViewById(R.id.custom_date);
-       itemOne=(EditText) v.findViewById(R.id.il);
-       custom_sT=(EditText)v.findViewById(R.id.custom_stime);
-       custom_n=(EditText)v.findViewById(R.id.custom_notes);
-       custom_dur=(EditText)v.findViewById(R.id.customDuration);
+        customnameField= v.findViewById(R.id.custom_name_field);
+       custom_loc= v.findViewById(R.id.custom_location);
+       custom_d= v.findViewById(R.id.custom_date);
+       itemOne= v.findViewById(R.id.il);
+       custom_sT= v.findViewById(R.id.custom_stime);
+       custom_n= v.findViewById(R.id.custom_notes);
+       custom_dur= v.findViewById(R.id.customDuration);
        custom_eTime=v.findViewById(R.id.custom_etime);
        cus_et=v.findViewById(R.id.c_etime);
 
 
-       customtp=(TimePicker) v.findViewById(R.id.customtp);
-       customtp2=(TimePicker)v.findViewById(R.id.customtp2);
-       customdp=(DatePicker) v.findViewById(R.id.customdp);
-       customsetStartingTime=(Button)v.findViewById(R.id.customsetStartingTime);
-       customsetEndingTime=(Button)v.findViewById(R.id.customsetStartingTime2);
-       customsetDate=(Button)v.findViewById(R.id.customsetDate);
-       customDatePicker=(Button)v.findViewById(R.id.customdatePicker);
-       customTimePicker1=(Button)v.findViewById(R.id.customtimepicker1);
-       customTimepicker2=(Button)v.findViewById(R.id.customtimepicker2);
-        customTimePicker3=(Button)v.findViewById(R.id.customtimepicker2_plus);
-        customField=(LinearLayout) v.findViewById(R.id.custom_Field);
-       customTimeSelector=(LinearLayout)v.findViewById(R.id.customTimeSelector);
-       customDateSelector=(LinearLayout)v.findViewById(R.id.customDateSelector);
-       customTimeSelector2=(LinearLayout) v.findViewById(R.id.customTimeSelector2);
-       custom_tag=(TextView)v.findViewById(R.id.customEvent_tag);
-       custom_spinner=(Spinner)v.findViewById(R.id.custom_spinner);
-        customInside=(ImageButton)v.findViewById(R.id.coverOfcustom_invite);
-        customOutside=(ImageButton)v.findViewById(R.id.insideOfcustomInvite);
+       customtp= v.findViewById(R.id.customtp);
+       customtp2= v.findViewById(R.id.customtp2);
+       customdp= v.findViewById(R.id.customdp);
+       customsetStartingTime= v.findViewById(R.id.customsetStartingTime);
+       customsetEndingTime= v.findViewById(R.id.customsetStartingTime2);
+       customsetDate= v.findViewById(R.id.customsetDate);
+       customDatePicker= v.findViewById(R.id.customdatePicker);
+       customTimePicker1= v.findViewById(R.id.customtimepicker1);
+       customTimepicker2= v.findViewById(R.id.customtimepicker2);
+        customTimePicker3= v.findViewById(R.id.customtimepicker2_plus);
+        customField= v.findViewById(R.id.custom_Field);
+       customTimeSelector= v.findViewById(R.id.customTimeSelector);
+       customDateSelector= v.findViewById(R.id.customDateSelector);
+       customTimeSelector2= v.findViewById(R.id.customTimeSelector2);
+       custom_tag= v.findViewById(R.id.customEvent_tag);
+       custom_spinner= v.findViewById(R.id.custom_spinner);
+        customInside= v.findViewById(R.id.coverOfcustom_invite);
+        customOutside= v.findViewById(R.id.insideOfcustomInvite);
       // customamesField=(LinearLayout) v.findViewById(R.id.gamesField);
-        addC=(Button)v.findViewById(R.id.addItem);
-        removeC=(Button)v.findViewById(R.id.removeItem);
+        addC= v.findViewById(R.id.addItem);
+        removeC= v.findViewById(R.id.removeItem);
 
 
-        custom_m=(TextView)v.findViewById(R.id.custom_mon);
-        custom_t=(TextView)v.findViewById(R.id.custom_tue);
-        custom_w=(TextView)v.findViewById(R.id.custom_wed);
-        custom_th=(TextView)v.findViewById(R.id.custom_thurs);
-        custom_f=(TextView)v.findViewById(R.id.custom_fri);
-        custom_st=(TextView)v.findViewById(R.id.custom_sat);
-        custom_sd=(TextView)v.findViewById(R.id.custom_sun);
+        custom_m= v.findViewById(R.id.custom_mon);
+        custom_t= v.findViewById(R.id.custom_tue);
+        custom_w= v.findViewById(R.id.custom_wed);
+        custom_th= v.findViewById(R.id.custom_thurs);
+        custom_f= v.findViewById(R.id.custom_fri);
+        custom_st= v.findViewById(R.id.custom_sat);
+        custom_sd= v.findViewById(R.id.custom_sun);
 
         /**Shopppingb lists*/
 
@@ -471,8 +471,8 @@ private SListAdapterAlpha mAdapter;
         if(itemBox.getVisibility()==View.VISIBLE&&durationBox.getVisibility()==View.VISIBLE&&inviteBox.getVisibility()==View.GONE&&timeClockField.getVisibility()==View.GONE){
         setupPage.setVisibility(View.GONE);
         customPage.setVisibility(View.VISIBLE);
-        save=(Button)v.findViewById(R.id.social_save_custom);
-        cancl=(Button)v.findViewById(R.id.cancel10);
+        save= v.findViewById(R.id.social_save_custom);
+        cancl= v.findViewById(R.id.cancel10);
         save.setEnabled(isCompleted(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,save,"Unknown name"));
         save.setOnClickListener(e->{handleSaveButtonForAll(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,cus_et,null,null,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"customD",custom_spinner);alertDialog.dismiss();});
         handleTemplatestuff(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,cus_et,null,null,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"customD",custom_spinner);
@@ -486,8 +486,8 @@ private SListAdapterAlpha mAdapter;
 
             setupPage.setVisibility(View.GONE);
             customPage.setVisibility(View.VISIBLE);
-            save=(Button)v.findViewById(R.id.social_save_custom);
-            cancl=(Button)v.findViewById(R.id.cancel10);
+            save= v.findViewById(R.id.social_save_custom);
+            cancl= v.findViewById(R.id.cancel10);
             save.setEnabled(isCompleted(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,save,"Unknown name"));
             save.setOnClickListener(e->{handleSaveButtonForAll(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,cus_et,customInside,customOutside,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"customD",custom_spinner);alertDialog.dismiss();});
             handleTemplatestuff(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,cus_et,customInside,customOutside,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"customD",custom_spinner);
@@ -500,8 +500,8 @@ private SListAdapterAlpha mAdapter;
 
             setupPage.setVisibility(View.GONE);
             customPage.setVisibility(View.VISIBLE);
-            save=(Button)v.findViewById(R.id.social_save_custom);
-            cancl=(Button)v.findViewById(R.id.cancel10);
+            save= v.findViewById(R.id.social_save_custom);
+            cancl= v.findViewById(R.id.cancel10);
             save.setEnabled(isCompleted(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,save,"Unknown name"));
             save.setOnClickListener(e->{handleSaveButtonForAll(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,cus_et,null,null,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"customD",custom_spinner);alertDialog.dismiss();});
             handleTemplatestuff(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,cus_et,null,null,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"customD",custom_spinner);
@@ -514,8 +514,8 @@ private SListAdapterAlpha mAdapter;
 
             setupPage.setVisibility(View.GONE);
             customPage.setVisibility(View.VISIBLE);
-            save=(Button)v.findViewById(R.id.social_save_custom);
-            cancl=(Button)v.findViewById(R.id.cancel10);
+            save= v.findViewById(R.id.social_save_custom);
+            cancl= v.findViewById(R.id.cancel10);
             save.setEnabled(isCompleted(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,save,"Unknown name"));
             save.setOnClickListener(e->{handleSaveButtonForAll(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,cus_et,customInside,customOutside,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"customDl",custom_spinner);alertDialog.dismiss();});
             handleTemplatestuff(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,cus_et,customInside,customOutside,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"customDl",custom_spinner);
@@ -527,8 +527,8 @@ private SListAdapterAlpha mAdapter;
         else  if(itemBox.getVisibility()==View.VISIBLE&&durationBox.getVisibility()==View.GONE&&inviteBox.getVisibility()==View.GONE&&timeClockField.getVisibility()==View.VISIBLE){
             setupPage.setVisibility(View.GONE);
             customPage.setVisibility(View.VISIBLE);
-            save=(Button)v.findViewById(R.id.social_save_custom);
-            cancl=(Button)v.findViewById(R.id.cancel10);
+            save= v.findViewById(R.id.social_save_custom);
+            cancl= v.findViewById(R.id.cancel10);
             save.setEnabled(isCompleted(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,save,"Unknown name"));
             save.setOnClickListener(e->{handleSaveButtonForAll(customnameField,custom_loc,custom_d,custom_sT,custom_eTime,custom_n,null,null,null,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"customL",custom_spinner);alertDialog.dismiss();});
             handleTemplatestuff(customnameField,custom_loc,custom_d,custom_sT,custom_eTime,custom_n,null,null,null,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"customL",custom_spinner);
@@ -541,8 +541,8 @@ private SListAdapterAlpha mAdapter;
 
             setupPage.setVisibility(View.GONE);
             customPage.setVisibility(View.VISIBLE);
-            save=(Button)v.findViewById(R.id.social_save_custom);
-            cancl=(Button)v.findViewById(R.id.cancel10);
+            save= v.findViewById(R.id.social_save_custom);
+            cancl= v.findViewById(R.id.cancel10);
             save.setEnabled(isCompleted(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,save,"Unknown name"));
             save.setOnClickListener(e->{handleSaveButtonForAll(customnameField,custom_loc,custom_d,custom_sT,custom_eTime,custom_n,null,customInside,customOutside,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"custom",custom_spinner);alertDialog.dismiss();});
             handleTemplatestuff(customnameField,custom_loc,custom_d,custom_sT,custom_eTime,custom_n,null,customInside,customOutside,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"custom",custom_spinner);
@@ -556,8 +556,8 @@ private SListAdapterAlpha mAdapter;
 
             setupPage.setVisibility(View.GONE);
             customPage.setVisibility(View.VISIBLE);
-            save=(Button)v.findViewById(R.id.social_save_custom);
-            cancl=(Button)v.findViewById(R.id.cancel10);
+            save= v.findViewById(R.id.social_save_custom);
+            cancl= v.findViewById(R.id.cancel10);
             save.setEnabled(isCompleted(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,save,"Unknown name"));
             save.setOnClickListener(e->{handleSaveButtonForAll(customnameField,custom_loc,custom_d,custom_sT,custom_eTime,custom_n,null,null,null,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"custom",custom_spinner);alertDialog.dismiss();});
             handleTemplatestuff(customnameField,custom_loc,custom_d,custom_sT,custom_eTime,custom_n,null,null,null,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"custom",custom_spinner);
@@ -570,8 +570,8 @@ private SListAdapterAlpha mAdapter;
 
             setupPage.setVisibility(View.GONE);
             customPage.setVisibility(View.VISIBLE);
-            save=(Button)v.findViewById(R.id.social_save_custom);
-            cancl=(Button)v.findViewById(R.id.cancel10);
+            save= v.findViewById(R.id.social_save_custom);
+            cancl= v.findViewById(R.id.cancel10);
             save.setEnabled(isCompleted(customnameField,custom_loc,custom_d,custom_sT,custom_dur,custom_n,save,"Unknown name"));
             save.setOnClickListener(e->{handleSaveButtonForAll(customnameField,custom_loc,custom_d,custom_sT,custom_eTime,custom_n,null,customInside,customOutside,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"custom",custom_spinner);alertDialog.dismiss();});
             handleTemplatestuff(customnameField,custom_loc,custom_d,custom_sT,custom_eTime,custom_n,null,customInside,customOutside,customDateSelector,customTimeSelector,customTimeSelector2,customtp,customtp2,customdp,custom,custom_tag,"custom",custom_spinner);
@@ -596,7 +596,7 @@ private SListAdapterAlpha mAdapter;
         SimpleDateFormat sdf = new SimpleDateFormat("E",Locale.getDefault());
         SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy",Locale.getDefault());
         td=sdf.format(dte);
-        System.out.println("Today is "+td);
+        //System.out.println()("Today is "+td);
         if(td.equalsIgnoreCase("Mon"))
         {m.setText("Today");m.setBackgroundColor(Color.WHITE);m.setTextSize(TypedValue.COMPLEX_UNIT_DIP,14);m.setTextColor(getResources().getColor(R.color.colorPrimary));}
         else if(td.equalsIgnoreCase("Tue"))
@@ -890,106 +890,106 @@ private SListAdapterAlpha mAdapter;
        // gi_setupnow.setOnClickListener(e->{startActivity(new Intent("ie.ul.o.daysaver.GymActivity"));});
 
 
-        bballBtn=(ImageButton)dialogView.findViewById(R.id.bballlBtn);
-        soccerBtn=(ImageButton)dialogView.findViewById(R.id.soccerBall);
-        rugbyBtn=(ImageButton)dialogView.findViewById(R.id.rugbyBtn);
-        mmaBtn=(ImageButton)dialogView.findViewById(R.id.mmaBtn);
-        boxingBtn=(ImageButton)dialogView.findViewById(R.id.boxingBtn);
-        sportnameField=(AutoCompleteTextView)dialogView.findViewById(R.id.sport_name_field);
-        s_loc=(EditText)dialogView.findViewById(R.id.sport_location);
-        s_d=(EditText)dialogView.findViewById(R.id.sport_date);
-        s_sT=(EditText)dialogView.findViewById(R.id.sport_stime);
-        s_eT=(EditText)dialogView.findViewById(R.id.sport_etime);
-        s_n=(EditText)dialogView.findViewById(R.id.sport_notes);
-        timeSelector=(TimePicker)dialogView.findViewById(R.id.tp);
-        timeSelector2=(TimePicker)dialogView.findViewById(R.id.tp1);
-        datePicker=(DatePicker)dialogView.findViewById(R.id.dp);
-       selectTime=(Button) dialogView.findViewById(R.id.timepicker1);
-        selecttTme2=(Button)dialogView.findViewById(R.id.timepicker2);
-        selectDate=(Button)dialogView.findViewById(R.id.datePicker);
-        s_spinner=(Spinner)dialogView.findViewById(R.id.s_spinner);
+        bballBtn= dialogView.findViewById(R.id.bballlBtn);
+        soccerBtn= dialogView.findViewById(R.id.soccerBall);
+        rugbyBtn= dialogView.findViewById(R.id.rugbyBtn);
+        mmaBtn= dialogView.findViewById(R.id.mmaBtn);
+        boxingBtn= dialogView.findViewById(R.id.boxingBtn);
+        sportnameField= dialogView.findViewById(R.id.sport_name_field);
+        s_loc= dialogView.findViewById(R.id.sport_location);
+        s_d= dialogView.findViewById(R.id.sport_date);
+        s_sT= dialogView.findViewById(R.id.sport_stime);
+        s_eT= dialogView.findViewById(R.id.sport_etime);
+        s_n= dialogView.findViewById(R.id.sport_notes);
+        timeSelector= dialogView.findViewById(R.id.tp);
+        timeSelector2= dialogView.findViewById(R.id.tp1);
+        datePicker= dialogView.findViewById(R.id.dp);
+       selectTime= dialogView.findViewById(R.id.timepicker1);
+        selecttTme2= dialogView.findViewById(R.id.timepicker2);
+        selectDate= dialogView.findViewById(R.id.datePicker);
+        s_spinner= dialogView.findViewById(R.id.s_spinner);
 
-        s_m=(TextView)dialogView.findViewById(R.id.s_mon);
-        s_t=(TextView)dialogView.findViewById(R.id.s_tue);
-        s_w=(TextView)dialogView.findViewById(R.id.s_wed);
-        s_th=(TextView)dialogView.findViewById(R.id.s_thurs);
-        s_f=(TextView)dialogView.findViewById(R.id.s_fri);
-        s_st=(TextView)dialogView.findViewById(R.id.s_sat);
-        s_sd=(TextView)dialogView.findViewById(R.id.s_sun);
-
-
-        c_m=(TextView)dialogView.findViewById(R.id.c_mon);
-        c_t=(TextView)dialogView.findViewById(R.id.c_tue);
-        c_w=(TextView)dialogView.findViewById(R.id.c_wed);
-        c_th=(TextView)dialogView.findViewById(R.id.c_thurs);
-        c_f=(TextView)dialogView.findViewById(R.id.c_fri);
-        c_st=(TextView)dialogView.findViewById(R.id.c_sat);
-        c_sd=(TextView)dialogView.findViewById(R.id.c_sun);
+        s_m= dialogView.findViewById(R.id.s_mon);
+        s_t= dialogView.findViewById(R.id.s_tue);
+        s_w= dialogView.findViewById(R.id.s_wed);
+        s_th= dialogView.findViewById(R.id.s_thurs);
+        s_f= dialogView.findViewById(R.id.s_fri);
+        s_st= dialogView.findViewById(R.id.s_sat);
+        s_sd= dialogView.findViewById(R.id.s_sun);
 
 
-        b_m=(TextView)dialogView.findViewById(R.id.b_mon);
-        b_t=(TextView)dialogView.findViewById(R.id.b_tue);
-        b_w=(TextView)dialogView.findViewById(R.id.b_wed);
-        b_th=(TextView)dialogView.findViewById(R.id.b_thurs);
-        b_f=(TextView)dialogView.findViewById(R.id.b_fri);
-        b_st=(TextView)dialogView.findViewById(R.id.b_sat);
-        b_sd=(TextView)dialogView.findViewById(R.id.b_sun);
+        c_m= dialogView.findViewById(R.id.c_mon);
+        c_t= dialogView.findViewById(R.id.c_tue);
+        c_w= dialogView.findViewById(R.id.c_wed);
+        c_th= dialogView.findViewById(R.id.c_thurs);
+        c_f= dialogView.findViewById(R.id.c_fri);
+        c_st= dialogView.findViewById(R.id.c_sat);
+        c_sd= dialogView.findViewById(R.id.c_sun);
 
-        g_m=(TextView)dialogView.findViewById(R.id.g_mon);
-        g_t=(TextView)dialogView.findViewById(R.id.g_tue);
-        g_w=(TextView)dialogView.findViewById(R.id.g_wed);
-        g_th=(TextView)dialogView.findViewById(R.id.g_thurs);
-        g_f=(TextView)dialogView.findViewById(R.id.g_fri);
-        g_st=(TextView)dialogView.findViewById(R.id.g_sat);
-        g_sd=(TextView)dialogView.findViewById(R.id.g_sun);
 
-        x_m=(TextView)dialogView.findViewById(R.id.x_mon);
-        x_t=(TextView)dialogView.findViewById(R.id.x_tue);
-        x_w=(TextView)dialogView.findViewById(R.id.x_wed);
-        x_th=(TextView)dialogView.findViewById(R.id.x_thurs);
-        x_f=(TextView)dialogView.findViewById(R.id.x_fri);
-        x_st=(TextView)dialogView.findViewById(R.id.x_sat);
-        x_sd=(TextView)dialogView.findViewById(R.id.x_sun);
+        b_m= dialogView.findViewById(R.id.b_mon);
+        b_t= dialogView.findViewById(R.id.b_tue);
+        b_w= dialogView.findViewById(R.id.b_wed);
+        b_th= dialogView.findViewById(R.id.b_thurs);
+        b_f= dialogView.findViewById(R.id.b_fri);
+        b_st= dialogView.findViewById(R.id.b_sat);
+        b_sd= dialogView.findViewById(R.id.b_sun);
 
-        sO_m=(TextView)dialogView.findViewById(R.id.sO_mon);
-        sO_t=(TextView)dialogView.findViewById(R.id.sO_tue);
-        sO_w=(TextView)dialogView.findViewById(R.id.sO_wed);
-        sO_th=(TextView)dialogView.findViewById(R.id.sO_thurs);
-        sO_f=(TextView)dialogView.findViewById(R.id.sO_fri);
-        sO_st=(TextView)dialogView.findViewById(R.id.sO_sat);
-        sO_sd=(TextView)dialogView.findViewById(R.id.sO_sun);
+        g_m= dialogView.findViewById(R.id.g_mon);
+        g_t= dialogView.findViewById(R.id.g_tue);
+        g_w= dialogView.findViewById(R.id.g_wed);
+        g_th= dialogView.findViewById(R.id.g_thurs);
+        g_f= dialogView.findViewById(R.id.g_fri);
+        g_st= dialogView.findViewById(R.id.g_sat);
+        g_sd= dialogView.findViewById(R.id.g_sun);
 
-        a_m=(TextView)dialogView.findViewById(R.id.a_mon);
-        a_t=(TextView)dialogView.findViewById(R.id.a_tue);
-        a_w=(TextView)dialogView.findViewById(R.id.a_wed);
-        a_th=(TextView)dialogView.findViewById(R.id.a_thurs);
-        a_f=(TextView)dialogView.findViewById(R.id.a_fri);
-        a_st=(TextView)dialogView.findViewById(R.id.a_sat);
-        a_sd=(TextView)dialogView.findViewById(R.id.a_sun);
+        x_m= dialogView.findViewById(R.id.x_mon);
+        x_t= dialogView.findViewById(R.id.x_tue);
+        x_w= dialogView.findViewById(R.id.x_wed);
+        x_th= dialogView.findViewById(R.id.x_thurs);
+        x_f= dialogView.findViewById(R.id.x_fri);
+        x_st= dialogView.findViewById(R.id.x_sat);
+        x_sd= dialogView.findViewById(R.id.x_sun);
 
-        d_m=(TextView)dialogView.findViewById(R.id.d_mon);
-        d_t=(TextView)dialogView.findViewById(R.id.d_tue);
-        d_w=(TextView)dialogView.findViewById(R.id.d_wed);
-        d_th=(TextView)dialogView.findViewById(R.id.d_thurs);
-        d_f=(TextView)dialogView.findViewById(R.id.d_fri);
-        d_st=(TextView)dialogView.findViewById(R.id.d_sat);
-        d_sd=(TextView)dialogView.findViewById(R.id.d_sun);
+        sO_m= dialogView.findViewById(R.id.sO_mon);
+        sO_t= dialogView.findViewById(R.id.sO_tue);
+        sO_w= dialogView.findViewById(R.id.sO_wed);
+        sO_th= dialogView.findViewById(R.id.sO_thurs);
+        sO_f= dialogView.findViewById(R.id.sO_fri);
+        sO_st= dialogView.findViewById(R.id.sO_sat);
+        sO_sd= dialogView.findViewById(R.id.sO_sun);
 
-        w_m=(TextView)dialogView.findViewById(R.id.w_mon);
-        w_t=(TextView)dialogView.findViewById(R.id.w_tue);
-        w_w=(TextView)dialogView.findViewById(R.id.w_wed);
-        w_th=(TextView)dialogView.findViewById(R.id.w_thurs);
-        w_f=(TextView)dialogView.findViewById(R.id.w_fri);
-        w_st=(TextView)dialogView.findViewById(R.id.w_sat);
-        w_sd=(TextView)dialogView.findViewById(R.id.w_sun);
+        a_m= dialogView.findViewById(R.id.a_mon);
+        a_t= dialogView.findViewById(R.id.a_tue);
+        a_w= dialogView.findViewById(R.id.a_wed);
+        a_th= dialogView.findViewById(R.id.a_thurs);
+        a_f= dialogView.findViewById(R.id.a_fri);
+        a_st= dialogView.findViewById(R.id.a_sat);
+        a_sd= dialogView.findViewById(R.id.a_sun);
 
-        clb_m=(TextView)dialogView.findViewById(R.id.clb_mon);
-        clb_t=(TextView)dialogView.findViewById(R.id.clb_tue);
-        clb_w=(TextView)dialogView.findViewById(R.id.clb_wed);
-        clb_th=(TextView)dialogView.findViewById(R.id.clb_thurs);
-        clb_f=(TextView)dialogView.findViewById(R.id.clb_fri);
-        clb_st=(TextView)dialogView.findViewById(R.id.clb_sat);
-        clb_sd=(TextView)dialogView.findViewById(R.id.clb_sun);
+        d_m= dialogView.findViewById(R.id.d_mon);
+        d_t= dialogView.findViewById(R.id.d_tue);
+        d_w= dialogView.findViewById(R.id.d_wed);
+        d_th= dialogView.findViewById(R.id.d_thurs);
+        d_f= dialogView.findViewById(R.id.d_fri);
+        d_st= dialogView.findViewById(R.id.d_sat);
+        d_sd= dialogView.findViewById(R.id.d_sun);
+
+        w_m= dialogView.findViewById(R.id.w_mon);
+        w_t= dialogView.findViewById(R.id.w_tue);
+        w_w= dialogView.findViewById(R.id.w_wed);
+        w_th= dialogView.findViewById(R.id.w_thurs);
+        w_f= dialogView.findViewById(R.id.w_fri);
+        w_st= dialogView.findViewById(R.id.w_sat);
+        w_sd= dialogView.findViewById(R.id.w_sun);
+
+        clb_m= dialogView.findViewById(R.id.clb_mon);
+        clb_t= dialogView.findViewById(R.id.clb_tue);
+        clb_w= dialogView.findViewById(R.id.clb_wed);
+        clb_th= dialogView.findViewById(R.id.clb_thurs);
+        clb_f= dialogView.findViewById(R.id.clb_fri);
+        clb_st= dialogView.findViewById(R.id.clb_sat);
+        clb_sd= dialogView.findViewById(R.id.clb_sun);
 /*
         dnk_m=(TextView)dialogView.findViewById(R.id.dnk_mon);
         dnk_t=(TextView)dialogView.findViewById(R.id.dnk_tue);
@@ -1002,96 +1002,96 @@ private SListAdapterAlpha mAdapter;
 
 
 
-        DateSelector=(LinearLayout)dialogView.findViewById(R.id.DateSelector);
-        TimeSelector=(LinearLayout)dialogView.findViewById(R.id.TimeSelector);
-        TimeSelector2=(LinearLayout)dialogView.findViewById(R.id.TimeSelector2);
-        sportField=(LinearLayout)dialogView.findViewById(R.id.sportField);
-        seteTime=(Button)dialogView.findViewById(R.id.setEndingTime);
-        setsTime=(Button)dialogView.findViewById(R.id.setStartTime);
-        setDate=(Button)dialogView.findViewById(R.id.setDate);
+        DateSelector= dialogView.findViewById(R.id.DateSelector);
+        TimeSelector= dialogView.findViewById(R.id.TimeSelector);
+        TimeSelector2= dialogView.findViewById(R.id.TimeSelector2);
+        sportField= dialogView.findViewById(R.id.sportField);
+        seteTime= dialogView.findViewById(R.id.setEndingTime);
+        setsTime= dialogView.findViewById(R.id.setStartTime);
+        setDate= dialogView.findViewById(R.id.setDate);
      //  selectTime.setOnClickListener(e->{sportField.setVisibility(View.GONE);DateSelector.setVisibility(View.GONE);TimeSelector.setVisibility(View.VISIBLE);TimeSelector2.setVisibility(View.GONE);});
        // selecttTme2.setOnClickListener(e->{sportField.setVisibility(View.GONE);DateSelector.setVisibility(View.GONE);TimeSelector.setVisibility(View.GONE);TimeSelector2.setVisibility(View.VISIBLE);});
        // selectDate.setOnClickListener(e->{sportField.setVisibility(View.GONE);DateSelector.setVisibility(View.VISIBLE);TimeSelector.setVisibility(View.GONE);TimeSelector2.setVisibility(View.GONE);});
-        s_tag=(TextView)dialogView.findViewById(R.id.sportEvent_tag);
+        s_tag= dialogView.findViewById(R.id.sportEvent_tag);
 
-        cinemanameField=(AutoCompleteTextView)dialogView.findViewById(R.id.cinema_name_field);
-        c_loc=(EditText)dialogView.findViewById(R.id.cinema_location);
-        c_d=(EditText)dialogView.findViewById(R.id.cinema_date);
+        cinemanameField= dialogView.findViewById(R.id.cinema_name_field);
+        c_loc= dialogView.findViewById(R.id.cinema_location);
+        c_d= dialogView.findViewById(R.id.cinema_date);
        // c_eT=(EditText) dialogView.findViewById(R.id.cine);
-        c_sT=(EditText)dialogView.findViewById(R.id.cinema_stime);
-        c_n=(EditText)dialogView.findViewById(R.id.cinema_notes);
-        c_dur=(EditText)dialogView.findViewById(R.id.cDuration);
-        c_eTime=(TextView) dialogView.findViewById(R.id.cinema_etime);
-        ctp=(TimePicker) dialogView.findViewById(R.id.ctp);
-        ctp2=(TimePicker)dialogView.findViewById(R.id.ctp2);
-        cdp=(DatePicker) dialogView.findViewById(R.id.cdp);
-        csetStartingTime=(Button)dialogView.findViewById(R.id.csetStartingTime);
-        csetEndingTime=(Button)dialogView.findViewById(R.id.csetStartingTime2);
-        csetDate=(Button)dialogView.findViewById(R.id.csetDate);
-        cDatePicker=(Button)dialogView.findViewById(R.id.cdatePicker);
-        cTimePicker1=(Button)dialogView.findViewById(R.id.ctimepicker1);
-        cTimepicker2=(Button)dialogView.findViewById(R.id.ctimepicker2);
-        c_spinner=(Spinner)dialogView.findViewById(R.id.c_spinner);
+        c_sT= dialogView.findViewById(R.id.cinema_stime);
+        c_n= dialogView.findViewById(R.id.cinema_notes);
+        c_dur= dialogView.findViewById(R.id.cDuration);
+        c_eTime= dialogView.findViewById(R.id.cinema_etime);
+        ctp= dialogView.findViewById(R.id.ctp);
+        ctp2= dialogView.findViewById(R.id.ctp2);
+        cdp= dialogView.findViewById(R.id.cdp);
+        csetStartingTime= dialogView.findViewById(R.id.csetStartingTime);
+        csetEndingTime= dialogView.findViewById(R.id.csetStartingTime2);
+        csetDate= dialogView.findViewById(R.id.csetDate);
+        cDatePicker= dialogView.findViewById(R.id.cdatePicker);
+        cTimePicker1= dialogView.findViewById(R.id.ctimepicker1);
+        cTimepicker2= dialogView.findViewById(R.id.ctimepicker2);
+        c_spinner= dialogView.findViewById(R.id.c_spinner);
 
-        cinemaField=(LinearLayout) dialogView.findViewById(R.id.cinemaField);
-        cTimeSelector=(LinearLayout)dialogView.findViewById(R.id.cTimeSelector);
-        cDateSelector=(LinearLayout)dialogView.findViewById(R.id.cDateSelector);
-        cTimeSelector2=(LinearLayout) dialogView.findViewById(R.id.cTimeSelector2);
-        c_tag=(TextView)dialogView.findViewById(R.id.cinemaEvent_tag);
+        cinemaField= dialogView.findViewById(R.id.cinemaField);
+        cTimeSelector= dialogView.findViewById(R.id.cTimeSelector);
+        cDateSelector= dialogView.findViewById(R.id.cDateSelector);
+        cTimeSelector2= dialogView.findViewById(R.id.cTimeSelector2);
+        c_tag= dialogView.findViewById(R.id.cinemaEvent_tag);
 
 
-       birthdaynameField=(AutoCompleteTextView)dialogView.findViewById(R.id.birthday_name_field);
-        b_loc=(EditText)dialogView.findViewById(R.id.birthday_location);
-        b_d=(EditText)dialogView.findViewById(R.id.birthday_date);
-        b_eT=(EditText)dialogView.findViewById(R.id.birthday_etime);
-        b_sT=(EditText)dialogView.findViewById(R.id.birthday_stime);
-        b_n=(EditText)dialogView.findViewById(R.id.birthday_notes);
+       birthdaynameField= dialogView.findViewById(R.id.birthday_name_field);
+        b_loc= dialogView.findViewById(R.id.birthday_location);
+        b_d= dialogView.findViewById(R.id.birthday_date);
+        b_eT= dialogView.findViewById(R.id.birthday_etime);
+        b_sT= dialogView.findViewById(R.id.birthday_stime);
+        b_n= dialogView.findViewById(R.id.birthday_notes);
         //b_dur=(EditText)dialogView.findViewById(R.id.bDuration);
        // b_eTime=(TextView) dialogView.findViewById(R.id.birthday_etime);
-        btp=(TimePicker) dialogView.findViewById(R.id.btp);
-        btp2=(TimePicker)dialogView.findViewById(R.id.btp2);
-        bdp=(DatePicker) dialogView.findViewById(R.id.bdp);
-        bsetStartingTime=(Button)dialogView.findViewById(R.id.bsetStartingTime);
-        bsetEndingTime=(Button)dialogView.findViewById(R.id.bsetStartingTime2);
-        bsetDate=(Button)dialogView.findViewById(R.id.bsetDate);
-        bDatePicker=(Button)dialogView.findViewById(R.id.bdatePicker);
-        bTimePicker1=(Button)dialogView.findViewById(R.id.btimepicker1);
-        bTimepicker2=(Button)dialogView.findViewById(R.id.btimepicker2);
-        birthdayField=(LinearLayout) dialogView.findViewById(R.id.birthdayField);
-        bTimeSelector=(LinearLayout)dialogView.findViewById(R.id.bTimeSelector);
-        bDateSelector=(LinearLayout)dialogView.findViewById(R.id.bDateSelector);
-        bTimeSelector2=(LinearLayout) dialogView.findViewById(R.id.bTimeSelector2);
-          b_invite_front=(ImageButton)dialogView.findViewById(R.id.coverOfb_invite);
-        getB_invite_inside=(ImageButton)dialogView.findViewById(R.id.insideOfbInvite);
-       b_tag=(TextView)dialogView.findViewById(R.id.birthdayEvent_tag);
-        b_spinner=(Spinner)dialogView.findViewById(R.id.b_spinner);
+        btp= dialogView.findViewById(R.id.btp);
+        btp2= dialogView.findViewById(R.id.btp2);
+        bdp= dialogView.findViewById(R.id.bdp);
+        bsetStartingTime= dialogView.findViewById(R.id.bsetStartingTime);
+        bsetEndingTime= dialogView.findViewById(R.id.bsetStartingTime2);
+        bsetDate= dialogView.findViewById(R.id.bsetDate);
+        bDatePicker= dialogView.findViewById(R.id.bdatePicker);
+        bTimePicker1= dialogView.findViewById(R.id.btimepicker1);
+        bTimepicker2= dialogView.findViewById(R.id.btimepicker2);
+        birthdayField= dialogView.findViewById(R.id.birthdayField);
+        bTimeSelector= dialogView.findViewById(R.id.bTimeSelector);
+        bDateSelector= dialogView.findViewById(R.id.bDateSelector);
+        bTimeSelector2= dialogView.findViewById(R.id.bTimeSelector2);
+          b_invite_front= dialogView.findViewById(R.id.coverOfb_invite);
+        getB_invite_inside= dialogView.findViewById(R.id.insideOfbInvite);
+       b_tag= dialogView.findViewById(R.id.birthdayEvent_tag);
+        b_spinner= dialogView.findViewById(R.id.b_spinner);
 
-        gamingnameField=(AutoCompleteTextView)dialogView.findViewById(R.id.gaming_name_field);
-       g_loc=(EditText)dialogView.findViewById(R.id.gaming_location);
-       g_d=(EditText)dialogView.findViewById(R.id.gaming_date);
-      gameOne=(EditText) dialogView.findViewById(R.id.g1);
-       g_sT=(EditText)dialogView.findViewById(R.id.gaming_stime);
-       g_n=(EditText)dialogView.findViewById(R.id.gaming_notes);
-        g_dur=(EditText)dialogView.findViewById(R.id.gDuration);
-        g_eTime=(TextView) dialogView.findViewById(R.id.gaming_etime);
-       gtp=(TimePicker) dialogView.findViewById(R.id.gtp);
-       gtp2=(TimePicker)dialogView.findViewById(R.id.gtp2);
-       gdp=(DatePicker) dialogView.findViewById(R.id.gdp);
-       gsetStartingTime=(Button)dialogView.findViewById(R.id.gsetStartingTime);
-       gsetEndingTime=(Button)dialogView.findViewById(R.id.gsetStartingTime2);
-        gsetDate=(Button)dialogView.findViewById(R.id.gsetDate);
-       gDatePicker=(Button)dialogView.findViewById(R.id.gdatePicker);
-       gTimePicker1=(Button)dialogView.findViewById(R.id.gtimepicker1);
-       gTimepicker2=(Button)dialogView.findViewById(R.id.gtimepicker2);
-        gamingField=(LinearLayout) dialogView.findViewById(R.id.gamingField);
-       gTimeSelector=(LinearLayout)dialogView.findViewById(R.id.gTimeSelector);
-       gDateSelector=(LinearLayout)dialogView.findViewById(R.id.gDateSelector);
-       gTimeSelector2=(LinearLayout) dialogView.findViewById(R.id.gTimeSelector2);
-        g_tag=(TextView)dialogView.findViewById(R.id.gamingEvent_tag);
-        g_spinner=(Spinner)dialogView.findViewById(R.id.g_spinner);
-        gamesField=(LinearLayout) dialogView.findViewById(R.id.gamesField);
-        addG=(Button)dialogView.findViewById(R.id.addGame);
-        removeG=(Button)dialogView.findViewById(R.id.removeGame);
+        gamingnameField= dialogView.findViewById(R.id.gaming_name_field);
+       g_loc= dialogView.findViewById(R.id.gaming_location);
+       g_d= dialogView.findViewById(R.id.gaming_date);
+      gameOne= dialogView.findViewById(R.id.g1);
+       g_sT= dialogView.findViewById(R.id.gaming_stime);
+       g_n= dialogView.findViewById(R.id.gaming_notes);
+        g_dur= dialogView.findViewById(R.id.gDuration);
+        g_eTime= dialogView.findViewById(R.id.gaming_etime);
+       gtp= dialogView.findViewById(R.id.gtp);
+       gtp2= dialogView.findViewById(R.id.gtp2);
+       gdp= dialogView.findViewById(R.id.gdp);
+       gsetStartingTime= dialogView.findViewById(R.id.gsetStartingTime);
+       gsetEndingTime= dialogView.findViewById(R.id.gsetStartingTime2);
+        gsetDate= dialogView.findViewById(R.id.gsetDate);
+       gDatePicker= dialogView.findViewById(R.id.gdatePicker);
+       gTimePicker1= dialogView.findViewById(R.id.gtimepicker1);
+       gTimepicker2= dialogView.findViewById(R.id.gtimepicker2);
+        gamingField= dialogView.findViewById(R.id.gamingField);
+       gTimeSelector= dialogView.findViewById(R.id.gTimeSelector);
+       gDateSelector= dialogView.findViewById(R.id.gDateSelector);
+       gTimeSelector2= dialogView.findViewById(R.id.gTimeSelector2);
+        g_tag= dialogView.findViewById(R.id.gamingEvent_tag);
+        g_spinner= dialogView.findViewById(R.id.g_spinner);
+        gamesField= dialogView.findViewById(R.id.gamesField);
+        addG= dialogView.findViewById(R.id.addGame);
+        removeG= dialogView.findViewById(R.id.removeGame);
 
        /* drinknameField=(AutoCompleteTextView)dialogView.findViewById(R.id.drink_name_field);
         dnk_loc=(EditText)dialogView.findViewById(R.id.drink_location);
@@ -1118,160 +1118,160 @@ private SListAdapterAlpha mAdapter;
         drink_spinner=(Spinner)dialogView.findViewById(R.id.drink_spinner);
        // gamesField=(LinearLayout) dialogView.findViewById(R.id.gamesField);*/
 
-        xmasnameField=(AutoCompleteTextView)dialogView.findViewById(R.id.xmas_name_field);
-        x_loc=(EditText)dialogView.findViewById(R.id.xmas_location);
-        x_d=(EditText)dialogView.findViewById(R.id.xmas_date);
-        x_eT=(EditText)dialogView.findViewById(R.id.xmas_etime);
-        x_sT=(EditText)dialogView.findViewById(R.id.xmas_stime);
-        x_n=(EditText)dialogView.findViewById(R.id.xmas_notes);
+        xmasnameField= dialogView.findViewById(R.id.xmas_name_field);
+        x_loc= dialogView.findViewById(R.id.xmas_location);
+        x_d= dialogView.findViewById(R.id.xmas_date);
+        x_eT= dialogView.findViewById(R.id.xmas_etime);
+        x_sT= dialogView.findViewById(R.id.xmas_stime);
+        x_n= dialogView.findViewById(R.id.xmas_notes);
         //x_dur=(EditText)dialogView.findViewById(R.id.xDuration);
        // x_eTime=(TextView) dialogView.findViewById(R.id.xirthday_etime);
-        xtp=(TimePicker) dialogView.findViewById(R.id.xtp);
-        xtp2=(TimePicker)dialogView.findViewById(R.id.xtp2);
-        xdp=(DatePicker) dialogView.findViewById(R.id.xdp);
-        xsetStartingTime=(Button)dialogView.findViewById(R.id.xsetStartingTime);
-        xsetEndingTime=(Button)dialogView.findViewById(R.id.xsetStartingTime2);
-        xsetDate=(Button)dialogView.findViewById(R.id.xsetDate);
-        xDatePicker=(Button)dialogView.findViewById(R.id.xdatePicker);
-        xTimePicker1=(Button)dialogView.findViewById(R.id.xtimepicker1);
-        xTimepicker2=(Button)dialogView.findViewById(R.id.xtimepicker2);
-        xmasField=(LinearLayout) dialogView.findViewById(R.id.xmasField);
-        xTimeSelector=(LinearLayout)dialogView.findViewById(R.id.xTimeSelector);
-        xDateSelector=(LinearLayout)dialogView.findViewById(R.id.xDateSelector);
-        xTimeSelector2=(LinearLayout) dialogView.findViewById(R.id.xTimeSelector2);
-          x_invite_front=(ImageButton)dialogView.findViewById(R.id.coverOfx_invite);
-        getX_invite_inside=(ImageButton)dialogView.findViewById(R.id.insideOfxInvite);
-       x_tag=(TextView)dialogView.findViewById(R.id.xmasEvent_tag);
-        x_spinner=(Spinner)dialogView.findViewById(R.id.x_spinner);
+        xtp= dialogView.findViewById(R.id.xtp);
+        xtp2= dialogView.findViewById(R.id.xtp2);
+        xdp= dialogView.findViewById(R.id.xdp);
+        xsetStartingTime= dialogView.findViewById(R.id.xsetStartingTime);
+        xsetEndingTime= dialogView.findViewById(R.id.xsetStartingTime2);
+        xsetDate= dialogView.findViewById(R.id.xsetDate);
+        xDatePicker= dialogView.findViewById(R.id.xdatePicker);
+        xTimePicker1= dialogView.findViewById(R.id.xtimepicker1);
+        xTimepicker2= dialogView.findViewById(R.id.xtimepicker2);
+        xmasField= dialogView.findViewById(R.id.xmasField);
+        xTimeSelector= dialogView.findViewById(R.id.xTimeSelector);
+        xDateSelector= dialogView.findViewById(R.id.xDateSelector);
+        xTimeSelector2= dialogView.findViewById(R.id.xTimeSelector2);
+          x_invite_front= dialogView.findViewById(R.id.coverOfx_invite);
+        getX_invite_inside= dialogView.findViewById(R.id.insideOfxInvite);
+       x_tag= dialogView.findViewById(R.id.xmasEvent_tag);
+        x_spinner= dialogView.findViewById(R.id.x_spinner);
 
-        clubnameField=(AutoCompleteTextView)dialogView.findViewById(R.id.club_name_field);
-        clb_loc=(EditText)dialogView.findViewById(R.id.club_location);
-        clb_d=(EditText)dialogView.findViewById(R.id.club_date);
+        clubnameField= dialogView.findViewById(R.id.club_name_field);
+        clb_loc= dialogView.findViewById(R.id.club_location);
+        clb_d= dialogView.findViewById(R.id.club_date);
         // c_eT=(EditText) dialogView.findViewById(R.id.cine);
-        clb_sT=(EditText)dialogView.findViewById(R.id.club_stime);
-        clb_n=(EditText)dialogView.findViewById(R.id.club_notes);
-        clb_dur=(EditText)dialogView.findViewById(R.id.clbDuration);
-        clb_eTime=(TextView) dialogView.findViewById(R.id.club_etime);
-        clbtp=(TimePicker) dialogView.findViewById(R.id.clbtp);
-        clbtp2=(TimePicker)dialogView.findViewById(R.id.clbtp2);
-        clbdp=(DatePicker) dialogView.findViewById(R.id.clbdp);
-        clbsetStartingTime=(Button)dialogView.findViewById(R.id.clbsetStartingTime);
-        clbsetEndingTime=(Button)dialogView.findViewById(R.id.clbsetStartingTime2);
-        clbsetDate=(Button)dialogView.findViewById(R.id.clbsetDate);
-        clbDatePicker=(Button)dialogView.findViewById(R.id.clbdatePicker);
-        clbTimePicker1=(Button)dialogView.findViewById(R.id.clbtimepicker1);
-        clbTimepicker2=(Button)dialogView.findViewById(R.id.clbtimepicker2);
-        club_spinner=(Spinner)dialogView.findViewById(R.id.clb_spinner);
+        clb_sT= dialogView.findViewById(R.id.club_stime);
+        clb_n= dialogView.findViewById(R.id.club_notes);
+        clb_dur= dialogView.findViewById(R.id.clbDuration);
+        clb_eTime= dialogView.findViewById(R.id.club_etime);
+        clbtp= dialogView.findViewById(R.id.clbtp);
+        clbtp2= dialogView.findViewById(R.id.clbtp2);
+        clbdp= dialogView.findViewById(R.id.clbdp);
+        clbsetStartingTime= dialogView.findViewById(R.id.clbsetStartingTime);
+        clbsetEndingTime= dialogView.findViewById(R.id.clbsetStartingTime2);
+        clbsetDate= dialogView.findViewById(R.id.clbsetDate);
+        clbDatePicker= dialogView.findViewById(R.id.clbdatePicker);
+        clbTimePicker1= dialogView.findViewById(R.id.clbtimepicker1);
+        clbTimepicker2= dialogView.findViewById(R.id.clbtimepicker2);
+        club_spinner= dialogView.findViewById(R.id.clb_spinner);
 
-        clbField=(LinearLayout) dialogView.findViewById(R.id.clubField);
-        clbTimeSelector=(LinearLayout)dialogView.findViewById(R.id.clbTimeSelector);
-        clbDateSelector=(LinearLayout)dialogView.findViewById(R.id.clbDateSelector);
-        clbTimeSelector2=(LinearLayout) dialogView.findViewById(R.id.clbTimeSelector2);
-        clb_tag=(TextView)dialogView.findViewById(R.id.clubEvent_tag);
+        clbField= dialogView.findViewById(R.id.clubField);
+        clbTimeSelector= dialogView.findViewById(R.id.clbTimeSelector);
+        clbDateSelector= dialogView.findViewById(R.id.clbDateSelector);
+        clbTimeSelector2= dialogView.findViewById(R.id.clbTimeSelector2);
+        clb_tag= dialogView.findViewById(R.id.clubEvent_tag);
 
-        shoppingnameField=(AutoCompleteTextView)dialogView.findViewById(R.id.shopping__name_field);
-        sO_loc=(EditText)dialogView.findViewById(R.id.shopping__location);
-        sO_d=(EditText)dialogView.findViewById(R.id.shopping_date);
-        sO_eT=(EditText)dialogView.findViewById(R.id.shopping__etime);
-        sO_sT=(EditText)dialogView.findViewById(R.id.shopping__stime);
-        sO_n=(EditText)dialogView.findViewById(R.id.shopping__notes);
+        shoppingnameField= dialogView.findViewById(R.id.shopping__name_field);
+        sO_loc= dialogView.findViewById(R.id.shopping__location);
+        sO_d= dialogView.findViewById(R.id.shopping_date);
+        sO_eT= dialogView.findViewById(R.id.shopping__etime);
+        sO_sT= dialogView.findViewById(R.id.shopping__stime);
+        sO_n= dialogView.findViewById(R.id.shopping__notes);
         //x_dur=(EditText)dialogView.findViewById(R.id.xDuration);
         // x_eTime=(TextView) dialogView.findViewById(R.id.xirthday_etime);
-        sOtp=(TimePicker) dialogView.findViewById(R.id.sOtp);
-        sOtp2=(TimePicker)dialogView.findViewById(R.id.sOtp2);
-        sOdp=(DatePicker) dialogView.findViewById(R.id.sOdp);
-        sOsetStartingTime=(Button)dialogView.findViewById(R.id.sOsetStartingTime);
-        sOsetEndingTime=(Button)dialogView.findViewById(R.id.sOsetStartingTime2);
-        sOsetDate=(Button)dialogView.findViewById(R.id.sOsetDate);
-        sODatePicker=(Button)dialogView.findViewById(R.id.sOdatePicker);
-        sOTimePicker1=(Button)dialogView.findViewById(R.id.sOtimepicker1);
-        sOTimepicker2=(Button)dialogView.findViewById(R.id.sOtimepicker2);
-        sOverField=(LinearLayout) dialogView.findViewById(R.id.shopping_Field);
-        sOTimeSelector=(LinearLayout)dialogView.findViewById(R.id.sOTimeSelector);
-        sODateSelector=(LinearLayout)dialogView.findViewById(R.id.sODateSelector);
-        sOTimeSelector2=(LinearLayout) dialogView.findViewById(R.id.sOTimeSelector2);
+        sOtp= dialogView.findViewById(R.id.sOtp);
+        sOtp2= dialogView.findViewById(R.id.sOtp2);
+        sOdp= dialogView.findViewById(R.id.sOdp);
+        sOsetStartingTime= dialogView.findViewById(R.id.sOsetStartingTime);
+        sOsetEndingTime= dialogView.findViewById(R.id.sOsetStartingTime2);
+        sOsetDate= dialogView.findViewById(R.id.sOsetDate);
+        sODatePicker= dialogView.findViewById(R.id.sOdatePicker);
+        sOTimePicker1= dialogView.findViewById(R.id.sOtimepicker1);
+        sOTimepicker2= dialogView.findViewById(R.id.sOtimepicker2);
+        sOverField= dialogView.findViewById(R.id.shopping_Field);
+        sOTimeSelector= dialogView.findViewById(R.id.sOTimeSelector);
+        sODateSelector= dialogView.findViewById(R.id.sODateSelector);
+        sOTimeSelector2= dialogView.findViewById(R.id.sOTimeSelector2);
         //=(ImageButton)dialogView.findViewById(R.id.coverOfsO_invite);
       //  getsO_invite_inside=(ImageButton)dialogView.findViewById(R.id.insideOfsOInvite);
-        sOtag=(TextView)dialogView.findViewById(R.id.shopping_Event_tag);
-        sO_spinner=(Spinner)dialogView.findViewById(R.id.sO_spinner);
+        sOtag= dialogView.findViewById(R.id.shopping_Event_tag);
+        sO_spinner= dialogView.findViewById(R.id.sO_spinner);
         if(type=='O'){
-        rv=(RecyclerView) dialogView.findViewById(R.id.listviewer);
+        rv= dialogView.findViewById(R.id.listviewer);
         rv.setLayoutManager(new LinearLayoutManager(this));
         LoadMyLists();}
 
-        ddatenameField=(AutoCompleteTextView)dialogView.findViewById(R.id.ddate__name_field);
-        d_loc=(EditText)dialogView.findViewById(R.id.ddate__location);
-        d_d=(EditText)dialogView.findViewById(R.id.ddate_date);
-        d_eT=(EditText)dialogView.findViewById(R.id.ddate__etime);
-        d_sT=(EditText)dialogView.findViewById(R.id.ddate__stime);
-        d_n=(EditText)dialogView.findViewById(R.id.ddate__notes);
+        ddatenameField= dialogView.findViewById(R.id.ddate__name_field);
+        d_loc= dialogView.findViewById(R.id.ddate__location);
+        d_d= dialogView.findViewById(R.id.ddate_date);
+        d_eT= dialogView.findViewById(R.id.ddate__etime);
+        d_sT= dialogView.findViewById(R.id.ddate__stime);
+        d_n= dialogView.findViewById(R.id.ddate__notes);
         //x_dur=(EditText)dialogView.findViewById(R.id.xDuration);
         // x_eTime=(TextView) dialogView.findViewById(R.id.xirthday_etime);
-        dtp=(TimePicker) dialogView.findViewById(R.id.dtp);
-        dtp2=(TimePicker)dialogView.findViewById(R.id.dtp2);
-        ddp=(DatePicker) dialogView.findViewById(R.id.ddp);
-        dsetStartingTime=(Button)dialogView.findViewById(R.id.dsetStartingTime);
-        dsetEndingTime=(Button)dialogView.findViewById(R.id.dsetStartingTime2);
-        dsetDate=(Button)dialogView.findViewById(R.id.dsetDate);
-        dDatePicker=(Button)dialogView.findViewById(R.id.ddatePicker);
-        dTimePicker1=(Button)dialogView.findViewById(R.id.dtimepicker1);
-        dTimepicker2=(Button)dialogView.findViewById(R.id.dtimepicker2);
-        ddateField=(LinearLayout) dialogView.findViewById(R.id.ddate_Field);
-        dTimeSelector=(LinearLayout)dialogView.findViewById(R.id.dTimeSelector);
-        dDateSelector=(LinearLayout)dialogView.findViewById(R.id.dDateSelector);
-        dTimeSelector2=(LinearLayout) dialogView.findViewById(R.id.dTimeSelector2);
-        dtag=(TextView)dialogView.findViewById(R.id.ddate_Event_tag);
-        d_spinner=(Spinner)dialogView.findViewById(R.id.d_spinner);
+        dtp= dialogView.findViewById(R.id.dtp);
+        dtp2= dialogView.findViewById(R.id.dtp2);
+        ddp= dialogView.findViewById(R.id.ddp);
+        dsetStartingTime= dialogView.findViewById(R.id.dsetStartingTime);
+        dsetEndingTime= dialogView.findViewById(R.id.dsetStartingTime2);
+        dsetDate= dialogView.findViewById(R.id.dsetDate);
+        dDatePicker= dialogView.findViewById(R.id.ddatePicker);
+        dTimePicker1= dialogView.findViewById(R.id.dtimepicker1);
+        dTimepicker2= dialogView.findViewById(R.id.dtimepicker2);
+        ddateField= dialogView.findViewById(R.id.ddate_Field);
+        dTimeSelector= dialogView.findViewById(R.id.dTimeSelector);
+        dDateSelector= dialogView.findViewById(R.id.dDateSelector);
+        dTimeSelector2= dialogView.findViewById(R.id.dTimeSelector2);
+        dtag= dialogView.findViewById(R.id.ddate_Event_tag);
+        d_spinner= dialogView.findViewById(R.id.d_spinner);
 
-        awardnameField=(AutoCompleteTextView)dialogView.findViewById(R.id.award_name_field);
-        a_loc=(EditText)dialogView.findViewById(R.id.award_location);
-        a_d=(EditText)dialogView.findViewById(R.id.a_date);
-        a_eT=(EditText)dialogView.findViewById(R.id.award_etime);
-        a_sT=(EditText)dialogView.findViewById(R.id.award_stime);
-        a_n=(EditText)dialogView.findViewById(R.id.award_notes);
+        awardnameField= dialogView.findViewById(R.id.award_name_field);
+        a_loc= dialogView.findViewById(R.id.award_location);
+        a_d= dialogView.findViewById(R.id.a_date);
+        a_eT= dialogView.findViewById(R.id.award_etime);
+        a_sT= dialogView.findViewById(R.id.award_stime);
+        a_n= dialogView.findViewById(R.id.award_notes);
         //x_dur=(EditText)dialogView.findViewById(R.id.xDuration);
         // x_eTime=(TextView) dialogView.findViewById(R.id.xirthday_etime);
-       atp=(TimePicker) dialogView.findViewById(R.id.atp);
-       atp2=(TimePicker)dialogView.findViewById(R.id.atp2);
-       adp=(DatePicker) dialogView.findViewById(R.id.adp);
-       asetStartingTime=(Button)dialogView.findViewById(R.id.asetStartingTime);
-       asetEndingTime=(Button)dialogView.findViewById(R.id.asetStartingTime2);
-       asetDate=(Button)dialogView.findViewById(R.id.asetDate);
-       aDatePicker=(Button)dialogView.findViewById(R.id.aPicker);
-       aTimePicker1=(Button)dialogView.findViewById(R.id.atimepicker1);
-       aTimepicker2=(Button)dialogView.findViewById(R.id.atimepicker2);
-        awardField=(LinearLayout) dialogView.findViewById(R.id.a_Field);
-       aTimeSelector=(LinearLayout)dialogView.findViewById(R.id.aTimeSelector);
-       aDateSelector=(LinearLayout)dialogView.findViewById(R.id.aDateSelector);
-       aTimeSelector2=(LinearLayout) dialogView.findViewById(R.id.aTimeSelector2);
-       atag=(TextView)dialogView.findViewById(R.id.a_Event_tag);
-       a_spinner=(Spinner)dialogView.findViewById(R.id.a_spinner);
+       atp= dialogView.findViewById(R.id.atp);
+       atp2= dialogView.findViewById(R.id.atp2);
+       adp= dialogView.findViewById(R.id.adp);
+       asetStartingTime= dialogView.findViewById(R.id.asetStartingTime);
+       asetEndingTime= dialogView.findViewById(R.id.asetStartingTime2);
+       asetDate= dialogView.findViewById(R.id.asetDate);
+       aDatePicker= dialogView.findViewById(R.id.aPicker);
+       aTimePicker1= dialogView.findViewById(R.id.atimepicker1);
+       aTimepicker2= dialogView.findViewById(R.id.atimepicker2);
+        awardField= dialogView.findViewById(R.id.a_Field);
+       aTimeSelector= dialogView.findViewById(R.id.aTimeSelector);
+       aDateSelector= dialogView.findViewById(R.id.aDateSelector);
+       aTimeSelector2= dialogView.findViewById(R.id.aTimeSelector2);
+       atag= dialogView.findViewById(R.id.a_Event_tag);
+       a_spinner= dialogView.findViewById(R.id.a_spinner);
 
-        weddingnameField=(AutoCompleteTextView)dialogView.findViewById(R.id.wedding_name_field);
-        w_loc=(EditText)dialogView.findViewById(R.id.w_location);
-        w_d=(EditText)dialogView.findViewById(R.id.w_date);
-        w_eT=(EditText)dialogView.findViewById(R.id.w_etime);
-        w_sT=(EditText)dialogView.findViewById(R.id.w_stime);
-        w_n=(EditText)dialogView.findViewById(R.id.w_notes);
+        weddingnameField= dialogView.findViewById(R.id.wedding_name_field);
+        w_loc= dialogView.findViewById(R.id.w_location);
+        w_d= dialogView.findViewById(R.id.w_date);
+        w_eT= dialogView.findViewById(R.id.w_etime);
+        w_sT= dialogView.findViewById(R.id.w_stime);
+        w_n= dialogView.findViewById(R.id.w_notes);
         //x_dur=(EditText)dialogView.findViewById(R.id.xDuration);
         // x_eTime=(TextView) dialogView.findViewById(R.id.xirthday_etime);
-        wtp=(TimePicker) dialogView.findViewById(R.id.wtp);
-        wtp2=(TimePicker)dialogView.findViewById(R.id.wtp2);
-        wdp=(DatePicker) dialogView.findViewById(R.id.wdp);
-        wsetStartingTime=(Button)dialogView.findViewById(R.id.wsetStartingTime);
-        wsetEndingTime=(Button)dialogView.findViewById(R.id.wsetStartingTime2);
-        wsetDate=(Button)dialogView.findViewById(R.id.wsetDate);
-        wDatePicker=(Button)dialogView.findViewById(R.id.wPicker);
-        wTimePicker1=(Button)dialogView.findViewById(R.id.wtimepicker1);
-        wTimepicker2=(Button)dialogView.findViewById(R.id.wtimepicker2);
-        weddingField=(LinearLayout) dialogView.findViewById(R.id.w_Field);
-        wTimeSelector=(LinearLayout)dialogView.findViewById(R.id.wTimeSelector);
-        wDateSelector=(LinearLayout)dialogView.findViewById(R.id.wDateSelector);
-        wTimeSelector2=(LinearLayout) dialogView.findViewById(R.id.wTimeSelector2);
-        wtag=(TextView)dialogView.findViewById(R.id.w_Event_tag);
-        w_spinner=(Spinner)dialogView.findViewById(R.id.w_spinner);
-        w_invite_front=(ImageButton)dialogView.findViewById(R.id.coverOfw_invite);
-        getW_invite_inside=(ImageButton)dialogView.findViewById(R.id.insideOfwInvite);
+        wtp= dialogView.findViewById(R.id.wtp);
+        wtp2= dialogView.findViewById(R.id.wtp2);
+        wdp= dialogView.findViewById(R.id.wdp);
+        wsetStartingTime= dialogView.findViewById(R.id.wsetStartingTime);
+        wsetEndingTime= dialogView.findViewById(R.id.wsetStartingTime2);
+        wsetDate= dialogView.findViewById(R.id.wsetDate);
+        wDatePicker= dialogView.findViewById(R.id.wPicker);
+        wTimePicker1= dialogView.findViewById(R.id.wtimepicker1);
+        wTimepicker2= dialogView.findViewById(R.id.wtimepicker2);
+        weddingField= dialogView.findViewById(R.id.w_Field);
+        wTimeSelector= dialogView.findViewById(R.id.wTimeSelector);
+        wDateSelector= dialogView.findViewById(R.id.wDateSelector);
+        wTimeSelector2= dialogView.findViewById(R.id.wTimeSelector2);
+        wtag= dialogView.findViewById(R.id.w_Event_tag);
+        w_spinner= dialogView.findViewById(R.id.w_spinner);
+        w_invite_front= dialogView.findViewById(R.id.coverOfw_invite);
+        getW_invite_inside= dialogView.findViewById(R.id.insideOfwInvite);
 
         /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             timeSelector.setOnTimeChangedListener((timePicker, i, i1) ->
@@ -1301,8 +1301,8 @@ private SListAdapterAlpha mAdapter;
                 rugbyBtn.setOnClickListener(e->{insertText(sportnameField,"Rugby");});
                 mmaBtn.setOnClickListener(e->{insertText(sportnameField,"M.M.A");});
                 boxingBtn.setOnClickListener(e->{insertText(sportnameField,"Boxing");});
-                cancl=(Button)dialogView.findViewById(R.id.cancel);
-                save=(Button)dialogView.findViewById(R.id.social_save_s);
+                cancl= dialogView.findViewById(R.id.cancel);
+                save= dialogView.findViewById(R.id.social_save_s);
                 save.setEnabled(isCompleted(sportnameField,s_loc,s_d,s_sT,s_eT,s_n,save,"Unknown Sport"));
                 save.setOnClickListener(e->{handleSaveButtonForAll(sportnameField,s_loc,s_d,s_sT,s_eT,s_n,null,null,null,DateSelector,TimeSelector,TimeSelector2,timeSelector,timeSelector2,datePicker,sport,s_tag,"Sport",s_spinner);alertDialog.dismiss();});
                 handleTemplatestuff(sportnameField,s_loc,s_d,s_sT,s_eT,s_n,null,null,null,DateSelector,TimeSelector,TimeSelector2,timeSelector,timeSelector2,datePicker,sport,s_tag,"Sport",s_spinner);
@@ -1310,9 +1310,9 @@ private SListAdapterAlpha mAdapter;
             }
             else if(key==2)
             {
-                save=(Button)dialogView.findViewById(R.id.social_save_b);
+                save= dialogView.findViewById(R.id.social_save_b);
                 save.setEnabled(isCompleted(birthdaynameField,b_loc,b_d,b_sT,b_eT,b_n,save,"Unknown Birthday"));
-                cancl=(Button)dialogView.findViewById(R.id.cancel3);
+                cancl= dialogView.findViewById(R.id.cancel3);
                 save.setOnClickListener(e->{handleSaveButtonForAll(birthdaynameField,b_loc,b_d,b_sT,b_eT,b_n,null,b_invite_front,getB_invite_inside,bDateSelector,bTimeSelector,bTimeSelector2,btp,btp2,bdp,birthday,b_tag,"Birthday",b_spinner);alertDialog.dismiss();});
                 handleTemplatestuff(birthdaynameField,b_loc,b_d,b_sT,b_eT,b_n,null,b_invite_front,getB_invite_inside,bDateSelector,bTimeSelector,bTimeSelector2,btp,btp2,bdp,birthday,b_tag,"Birthday",b_spinner);
                 selectDay(b_m,b_t,b_w,b_th,b_f,b_st,b_sd,b_d);
@@ -1320,8 +1320,8 @@ private SListAdapterAlpha mAdapter;
             }
             else if(key==3)
             {
-                save=(Button)dialogView.findViewById(R.id.social_save_c);
-                cancl=(Button)dialogView.findViewById(R.id.cancel2);
+                save= dialogView.findViewById(R.id.social_save_c);
+                cancl= dialogView.findViewById(R.id.cancel2);
                 save.setEnabled(isCompleted(cinemanameField,c_loc,c_d,c_sT,c_dur,c_n,save,"Unknown Movie"));
                 save.setOnClickListener(e->{handleSaveButtonForAll(cinemanameField,c_loc,c_d,c_sT,c_eT,c_n,c_dur,null,null,cDateSelector,cTimeSelector,cTimeSelector2,ctp,ctp2,cdp,cinema,c_tag,"Cinema",c_spinner);alertDialog.dismiss();});
                 handleTemplatestuff(cinemanameField,c_loc,c_d,c_sT,c_dur,c_n,c_eTime,null,null,cDateSelector,cTimeSelector,cTimeSelector2,ctp,ctp2,cdp,cinema,c_tag,"Cinema",c_spinner);
@@ -1329,8 +1329,8 @@ private SListAdapterAlpha mAdapter;
             }
             else if(key==4)
             {
-                save=(Button)dialogView.findViewById(R.id.social_save_g);
-                cancl=(Button)dialogView.findViewById(R.id.cancel4);
+                save= dialogView.findViewById(R.id.social_save_g);
+                cancl= dialogView.findViewById(R.id.cancel4);
                 save.setEnabled(isCompleted(gamingnameField,g_loc,g_d,g_sT,g_dur,g_n,save,"Unknown Game"));
                 save.setOnClickListener(e->{handleSaveButtonForAll(gamingnameField,g_loc,g_d,g_sT,g_eT,g_n,g_dur,null,null,gDateSelector,gTimeSelector,gTimeSelector2,gtp,gtp2,gdp,gaming,g_tag,"Gaming",g_spinner);alertDialog.dismiss();});
                 handleTemplatestuff(gamingnameField,g_loc,g_d,g_sT,g_dur,g_n,g_eTime,null,null,gDateSelector,gTimeSelector,gTimeSelector2,gtp,gtp2,gdp,gaming,g_tag,"Gaming",g_spinner);
@@ -1339,9 +1339,9 @@ private SListAdapterAlpha mAdapter;
             }
             else if(key==5)
             {
-                save=(Button)dialogView.findViewById(R.id.social_save_x);
+                save= dialogView.findViewById(R.id.social_save_x);
                 save.setEnabled(isCompleted(xmasnameField,x_loc,x_d,x_sT,x_eT,x_n,save,"Christmas"));
-                cancl=(Button)dialogView.findViewById(R.id.cancel3);
+                cancl= dialogView.findViewById(R.id.cancel3);
                 save.setOnClickListener(e->{handleSaveButtonForAll(xmasnameField,x_loc,x_d,x_sT,x_eT,x_n,null,x_invite_front,getX_invite_inside,xDateSelector,xTimeSelector,xTimeSelector2,xtp,xtp2,xdp,xmas,x_tag,"Christmas",x_spinner);alertDialog.dismiss();});
                 handleTemplatestuff(xmasnameField,x_loc,x_d,x_sT,x_eT,x_n,null,x_invite_front,getX_invite_inside,xDateSelector,xTimeSelector,xTimeSelector2,xtp,xtp2,xdp,xmas,x_tag,"Christmas",x_spinner);
                 selectDay(x_m,x_t,x_w,x_th,x_f,x_st,x_sd,x_d);
@@ -1349,9 +1349,9 @@ private SListAdapterAlpha mAdapter;
             }
             else if(key==6)
             {
-                save=(Button)dialogView.findViewById(R.id.social_save_sO);
+                save= dialogView.findViewById(R.id.social_save_sO);
                 save.setEnabled(isCompleted(shoppingnameField,sO_loc,sO_d,sO_sT,sO_eT,sO_n,save,"Sleep-over"));
-                cancl=(Button)dialogView.findViewById(R.id.cancel3);
+                cancl= dialogView.findViewById(R.id.cancel3);
                 save.setOnClickListener(e->{handleSaveButtonForAll(shoppingnameField,sO_loc,sO_d,sO_sT,sO_eT,sO_n,null,null,null,sODateSelector,sOTimeSelector,sOTimeSelector2,sOtp,sOtp2,sOdp,shopping,sOtag,"Shopping",sO_spinner);alertDialog.dismiss();});
                 handleTemplatestuff(shoppingnameField,sO_loc,sO_d,sO_sT,sO_eT,sO_n,null,null,null,sODateSelector,sOTimeSelector,sOTimeSelector2,sOtp,sOtp2,sOdp,shopping,sOtag,"Shopping",sO_spinner);
                 selectDay(sO_m,sO_t,sO_w,sO_th,sO_f,sO_st,sO_sd,sO_d);
@@ -1359,9 +1359,9 @@ private SListAdapterAlpha mAdapter;
             }
             else if(key==7)
             {
-                save=(Button)dialogView.findViewById(R.id.social_save_d);
+                save= dialogView.findViewById(R.id.social_save_d);
                 save.setEnabled(isCompleted(ddatenameField,d_loc,d_d,d_sT,d_eT,d_n,save,"Date"));
-                cancl=(Button)dialogView.findViewById(R.id.cancel3);
+                cancl= dialogView.findViewById(R.id.cancel3);
                 save.setOnClickListener(e->{handleSaveButtonForAll(ddatenameField,d_loc,d_d,d_sT,d_eT,d_n,null,null,null,dDateSelector,dTimeSelector,dTimeSelector2,dtp,dtp2,ddp,dating,dtag,"Dating",d_spinner);alertDialog.dismiss();});
                 handleTemplatestuff(ddatenameField,d_loc,d_d,d_sT,d_eT,d_n,null,null,null,dDateSelector,dTimeSelector,dTimeSelector2,dtp,dtp2,ddp,shopping,dtag,"Dating",d_spinner);
                 selectDay(d_m,d_t,d_w,d_th,d_f,d_st,d_sd,d_d);
@@ -1369,9 +1369,9 @@ private SListAdapterAlpha mAdapter;
             }
             else if(key==8)
             {
-                save=(Button)dialogView.findViewById(R.id.social_save_a);
+                save= dialogView.findViewById(R.id.social_save_a);
                 save.setEnabled(isCompleted(awardnameField,a_loc,a_d,a_sT,a_eT,a_n,save,"Awards ceremony"));
-                cancl=(Button)dialogView.findViewById(R.id.cancel3);
+                cancl= dialogView.findViewById(R.id.cancel3);
                 save.setOnClickListener(e->{handleSaveButtonForAll(awardnameField,a_loc,a_d,a_sT,a_eT,a_n,null,null,null,aDateSelector,aTimeSelector,aTimeSelector2,atp,atp2,adp,award,atag,"Awards ceremony",a_spinner);alertDialog.dismiss();});
                 handleSaveButtonForAll(awardnameField,a_loc,a_d,a_sT,a_eT,a_n,null,null,null,aDateSelector,aTimeSelector,aTimeSelector2,atp,atp2,adp,shopping,atag,"Awards ceremony",a_spinner);
                 selectDay(a_m,a_t,a_w,a_th,a_f,a_st,a_sd,a_d);
@@ -1379,9 +1379,9 @@ private SListAdapterAlpha mAdapter;
             }
             else if(key==9)
             {
-                save=(Button)dialogView.findViewById(R.id.social_save_w);
+                save= dialogView.findViewById(R.id.social_save_w);
                 save.setEnabled(isCompleted(weddingnameField,w_loc,w_d,w_sT,w_eT,w_n,save,"Wedding"));
-                cancl=(Button)dialogView.findViewById(R.id.cancel3);
+                cancl= dialogView.findViewById(R.id.cancel3);
                 save.setOnClickListener(e->{handleSaveButtonForAll(weddingnameField,w_loc,w_d,w_sT,w_eT,w_n,null,b_invite_front,getB_invite_inside,wDateSelector,wTimeSelector,wTimeSelector2,wtp,wtp2,wdp,wedding,wtag,"Wedding",w_spinner);alertDialog.dismiss();});
                 handleSaveButtonForAll(weddingnameField,w_loc,w_d,w_sT,w_eT,w_n,null,b_invite_front,getB_invite_inside,wDateSelector,wTimeSelector,wTimeSelector2,wtp,wtp2,wdp,shopping,wtag,"Wedding",w_spinner);
                 selectDay(w_m,w_t,w_w,w_th,w_f,w_st,w_sd,w_d);
@@ -1389,8 +1389,8 @@ private SListAdapterAlpha mAdapter;
             }
             else if(key==10)
             {
-                save=(Button)dialogView.findViewById(R.id.social_save_clb);
-                cancl=(Button)dialogView.findViewById(R.id.cancel4);
+                save= dialogView.findViewById(R.id.social_save_clb);
+                cancl= dialogView.findViewById(R.id.cancel4);
                 save.setEnabled(isCompleted(clubnameField,clb_loc,clb_d,clb_sT,clb_dur,clb_n,save,"Unknown Event"));
                 save.setOnClickListener(e->{handleSaveButtonForAll(clubnameField,clb_loc,clb_d,clb_sT,clb_eT,clb_n,clb_dur,null,null,clbDateSelector,clbTimeSelector,clbTimeSelector2,clbtp,clbtp2,clbdp,clubing,clb_tag,"Clubing",club_spinner);alertDialog.dismiss();});
                 handleSaveButtonForAll(clubnameField,clb_loc,clb_d,clb_sT,clb_eT,clb_n,clb_dur,null,null,clbDateSelector,clbTimeSelector,clbTimeSelector2,clbtp,clbtp2,clbdp,clubing,clb_tag,"Clubing",club_spinner);
@@ -1541,7 +1541,7 @@ private SListAdapterAlpha mAdapter;
         String month=sd2.format(date);
         String p1 = "MON|MONDAY|M", p2 = "TUES|TUESDAY|TU", p3 = "WED|WED|W", p4 = "THURS|THUR|TH|THURSDAY", p5 = "FRI|FRIDAY|F", p6 = "SAT|SATURDAY|ST", p7 = "SUN|SUNDAY|SN";
         String  m1="JAN|JANUARY|J",m2="FEB|FEBRUARY|F",m3="MARCH|MAR",m4="APRIL|APR",m5="MAY",m6="JUNE|JUN",m7="JULY|JUL",m8="AUGUST|AUG",m9="SEPTEMBER|SEP",m10="OCTOBER|OCT",m11="NOVEMBER|NOV",m12="DECEMBER|DEC";
-        System.out.println(day);System.out.println(month);
+        //System.out.println()(day);//System.out.println()(month);
         String days[]=new String[7];String months[]=new String[12];
         days[0]=p1;
         days[1]=p2;
@@ -1567,15 +1567,15 @@ private SListAdapterAlpha mAdapter;
 
         month=month.toUpperCase();
         day=day.toUpperCase();
-        System.out.println("Month: "+month+"\nDay: "+day);
+        //System.out.println()("Month: "+month+"\nDay: "+day);
 
         for(int i=0; i<months.length;i++)
         {
-            System.out.println("Current Month: " +months[i]);
+            //System.out.println()("Current Month: " +months[i]);
             //for(int k=0;k<71;k++)
             for(int j=0;j<days.length;j++)
             {
-                System.out.println("Current Day: " +days[j]);
+                //System.out.println()("Current Day: " +days[j]);
                 if(month.toUpperCase().matches(months[i]))
                 {
                     if(day.toUpperCase().matches(days[j]))
@@ -1655,7 +1655,7 @@ private SListAdapterAlpha mAdapter;
 
 
 
-            System.out.println("Number of x : " + mondays);
+            //System.out.println()("Number of x : " + mondays);
 
 
         }
@@ -1759,7 +1759,7 @@ private SListAdapterAlpha mAdapter;
 
             }
 
-            System.out.println("Number of x : " + mondays);
+            //System.out.println()("Number of x : " + mondays);
 
 
         }
@@ -2034,12 +2034,12 @@ private SListAdapterAlpha mAdapter;
     }
     private Long ConvertFromDateToLong(String date) {
         long milliseconds = System.currentTimeMillis();
-        System.out.println("system Time: " + milliseconds);
+        //System.out.println()("system Time: " + milliseconds);
         SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         try {
             Date d = f.parse(date);
             milliseconds = d.getTime();
-            System.out.println("Date Time: " + milliseconds);
+            //System.out.println()("Date Time: " + milliseconds);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -2092,7 +2092,7 @@ private SListAdapterAlpha mAdapter;
                 public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                     // G2P =et.getText().toString();
 
-                    System.out.println("J:"+j);
+                    //System.out.println()("J:"+j);
                     if (!TextUtils.isEmpty(charSequence))
                         tag.setText(tags[0] + ", " + tags[1] + ", " + tags[2] + ", " + tags[3] + ", " + tags[4] + "\n" + charSequence+ " | ");
 
@@ -2116,7 +2116,7 @@ private SListAdapterAlpha mAdapter;
                 ll.addView(itemViews[count], lp);
                 // //toastMessage((count+1)+"/"+max,Toast.LENGTH_SHORT);
                 count++;
-                System.out.println("count more " + count);
+                //System.out.println()("count more " + count);
 
             } else {
                 add.setEnabled(false);
@@ -2128,13 +2128,13 @@ private SListAdapterAlpha mAdapter;
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
             if (count > 0) {
-                System.out.println(count);
+                //System.out.println()(count);
                 ll.removeView(itemViews[count - 1]);
                 itemViews[count - 1].setText("");
 
                 ////toastMessage((count+1)+"/"+max,Toast.LENGTH_SHORT);
                 count--;
-                System.out.println("Count less" + count);
+                //System.out.println()("Count less" + count);
                 remove.setBackgroundColor(getResources().getColor(R.color.save_red));
                 remove.setTextColor(getResources().getColor(R.color.common_google_signin_btn_text_light));
 
@@ -2313,7 +2313,7 @@ private SListAdapterAlpha mAdapter;
                 ll.addView(ets[count], lp);
                // //toastMessage((count+1)+"/"+max,Toast.LENGTH_SHORT);
                 count++;
-                System.out.println("count more "+count);
+                //System.out.println()("count more "+count);
 
             }
             else {
@@ -2328,14 +2328,14 @@ private SListAdapterAlpha mAdapter;
 
             if(count>0)
             {
-                System.out.println(count);
+                //System.out.println()(count);
                 ll.removeView(ets[count-1]);
                 ets[count-1].setText("");
                 tag.setText(tags[0]+ ", "+tags[1]+", "+ tags[2]+", "+ tags[3]+", "+tags[4]+"\n"+gameOne.getText().toString()+" | "+g2.getText().toString()+" | "+g3.getText().toString()+" | "+g4.getText().toString()+" | "+g5.getText().toString());
 
                 ////toastMessage((count+1)+"/"+max,Toast.LENGTH_SHORT);
                 count--;
-                System.out.println("Count less"+count);
+                //System.out.println()("Count less"+count);
                 remove.setBackgroundColor(getResources().getColor(R.color.save_red));
                 remove.setTextColor(getResources().getColor(R.color.common_google_signin_btn_text_light));
 
@@ -2454,7 +2454,7 @@ private SListAdapterAlpha mAdapter;
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 occurance=adapterView.getSelectedItem().toString();
-                System.out.println(">>"+occurance);
+                //System.out.println()(">>"+occurance);
             }
 
             @Override
@@ -2474,7 +2474,7 @@ private SListAdapterAlpha mAdapter;
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        System.out.println("Date is: "+d);
+        //System.out.println()("Date is: "+d);
 
 
         return  d;
@@ -2489,7 +2489,7 @@ private SListAdapterAlpha mAdapter;
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        System.out.println("Date is: "+d);
+        //System.out.println()("Date is: "+d);
 
 
         return  d;
@@ -2507,12 +2507,12 @@ private SListAdapterAlpha mAdapter;
           c.setTime(dateFormat(d)); // Now use today date.
           //c.add(Calendar.DATE, 1); // Adding 1 day
           String newDate = sdf.format(c.getTime());
-          System.out.println(newDate);
+          //System.out.println()(newDate);
 
           //Expected to return date a day after the entered
 
            d.setText(newDate);
-          System.out.println("Date After Addition: "+newDate);
+          //System.out.println()("Date After Addition: "+newDate);
          // //toastMessage("Date is now, "+d.getText().toString(),Toast.LENGTH_SHORT);
             if(tv!=null)
           e.setText(MINs*(-1)+"");
@@ -2575,7 +2575,7 @@ private SListAdapterAlpha mAdapter;
     public void checkAge()
     {
         /**If user age is > 18 the adultTemplate is used otherwise the adolecent one is used*/
-        System.out.println("User is "+age);
+        //System.out.println()("User is "+age);
        /* DatabaseReference ref=FirebaseDatabase.getInstance().getReference("UserInformation/"+UID);
         ref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -2613,10 +2613,10 @@ private SListAdapterAlpha mAdapter;
         startTm=startTime.getText().toString();
 
         ms=Long.parseLong(duration)*60000;
-        System.out.println(duration+"(min) X 60s X 1000ms = "+ms);
+        //System.out.println()(duration+"(min) X 60s X 1000ms = "+ms);
 
         long finalTime=daTime+ms;
-        System.out.println(daTime+"<>"+finalTime);
+        //System.out.println()(daTime+"<>"+finalTime);
 
         SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a",Locale.getDefault());
         SimpleDateFormat sdf1 = new SimpleDateFormat("hh:mm:ss",Locale.getDefault());
@@ -2624,7 +2624,7 @@ private SListAdapterAlpha mAdapter;
         String dateString = sdf.format(finalTime);
         String dateString2 = sdf1.format(finalTime);
 
-        System.out.println(dateString);
+        //System.out.println()(dateString);
         EndTime = String.format(Locale.getDefault(),"%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(finalTime),
                 TimeUnit.MILLISECONDS.toMinutes(finalTime) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(finalTime)),
                 TimeUnit.MILLISECONDS.toSeconds(finalTime) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(finalTime)));
@@ -2657,7 +2657,7 @@ private SListAdapterAlpha mAdapter;
         }
         if(dur.getText().toString().equals("")||dur.getText().toString()==null)dur.setText("0");
         ms2=Long.parseLong(dur.getText().toString())*60000;
-        System.out.println(dur.getText().toString()+"(min) X 60s X 1000ms = "+ms2);
+        //System.out.println()(dur.getText().toString()+"(min) X 60s X 1000ms = "+ms2);
 
         long finalTime=ms2+ms;
         return new SimpleDateFormat("HH:mm").format(finalTime);
@@ -2713,7 +2713,7 @@ private SListAdapterAlpha mAdapter;
                 }
                 // if (!TextUtils.isEmpty(et.getText().toString()))
 
-                System.out.println(tag.getText().toString());
+                //System.out.println()(tag.getText().toString());
                     if(x.equals("Birthday")||x.equals("Christmas")||x.equals("Shopping"))
                         tag.setText(tags[0]+ "\'s, "+tags[1]+", "+ tags[2]+", "+ tags[3]+", "+tags[4]);
 
@@ -2873,7 +2873,7 @@ private SListAdapterAlpha mAdapter;
        occ=getOccurance(sp);
        if(TextUtils.isEmpty(occ))
            occ="Once";
-       System.out.println("OCC: "+occ);
+       //System.out.println()("OCC: "+occ);
 
 //        System.out.printf("%s\n%s\n%s\n%s\n%s\n",et2.getText().toString(),et3.getText().toString(),et4.getText().toString(),et5.getText().toString(),et6.getText().toString());
         if(tv!=null)
@@ -2881,7 +2881,7 @@ private SListAdapterAlpha mAdapter;
         else
             endTime=et5.getText().toString();
 
-        System.out.println("_+_+_+_+_"+endTime);
+        //System.out.println()("_+_+_+_+_"+endTime);
 
         if(ib!=null)
             val6=ib.toString();
@@ -2981,7 +2981,7 @@ private SListAdapterAlpha mAdapter;
 
             {DoneTime.setText(getString(R.string.setstarttime,tp.getHour()+":"+tp.getMinute()));
             daTime=(tp.getCurrentMinute() * 60 + tp.getCurrentHour() * 60 * 60) * 1000;
-            System.out.println("getting time from green: "+daTime);
+            //System.out.println()("getting time from green: "+daTime);
 
             sTimeField.setText(tp.getHour()+":"+tp.getMinute());});
             sTimeField.setError(null);
@@ -3175,18 +3175,18 @@ private SListAdapterAlpha mAdapter;
 
     private boolean isValidDay(EditText doneDate) {
         String dd=doneDate.getText().toString();
-        System.out.println(dd+" < " +todaysDate);
+        //System.out.println()(dd+" < " +todaysDate);
         Calendar calendar = Calendar.getInstance();
         calendar.get(Calendar.DAY_OF_WEEK);
         Calendar dte=calendarFormat(doneDate);
-        System.out.println(dte+" < " );
+        //System.out.println()(dte+" < " );
         long timeMilli = calendar.getTimeInMillis();
         long chossenDate= dte.getTimeInMillis();
         int timeMilli2 = calendar.get(Calendar.DAY_OF_WEEK)+calendar.get(Calendar.MONTH)+calendar.get(Calendar.YEAR);
         int chossenDate2=dte.get(Calendar.DAY_OF_WEEK)+dte.get(Calendar.MONTH)+dte.get(Calendar.YEAR);
 
-        System.out.println((chossenDate)+" vs "+timeMilli);
-        System.out.println((chossenDate2)+" vs "+timeMilli2);
+        //System.out.println()((chossenDate)+" vs "+timeMilli);
+        //System.out.println()((chossenDate2)+" vs "+timeMilli2);
 
             if(timeMilli<=(chossenDate))return true;
             else {
@@ -3202,13 +3202,13 @@ private SListAdapterAlpha mAdapter;
     }
 
     private void isValidDay(Button doneDate, long drawingTime) {
-        System.out.println(drawingTime+" < " +todaysDate);
+        //System.out.println()(drawingTime+" < " +todaysDate);
         Calendar calendar = Calendar.getInstance();
          calendar.get(Calendar.DAY_OF_WEEK);
 
         int timeMilli = calendar.get(Calendar.DAY_OF_WEEK)+calendar.get(Calendar.MONTH)+calendar.get(Calendar.YEAR);
         int chossenDate=dayPick+monthPick+yearPick;
-        System.out.println((chossenDate-10)+" vs "+timeMilli);
+        //System.out.println()((chossenDate-10)+" vs "+timeMilli);
 
 
             if (drawingTime < todaysDate) {
@@ -3233,14 +3233,9 @@ private SListAdapterAlpha mAdapter;
         String pattern4="(([0-9]:[0]:[0])|([0-9]:[0-5][0-9])|([0-9]:[0]))";
         String pattern2="(?:[01][0-9]|2[0-3]):([0-5][0-9])";
         String pattern5="([0-1][0-9]:[0-9]|[2][0-9]:[0-9])";
-        System.out.println(eTimeField.getText().toString());
-            if(eTimeField.getText().toString().matches(pattern)||(eTimeField.getText().toString().matches(pattern2))||
-        eTimeField.getText().toString().matches(pattern3)||eTimeField.getText().toString().matches(pattern4)||eTimeField.getText().toString().matches(pattern5))
-            {return true;}
-            else
-            {
-                             return false;
-            }
+        //System.out.println()(eTimeField.getText().toString());
+        return eTimeField.getText().toString().matches(pattern) || (eTimeField.getText().toString().matches(pattern2)) ||
+                eTimeField.getText().toString().matches(pattern3) || eTimeField.getText().toString().matches(pattern4) || eTimeField.getText().toString().matches(pattern5);
 
 
 
@@ -3252,7 +3247,7 @@ private SListAdapterAlpha mAdapter;
        // String pattern="(([1-2][0-9])|([1-9])|([0][1-9])|([3][0-1]))/(([1][0-2])|([1-9])|([0][1-9]))/([1-9][0-9][0-9][0-9])";
        /* dateField.setText(dateField.getText().toString().replaceAll("-","/"));
         dateField.setText(dateField.getText().toString().replaceAll("\\.","/"));
-        */System.out.println(dateField);
+        *///System.out.println()(dateField);
         if(dateField.getText().toString().matches(pattern))
         {return true;}
         else
@@ -3282,13 +3277,7 @@ private SListAdapterAlpha mAdapter;
                     {
                         if(!TextUtils.isEmpty(et5.getText().toString()))
                         {
-                            if(!TextUtils.isEmpty(et6.getText().toString()))
-                            {
-
-                                    return true;
-
-                            }
-                            else return false;
+                            return !TextUtils.isEmpty(et6.getText().toString());
                         }  else return false;
                     }  else return false;
                 }  else return false;
@@ -3304,7 +3293,7 @@ private SListAdapterAlpha mAdapter;
 
     public void timesRB(View view) {
         int radioID=timeSetting.getCheckedRadioButtonId();//2131362481
-        RadioButton singleButton=(RadioButton)findViewById(radioID);
+        RadioButton singleButton= findViewById(radioID);
 
         switch (radioID) {
             case R.id.r1: {

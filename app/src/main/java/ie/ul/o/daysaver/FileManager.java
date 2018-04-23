@@ -110,7 +110,7 @@ class FileManager
         //creates three arraylist 0,1,2
         shoppingLists.clear();
         String[] temp;
-        File file=new File(filename);System.out.println("->>>>"+filename);
+        File file=new File(filename);//System.out.println()("->>>>"+filename);
         if(file.exists())
         {
             fileReader=new Scanner(file);
@@ -155,7 +155,7 @@ class FileManager
             int i=0;
             PrintWriter write=new PrintWriter(filename);
 
-            System.out.println(indexofItem);
+            //System.out.println()(indexofItem);
             shoppingLists.set(indexofItem,null);
             while(i < shoppingLists.size())
             {
@@ -177,7 +177,7 @@ class FileManager
     public void saveList(ArrayList<Item>items,int indexOfItem,Item it)throws IOException
     {
         int i=0;
-        PrintWriter write=new PrintWriter(filename);System.out.println(indexOfItem);
+        PrintWriter write=new PrintWriter(filename);//System.out.println()(indexOfItem);
         items.set(indexOfItem,new Item(items.get(indexOfItem).getItemName(),items.get(indexOfItem).getPrice(),items.get(indexOfItem).getAmount()+it.getAmount()));
         while(i < items.size())
         {
@@ -213,18 +213,16 @@ class FileManager
     }
     public ArrayList<Item> getShoppingLists()
     {
-        System.out.println("ARRGGGGHH"+shoppingLists);
+        //System.out.println()("ARRGGGGHH"+shoppingLists);
         return shoppingLists;
     }
     public boolean doesListExist()
     {
-        if(list_Owners.get(0).contains(this.listname))
-            return true;
-        else return false;
+        return list_Owners.get(0).contains(this.listname);
     }
     public boolean isPublic()
     {
-        System.out.println("->>"+this.listname);
+        //System.out.println()("->>"+this.listname);
         indexOfList=list_Owners.get(0).indexOf(this.listname);
         if(list_Owners.get(2).get(indexOfList).equals("public"))
         {setStatus("public");return true;}
@@ -232,7 +230,7 @@ class FileManager
     }
     public boolean isPrivate()
     {
-        System.out.println("->>"+this.listname);
+        //System.out.println()("->>"+this.listname);
         indexOfList=list_Owners.get(0).indexOf(this.listname);
         if(list_Owners.get(2).get(indexOfList).equals("private"))
         {setStatus("private");return true;}
@@ -241,22 +239,22 @@ class FileManager
     public boolean saveItems(Item item,String user )throws IOException
     {
         //int indexOfList=list_Owners.get(1).indexOf(user);
-        System.out.println(item);System.out.println("->"+isPublic());
-        //System.out.println(shoppingLists.contains(item));
+        //System.out.println()(item);//System.out.println()("->"+isPublic());
+        ////System.out.println()(shoppingLists.contains(item));
         if(isPublic())
         {
-            System.out.println("saving..");
+            //System.out.println()("saving..");
 
-            System.out.println(item);
+            //System.out.println()(item);
             savetoList(item);
             return true;
         }
         else
-        {	System.out.println(user);
+        {	//System.out.println()(user);
             if(list_Owners.get(1).get(indexOfList).equals(user))
             {
-                System.out.println(shoppingLists);
-                System.out.println("saving..");
+                //System.out.println()(shoppingLists);
+                //System.out.println()("saving..");
                 savetoList(item);
                 return true;
 
@@ -267,17 +265,17 @@ class FileManager
     public boolean saveItems(ArrayList<Item> item,String user,int indexOfItem,Item i)throws IOException
     {
         //int indexOfList=list_Owners.get(1).indexOf(user);
-        System.out.println(item);System.out.println("->"+isPublic());
+        //System.out.println()(item);//System.out.println()("->"+isPublic());
         if(isPublic())
         {
 
-            System.out.println(item);
+            //System.out.println()(item);
             saveList(item,indexOfItem,i);
             return true;
         }
         else
         {
-            System.out.println(getStatus());
+            //System.out.println()(getStatus());
             if(list_Owners.get(1).get(indexOfList).equals(user))
             {saveList(item,indexOfItem,i);return true;}
             else return false;

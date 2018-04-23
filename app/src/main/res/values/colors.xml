@@ -21,7 +21,6 @@
     <color name="holo_gold">#d89e3d</color>
     <color name="holo_gold_dark">#b67c1b</color>
     <color name="holo_purple_dark">#6a005e</color>
-    <color name="teal_dark">#1f6465</color>
 
     <color name="mainscreen_dark">#19212b</color>
     <color name="midnight_accent">#017cd7</color>
@@ -32,7 +31,6 @@
     <color name="lava_theme_">#a11300</color>
     <color name="lava_theme_y">#fec700</color>
     <color name="lava_primary">#f86802</color>
-    <color name="lava_primary_dark">#b95005</color>
     <color name="lava_theme_o">#fa6000</color>
     <color name="lava_textPrimary">#455781</color>
     <color name="lava_textSecondary">#0ab6f3</color>
@@ -58,26 +56,18 @@
     <color name="meeting_primaryColor">#99ff33</color>
     <color name="time_primaryColor">#33ccff</color>
     <color name="chill_color">#ffccff</color>
-    <color name="gym_primaryColorDark">#991f00</color>
     <color name="social_primaryColorDark">#6600cc</color>
-    <color name="study_primaryColorDark">#e6b800</color>
     <color name="meeting_primaryColorDark">#4d9900</color>
-    <color name="time_primaryColorDark">#3399ff</color>
-    <color name="chill_colorDark">#ff66ff</color>
 
     <color name="classic_primary">#18a8ff</color>
     <color name="classic_secondary">#0e80e5</color>
     <color name="classic_accent">#ff007b</color>
     <color name="classic_controlHighlight">#0de296</color>
     <color name="classic_textPrimary">#00ffdf</color>
-    <color name="classic_textsecondary">#0de279</color>
 
     <color name="background_color">#ffffff</color>
     <color name="background_mid_dark">#19212b</color>
-    <color name="backgroung_aqua_dark">#054a55</color>
-    <color name="background_lava_dark">#380303</color>
     <color name="background_forest_dark">#033827</color>
-    <color name="bg">#66d9d8d8</color>
 
 
 </resources>

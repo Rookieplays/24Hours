@@ -88,7 +88,7 @@ public class VideoDetailFragment extends Fragment {
 
 
 
-        videoView=(VideoView) rootView.findViewById(R.id.video_detail);
+        videoView= rootView.findViewById(R.id.video_detail);
         mTextview=rootView.findViewById(R.id.textView48);
         dTextView=rootView.findViewById(R.id.textView53);
         //button=rootView.findViewById(R.id.button15);

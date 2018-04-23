@@ -181,71 +181,71 @@ public class DefaultView extends Fragment {
         repsSelected = new ArrayList<>();
         setsSelected = new ArrayList<>();
         versionSelected = new ArrayList<>();
-        m_r = (RelativeLayout) view.findViewById(R.id.mesomorph_view);
-        endo_r = (RelativeLayout) view.findViewById(R.id.endomorph_view);
-        ecto_r = (RelativeLayout) view.findViewById(R.id.ectomorph_view);
-        b_r = (LinearLayout) view.findViewById(R.id.selectABodyType);
+        m_r = view.findViewById(R.id.mesomorph_view);
+        endo_r = view.findViewById(R.id.endomorph_view);
+        ecto_r = view.findViewById(R.id.ectomorph_view);
+        b_r = view.findViewById(R.id.selectABodyType);
         user = firebaseAuth.getCurrentUser();
         b_r.setVisibility(View.VISIBLE);
         endo_r.setVisibility(View.GONE);
         ecto_r.setVisibility(View.GONE);
         m_r.setVisibility(View.GONE);
     progressText=view.findViewById(R.id.prText);
-        mesomorphButton = (ImageButton) view.findViewById(R.id.mesomorphImgBtn);
-        endoMorph = (ImageButton) view.findViewById(R.id.endomorphImgBtn);
-        ectomorph = (ImageButton) view.findViewById(R.id.ectomorphImgBtn);
+        mesomorphButton = view.findViewById(R.id.mesomorphImgBtn);
+        endoMorph = view.findViewById(R.id.endomorphImgBtn);
+        ectomorph = view.findViewById(R.id.ectomorphImgBtn);
 
-        m__core = (Button) view.findViewById(R.id.m_core);
-        m_arms = (Button) view.findViewById(R.id.m_arms);
+        m__core = view.findViewById(R.id.m_core);
+        m_arms = view.findViewById(R.id.m_arms);
         //m_back=(Button)view.findViewById(R.id.m_back);
-        m_calves = (Button) view.findViewById(R.id.m_calves);
-        m_chest = (Button) view.findViewById(R.id.m_chest);
-        m_quads = (Button) view.findViewById(R.id.m_quads);
-        m_shoulder = (Button) view.findViewById(R.id.m_shoulder);
-        m__core2 = (Button) view.findViewById(R.id.m_core2);
-        m_arms2 = (Button) view.findViewById(R.id.m_arms2);
-        m_return = (Button) view.findViewById(R.id.m_back);
-        m_calves2 = (Button) view.findViewById(R.id.m_calf2);
-        m_chest2 = (Button) view.findViewById(R.id.m_chest2);
-        m_quads2 = (Button) view.findViewById(R.id.m_quads2);
-        m_shoulder2 = (Button) view.findViewById(R.id.m_shoulder2);
+        m_calves = view.findViewById(R.id.m_calves);
+        m_chest = view.findViewById(R.id.m_chest);
+        m_quads = view.findViewById(R.id.m_quads);
+        m_shoulder = view.findViewById(R.id.m_shoulder);
+        m__core2 = view.findViewById(R.id.m_core2);
+        m_arms2 = view.findViewById(R.id.m_arms2);
+        m_return = view.findViewById(R.id.m_back);
+        m_calves2 = view.findViewById(R.id.m_calf2);
+        m_chest2 = view.findViewById(R.id.m_chest2);
+        m_quads2 = view.findViewById(R.id.m_quads2);
+        m_shoulder2 = view.findViewById(R.id.m_shoulder2);
 
-        ect__core = (Button) view.findViewById(R.id.e_core);
-        ect_arms = (Button) view.findViewById(R.id.e_arm);
-        ect_return = (Button) view.findViewById(R.id.e_return);
-        ect_calves = (Button) view.findViewById(R.id.e_calves);
-        ect_chest = (Button) view.findViewById(R.id.e_chest);
-        ect_quads = (Button) view.findViewById(R.id.e_Quads);
-        ect_shoulder = (Button) view.findViewById(R.id.e_shoulder);
-        ect__core2 = (Button) view.findViewById(R.id.e_core1);
-        ect_arms2 = (Button) view.findViewById(R.id.e_arms1);
+        ect__core = view.findViewById(R.id.e_core);
+        ect_arms = view.findViewById(R.id.e_arm);
+        ect_return = view.findViewById(R.id.e_return);
+        ect_calves = view.findViewById(R.id.e_calves);
+        ect_chest = view.findViewById(R.id.e_chest);
+        ect_quads = view.findViewById(R.id.e_Quads);
+        ect_shoulder = view.findViewById(R.id.e_shoulder);
+        ect__core2 = view.findViewById(R.id.e_core1);
+        ect_arms2 = view.findViewById(R.id.e_arms1);
         //m_back=(Button)view.findViewById(R.id.e_back);
-        ect_calves2 = (Button) view.findViewById(R.id.e_calf1);
-        ect_chest2 = (Button) view.findViewById(R.id.e_chest1);
-        ect_quads2 = (Button) view.findViewById(R.id.e_quads1);
-        ect_shoulder2 = (Button) view.findViewById(R.id.e_shoulder1);
+        ect_calves2 = view.findViewById(R.id.e_calf1);
+        ect_chest2 = view.findViewById(R.id.e_chest1);
+        ect_quads2 = view.findViewById(R.id.e_quads1);
+        ect_shoulder2 = view.findViewById(R.id.e_shoulder1);
 
-        e__core = (Button) view.findViewById(R.id.b_core);
-        e_arms = (Button) view.findViewById(R.id.arm);
-        e_return = (Button) view.findViewById(R.id.backBtn);
-        e_calves = (Button) view.findViewById(R.id.calves);
-        e_chest = (Button) view.findViewById(R.id.e_chest);
+        e__core = view.findViewById(R.id.b_core);
+        e_arms = view.findViewById(R.id.arm);
+        e_return = view.findViewById(R.id.backBtn);
+        e_calves = view.findViewById(R.id.calves);
+        e_chest = view.findViewById(R.id.e_chest);
         //e_quads=(Button)view.findViewById(R.id.Quads);
-        e_shoulder = (Button) view.findViewById(R.id.b_shoulder);
+        e_shoulder = view.findViewById(R.id.b_shoulder);
 
-        e__core2 = (Button) view.findViewById(R.id.core2);
-        e_arms2 = (Button) view.findViewById(R.id.arms2);
-        e_return = (Button) view.findViewById(R.id.backBtn);
-        e_calves2 = (Button) view.findViewById(R.id.calf2);
-        e_chest2 = (Button) view.findViewById(R.id.chest2);
+        e__core2 = view.findViewById(R.id.core2);
+        e_arms2 = view.findViewById(R.id.arms2);
+        e_return = view.findViewById(R.id.backBtn);
+        e_calves2 = view.findViewById(R.id.calf2);
+        e_chest2 = view.findViewById(R.id.chest2);
         //e_quads=(Button)view.findViewById(R.id.Quads);
-        e_shoulder2 = (Button) view.findViewById(R.id.b_shoulder);
+        e_shoulder2 = view.findViewById(R.id.b_shoulder);
 
         mesomorphButton.setOnClickListener(e -> goToC());
         endoMorph.setOnClickListener(e -> goToA());
         ectomorph.setOnClickListener(e -> goToB());
-        lossWeight = (CheckBox) view.findViewById(R.id.weight_Loss);
-        toneup = (CheckBox) view.findViewById(R.id.tone_up);
+        lossWeight = view.findViewById(R.id.weight_Loss);
+        toneup = view.findViewById(R.id.tone_up);
 
         /**Check if user already created default workout*/
         checkIfDefaultIsMade();
@@ -400,9 +400,9 @@ public class DefaultView extends Fragment {
             showconfirmationBox2();
         });
 
-        System.out.println("Getting Database....");
+        //System.out.println()("Getting Database....");
 
-        System.out.println("Changing value of switch.... to on");
+        //System.out.println()("Changing value of switch.... to on");
         myRefrence.child("EXERCISES").child("Switch").setValue("on");       // String workoutNAme= String.valueOf();
 
 
@@ -428,23 +428,23 @@ public class DefaultView extends Fragment {
     {
         FirebaseUser user=firebaseAuth.getCurrentUser();
         UID=user.getUid();
-        System.out.println("Users\n"+UID+"\nGYM");
+        //System.out.println()("Users\n"+UID+"\nGYM");
         DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Users/"+UID+"/GYM");
         reference.addValueEventListener(new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
             // This method is called once with the initial value and again
             // whenever data at this location is updated.
-            System.out.println("Datasnpshot: "+dataSnapshot);
+            //System.out.println()("Datasnpshot: "+dataSnapshot);
 
           Gym gym=dataSnapshot.getValue(Gym.class);
 
-            System.out.println("Gym: "+gym);
+            //System.out.println()("Gym: "+gym);
             assert gym != null;
-            System.out.println(gym.isDefaultMade());
+            //System.out.println()(gym.isDefaultMade());
             alreadyCreated=gym.isDefaultMade();
-            System.out.println("alreadyCreated: "+alreadyCreated);
-            System.out.println("***********"+alreadyCreated+"******************");
+            //System.out.println()("alreadyCreated: "+alreadyCreated);
+            //System.out.println()("***********"+alreadyCreated+"******************");
             if(!alreadyCreated)
             {
                 newDefault.setVisibility(View.VISIBLE);
@@ -496,7 +496,7 @@ public class DefaultView extends Fragment {
                     }
                     else progBar.setVisibility(View.VISIBLE);
                     for (String dociD:wID) {
-                        System.out.println(dociD);
+                        //System.out.println()(dociD);
                         mFirestore.collection(UID).document(dociD).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
@@ -618,45 +618,45 @@ public class DefaultView extends Fragment {
         myDataset.add(new ArrayList<String>());
         imgSets=new ArrayList<Bitmap>();
 
-        pb=(ProgressBar)dialogView.findViewById(R.id.loading_lists);
+        pb= dialogView.findViewById(R.id.loading_lists);
         pb.setVisibility(View.GONE);
-                saveBtn = (Button) dialogView.findViewById(R.id.saveBtn);
-        seekbar = (SeekBar) dialogView.findViewById(R.id.seekBar);
-        d_beginner = (TextView) dialogView.findViewById(R.id.d_beginner);
-        d_intermidiate = (TextView) dialogView.findViewById(R.id.d_intermidiate);
-        d_advanced = (TextView) dialogView.findViewById(R.id.d_advanced);
-        seeV1 = (Button) dialogView.findViewById(R.id.seeV1);
-        seeV2 = (Button) dialogView.findViewById(R.id.seeV2);
-        seeV3 = (Button) dialogView.findViewById(R.id.seeV3);
-        close = (Button) dialogView.findViewById(R.id.close);
-        wv_heading = (TextView) dialogView.findViewById(R.id.DefaultView_heading);
-        setst_text = (TextView) dialogView.findViewById(R.id.sets_text);
-        reps_text = (TextView) dialogView.findViewById(R.id.d_reps);
-        days_text = (TextView) dialogView.findViewById(R.id.days_text);
+                saveBtn = dialogView.findViewById(R.id.saveBtn);
+        seekbar = dialogView.findViewById(R.id.seekBar);
+        d_beginner = dialogView.findViewById(R.id.d_beginner);
+        d_intermidiate = dialogView.findViewById(R.id.d_intermidiate);
+        d_advanced = dialogView.findViewById(R.id.d_advanced);
+        seeV1 = dialogView.findViewById(R.id.seeV1);
+        seeV2 = dialogView.findViewById(R.id.seeV2);
+        seeV3 = dialogView.findViewById(R.id.seeV3);
+        close = dialogView.findViewById(R.id.close);
+        wv_heading = dialogView.findViewById(R.id.DefaultView_heading);
+        setst_text = dialogView.findViewById(R.id.sets_text);
+        reps_text = dialogView.findViewById(R.id.d_reps);
+        days_text = dialogView.findViewById(R.id.days_text);
 
         //  ImageButton camBt = (ImageButton) getFragmentManager().findFragmentById(R.id.d).getView().findViewById(R.id.b
-        mRecyclerView = (RecyclerView)dialogView.findViewById(R.id.maingym_list);
+        mRecyclerView = dialogView.findViewById(R.id.maingym_list);
 
 
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
-        dayView=(LinearLayout)dialogView.findViewById(R.id.dayView);
+        dayView= dialogView.findViewById(R.id.dayView);
 
-        low_reps = (CheckBox) dialogView.findViewById(R.id.low_reps);
-        mid_reps = (CheckBox) dialogView.findViewById(R.id.mid_reps);
-        mid_high_reps = (CheckBox) dialogView.findViewById(R.id.mid2_reps);
-        high_reps = (CheckBox) dialogView.findViewById(R.id.high_reps);
-        low_sets = (CheckBox) dialogView.findViewById(R.id.low_sets);
-        mid_sets = (CheckBox) dialogView.findViewById(R.id.mid_sets);
-        mid_high_sets = (CheckBox) dialogView.findViewById(R.id.mid2_sets);
-        high_sets = (CheckBox) dialogView.findViewById(R.id.high_sets);
+        low_reps = dialogView.findViewById(R.id.low_reps);
+        mid_reps = dialogView.findViewById(R.id.mid_reps);
+        mid_high_reps = dialogView.findViewById(R.id.mid2_reps);
+        high_reps = dialogView.findViewById(R.id.high_reps);
+        low_sets = dialogView.findViewById(R.id.low_sets);
+        mid_sets = dialogView.findViewById(R.id.mid_sets);
+        mid_high_sets = dialogView.findViewById(R.id.mid2_sets);
+        high_sets = dialogView.findViewById(R.id.high_sets);
 
 
-        wv_muscleGroup = (TextView) dialogView.findViewById(R.id.wv_muscleGroup);
+        wv_muscleGroup = dialogView.findViewById(R.id.wv_muscleGroup);
         wv_heading.setText(MUSCLEGROUP);
 
-        workout_view = (LinearLayout) dialogView.findViewById(R.id.WorkoutList_view);
-        defaultSettingd = (LinearLayout) dialogView.findViewById(R.id.Default_settings);
+        workout_view = dialogView.findViewById(R.id.WorkoutList_view);
+        defaultSettingd = dialogView.findViewById(R.id.Default_settings);
         //mainList = (RecyclerView) dialogView.findViewById(R.id.mainList);
 
 
@@ -664,17 +664,17 @@ public class DefaultView extends Fragment {
 
 
         // loadCheckBoxLists();
-        version1 = (CheckBox) dialogView.findViewById(R.id.option1_btn);
-        version2 = (CheckBox) dialogView.findViewById(R.id.option2_btn);
-        version3 = (CheckBox) dialogView.findViewById(R.id.option3_btn);
+        version1 = dialogView.findViewById(R.id.option1_btn);
+        version2 = dialogView.findViewById(R.id.option2_btn);
+        version3 = dialogView.findViewById(R.id.option3_btn);
 
-        Monday = (CheckBox) dialogView.findViewById(R.id.d_mon);
-        Tuesday = (CheckBox) dialogView.findViewById(R.id.d_tues);
-        Wednesday = (CheckBox) dialogView.findViewById(R.id.d_wed);
-        Thursday = (CheckBox) dialogView.findViewById(R.id.d_thurs);
-        Friday = (CheckBox) dialogView.findViewById(R.id.d_fri);
-        Saturday = (CheckBox) dialogView.findViewById(R.id.d_sat);
-        Sunday = (CheckBox) dialogView.findViewById(R.id.d_sun);
+        Monday = dialogView.findViewById(R.id.d_mon);
+        Tuesday = dialogView.findViewById(R.id.d_tues);
+        Wednesday = dialogView.findViewById(R.id.d_wed);
+        Thursday = dialogView.findViewById(R.id.d_thurs);
+        Friday = dialogView.findViewById(R.id.d_fri);
+        Saturday = dialogView.findViewById(R.id.d_sat);
+        Sunday = dialogView.findViewById(R.id.d_sun);
 
         setDefaultchecks();
         seeV1.setOnClickListener(e -> {
@@ -719,7 +719,7 @@ public class DefaultView extends Fragment {
                 }
 
                 difficultLvl = seekbar.getProgress();
-                System.out.println("The Current Lvl is: " + seekbar.getProgress() + " or " + i);
+                //System.out.println()("The Current Lvl is: " + seekbar.getProgress() + " or " + i);
             }
 
             @Override
@@ -736,7 +736,7 @@ public class DefaultView extends Fragment {
         d_intermidiate.setOnClickListener(e -> seekbar.setProgress(7));
         d_advanced.setOnClickListener(e -> seekbar.setProgress(10));
         /**Enable save if for chech events*/
-        Monday.setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener) (compoundButton, b) -> {
+        Monday.setOnCheckedChangeListener((compoundButton, b) -> {
            if(Monday.isChecked()){
                if(isM){
                    toastMessage(getString(R.string.dayAlreadyChoosen),Toast.LENGTH_SHORT);Monday.setChecked(false);
@@ -748,7 +748,7 @@ public class DefaultView extends Fragment {
            }
         });
 
-        Tuesday.setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener) (compoundButton, b) -> {
+        Tuesday.setOnCheckedChangeListener((compoundButton, b) -> {
             if(Tuesday.isChecked()){
                 if(isT){
                     toastMessage(getString(R.string.dayAlreadyChoosen),Toast.LENGTH_SHORT);Tuesday.setChecked(false);
@@ -760,7 +760,7 @@ public class DefaultView extends Fragment {
             }
             saveBtn.setEnabled(enableSave());
         });
-        Wednesday.setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener) (compoundButton, b) -> {
+        Wednesday.setOnCheckedChangeListener((compoundButton, b) -> {
             if(Wednesday.isChecked()){
                 if(isW){
                     toastMessage(getString(R.string.dayAlreadyChoosen),Toast.LENGTH_SHORT);Wednesday.setChecked(false);
@@ -772,7 +772,7 @@ public class DefaultView extends Fragment {
             }
             saveBtn.setEnabled(enableSave());
         });
-        Thursday.setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener) (compoundButton, b) -> {
+        Thursday.setOnCheckedChangeListener((compoundButton, b) -> {
             if(Thursday.isChecked()){
                 if(isTh){
                     toastMessage(getString(R.string.dayAlreadyChoosen),Toast.LENGTH_SHORT);Thursday.setChecked(false);
@@ -785,7 +785,7 @@ public class DefaultView extends Fragment {
             saveBtn.setEnabled(enableSave());
         });
 
-        Friday.setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener) (compoundButton, b) -> {
+        Friday.setOnCheckedChangeListener((compoundButton, b) -> {
             if(Friday.isChecked()){
                 if(isF){
                     toastMessage(getString(R.string.dayAlreadyChoosen),Toast.LENGTH_SHORT);Friday.setChecked(false);
@@ -797,7 +797,7 @@ public class DefaultView extends Fragment {
             }
             saveBtn.setEnabled(enableSave());
         });
-        Saturday.setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener) (compoundButton, b) -> {
+        Saturday.setOnCheckedChangeListener((compoundButton, b) -> {
             if(Saturday.isChecked()){
                 if(isSat){
                     toastMessage(getString(R.string.dayAlreadyChoosen),Toast.LENGTH_SHORT);Saturday.setChecked(false);
@@ -809,7 +809,7 @@ public class DefaultView extends Fragment {
             }
             saveBtn.setEnabled(enableSave());
         });
-        Sunday.setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener) (compoundButton, b) -> {
+        Sunday.setOnCheckedChangeListener((compoundButton, b) -> {
 
                 if(Sunday.isChecked()){
                     if(isSun){
@@ -822,37 +822,37 @@ public class DefaultView extends Fragment {
                 }
             saveBtn.setEnabled(enableSave());
         });
-        version1.setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener) (compoundButton, b) -> {
+        version1.setOnCheckedChangeListener((compoundButton, b) -> {
             saveBtn.setEnabled(enableSave());
         });
-        version2.setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener) (compoundButton, b) -> {
+        version2.setOnCheckedChangeListener((compoundButton, b) -> {
             saveBtn.setEnabled(enableSave());
         });
-        version3.setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener) (compoundButton, b) -> {
+        version3.setOnCheckedChangeListener((compoundButton, b) -> {
             saveBtn.setEnabled(enableSave());
         });
-        low_reps.setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener) (compoundButton, b) -> {
+        low_reps.setOnCheckedChangeListener((compoundButton, b) -> {
             saveBtn.setEnabled(enableSave());
         });
-        mid_high_reps.setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener) (compoundButton, b) -> {
+        mid_high_reps.setOnCheckedChangeListener((compoundButton, b) -> {
             saveBtn.setEnabled(enableSave());
         });
-        mid_reps.setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener) (compoundButton, b) -> {
+        mid_reps.setOnCheckedChangeListener((compoundButton, b) -> {
             saveBtn.setEnabled(enableSave());
         });
-        high_reps.setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener) (compoundButton, b) -> {
+        high_reps.setOnCheckedChangeListener((compoundButton, b) -> {
             saveBtn.setEnabled(enableSave());
         });
-        low_sets.setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener) (compoundButton, b) -> {
+        low_sets.setOnCheckedChangeListener((compoundButton, b) -> {
             saveBtn.setEnabled(enableSave());
         });
-        mid_sets.setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener) (compoundButton, b) -> {
+        mid_sets.setOnCheckedChangeListener((compoundButton, b) -> {
             saveBtn.setEnabled(enableSave());
         });
-        mid_high_sets.setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener) (compoundButton, b) -> {
+        mid_high_sets.setOnCheckedChangeListener((compoundButton, b) -> {
             saveBtn.setEnabled(enableSave());
         });
-        high_sets.setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener) (compoundButton, b) -> {
+        high_sets.setOnCheckedChangeListener((compoundButton, b) -> {
             saveBtn.setEnabled(enableSave());
         });
         /**end*/
@@ -907,7 +907,7 @@ public class DefaultView extends Fragment {
     {
         FirebaseUser user=firebaseAuth.getCurrentUser();
         UID=user.getUid();
-        System.out.println("Users\n"+UID+"\nGYM");
+        //System.out.println()("Users\n"+UID+"\nGYM");
         DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Users/"+UID+"/GYM").child("defaultMade");
         reference.setValue(true);
     }
@@ -1125,13 +1125,13 @@ public class DefaultView extends Fragment {
         Collections.shuffle(quadsList);
         Collections.shuffle(calvesList);
         Collections.shuffle(coreList);
-       //System.out.println("***"+chestList);
+       ////System.out.println()("***"+chestList);
         String levels[]=new String[]{"I","B","A"};
         int rand=0;
         if(ListID==1)//chest
         {
             for (Workout w: chestList) {
-                       // System.out.println(w.getName()+" ");
+                       // //System.out.println()(w.getName()+" ");
                 if(temp.size()!=max){
                     if(w.getLevel()==null)
                     {
@@ -1145,15 +1145,15 @@ public class DefaultView extends Fragment {
                     else if(w.getLevel().matches("A|Advanced|advanced|Hard|h|a|HARD|ADVANCED|hard"))
                         w.setLevel("Advanced");
                     else w.setLevel("Intermediate");
-                    System.out.println(w.getLevel()+" <----level");
+                    //System.out.println()(w.getLevel()+" <----level");
                     if(w.getLevel().equals(level)){
-                        //System.out.println("Adding w");
+                        ////System.out.println()("Adding w");
                         temp.add(w);
                     }
                     else dump.add(w);
                 }
             }
-           // System.out.println("****"+temp);
+           // //System.out.println()("****"+temp);
             for(int i=0; i<dump.size();i++)
             {
                 if(dump.contains(level))
@@ -1325,7 +1325,7 @@ public class DefaultView extends Fragment {
                     temp.add(dump.get(i));
             }
         }
-        System.out.println("~~~"+temp);
+        //System.out.println()("~~~"+temp);
         return temp;
 
 
@@ -1374,7 +1374,7 @@ public class DefaultView extends Fragment {
         quadsList.clear();
         calvesList.clear();
         coreList.clear();
-        System.out.println("Showing List: " + mg + "\nVersion: " + version);
+        //System.out.println()("Showing List: " + mg + "\nVersion: " + version);
 
         loadChestWorkouts();
         loadARMSWorkouts();
@@ -1383,7 +1383,7 @@ public class DefaultView extends Fragment {
         loadShoulderWorkouts();
         loadQuadsWorkouts();
         loadCOREWorkouts();
-        System.out.println("VERSion "+version);
+        //System.out.println()("VERSion "+version);
 
 
 
@@ -1406,7 +1406,7 @@ public class DefaultView extends Fragment {
         List<Workout> temp=null;
 
 
-        System.out.println("**"+musclegroup);
+        //System.out.println()("**"+musclegroup);
         if(musclegroup.equalsIgnoreCase("Chest")) {
                 temp=createVersions(1);
                 if(version==1)
@@ -1421,7 +1421,7 @@ public class DefaultView extends Fragment {
                 {
                     v3List=temp;
                 }
-            System.out.println("**"+temp);
+            //System.out.println()("**"+temp);
             if(temp.isEmpty()==false){
             for (Workout w: temp) {
                 myDataset.get(0).add(w.getName());
@@ -1645,10 +1645,10 @@ public class DefaultView extends Fragment {
                     workouttoSave=v3List;
                 else {
                     workouttoSave=v1List;
-                    System.out.println("Saving..." + workouttoSave.get(i).getName());
+                    //System.out.println()("Saving..." + workouttoSave.get(i).getName());
                 }
 
-              System.out.println(v1List);
+              //System.out.println()(v1List);
 
 
             plan = new WorkoutPlan("Default GYM - " + MUSCLEGROUP + " - " + presets.get(3).get(i),ConvertFromDateToLong(presets.get(0).get(i)),(ArrayList<Workout>) workouttoSave,System.currentTimeMillis() ,UID,"GYM",presets.get(0).get(i),"18:00","19:00");
@@ -1683,12 +1683,12 @@ public class DefaultView extends Fragment {
 
     private Long ConvertFromDateToLong(String date) {
         long milliseconds = System.currentTimeMillis();
-        System.out.println("system Time: " + milliseconds);
+        //System.out.println()("system Time: " + milliseconds);
         SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         try {
             Date d = f.parse(date);
             milliseconds = d.getTime();
-            System.out.println("Date Time: " + milliseconds);
+            //System.out.println()("Date Time: " + milliseconds);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -1881,7 +1881,7 @@ public class DefaultView extends Fragment {
 
             }
 
-            System.out.println("Number of x : " + mondays);
+            //System.out.println()("Number of x : " + mondays);
 
 
         }
@@ -2113,13 +2113,13 @@ public class DefaultView extends Fragment {
     }
 
     private void showData(DataSnapshot dataSnapshot) {
-        System.out.println("Getting data....");
+        //System.out.println()("Getting data....");
         for (DataSnapshot ds : dataSnapshot.getChildren()) {
             Workout workout = new Workout();
             for (DataSnapshot ds1 : ds.getChildren()) {
-                System.out.println(dataSnapshot);
+                //System.out.println()(dataSnapshot);
                 String workoutNAme = ds1.child("EXERCISES").child("CHEST").getChildren().toString();
-                System.out.println(workoutNAme);
+                //System.out.println()(workoutNAme);
 
 
                 // workout.setName(ds1.child("EXERCISES").child("CHEST").child(workoutNAme).child("name").getValue().toString());
@@ -2129,7 +2129,7 @@ public class DefaultView extends Fragment {
     }
 
     public List<Workout> getWorkouts() {
-        System.out.println("Changing value of switch.... to off");
+        //System.out.println()("Changing value of switch.... to off");
         myRefrence.child("EXERCISES").setValue("Switch", "off");
         return list;
     }
@@ -2140,7 +2140,7 @@ public class DefaultView extends Fragment {
         myRefrence.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                System.out.println("onDataChanged Database....");
+                //System.out.println()("onDataChanged Database....");
                 Log.d(TAG, "onDatachanged, Added Information to database");
                 //showData(dataSnapshot);
             }
@@ -2167,10 +2167,10 @@ public class DefaultView extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds: dataSnapshot.getChildren()) {
-                    System.out.println(ds);
+                    //System.out.println()(ds);
                     Workout workout=ds.getValue(Workout.class);
                     chestList.add(workout);
-                    System.out.println(workout.getName());
+                    //System.out.println()(workout.getName());
                 }
                 pb.setVisibility(View.GONE);
                 viewerSetup(MUSCLEGROUP,v);
@@ -2192,10 +2192,10 @@ public class DefaultView extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds: dataSnapshot.getChildren()) {
-                    System.out.println(ds);
+                    //System.out.println()(ds);
                     Workout workout=ds.getValue(Workout.class);
                     shoulderList.add(workout);
-                    //System.out.println(workout.getName());
+                    ////System.out.println()(workout.getName());
                 }
                 pb.setVisibility(View.GONE);
                 viewerSetup("Shoulder",v);
@@ -2216,10 +2216,10 @@ public class DefaultView extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds: dataSnapshot.getChildren()) {
-                    System.out.println(ds);
+                    //System.out.println()(ds);
                     Workout workout=ds.getValue(Workout.class);
                     backList.add(workout);
-                    //System.out.println(workout.getName());
+                    ////System.out.println()(workout.getName());
                 }
                 pb.setVisibility(View.GONE);
                 viewerSetup(MUSCLEGROUP,v);
@@ -2240,10 +2240,10 @@ public class DefaultView extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds: dataSnapshot.getChildren()) {
-                    System.out.println(ds);
+                    //System.out.println()(ds);
                     Workout workout=ds.getValue(Workout.class);
                     armsList.add(workout);
-                    System.out.println(workout.getName());
+                    //System.out.println()(workout.getName());
                 }
 
             }
@@ -2258,10 +2258,10 @@ public class DefaultView extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds: dataSnapshot.getChildren()) {
-                    System.out.println(ds);
+                    //System.out.println()(ds);
                     Workout workout=ds.getValue(Workout.class);
                     armsList.add(workout);
-                    System.out.println(workout.getName());
+                    //System.out.println()(workout.getName());
                 }
                 pb.setVisibility(View.GONE);
                 viewerSetup("Arms",v);
@@ -2282,10 +2282,10 @@ public class DefaultView extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds: dataSnapshot.getChildren()) {
-                    System.out.println(ds);
+                    //System.out.println()(ds);
                     Workout workout=ds.getValue(Workout.class);
                     coreList.add(workout);
-                    //System.out.println(workout.getName());
+                    ////System.out.println()(workout.getName());
                 }
                 pb.setVisibility(View.GONE);
                 viewerSetup(MUSCLEGROUP,v);
@@ -2302,13 +2302,13 @@ public class DefaultView extends Fragment {
         myRefrence.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                System.out.println("onDataChanged Database....");
+                //System.out.println()("onDataChanged Database....");
                 Log.d(TAG, "onDatachanged, Added Information to database");
 
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     Workout workout = new Workout();
                     String workoutNAme = String.valueOf(ds.child("EXERCISES").child("GLUTES").getValue());
-                    System.out.println(workoutNAme);
+                    //System.out.println()(workoutNAme);
                     workout.setName(ds.child("EXERCISES").child("GLUTES").child(workoutNAme).getValue(Workout.class).getName());
                     GlutesList.add(workout);
                 }
@@ -2330,10 +2330,10 @@ public class DefaultView extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds: dataSnapshot.getChildren()) {
-                    System.out.println(ds);
+                    //System.out.println()(ds);
                     Workout workout=ds.getValue(Workout.class);
                     quadsList.add(workout);
-                    //System.out.println(workout.getName());
+                    ////System.out.println()(workout.getName());
                 }
                 pb.setVisibility(View.GONE);
                 viewerSetup("Quads",v);
@@ -2353,10 +2353,10 @@ public class DefaultView extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds: dataSnapshot.getChildren()) {
-                    System.out.println(ds);
+                    //System.out.println()(ds);
                     Workout workout=ds.getValue(Workout.class);
                     calvesList.add(workout);
-                    //System.out.println(workout.getName());
+                    ////System.out.println()(workout.getName());
                 }
                 pb.setVisibility(View.GONE);
                 viewerSetup(MUSCLEGROUP,v);
@@ -2386,7 +2386,7 @@ public class DefaultView extends Fragment {
     }
 
     public void startWorkoutActivity(String muscleGroup) {//TODO: create workout Activity
-        System.out.println(muscleGroup);
+        //System.out.println()(muscleGroup);
         /*Intent intent=new Intent(getActivity(),DefaultGymplan.class);
         startActivity(intent);*/
         MUSCLEGROUP = muscleGroup;

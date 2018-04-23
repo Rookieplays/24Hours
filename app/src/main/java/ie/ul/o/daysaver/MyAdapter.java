@@ -28,9 +28,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         public ViewHolder(View v)
         {
             super(v);
-            mTextView=(TextView)v.findViewById(R.id.wrkout_title);
-            aTextView=(TextView)v.findViewById(R.id.wrkDesc);
-            mImageView=(ImageView)v.findViewById(R.id.wrkIcon);
+            mTextView= v.findViewById(R.id.wrkout_title);
+            aTextView= v.findViewById(R.id.wrkDesc);
+            mImageView= v.findViewById(R.id.wrkIcon);
 
         }
     }
@@ -54,7 +54,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             mDescSets[i]=myDataset.get(1).get(i);
             mImgSets[i]=images.get(i);
         }
-        System.out.println("£$TG£%GG%$^UJ%J%Y "+mDataset[0]);
+        //System.out.println()("£$TG£%GG%$^UJ%J%Y "+mDataset[0]);
         }
 
 

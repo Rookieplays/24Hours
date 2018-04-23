@@ -8,7 +8,6 @@
     <string name="action_sign_in">Sign in</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="action_sign_up">Register</string>
-    <string name="action_sign_up_short">Register</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
@@ -18,24 +17,13 @@
     </string>
 
     <string name="OK">✔</string>
-    <string name="result"></string>
-    <string name="fnHint">First name(optional)</string>
-    <string name="LnHint">Last name(optional)</string>
-    <string name="passwordCriteria1">Password is too short min (8)</string>
-    <string name="passwordCriteria2">An UPPERCASE letter is a must</string>
-    <string name="passwordCriteria3">Lowercase Letter missing</string>
-    <string name="passwordCriteria4">Must have a Number</string>
-    <string name="passwordMatching">Passwords Don\'t Match</string>
     <string name="welcomeUser">Hi, %1$s </string>
-    <string name="existingUser">Already Registered? Login</string>
     <string name="wait">\u23F3 Please wait while we sign you up...</string>
-    <string name="title_activity_main">MainActivity</string>
 
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
     <string name="guest">Guest</string>
     <string name="error_match_failed">Password does not match</string>
     <string name="sinup_dialog">Not a member? sign up here.</string>
@@ -50,15 +38,11 @@
     <string name="confirmpassword">Confirm Password</string>
     <string name="confirm">Confirm ✔</string>
     <string name="eVarification">24H | E- Varification</string>
-    <string name="wait1">\u23F3 Please Wait... While we register you</string>
     <string name="wait2">\u23F3 Hold On Just A few, Gettin\' you ready...</string>
     <string name="wait3">Welcome To 24H</string>
     <string name="wait4">\u23F3 We Missed You, Setting you Up...</string>
     <string name="wait5">Just a sec..</string>
 
-    <string name="title_activity_fullscreen">FullscreenActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
     <!--These are string for the user information activity-->
 
     <string name="first_name_query">What is your first name?</string>
@@ -69,7 +53,6 @@
     <string name="female">Female</string>
     <string name="other">Other</string>
     <string name="next"><![CDATA[Next >]]></string>
-    <string name="skipOn">Skip>></string>
     <string name="skip">Skip</string>
     <string name="sexesTag">Gender</string>
     <string name="error_invalid_age">Invalid age</string>
@@ -90,8 +73,6 @@
     <string name="welcome_later">Maybe Later</string>
     <string name="username_Query">Create Username</string>
     <string name="saving_username">Saving Username\\nJust a sec....</string>
-    <string name="title_gymactivity_list">Items</string>
-    <string name="title_gymactivity_detail">GymActivity Detail</string>
 
     <!--Gym-->
     <string name="defaultG">Default</string>
@@ -146,12 +127,10 @@
     <string name="socialInfo1">Welcome to Social setup.</string>
     <string name="socailInfo2">By selecting \'Setup event\', \nYou will be teleported to an event creator zone which has been optimized based on your age,\n but hey don\'t worry you can also add your own event.\nIf you don't have time now do it later via the skip button. </string>
     <string name="setup_event">Setup Event</string>
-    <string name="title_activity_social">socialActivity</string>
     <string name="social_sport">Sport</string>
     <string name="Social_cinema">Cinema</string>
     <string name="social_birthday">Birthday</string>
     <string name="Social_shopping">Shopping</string>
-    <string name="social_awards">Awards ceremony</string>
     <string name="Social_date">Date</string>
     <string name="social_gaming">Gaming</string>
     <string name="Social_club">Club</string>
@@ -165,16 +144,6 @@
     <string name="location">At(Location):</string>
     <string name="startTime">From:</string>
     <string name="endTime">To:</string>
-    <string name="cine">Cinema</string>
-    <string name="movie">Movie Title:</string>
-    <string name="runtime">Duration:</string>
-    <string name="startingTime">Starting At:</string>
-    <string name="eet">We Estimated the end time as: </string>
-    <string name="birthday">Birthday</string>
-    <string name="whos">Who\'s Birthday? </string>
-    <string name="where">Where is it at:</string>
-    <string name="pic">Upload picture of invite</string>
-    <string name="cover">Cover</string>
     <string-array name="occurance">
         <item>Once</item>
         <item>Weekly</item>
@@ -187,19 +156,10 @@
 
 
     </string-array>
-    <string name="sleepO">Sleep-Over</string>
-    <string name="extraInfo">Extra Info:</string>
     <string name="notes">Notes:</string>
     <string name="date">On(date):</string>
     <string name="awardCeremony">Award Ceremony</string>
-    <string name="Dating">Date</string>
     <string name="Clubling">Clubing</string>
-    <string name="Drink">Go For A Pint</string>
-    <string name="with">With </string>
-    <string name="wed">Wedding</string>
-    <string name="whosWed">Who\'s Wedding</string>
-    <string name="plusOne">Plus One:</string>
-    <string name="custom_s">Custom</string>
     <string name="selectAday">Select A Day</string>
     <string name="selectStart">Select Start Time</string>
     <string name="selectEnd">Select End  at</string>
@@ -229,7 +189,6 @@
     <string name="social_a_hint">Award for</string>
     <string name="a_heading">For, Location, Date, Start, End</string>
     <string name="w_heading">Who\', Location, On, From, To</string>
-    <string name="wCeremony">Who\'s Wedding</string>
     <string name="activity_social">24H | Social</string>
     <string name="clb_tag">Event Type</string>
     <string name="social_club_hint">Type, Location, Date, Start, End</string>
@@ -248,10 +207,7 @@
     <string name="sadEm">0x11F612</string>
     <string name="cockyem">0x11F60C</string>
     <string name="wantingEm">0x11F612</string>
-    <string name="mornEm">0x11F304</string>
-    <string name="nightEm">0x11F31B</string>
     <string name="panicEm">0x11F62D</string>
-    <string name="greedyEm">0x11F60F</string>
 
     <string name="w1">Welcome back, %1$s</string>
     <string name="w2">Hey %1$s, How\'s it hangin\'</string>
@@ -287,15 +243,6 @@
     <string name="showAll">Show All Workouts</string>
     <string name="myWorkouts">Just My Workouts</string>
 
-    <string-array name="progressComments">
-        <item>So much to do, but we have time.</item>
-        <item>Yh remember what i said before, 0x11F62D look at the pb </item>
-        <item>Yo !@h?, 0x11F62C Day is almost over</item>
-    </string-array>
-    <string name="title_activity_create_new_workout">Workout name</string>
-    <string name="title_showWorkout">View</string>
-    <string name="title_add">Add</string>
-    <string name="title_gallery">Gallery</string>
     <string name="Public">Public</string>
     <string name="Private">Private</string>
     <string name="day">Day(Mon,Tue...)</string>
@@ -318,16 +265,11 @@
     <string name="no_thanks">No Thanks</string>
     <string name="wlletDialog">Welcome to Your Wallet %1$s\nHere you can set the Amount you want Budget Around</string>
     <string name="currentWallet">Current  Wallet:  </string>
-    <string name="newWallet">New Wallet</string>
     <string name="new_Balance">%1$s Enter new Balance</string>
     <string name="euro">\u20AC</string>
     <string name="enterItem">Enter Item</string>
     <string name="savingDialog">Welcome to Your Wallet %1$s\nHere you can set the Amount you want Save</string>
-    <string name="currentSavings">Current  Limit:  </string>
-    <string name="newSavings">New Limit</string>
-    <string name="new_save">%1$s Enter new Limit</string>
     <string name="limit_err">Your Limit can\'t be Lower than your wallet..</string>
-    <string name="addedToB">Your Item was added to your cart</string>
     <string name="warning1">Woah! Cutting it close</string>
     <string name="warning">Wow you are saving a lot!!</string>
     <string name="warning0">You\'re doing good so far!</string>
@@ -345,7 +287,6 @@
     Here you have the ability to choose our default Gym plan our create one of you're very own. YOu can also View Workout Plans Made by the Community.</string>
     <string name="socialDesc">Hi again, 24H.S is A Social organizer, where you create events for common social activities,\n You want to set up a plan to go to the Cinema well you can, or How about create a Budget for your grocceries, 24H.B$ allows you to just that.</string>
     <string name="study">24H.SP allows you to create a study plan for any day of the week, fast and simple.</string>
-    <string name="timetableDesc">Dear Students, Good news you\'re able to create a Timetable for for classes ☺, No more confused about what classes you have and when. Not saying that you do.</string>
     <string name="quickevent">Create an ordinary plan for an ordinary day.</string>
     <string name="Calendar">View All Created events Here</string>
     <string name="prev">Previous</string>
@@ -378,29 +319,18 @@
         <item>GREEN</item>
         <item>GRAY</item>
 
-    </string-array>
-    <color name="colorarray">#00fff2</color>
-   <string name="v_name_login_reg">Login, Registration and Setup in 24H</string>
-    <string name="v_name_themes">Themes in 24H</string>
-    <string name="v_name_gym">How to use Gym in 24H</string>
-    <string name="v_name_social">How to use Social in 24H</string>
-    <string name="v_name_study">How to use Study in 24H</string>
-    <string name="v_name_quick">How to use Quick note in 24H</string>
-    <string name="v_namwe_notes">How to use Notes in 24H</string>
-    <string name="v_name_cal">How to use Calendar in 24H</string>
+    </string-array><![CDATA[
 
-    <string name="v_desc_login_reg">Login • If You are Registered with us,You will be directed to your Main Screen otherwise if you\'ve forgotten Your Password click sign in and you would be return to this page, then click on the forgot password link.\n\n
-    Register • Click on the new members link to sign in. fill in the field and Hey presto! that\'s it \n
-    Setup • Enter Username, Click the icon to set profile pictures, ! make sure your file isn\'t too big aim for 100kb or lower, click next fill in the gap and click done, read through the setup page, be patient and you're ready to Start</string>>
-    <string name="v_desc_themes">Themes • click the top left side corner menu for a dropdown of option ar hold Hbot for different themes</string>
-    <string name="v_desc_gym">Gym •
-    \nDefault: select a body type, select a muscle group, hit save or change setting to your prefrence, hold the top for default option or tap to select all. When you are done hit finshed or if you need to change anything hit reset.
-    \nCustom: select one of your own workout or one from the community, you can add it to your calender if you want. Add your own plan by hitting the add Plan button. reload to see changes and Boom you're Done!</string>
-    <string name="v_desc_soc">Select one of the provided Templates or Create Your Own via the circular Button Thingy, the rest is simple</string>
-    <string name="v_desc_s">Enter Your Subjects, select subjects to study hit the CHECK MARK AFTER EVERY DAY to save, the  blue button to save and close</string>
-    <string name="v_desc_q">Too easy! </string>
-    <string name="v_desc_notes">Watch the Video</string>
-    <string name="v_desc_Calendar">Watch the Video</string>
-    <string name="v_desc_main">Watch the Video</string>
+
+
+
+
+
+
+
+
+
+    >
+    ]]>
     <string name="info1"> Hey there, Remember..\nstep 1. Add Workout\nstep 2. Enter workout name\nstep 3. Do the extra bits\nstep 4.Save\nGot it?</string>
 </resources>

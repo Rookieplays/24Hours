@@ -88,21 +88,21 @@ public class AddNewWorkout extends createWorkout {
         myDataset.add(new ArrayList<>());
         imgSets=new ArrayList<>();
         ChosenworkoutLists=new ArrayList<>();
-        b__core = (Button) findViewById(R.id.b_core1);
-        b_arms = (Button) findViewById(R.id.b_arms);
-        b_back=(Button)findViewById(R.id.b_back);
-        b_calves = (Button) findViewById(R.id.b_calves1);
-        b_chest = (Button) findViewById(R.id.b_chest);
-        b_quads = (Button) findViewById(R.id.b_quads);
-        b_shoulder = (Button) findViewById(R.id.b_shoulder);
-        b__core2 = (Button) findViewById(R.id.b_core);
-        b_arms3 = (Button) findViewById(R.id.b_arms1);
-        b_arms4 = (Button) findViewById(R.id.b_arms3);
-        b_arms2 = (Button) findViewById(R.id.b_arms2);
-        b_calves2 = (Button) findViewById(R.id.b_calves);
-        b_chest2 = (Button) findViewById(R.id.b_chest1);
-        b_quads2 = (Button) findViewById(R.id.b_quads2);
-        b_shoulder2 = (Button) findViewById(R.id.b_shoulder1);
+        b__core = findViewById(R.id.b_core1);
+        b_arms = findViewById(R.id.b_arms);
+        b_back= findViewById(R.id.b_back);
+        b_calves = findViewById(R.id.b_calves1);
+        b_chest = findViewById(R.id.b_chest);
+        b_quads = findViewById(R.id.b_quads);
+        b_shoulder = findViewById(R.id.b_shoulder);
+        b__core2 = findViewById(R.id.b_core);
+        b_arms3 = findViewById(R.id.b_arms1);
+        b_arms4 = findViewById(R.id.b_arms3);
+        b_arms2 = findViewById(R.id.b_arms2);
+        b_calves2 = findViewById(R.id.b_calves);
+        b_chest2 = findViewById(R.id.b_chest1);
+        b_quads2 = findViewById(R.id.b_quads2);
+        b_shoulder2 = findViewById(R.id.b_shoulder1);
 
         muscleGroupPage=findViewById(R.id.muscleSelectionpage);
         ex_chooser=findViewById(R.id.ex_chooser_page);
@@ -258,7 +258,7 @@ public class AddNewWorkout extends createWorkout {
     {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         dialogBuilder.setMessage("Please wait...");
-        System.out.println("Waiter here___________________________");
+        ////System.out.println()()("Waiter here___________________________");
         AlertDialog dialog=dialogBuilder.create();
         dialog.setCanceledOnTouchOutside(false);
         dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
@@ -281,10 +281,10 @@ public class AddNewWorkout extends createWorkout {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds: dataSnapshot.getChildren()) {
-                    System.out.println(ds);
+                    ////System.out.println()()(ds);
                     Workout workout=ds.getValue(Workout.class);
                     chestList.add(workout);
-                    System.out.println(workout.getName());
+                    ////System.out.println()()(workout.getName());
                 }
 
                 viewerSetup(MUSCLEGROUP);
@@ -308,10 +308,10 @@ public class AddNewWorkout extends createWorkout {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds: dataSnapshot.getChildren()) {
-                    System.out.println(ds);
+                    ////System.out.println()()(ds);
                     Workout workout=ds.getValue(Workout.class);
                     shoulderList.add(workout);
-                    //System.out.println(workout.getName());
+                    //////System.out.println()()(workout.getName());
                 }
 
                 viewerSetup("Shoulder");
@@ -334,10 +334,10 @@ public class AddNewWorkout extends createWorkout {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds: dataSnapshot.getChildren()) {
-                    System.out.println(ds);
+                    ////System.out.println()()(ds);
                     Workout workout=ds.getValue(Workout.class);
                     backList.add(workout);
-                    //System.out.println(workout.getName());
+                    //////System.out.println()()(workout.getName());
                 }
 
                 viewerSetup(MUSCLEGROUP);
@@ -360,10 +360,10 @@ public class AddNewWorkout extends createWorkout {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds: dataSnapshot.getChildren()) {
-                    System.out.println(ds);
+                    ////System.out.println()()(ds);
                     Workout workout=ds.getValue(Workout.class);
                     armsList.add(workout);
-                    System.out.println(workout.getName());
+                    ////System.out.println()()(workout.getName());
                 }
 
             }
@@ -378,10 +378,10 @@ public class AddNewWorkout extends createWorkout {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds: dataSnapshot.getChildren()) {
-                    System.out.println(ds);
+                    ////System.out.println()()(ds);
                     Workout workout=ds.getValue(Workout.class);
                     armsList.add(workout);
-                    System.out.println(workout.getName());
+                    ////System.out.println()()(workout.getName());
                 }
 
                 viewerSetup("Arms");
@@ -404,10 +404,10 @@ public class AddNewWorkout extends createWorkout {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds: dataSnapshot.getChildren()) {
-                    System.out.println(ds);
+                    ////System.out.println()()(ds);
                     Workout workout=ds.getValue(Workout.class);
                     coreList.add(workout);
-                    //System.out.println(workout.getName());
+                    //////System.out.println()()(workout.getName());
                 }
 
                 viewerSetup(MUSCLEGROUP);
@@ -425,13 +425,13 @@ public class AddNewWorkout extends createWorkout {
         myRefrence.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                System.out.println("onDataChanged Database....");
+                ////System.out.println()()("onDataChanged Database....");
                 Log.d(TAG, "onDatachanged, Added Information to database");
 
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     Workout workout = new Workout();
                     String workoutNAme = String.valueOf(ds.child("EXERCISES").child("GLUTES").getValue());
-                    System.out.println(workoutNAme);
+                    ////System.out.println()()(workoutNAme);
                     workout.setName(ds.child("EXERCISES").child("GLUTES").child(workoutNAme).getValue(Workout.class).getName());
                     GlutesList.add(workout);
                 }
@@ -453,10 +453,10 @@ public class AddNewWorkout extends createWorkout {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds: dataSnapshot.getChildren()) {
-                    System.out.println(ds);
+                    ////System.out.println()()(ds);
                     Workout workout=ds.getValue(Workout.class);
                     quadsList.add(workout);
-                    //System.out.println(workout.getName());
+                    //////System.out.println()()(workout.getName());
                 }
 
                 viewerSetup("Quads");
@@ -477,10 +477,10 @@ public class AddNewWorkout extends createWorkout {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds: dataSnapshot.getChildren()) {
-                    System.out.println(ds);
+                    ////System.out.println()()(ds);
                     Workout workout=ds.getValue(Workout.class);
                     calvesList.add(workout);
-                    //System.out.println(workout.getName());
+                    //////System.out.println()()(workout.getName());
                 }
 
                 viewerSetup(MUSCLEGROUP);
@@ -495,8 +495,8 @@ public class AddNewWorkout extends createWorkout {
     }
 
     public void startWorkoutActivity(String muscleGroup) {//TODO: create workout Activity
-        System.out.println("SWA++++++++++++++++++++++++++");
-        System.out.println(muscleGroup);
+        ////System.out.println()()("SWA++++++++++++++++++++++++++");
+        ////System.out.println()()(muscleGroup);
         /*Intent intent=new Intent(this,DefaultGymplan.class);
         startActivity(intent);*/
         //pd.show();
@@ -547,11 +547,11 @@ public class AddNewWorkout extends createWorkout {
 
         save.setOnClickListener(e->{
             addWorkout=false;
-            System.out.println(WORKOUTS+" Before SelectWorkourAdapter");
+            ////System.out.println()()(WORKOUTS+" Before SelectWorkourAdapter");
             WORKOUTS=selectWorkoutAdapter.getWorkoutMade();
-            System.out.println(WORKOUTS+" After SelectWorkourAdapter");
+            ////System.out.println()()(WORKOUTS+" After SelectWorkourAdapter");
            // WORKOUTS=addTExistingList();
-          System.out.println("There are -->"+WORKOUTS.size()+" so Far...");
+          ////System.out.println()()("There are -->"+WORKOUTS.size()+" so Far...");
           sizeOfList.setText(WORKOUTS.size()+"");
             dialog.dismiss();
         });
@@ -561,11 +561,11 @@ public class AddNewWorkout extends createWorkout {
 
     }
     public static List<Workout> getOldWorkouts() {
-       // System.out.println("+++++"+workoutFull);
+       // ////System.out.println()()("+++++"+workoutFull);
         return WORKOUTS;
     }
     public static void setWORKOUTS(List<Workout>W){
-        System.out.println("///////////"+W);
+        ////System.out.println()()("///////////"+W);
         WORKOUTS=W;
     }
     public  List addTExistingList()
@@ -593,13 +593,13 @@ public class AddNewWorkout extends createWorkout {
         Collections.shuffle(quadsList);
         Collections.shuffle(calvesList);
         Collections.shuffle(coreList);
-        //System.out.println("***"+chestList);
+        //////System.out.println()()("***"+chestList);
 
         if(ListID==1)//chest
             for (Workout w: chestList)
-                // System.out.println(w.getName()+" ");
+                // ////System.out.println()()(w.getName()+" ");
                 temp.add(w);
-            // System.out.println("****"+temp);
+            // ////System.out.println()()("****"+temp);
 
         else if(ListID==2)//back
             for (Workout w: backList)
@@ -615,7 +615,7 @@ public class AddNewWorkout extends createWorkout {
             for (Workout w: coreList)   temp.add(w);
         else if(ListID==7)//core
             for (Workout w: shoulderList)   temp.add(w);
-        System.out.println("~~~"+temp);
+        ////System.out.println()()("~~~"+temp);
         return temp;
 
 
@@ -623,7 +623,7 @@ public class AddNewWorkout extends createWorkout {
     public void viewerSetup(String musclegroup) {
 
 
-        System.out.println("Viewr_setup: MG:"+musclegroup);
+        ////System.out.println()()("Viewr_setup: MG:"+musclegroup);
         myDataset.get(0).clear();
         myDataset.get(1).clear();
         imgSets.clear();
@@ -634,10 +634,10 @@ public class AddNewWorkout extends createWorkout {
         List<Workout> temp=null;
 
 
-        System.out.println("**"+musclegroup);
+        ////System.out.println()()("**"+musclegroup);
         if(musclegroup.equalsIgnoreCase("Chest")) {
             temp=createVersions(1);
-            System.out.println("**"+temp);
+            ////System.out.println()()("**"+temp);
             if(temp.isEmpty()==false){
                 for (Workout w: temp) {
                     myDataset.get(0).add(w.getName());
@@ -724,7 +724,7 @@ public class AddNewWorkout extends createWorkout {
         b_calves.setText(getString(R.string.calf));
         b_back.setText(getString(R.string.back));
 
-        System.out.println("There is "+WorkoutsChosen.size()+" Workouts");
+        ////System.out.println()()("There is "+WorkoutsChosen.size()+" Workouts");
 
     }
     public void showWorkoutList(String mg, int version) {
@@ -736,7 +736,7 @@ public class AddNewWorkout extends createWorkout {
         quadsList.clear();
         calvesList.clear();
         coreList.clear();
-        System.out.println("Showing List: " + mg + "\nVersion: " + version);
+        ////System.out.println()()("Showing List: " + mg + "\nVersion: " + version);
         if(mg.equalsIgnoreCase("chest"))
             loadChestWorkouts();
         else  if(mg.equalsIgnoreCase("arms"))
@@ -751,7 +751,7 @@ public class AddNewWorkout extends createWorkout {
             loadQuadsWorkouts();
         else  if(mg.equalsIgnoreCase("core"))
             loadCOREWorkouts();
-        System.out.println("VERSion "+version);
+        ////System.out.println()()("VERSion "+version);
 
 
 

@@ -41,11 +41,11 @@ public class AdapterA extends RecyclerView.Adapter<AdapterA.ViewHolder> {
         public ViewHolder(View v)
         {
             super(v);
-            mTextView=(TextView)v.findViewById(R.id.wrkout_title2);
-            aTextView=(TextView)v.findViewById(R.id.wrkDesc);
-            setsView=(TextView)v.findViewById(R.id.setsDisplay);
-            repsView=(TextView)v.findViewById(R.id.repsDiaply);
-            mImageView=(ImageView)v.findViewById(R.id.wrkIcon2);
+            mTextView= v.findViewById(R.id.wrkout_title2);
+            aTextView= v.findViewById(R.id.wrkDesc);
+            setsView= v.findViewById(R.id.setsDisplay);
+            repsView= v.findViewById(R.id.repsDiaply);
+            mImageView= v.findViewById(R.id.wrkIcon2);
             edit=v.findViewById(R.id.editBtn);
            // delete=v.findViewById(R.id.deleteBtn);
             viewBackground = v.findViewById(R.id.view_background);

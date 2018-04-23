@@ -47,7 +47,7 @@ public class selectWorkoutAdapter extends RecyclerView.Adapter<selectWorkoutAdap
             super(v);
            //create dialogbox to show info //mTextView=(TextView)v.findViewById(R.id.wrkout_title);
             aCBView=v.findViewById(R.id.wrkout_name);
-            mImageView=(ImageView)v.findViewById(R.id.wrkoutImg);
+            mImageView= v.findViewById(R.id.wrkoutImg);
             infoBtn=v.findViewById(R.id.infoBtn);
             sets=v.findViewById(R.id.setsField);
             reps=v.findViewById(R.id.repsField);
@@ -76,7 +76,7 @@ public class selectWorkoutAdapter extends RecyclerView.Adapter<selectWorkoutAdap
                 mDescSets[i]=myDataset.get(1).get(i);
                 mImgSets[i]=images.get(i);
             }
-            System.out.println("£$TG£%GG%$^UJ%J%Y "+mDataset[0]);
+            //System.out.println()("£$TG£%GG%$^UJ%J%Y "+mDataset[0]);
         }
 
 
@@ -108,7 +108,7 @@ public class selectWorkoutAdapter extends RecyclerView.Adapter<selectWorkoutAdap
         {
             for(Workout w:wrkouts)
             {
-                System.out.println("Workout: "+w.getName()+" VS "+"New: "+ holder.aCBView.getText().toString());
+                //System.out.println()("Workout: "+w.getName()+" VS "+"New: "+ holder.aCBView.getText().toString());
                 if(holder.aCBView.getText().toString().equalsIgnoreCase(position+". "+w.getName()))
                     holder.aCBView.setChecked(true);
                 else
@@ -130,18 +130,18 @@ public class selectWorkoutAdapter extends RecyclerView.Adapter<selectWorkoutAdap
                     }
                 if(holder.aCBView.isChecked())
                 {
-                    System.out.println("Chossen workout is: "+ wrkout.getName());
+                    //System.out.println()("Chossen workout is: "+ wrkout.getName());
                     String tempSplit[]=wrkout.getName().split("\\.");
-                    System.out.println(tempSplit[0]+"\n"+tempSplit[1]);
+                    //System.out.println()(tempSplit[0]+"\n"+tempSplit[1]);
                     wrkout.setName(tempSplit[1].trim());
-                    System.out.println(wrkout.getName());
+                    //System.out.println()(wrkout.getName());
                                    wrkouts.add(wrkout);
-                                   System.out.println(wrkout);
+                                   //System.out.println()(wrkout);
 
                 } else {
                     refreshWorkout(wrkout.getName());
                 }
-                workoutFull=wrkouts; System.out.println(wrkout);}
+                workoutFull=wrkouts;}
                 catch (NullPointerException n){
                     Log.w("Errrrrrrrrrr",n.getMessage());}
             }
@@ -155,33 +155,32 @@ public class selectWorkoutAdapter extends RecyclerView.Adapter<selectWorkoutAdap
 
     }
     public static void setWORKOUTS(List<Workout>W){
-        System.out.println("///////////"+W);
+        //System.out.println()("///////////"+W);
         workoutFull=W;
     }
 
     public static List getWorkoutMade() {
-        System.out.println("+++++"+workoutFull);
+        //System.out.println()("+++++"+workoutFull);
         return workoutFull;
     }
     public void refreshWorkout(String s)
     {
-        System.out.println("Checking if: "+s+" is among: "+wrkouts);
+        //System.out.println()("Checking if: "+s+" is among: "+wrkouts);
         for(Workout w: wrkouts)
             {
                 if(w.getName().equals(s))
                 {
                     wrkouts.remove(w);
-                    System.out.println("Removed: "+s+" from: "+wrkouts);
+
                 }
-                else
-                    System.out.println(s+" is not among: "+wrkouts);
+
 
             }
 
     }
 
     private Workout gatherInfo(String name, String img, String desc, int set, int rep) {
-        System.out.println(new Workout(MUSCLEGROUP,name,desc,img,set,rep));
+        //System.out.println()(new Workout(MUSCLEGROUP,name,desc,img,set,rep));
         return new Workout(MUSCLEGROUP,name,desc,img,set,rep);
     }
 

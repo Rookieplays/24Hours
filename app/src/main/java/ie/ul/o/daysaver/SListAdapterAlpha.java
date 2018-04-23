@@ -58,7 +58,7 @@ public class SListAdapterAlpha extends RecyclerView.Adapter<SListAdapterAlpha.Vi
             {
                 mDataset[i]=myDataset.get(i).getName();
                 mDescSets[i]=myDataset.get(i).getDescription();
-            System.out.println("£$TG£%GG%$^UJ%J%Y "+mDataset[0]);
+            //System.out.println()("£$TG£%GG%$^UJ%J%Y "+mDataset[0]);
         }
 
 
@@ -92,7 +92,7 @@ public class SListAdapterAlpha extends RecyclerView.Adapter<SListAdapterAlpha.Vi
     @Override
     public void onBindViewHolder(ViewHolder holder, int position)
     {
-        System.out.println("_____"+mDataset[position]+"____________");
+        //System.out.println()("_____"+mDataset[position]+"____________");
         holder.mTextView.setText(mDataset[position]);
         //holder.aTextView.setText(mDescSets[position]);
         holder.mTextView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -113,16 +113,15 @@ public class SListAdapterAlpha extends RecyclerView.Adapter<SListAdapterAlpha.Vi
     }
     public void refreshWorkout(String str)
     {
-        System.out.println("Checking if: "+str+" is among: "+selectedList);
+        //System.out.println()("Checking if: "+str+" is among: "+selectedList);
         for(ShoppingList s: selectedList)
         {
             if(s.getName().equals(str))
             {
                 selectedList.remove(s);
-                System.out.println("Removed: "+s+" from: "+selectedList);
+                //System.out.println()("Removed: "+s+" from: "+selectedList);
             }
-            else
-                System.out.println(s+" is not among: "+selectedList);
+
 
         }
 

@@ -77,7 +77,7 @@ public class shoppingListAdapter extends RecyclerView.Adapter<shoppingListAdapte
                 mDescSets[i]="Entered item: "+myDataset.get(i).getItemName()+"\nAmount: "+myDataset.get(i).getAmount()+"\nPrice: "+myDataset.get(i).getPrice();
                 itms.get(i).setDescription(mDescSets[i]);
             }
-            System.out.println("£$TG£%GG%$^UJ%J%Y "+mDataset[0]);
+            //System.out.println()("£$TG£%GG%$^UJ%J%Y "+mDataset[0]);
         }
 
 
@@ -110,7 +110,7 @@ public class shoppingListAdapter extends RecyclerView.Adapter<shoppingListAdapte
         SeekBar amountBar = dialogView.findViewById(R.id.sb);
         EditText price = dialogView.findViewById(R.id.editText2);
         Button confirm=dialogView.findViewById(R.id.button11);
-        System.out.println(itms.get(pos).getItemName());
+        //System.out.println()(itms.get(pos).getItemName());
         name.setText(itms.get(pos).getItemName());
         amount.setText(itms.get(pos).getAmount()+"");
         amountBar.setProgress(Integer.parseInt(amount.getText().toString()));

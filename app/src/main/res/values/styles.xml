@@ -16,16 +16,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="AppTheme.Base.Midnight" parent="AppTheme.Midnight">
-
-        <item name="windowActionModeOverlay">true</item>
-        <item name="windowActionBarOverlay">true</item>
-        <item name="android:windowActionBarOverlay">true</item>
-        <item name="android:windowBackground">@color/background_mid_dark</item>
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
     <style name="popup_window_animation_sign_out">
         <item name="android:windowEnterAnimation">@android:anim/slide_in_left</item>
     </style>

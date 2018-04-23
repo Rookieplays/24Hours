@@ -62,15 +62,15 @@ public class calenderActivity extends MainActivity {
                super.onCreate(savedInstanceState);
         mFireStore = FirebaseFirestore.getInstance();
         setContentView(R.layout.activity_calender);
-        dayNotice=(TextView)findViewById(R.id.dayNotice);
-        calendarView=(CompactCalendarView) findViewById(R.id.mainCalendar);
-        Toolbar toolbar2 = (Toolbar) findViewById(R.id.calendarToolBar);
+        dayNotice= findViewById(R.id.dayNotice);
+        calendarView= findViewById(R.id.mainCalendar);
+        Toolbar toolbar2 = findViewById(R.id.calendarToolBar);
         setSupportActionBar(toolbar2);
        // toolbar2.setTitle(null);
-        eventView=(LinearLayout)findViewById(R.id.eventView);
+        eventView= findViewById(R.id.eventView);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         LinearLayout.LayoutParams vLine = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,1);
-        BoomMenuButton bmb = (BoomMenuButton) findViewById(R.id.bmb);
+        BoomMenuButton bmb = findViewById(R.id.bmb);
         progressBar=findViewById(R.id.progbar);
         progressDialog=new ProgressDialog(this);
         int[] imageResources = new int[]{
@@ -320,7 +320,7 @@ public class calenderActivity extends MainActivity {
 
             }
 
-            System.out.println("Number of x : " + mondays);
+            ////System.out.println()()("Number of x : " + mondays);
 
 
 
@@ -502,7 +502,7 @@ private ProgressDialog progressDialog;
 
   private void LoadEvents(String date)
   {
-      System.out.println("DDD"+date);
+      ////System.out.println()()("DDD"+date);
 
       progressBar.setVisibility(View.VISIBLE);
       mFireStore.collection(UID)
@@ -515,7 +515,7 @@ private ProgressDialog progressDialog;
                           List<CE> eventList = new ArrayList<>();
 
                           for(DocumentSnapshot doc : task.getResult()){
-                              System.out.println("--**>"+doc.getData().values().contains("QUICKADD"));
+                              ////System.out.println()()("--**>"+doc.getData().values().contains("QUICKADD"));
                               if(doc.getData().values().contains("SOCIAL"))
                               {
                                   Social e=doc.toObject(Social.class);
@@ -538,16 +538,16 @@ private ProgressDialog progressDialog;
                               }
                               else if(doc.getData().values().contains("QUICKADD"))
                               {
-                                  System.out.println("HiTTTER");
+                                  ////System.out.println()()("HiTTTER");
                                   QuickAdd e=doc.toObject(QuickAdd.class);
                                   qas.add(e);
-                                  System.out.println("<<<"+qas);
+                                  ////System.out.println()()("<<<"+qas);
 
                                   calendarView.addEvent(setEvent(date,e.getId(),null,null,null,e));
 
                               }
                             //  CE e = doc.toObject(CE.class);
-                              //System.out.println(e);
+                              //////System.out.println()()(e);
                               //e.setType(doc.getString("type"));
                               //eventList.add(e);
                              // calendarView.addEvent(setEvent(date,e.getType(),e.getType()));
@@ -577,7 +577,7 @@ private ProgressDialog progressDialog;
                           List<CE> eventList = new ArrayList<>();
 
                           for(DocumentSnapshot doc : task.getResult()){
-                              System.out.println("-->"+doc.getData().values().contains("QUICKADD"));
+                              ////System.out.println()()("-->"+doc.getData().values().contains("QUICKADD"));
 
                                if(doc.getData().values().contains("GYM"))
                               {
@@ -589,7 +589,7 @@ private ProgressDialog progressDialog;
 
 
                               //  CE e = doc.toObject(CE.class);
-                              //System.out.println(e);
+                              //////System.out.println()()(e);
                               //e.setType(doc.getString("type"));
                               //eventList.add(e);
                               // calendarView.addEvent(setEvent(date,e.getType(),e.getType()));
@@ -620,7 +620,7 @@ private ProgressDialog progressDialog;
                           List<CE> eventList = new ArrayList<>();
 
                           for(DocumentSnapshot doc : task.getResult()){
-                              System.out.println("-->"+doc.getData().values().contains("QUICKADD"));
+                              ////System.out.println()()("-->"+doc.getData().values().contains("QUICKADD"));
 
                               if(doc.getData().values().contains("GYM"))
                               {
@@ -632,7 +632,7 @@ private ProgressDialog progressDialog;
 
 
                               //  CE e = doc.toObject(CE.class);
-                              //System.out.println(e);
+                              //////System.out.println()()(e);
                               //e.setType(doc.getString("type"));
                               //eventList.add(e);
                               // calendarView.addEvent(setEvent(date,e.getType(),e.getType()));
@@ -657,7 +657,7 @@ private ProgressDialog progressDialog;
     public Event setEvent(String date,String type,WorkoutPlan e1,Social e2,Study e3,QuickAdd e4)
     {
        // Social s=(Social)EventName;
-       // System.out.println("++"+s.getDiscription());
+       // ////System.out.println()()("++"+s.getDiscription());
         //Workout w=new Workout();
        int color=Color.GREEN;
         if(type.contains("GYM"))
@@ -673,24 +673,24 @@ private ProgressDialog progressDialog;
         else if(type.contains("QUICKADD"))
         {color=Color.BLUE;}
         else {color=R.attr.colorAccent;}
-        System.out.println(e1);
+        ////System.out.println()()(e1);
         Event ev=null;
 
         if(e1!=null)
         {
-            System.out.println("Setting Workout Event: "+e1);
+            ////System.out.println()()("Setting Workout Event: "+e1);
             ev=new Event(color,ConvertFromDateToLong(date),e1);
         }
         else if(e2!=null){
-            System.out.println("Setting Social Event: "+e2);
+            ////System.out.println()()("Setting Social Event: "+e2);
             ev=new Event(color,ConvertFromDateToLong(date),e2);
         }
         else if(e3!=null){
-            System.out.println("Setting Study Event: "+e3);
+            ////System.out.println()()("Setting Study Event: "+e3);
             ev=new Event(color,ConvertFromDateToLong(date),e3);
         }
         else if(e4!=null){
-            System.out.println("Setting qUICKADD Event: "+e4);
+            ////System.out.println()()("Setting qUICKADD Event: "+e4);
             ev=new Event(color,ConvertFromDateToLong(date),e4);
         }
         else
@@ -702,7 +702,7 @@ private ProgressDialog progressDialog;
     private Long ConvertFromDateToLong(String date)
     {
         long milliseconds=System.currentTimeMillis();
-        System.out.println("system Time: "+milliseconds);
+        ////System.out.println()()("system Time: "+milliseconds);
         SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy",Locale.getDefault());
         try {
             Date d = f.parse(date);
@@ -710,7 +710,7 @@ private ProgressDialog progressDialog;
 
 
 
-            System.out.println("Date Time: "+milliseconds);
+            ////System.out.println()()("Date Time: "+milliseconds);
         } catch (ParseException e) {
             e.printStackTrace();
         }

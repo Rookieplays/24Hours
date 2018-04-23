@@ -54,7 +54,7 @@ class Wallet
     {
         this.context=context;
 
-        System.out.println("__>"+user);
+        //System.out.println()("__>"+user);
         this.user=user;
            this.date=new Date().getTime();
         filePath = context.getFilesDir().getPath() + "/";
@@ -65,7 +65,7 @@ class Wallet
     public Wallet(String user,double balance,Context context)throws IOException
     {
         this.context=context;
-        System.out.println("__>"+user);
+        //System.out.println()("__>"+user);
         this.user=user;
            this.date=new Date().getTime();
         filePath = context.getFilesDir().getPath() + "/";
@@ -80,7 +80,7 @@ class Wallet
     }
     public void setBalance(double balance)
     {
-        System.out.println(balance);
+        //System.out.println()(balance);
         this.balance=balance;
     }
     public void loadWallets()throws IOException
@@ -107,7 +107,7 @@ class Wallet
                 for (int i=0; i<walletList.size();i++ )
                 {
                     walletList.get(i).add(temp[i]);
-                    System.out.println(walletList);
+                    //System.out.println()(walletList);
                 }
             }fileReader.close();
         }
@@ -158,15 +158,15 @@ class Wallet
     else if(bal>=1000&&bal<1000000||(bal<=-1000&&bal>-1000000))
     {
         finalbal=nf.format(bal/1000)+"K";
-        System.out.println(finalbal);
+        //System.out.println()(finalbal);
     }
     else if(bal>=1000000&&bal<1000000000||(bal<=-1000000&&bal>-1000000000))
     {
         finalbal=nf.format(bal/1000000)+"M";
-        System.out.println(finalbal);
+        //System.out.println()(finalbal);
     }
     else
-        finalbal=nf.format(bal/1000000000)+"B";System.out.println(finalbal);
+        finalbal=nf.format(bal/1000000000)+"B";//System.out.println()(finalbal);
     return finalbal;
 }
     public String formatbal(double bal)throws IOException
@@ -184,15 +184,15 @@ class Wallet
         else if(bal>=1000&&bal<1000000||(bal<=-1000&&bal>-1000000))
         {
             finalbal=nf.format(bal/1000)+"K";
-            System.out.println(finalbal);
+            //System.out.println()(finalbal);
         }
         else if(bal>=1000000&&bal<1000000000||(bal<=-1000000&&bal>-1000000000))
         {
             finalbal=nf.format(bal/1000000)+"M";
-            System.out.println(finalbal);
+            //System.out.println()(finalbal);
         }
         else
-            finalbal=nf.format(bal/1000000000)+"B";System.out.println(finalbal);
+            finalbal=nf.format(bal/1000000000)+"B";//System.out.println()(finalbal);
         return finalbal;
     }
     public double unWrapBal(String bal)throws IOException
@@ -207,25 +207,25 @@ class Wallet
         {
             bal=bal.replace("K","");
             finalbal=Double.parseDouble(bal)*1000;
-            System.out.println(finalbal);
+            //System.out.println()(finalbal);
         }
         else if(bal.contains("M"))
         {
             bal=bal.replace("M","");
             finalbal=Double.parseDouble(bal)*1000000;
-            System.out.println(finalbal);
+            //System.out.println()(finalbal);
         }
         else if(bal.contains("B"))
         {
             bal=bal.replace("B","");
             finalbal=Double.parseDouble(bal)*1000000000;
-            System.out.println(finalbal);
+            //System.out.println()(finalbal);
         }
         else
         {
 
             finalbal=Double.parseDouble(bal);
-            System.out.println(finalbal);
+            //System.out.println()(finalbal);
         }
         return finalbal;
     }

@@ -85,11 +85,11 @@ private ViewFlipper viewFlipper;
                     if(!TextUtils.isEmpty(subjectViews[i].getText().toString()))
                     {
                         subjects.add(subjectViews[i].getText().toString());
-                        System.out.println("*****"+subjects);
+                        //System.out.println()("*****"+subjects);
                     }
                 }
             }
-            System.out.println("DAYS: "+days+"SUBS: "+subjects);
+            //System.out.println()("DAYS: "+days+"SUBS: "+subjects);
             da=new day_adapter(this,days,subjects);
             dayChooser.setAdapter(da);
                     //viewFlipper.showNext();
@@ -108,7 +108,7 @@ private ViewFlipper viewFlipper;
                     allStudyPlans.add(s);
                 }
             }
-            System.out.println("here it is..."+allStudyPlans.toString());
+            //System.out.println()("here it is..."+allStudyPlans.toString());
             //save to data base....
             saveAllTODatabase(2018);
 
@@ -142,7 +142,7 @@ private ViewFlipper viewFlipper;
                         finish();
                     }
                 });
-                System.out.println();
+                //System.out.println()();
 
             }
 
@@ -210,7 +210,7 @@ private ViewFlipper viewFlipper;
 
 
 
-            System.out.println("Number of x : " + mondays);
+            //System.out.println()("Number of x : " + mondays);
 
 
         }
@@ -314,7 +314,7 @@ private ViewFlipper viewFlipper;
 
             }
 
-            System.out.println("Number of x : " + mondays);
+            //System.out.println()("Number of x : " + mondays);
 
 
         }
@@ -548,7 +548,7 @@ private ViewFlipper viewFlipper;
                 ll.addView(subjectViews[count], lp);
                 // toastMessage((count+1)+"/"+max,Toast.LENGTH_SHORT);
                 count++;
-                System.out.println("count more "+count);
+                //System.out.println()("count more "+count);
 
             }
             else {
@@ -562,13 +562,13 @@ private ViewFlipper viewFlipper;
 
             if(count>0)
             {
-                System.out.println(count);
+                //System.out.println()(count);
                 ll.removeView(subjectViews[count-1]);
                 subjectViews[count-1].setText("");
 
                 //toastMessage((count+1)+"/"+max,Toast.LENGTH_SHORT);
                 count--;
-                System.out.println("Count less"+count);
+                //System.out.println()("Count less"+count);
                 remove.setBackgroundColor(getResources().getColor(R.color.save_red));
                 remove.setTextColor(getResources().getColor(R.color.common_google_signin_btn_text_light));
 

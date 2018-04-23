@@ -112,16 +112,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         // Set up the login form.
         //Initialize FIREBASEAUTH.
         fAuthTask=FirebaseAuth.getInstance();
-        Toolbar toolbar2 = (Toolbar) findViewById(R.id.loginTbar);
+        Toolbar toolbar2 = findViewById(R.id.loginTbar);
        // setSupportActionBar(toolbar2);
       //  toolbar2.setTitle(getString(R.string.login));
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+        mEmailView = findViewById(R.id.email);
         populateAutoComplete();
-        forgetPassword=(TextView)findViewById(R.id.forgetPassword);
-        mPasswordView = (EditText) findViewById(R.id.password);
-        result=(TextView)findViewById(R.id.signIn);
-        loadText=(TextView)findViewById(R.id.w_d1);
-        ll=(LinearLayout)findViewById(R.id.LoginProgress);
+        forgetPassword= findViewById(R.id.forgetPassword);
+        mPasswordView = findViewById(R.id.password);
+        result= findViewById(R.id.signIn);
+        loadText= findViewById(R.id.w_d1);
+        ll= findViewById(R.id.LoginProgress);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -134,7 +134,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         });
 
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+        Button mEmailSignInButton = findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -144,7 +144,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
-        mSignInButton = (SignInButton) findViewById(R.id.login_with_google);
+        mSignInButton = findViewById(R.id.login_with_google);
 
         mSignInButton.setSize(SignInButton.SIZE_WIDE);
 
@@ -202,7 +202,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         //Check is user is signed in, and update ui
         super.onStart();
         FirebaseUser currentUser = fAuthTask.getCurrentUser();
-        System.out.println("Firebase is getting current user: "+currentUser);
+        //System.out.println()("Firebase is getting current user: "+currentUser);
       // updateUI(currentUser);
        // finish();
 
@@ -314,7 +314,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
         else{
             UID=currentUser.getUid();
-            DatabaseReference myRef= database.getInstance().getReference().child("Users").child(UID);
+            DatabaseReference myRef= FirebaseDatabase.getInstance().getReference().child("Users").child(UID);
                     myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -322,7 +322,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                    String name,email;
                    name=dataSnapshot.child("username").getValue().toString();
                    email=dataSnapshot.child("email").getValue().toString();
-                   System.out.println(name+"\n"+email);
+                   //System.out.println()(name+"\n"+email);
 
                   // main.setUserDetails(name,email,getDrawable(R.mipmap.ic_launcher_round));
                    //startActivity(new Intent("ie.ul.o.daysaver.MainActivity"));
@@ -452,7 +452,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private boolean isEmailValid() {
         //TODO: Replace this with your own logic
-       return reg.validemail(email,mEmailView);
+       return Registration.validemail(email,mEmailView);
 
     }
 
@@ -604,7 +604,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d(TAG, "signInWithEmail:success");
                                 FirebaseUser user = fAuthTask.getCurrentUser();
-                                System.out.println("The logged user is: "+user);
+                                //System.out.println()("The logged user is: "+user);
                                 Intent intent=new Intent(LoginActivity.this,MainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(intent);
@@ -625,7 +625,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                     }
                                 });
 
-                                System.out.println("User Doesn't Exists");
+                                //System.out.println()("User Doesn't Exists");
                               // updateUI(null);
                                // finish();
                             }

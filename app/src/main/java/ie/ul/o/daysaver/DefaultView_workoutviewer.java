@@ -109,37 +109,37 @@ public class DefaultView_workoutviewer extends Fragment {
         version="";
 
 
-        saveBtn=(Button)view.findViewById(R.id.saveBtn);
-        seekbar=(SeekBar)view.findViewById(R.id.seekBar);
-        d_beginner=(TextView)view.findViewById(R.id.d_beginner);
-        d_intermidiate=(TextView)view.findViewById(R.id.d_intermidiate);
-        d_advanced=(TextView)view.findViewById(R.id.d_advanced);
-        seeV1=(Button)view.findViewById(R.id.seeV1);
-        seeV2=(Button)view.findViewById(R.id.seeV2);
-        seeV3=(Button)view.findViewById(R.id.seeV3);
-        close=(Button)view.findViewById(R.id.seeV3);
-        wv_heading=(TextView)view.findViewById(R.id.DefaultView_heading);
+        saveBtn= view.findViewById(R.id.saveBtn);
+        seekbar= view.findViewById(R.id.seekBar);
+        d_beginner= view.findViewById(R.id.d_beginner);
+        d_intermidiate= view.findViewById(R.id.d_intermidiate);
+        d_advanced= view.findViewById(R.id.d_advanced);
+        seeV1= view.findViewById(R.id.seeV1);
+        seeV2= view.findViewById(R.id.seeV2);
+        seeV3= view.findViewById(R.id.seeV3);
+        close= view.findViewById(R.id.seeV3);
+        wv_heading= view.findViewById(R.id.DefaultView_heading);
         //  ImageButton camBt = (ImageButton) getFragmentManager().findFragmentById(R.id.d).getView().findViewById(R.id.b
 
 
-        low_reps=(CheckBox)view.findViewById(R.id.low_reps);
-            mid_reps=(CheckBox)view.findViewById(R.id.mid_reps);
-        mid_high_reps=(CheckBox)view.findViewById(R.id.mid2_reps);
-        high_reps=(CheckBox)view.findViewById(R.id.high_reps);
-        low_sets=(CheckBox)view.findViewById(R.id.low_sets);
-        mid_sets=(CheckBox)view.findViewById(R.id.mid_sets);
-        mid_high_sets=(CheckBox)view.findViewById(R.id.mid2_sets);
-        high_sets=(CheckBox)view.findViewById(R.id.high_sets);
+        low_reps= view.findViewById(R.id.low_reps);
+            mid_reps= view.findViewById(R.id.mid_reps);
+        mid_high_reps= view.findViewById(R.id.mid2_reps);
+        high_reps= view.findViewById(R.id.high_reps);
+        low_sets= view.findViewById(R.id.low_sets);
+        mid_sets= view.findViewById(R.id.mid_sets);
+        mid_high_sets= view.findViewById(R.id.mid2_sets);
+        high_sets= view.findViewById(R.id.high_sets);
 
 
 
 
 
-        wv_muscleGroup=(TextView)view.findViewById(R.id.wv_muscleGroup);
+        wv_muscleGroup= view.findViewById(R.id.wv_muscleGroup);
 
 
-        workout_view=(LinearLayout)view.findViewById(R.id.WorkoutList_view);
-        defaultSettingd=(LinearLayout)view.findViewById(R.id.Default_settings);
+        workout_view= view.findViewById(R.id.WorkoutList_view);
+        defaultSettingd= view.findViewById(R.id.Default_settings);
 
 
        
@@ -173,9 +173,9 @@ public class DefaultView_workoutviewer extends Fragment {
 
 
 
-        System.out.println("Getting Database....");
+        //System.out.println()("Getting Database....");
 
-        System.out.println("Changing value of switch.... to on");
+        //System.out.println()("Changing value of switch.... to on");
         myRefrence.child("EXERCISES").child("Switch").setValue("on");       // String workoutNAme= String.valueOf();
 
 
@@ -208,9 +208,9 @@ public class DefaultView_workoutviewer extends Fragment {
             v3.setTextColor(getResources().getColor(R.color.common_google_signin_btn_text_dark_disabled));
 
         int radioID=d_version.getCheckedRadioButtonId();
-        RadioButton singleButton=(RadioButton)view.findViewById(radioID);
+        RadioButton singleButton= view.findViewById(radioID);
         version=singleButton.getText().toString();
-        System.out.println(radioID);
+        //System.out.println()(radioID);
     }
 
     public void showUpdateDialog(String muscleGroup,Context c)
@@ -256,7 +256,7 @@ public class DefaultView_workoutviewer extends Fragment {
                 else if(seekbar.getProgress()<8){seekbar.getProgressDrawable().setColorFilter(Color.rgb(255,0,0), PorterDuff.Mode.MULTIPLY);d_beginner.setTextSize(TypedValue.COMPLEX_UNIT_DIP,12);d_intermidiate.setTextSize(TypedValue.COMPLEX_UNIT_DIP,12);d_advanced.setTextSize(TypedValue.COMPLEX_UNIT_DIP,14);}
 
                 difficultLvl=seekbar.getProgress();
-                System.out.println("The Current Lvl is: "+seekbar.getProgress()+" or "+i);
+                //System.out.println()("The Current Lvl is: "+seekbar.getProgress()+" or "+i);
             }
 
             @Override
@@ -312,19 +312,19 @@ public class DefaultView_workoutviewer extends Fragment {
     }
 
     private void showData(DataSnapshot dataSnapshot) {
-        System.out.println("Getting data....");
+        //System.out.println()("Getting data....");
         for(DataSnapshot ds: dataSnapshot.getChildren())
         {
             Workout workout=new Workout();
             String workoutNAme= String.valueOf(ds.child("EXERCISES").child("CHEST").getValue());
-            System.out.println(workoutNAme);
+            //System.out.println()(workoutNAme);
             workout.setName(ds.child("EXERCISES").child("CHEST").child(workoutNAme).getValue(Workout.class).getName());
             chestList.add(workout);
         }
     }
     public List<Workout> getWorkouts()
     {
-        System.out.println("Changing value of switch.... to off");
+        //System.out.println()("Changing value of switch.... to off");
         myRefrence.child("EXERCISES").setValue("Switch","off");
         return list;
     }
@@ -335,7 +335,7 @@ public class DefaultView_workoutviewer extends Fragment {
         myRefrence.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                System.out.println("onDataChanged Database....");
+                //System.out.println()("onDataChanged Database....");
                 Log.d(TAG,"onDatachanged, Added Information to database");
                 showData(dataSnapshot);
 
@@ -363,14 +363,14 @@ public class DefaultView_workoutviewer extends Fragment {
         myRefrence.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                System.out.println("onDataChanged Database....");
+                //System.out.println()("onDataChanged Database....");
                 Log.d(TAG,"onDatachanged, Added Information to database");
 
                 for(DataSnapshot ds: dataSnapshot.getChildren())
                 {
                     Workout workout=new Workout();
                     String workoutNAme= String.valueOf(ds.child("EXERCISES").child("CHEST").getValue());
-                    System.out.println(workoutNAme);
+                    //System.out.println()(workoutNAme);
                     workout.setName(ds.child("EXERCISES").child("CHEST").child(workoutNAme).getValue(Workout.class).getName());
                     chestList.add(workout);
                 }
@@ -389,14 +389,14 @@ public class DefaultView_workoutviewer extends Fragment {
         myRefrence.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                System.out.println("onDataChanged Database....");
+                //System.out.println()("onDataChanged Database....");
                 Log.d(TAG,"onDatachanged, Added Information to database");
 
                 for(DataSnapshot ds: dataSnapshot.getChildren())
                 {
                     Workout workout=new Workout();
                     String workoutNAme= String.valueOf(ds.child("EXERCISES").child("SHOULDER").getValue());
-                    System.out.println(workoutNAme);
+                    //System.out.println()(workoutNAme);
                     workout.setName(ds.child("EXERCISES").child("SHOULDER").child(workoutNAme).getValue(Workout.class).getName());
                     shoulderList.add(workout);
                 }
@@ -415,14 +415,14 @@ public class DefaultView_workoutviewer extends Fragment {
         myRefrence.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                System.out.println("onDataChanged Database....");
+                //System.out.println()("onDataChanged Database....");
                 Log.d(TAG,"onDatachanged, Added Information to database");
 
                 for(DataSnapshot ds: dataSnapshot.getChildren())
                 {
                     Workout workout=new Workout();
                     String workoutNAme= String.valueOf(ds.child("EXERCISES").child("BACK").getValue());
-                    System.out.println(workoutNAme);
+                    //System.out.println()(workoutNAme);
                     workout.setName(ds.child("EXERCISES").child("BACK").child(workoutNAme).getValue(Workout.class).getName());
                     backList.add(workout);
                 }
@@ -441,14 +441,14 @@ public class DefaultView_workoutviewer extends Fragment {
         myRefrence.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                System.out.println("onDataChanged Database....");
+                //System.out.println()("onDataChanged Database....");
                 Log.d(TAG,"onDatachanged, Added Information to database");
 
                 for(DataSnapshot ds: dataSnapshot.getChildren())
                 {
                     Workout workout=new Workout();
                     String workoutNAme= String.valueOf(ds.child("EXERCISES").child("BICEPS").getValue());
-                    System.out.println(workoutNAme);
+                    //System.out.println()(workoutNAme);
                     workout.setName(ds.child("EXERCISES").child("BICEPS").child(workoutNAme).getValue(Workout.class).getName());
                     bicepsList.add(workout);
                     armsList.add(workout);
@@ -457,7 +457,7 @@ public class DefaultView_workoutviewer extends Fragment {
                 {
                     Workout workout=new Workout();
                     String workoutNAme= String.valueOf(ds.child("EXERCISES").child("TRICEPS").getValue());
-                    System.out.println(workoutNAme);
+                    //System.out.println()(workoutNAme);
                     workout.setName(ds.child("EXERCISES").child("TRICEPS").child(workoutNAme).getValue(Workout.class).getName());
                     tricepsList.add(workout);
                     armsList.add(workout);
@@ -477,14 +477,14 @@ public class DefaultView_workoutviewer extends Fragment {
         myRefrence.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                System.out.println("onDataChanged Database....");
+                //System.out.println()("onDataChanged Database....");
                 Log.d(TAG,"onDatachanged, Added Information to database");
 
                 for(DataSnapshot ds: dataSnapshot.getChildren())
                 {
                     Workout workout=new Workout();
                     String workoutNAme= String.valueOf(ds.child("EXERCISES").child("CORE").getValue());
-                    System.out.println(workoutNAme);
+                    //System.out.println()(workoutNAme);
                     workout.setName(ds.child("EXERCISES").child("CORE").child(workoutNAme).getValue(Workout.class).getName());
                     coreList.add(workout);
                 }
@@ -503,14 +503,14 @@ public class DefaultView_workoutviewer extends Fragment {
         myRefrence.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                System.out.println("onDataChanged Database....");
+                //System.out.println()("onDataChanged Database....");
                 Log.d(TAG,"onDatachanged, Added Information to database");
 
                 for(DataSnapshot ds: dataSnapshot.getChildren())
                 {
                     Workout workout=new Workout();
                     String workoutNAme= String.valueOf(ds.child("EXERCISES").child("GLUTES").getValue());
-                    System.out.println(workoutNAme);
+                    //System.out.println()(workoutNAme);
                     workout.setName(ds.child("EXERCISES").child("GLUTES").child(workoutNAme).getValue(Workout.class).getName());
                     GlutesList.add(workout);
                 }
@@ -529,14 +529,14 @@ public class DefaultView_workoutviewer extends Fragment {
         myRefrence.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                System.out.println("onDataChanged Database....");
+                //System.out.println()("onDataChanged Database....");
                 Log.d(TAG,"onDatachanged, Added Information to database");
 
                 for(DataSnapshot ds: dataSnapshot.getChildren())
                 {
                     Workout workout=new Workout();
                     String workoutNAme= String.valueOf(ds.child("EXERCISES").child("QUADS").getValue());
-                    System.out.println(workoutNAme);
+                    //System.out.println()(workoutNAme);
                     workout.setName(ds.child("EXERCISES").child("QUADS").child(workoutNAme).getValue(Workout.class).getName());
                     quadsList.add(workout);
                 }
@@ -555,14 +555,14 @@ public class DefaultView_workoutviewer extends Fragment {
         myRefrence.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                System.out.println("onDataChanged Database....");
+                //System.out.println()("onDataChanged Database....");
                 Log.d(TAG,"onDatachanged, Added Information to database");
 
                 for(DataSnapshot ds: dataSnapshot.getChildren())
                 {
                     Workout workout=new Workout();
                     String workoutNAme= String.valueOf(ds.child("EXERCISES").child("CALVES").getValue());
-                    System.out.println(workoutNAme);
+                    //System.out.println()(workoutNAme);
                     workout.setName(ds.child("EXERCISES").child("CALVES").child(workoutNAme).getValue(Workout.class).getName());
                     calvesList.add(workout);
                 }

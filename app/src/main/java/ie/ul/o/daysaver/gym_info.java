@@ -67,8 +67,8 @@ public class gym_info extends Fragment {
         AlertDialog.Builder dialogBuilder=new AlertDialog.Builder(getActivity());
         LayoutInflater inflater=getLayoutInflater();
         View dialogView=inflater.inflate(R.layout.gym_information,null);
-        Button default_gi=(Button)dialogView.findViewById(R.id.gi_Default);
-        Button gi_setupnow=(Button)dialogView.findViewById(R.id.gi_setupnow);
+        Button default_gi= dialogView.findViewById(R.id.gi_Default);
+        Button gi_setupnow= dialogView.findViewById(R.id.gi_setupnow);
         default_gi.setOnClickListener(e->{startActivity(new Intent("ie.ul.o.daysaver.GymActivity"));});
 
         dialogBuilder.setView(dialogView);

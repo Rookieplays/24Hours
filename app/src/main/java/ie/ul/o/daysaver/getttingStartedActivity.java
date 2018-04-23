@@ -78,7 +78,7 @@ public class getttingStartedActivity extends AppCompatActivity {
         fin.setAlpha(0.6f);
         next.setOnClickListener(e->{
 
-            System.out.println("**click");
+            //System.out.println()("**click");
             mSlidePager.setCurrentItem(mCurrentPage+1);
             if(next.getText().toString().equalsIgnoreCase(getString(R.string.finish)))
             {
@@ -102,7 +102,7 @@ public class getttingStartedActivity extends AppCompatActivity {
                     public  void  onTick(long milliUntilFinish)
                     {
 
-                        System.out.println(milliUntilFinish);
+                        //System.out.println()(milliUntilFinish);
                         r=r-20;
 
                         fin.setVisibility(View.VISIBLE);
@@ -260,13 +260,13 @@ public class getttingStartedActivity extends AppCompatActivity {
             mDots[i].setText(Html.fromHtml("&#8226;"));
             mDots[i].setTextColor(Color.parseColor("#ececec"));
             mDots[i].setTextSize(20);
-            mDotLayout.addView(mDots[i]); System.out.println(pos+"----"+mDots.length);
+            mDotLayout.addView(mDots[i]); //System.out.println()(pos+"----"+mDots.length);
 
 
         }
         if(mDots.length>0)
         {
-            System.out.println(mDots[pos]);
+            //System.out.println()(mDots[pos]);
             mDots[pos].setTextColor(Color.parseColor("#adadad"));
            /* if(mDots[pos]==mDots[mDots.length-1])
             {

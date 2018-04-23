@@ -120,30 +120,30 @@ public class FullscreenActivity extends RegisterActivity implements LoaderCallba
 
         setContentView(R.layout.activity_fullscreen);
         setTitle(getString(R.string.User_info_Screen_title));
-        fn=(AutoCompleteTextView)findViewById(R.id.firstName);
-        ln=(AutoCompleteTextView)findViewById(R.id.lastName);
-        age=(AutoCompleteTextView)findViewById(R.id.age);
-        phoneNumber=(EditText)findViewById(R.id.phoneNumber);
+        fn= findViewById(R.id.firstName);
+        ln= findViewById(R.id.lastName);
+        age= findViewById(R.id.age);
+        phoneNumber= findViewById(R.id.phoneNumber);
         list=new ArrayList<>();
-        usernameText=(TextView)findViewById(R.id.username);
-        createUsername=(Button)findViewById(R.id.createUsername);
+        usernameText= findViewById(R.id.username);
+        createUsername= findViewById(R.id.createUsername);
       ///  skip=(Button)findViewById(R.id.skipOn);
-        profileBtn=(ImageButton)findViewById(R.id.profilePic);
+        profileBtn= findViewById(R.id.profilePic);
 
 
-        pic_upd=(ProgressBar)findViewById(R.id.pic_upload);
+        pic_upd= findViewById(R.id.pic_upload);
 
-        pageOne=(LinearLayout)findViewById(R.id.PageOne);
+        pageOne= findViewById(R.id.PageOne);
 
-        usernamePage=(LinearLayout)findViewById(R.id.UsernamePage);
+        usernamePage= findViewById(R.id.UsernamePage);
 
         usernamePage.setVisibility(View.VISIBLE);
         pageOne.setVisibility(View.GONE);
-        nextBtn=(Button)findViewById(R.id.next);
+        nextBtn= findViewById(R.id.next);
 
-        m=(RadioButton)findViewById(R.id.maleRadioBtn);
-        f=(RadioButton)findViewById(R.id.femaleRadioBtn);
-        o=(RadioButton)findViewById(R.id.otherRadiobtn);
+        m= findViewById(R.id.maleRadioBtn);
+        f= findViewById(R.id.femaleRadioBtn);
+        o= findViewById(R.id.otherRadiobtn);
 
         mProgressView = findViewById(R.id.login_progress);
         //TODO Initiate All Database/Firebase  antributes
@@ -274,7 +274,7 @@ public class FullscreenActivity extends RegisterActivity implements LoaderCallba
 
 
                }
-                System.out.println("w*h=Area: "+w+" * "+h+" = "+area);
+                //System.out.println()("w*h=Area: "+w+" * "+h+" = "+area);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -409,10 +409,10 @@ public class FullscreenActivity extends RegisterActivity implements LoaderCallba
         android.app.AlertDialog.Builder dialogBuilder=new android.app.AlertDialog.Builder(context);
         LayoutInflater inflater=getLayoutInflater();
         View dialogView=inflater.inflate(R.layout.set_profilepic_dialog,null);
-        Button takepic=(Button)dialogView.findViewById(R.id.take_pic);
-        Button choosepic=(Button)dialogView.findViewById(R.id.Add_pic);
-        profilePicView=(ImageView)dialogView.findViewById(R.id.Gym);
-        saveB=(Button)dialogView.findViewById(R.id.button5);//save button
+        Button takepic= dialogView.findViewById(R.id.take_pic);
+        Button choosepic= dialogView.findViewById(R.id.Add_pic);
+        profilePicView= dialogView.findViewById(R.id.Gym);
+        saveB= dialogView.findViewById(R.id.button5);//save button
         takepic.setOnClickListener(e->{dispatchTakePictureIntent();
             try {
                 picDir=createImageFile();
@@ -455,7 +455,7 @@ public class FullscreenActivity extends RegisterActivity implements LoaderCallba
     }
     public void checkIfUsernameIsTaken(View view) {
         //TODO: check if username is taken
-        // System.out.println("Username: "+this.username)
+        // //System.out.println()("Username: "+this.username)
 
         if(TextUtils.isEmpty(usernameText.getText().toString()))
             usernameText.setError("Cant be empty!");
@@ -509,13 +509,11 @@ public class FullscreenActivity extends RegisterActivity implements LoaderCallba
     }
     protected boolean usernameTaken(String u)
     {
-        if(list.contains(u))
-            return true;
-        else return false;
+        return list.contains(u);
     }
 
     protected void toastMessage(String s) {
-        toast.makeText(this,s,Toast.LENGTH_LONG).show();
+        Toast.makeText(this,s,Toast.LENGTH_LONG).show();
     }
 
     /**
@@ -615,7 +613,7 @@ public class FullscreenActivity extends RegisterActivity implements LoaderCallba
                 }
                 else {
                     userInformation = new UserInformation(username, first_name, second_name, phone_number, mEmail, age_, gender, profileImgURL);
-                    System.out.println(userID.toString() + "|" + username);
+                    //System.out.println()(userID.toString() + "|" + username);
                     Log.d(TAG, "Saving:  " + userInformation.toString());
                     myRef.child("Users").child(userID).child("UserInformation").setValue(userInformation);
                     myRef.child("Users").child(userID).child("GYM").setValue(new Gym(new ArrayList<WorkoutPlan>(), false));
@@ -651,11 +649,11 @@ public class FullscreenActivity extends RegisterActivity implements LoaderCallba
     {
         //TODO: Get gender
         Log.w("getSelectedRadioButton","initiating method @  line 70_Fullscree...");
-        final RadioGroup sexes=(RadioGroup)findViewById(R.id.sexes);
+        final RadioGroup sexes= findViewById(R.id.sexes);
         int radioID=sexes.getCheckedRadioButtonId();
-        RadioButton singleButton=(RadioButton)findViewById(radioID);
+        RadioButton singleButton= findViewById(radioID);
         gender=singleButton.getText().toString();
-        System.out.println(radioID);
+        //System.out.println()(radioID);
     }
     private boolean isAgeValid(String name)
     {

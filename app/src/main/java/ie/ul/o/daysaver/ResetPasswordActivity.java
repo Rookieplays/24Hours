@@ -75,11 +75,11 @@ public class ResetPasswordActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
         // Set up the login form.
-        mPasswordView = (EditText) findViewById(R.id.password);
-        resetButton=(Button)findViewById(R.id.reset) ;
-        emailView=(AutoCompleteTextView) findViewById(R.id.emailView);
+        mPasswordView = findViewById(R.id.password);
+        resetButton= findViewById(R.id.reset);
+        emailView= findViewById(R.id.emailView);
         fAuthTask=FirebaseAuth.getInstance();
-        mCPasswordView = (EditText) findViewById(R.id.cPassword);
+        mCPasswordView = findViewById(R.id.cPassword);
         user=fAuthTask.getCurrentUser();
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 
@@ -92,7 +92,7 @@ public class ResetPasswordActivity extends AppCompatActivity  {
                 return false;
             }
         });
-        mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+        mEmailSignInButton = findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -302,7 +302,7 @@ public class ResetPasswordActivity extends AppCompatActivity  {
 
                             Intent intent=new Intent("ie.ul.o.daysaver.ResetPasswordActivity");
                             startActivity(intent);
-                            System.out.println("User Doesn't Exists");
+                            //System.out.println()("User Doesn't Exists");
                             //updateUI(null);
                         }
 
@@ -345,7 +345,7 @@ public class ResetPasswordActivity extends AppCompatActivity  {
        /* previousView=mEmailBox;
         currentView=mPasswordsView;
 
-        System.out.println(user.getEmail());
+        //System.out.println()(user.getEmail());
         if (user.getEmail()!=null) {
             emailExists = true;
 
@@ -356,7 +356,7 @@ public class ResetPasswordActivity extends AppCompatActivity  {
             emailExists=false;
 
         }
-            System.out.println("The Email is: "+emailExists);
+            //System.out.println()("The Email is: "+emailExists);
         if (emailExists) {
             mLoginFormView.setVisibility(View.VISIBLE);
             mEmailBox.setVisibility(View.GONE);

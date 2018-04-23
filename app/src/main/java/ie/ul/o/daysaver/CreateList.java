@@ -22,13 +22,13 @@ class CreateList
     public CreateList(String creator,Context context)throws IOException
     {
         this.context=context;
-        System.out.println("Ive entered CreateLists");
+        //System.out.println()("Ive entered CreateLists");
         this.creator=creator;
         this.status="public";
         this.listName="unknown";
         date=new Date().getTime();
 
-        System.out.println(creator+" Made a List:"+listName+". This list is "+status+" was Created on "+date+" at "+time);
+        //System.out.println()(creator+" Made a List:"+listName+". This list is "+status+" was Created on "+date+" at "+time);
 
         man=new FileManager(context);
         man.setOwner(this.creator);
@@ -44,7 +44,7 @@ class CreateList
     }
     public CreateList(String listName,String creator,String status,Context context)throws IOException
     {
-        System.out.println("Ive entered CreateLists");
+        //System.out.println()("Ive entered CreateLists");
         this.context=context;
         this.creator=creator;
         this.listName=listName;
@@ -69,12 +69,12 @@ class CreateList
     public boolean createNewList()throws IOException
     {
         //load list_Owners
-        int indexOfList=lists.get(0).indexOf(man.getListname());System.out.println("==="+man.getListname());
+        int indexOfList=lists.get(0).indexOf(man.getListname());//System.out.println()("==="+man.getListname());
         if(indexOfList==-1)
         {
 
             man.savetoList_Owners(this.listName+"("+this.creator+")"+"->"+this.creator+"->"+this.status+"->"+this.date+" at "+time+"\n");
-            System.out.println(creator+" Made a List:"+listName+". This list is "+status+" was Created on "+date+" at "+time);
+            //System.out.println()(creator+" Made a List:"+listName+". This list is "+status+" was Created on "+date+" at "+time);
 
             return true;
         }
@@ -83,12 +83,12 @@ class CreateList
             if(!(lists.get(1).get(indexOfList).equals(this.creator)))
             {
                 man.savetoList_Owners(this.listName+"("+this.creator+")"+"->"+this.creator+"->"+this.status+"->"+this.date+" at "+time+"\n");
-                System.out.println(creator+" Made a List:"+listName+". This list is "+status+" was Created on "+date+" at "+time);
+                //System.out.println()(creator+" Made a List:"+listName+". This list is "+status+" was Created on "+date+" at "+time);
 
                 return true;
             }
             else {
-                System.out.println(creator+" alredy made the List:"+listName+". This list is "+status+" was Created on "+lists.get(3).get(indexOfList));
+                //System.out.println()(creator+" alredy made the List:"+listName+". This list is "+status+" was Created on "+lists.get(3).get(indexOfList));
 
                 return false;
             }

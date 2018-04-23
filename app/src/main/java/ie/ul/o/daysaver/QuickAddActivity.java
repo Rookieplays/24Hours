@@ -63,12 +63,12 @@ public class QuickAddActivity extends calenderActivity{
     }
     private Long convertFromDateToLong(String date) {
         long milliseconds = System.currentTimeMillis();
-        System.out.println("system Time: " + milliseconds);
+        //System.out.println()("system Time: " + milliseconds);
         SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         try {
             Date d = f.parse(date);
             milliseconds = d.getTime();
-            System.out.println("Date Time: " + milliseconds);
+            //System.out.println()("Date Time: " + milliseconds);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -76,12 +76,12 @@ public class QuickAddActivity extends calenderActivity{
     }
     private Long convertFromTimeToLong(String date) {
         long milliseconds = System.currentTimeMillis();
-        System.out.println("system Time: " + milliseconds);
+        //System.out.println()("system Time: " + milliseconds);
         SimpleDateFormat f = new SimpleDateFormat("HH:mm", Locale.getDefault());
         try {
             Date d = f.parse(date);
             milliseconds = d.getTime();
-            System.out.println("Date Time: " + milliseconds);
+            //System.out.println()("Date Time: " + milliseconds);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -96,7 +96,7 @@ public class QuickAddActivity extends calenderActivity{
 
         SimpleDateFormat sdf = new SimpleDateFormat("E", Locale.getDefault());
         td=sdf.format(dateInLong);
-        System.out.println("Today is "+td);
+        //System.out.println()("Today is "+td);
 
         String dayz[][]={{"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"},{"Mon","Tue","Wed","Thur"+"Fri"+"Sat"+"Sun"}};
         /** for(int i=0;i<dayz.length;i++)
@@ -382,7 +382,7 @@ public class QuickAddActivity extends calenderActivity{
         });
         finished.setOnClickListener(e->{
          qA=new QuickAdd("QUICKADD",tit,desc,sT,eT,day);
-            System.out.println(qA);
+            //System.out.println()(qA);
 
 
          saveToDataBase(qA);
@@ -423,7 +423,7 @@ public class QuickAddActivity extends calenderActivity{
                         if(temp[1].length()!=2)
                         {temp[1]="0"+temp[1];}
                         day=temp[0]+"/"+temp[1]+"/"+temp[2];
-                        System.out.println(day);
+                        //System.out.println()(day);
                         //dateView.setText(day + " " + dayTime);
                         //  dayTimeToLong(day+" "+dayTime);
                         dateView.setText(day);
@@ -440,10 +440,10 @@ public class QuickAddActivity extends calenderActivity{
                                           int minute) {
 
                         dayTime = hourOfDay + ":" + minute;
-                        System.out.println(dayTime);
+                        //System.out.println()(dayTime);
                         //dateView.setText(day + " " + dayTime);
                         //dayTimeToLong(day+" "+dayTime);
-                        System.out.println(day);
+                        //System.out.println()(day);
                        sT=convertFromTimeToLong(dayTime);
                         startTimeView.setText(dayTime);
 
@@ -461,7 +461,7 @@ public class QuickAddActivity extends calenderActivity{
                                       int minute) {
 
                     dayTime = hourOfDay + ":" + minute;
-                    System.out.println(dayTime);
+                    //System.out.println()(dayTime);
                     //dateView.setText(day + " " + dayTime);
                     //dayTimeToLong(day+" "+dayTime);
                     eT=convertFromTimeToLong(dayTime);
@@ -531,7 +531,7 @@ public class QuickAddActivity extends calenderActivity{
     }
     Calendar cal=Calendar.getInstance();
     private void saveToDataBase(QuickAdd q) {
-        System.out.println("QA"+q);;
+        //System.out.println()("QA"+q);
         FirebaseFirestore firestore=FirebaseFirestore.getInstance();
         firestore.collection(UID)
                 .add(q)

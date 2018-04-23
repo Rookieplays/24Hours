@@ -139,17 +139,17 @@ private Utils utils=new Utils(this);
         AllEvents.add(new ArrayList<>());//Color in String
         LayoutInflater inflaterV=getLayoutInflater();
         headerView=inflaterV.inflate(R.layout.nav_header_main,null);
-        nav_header=(LinearLayout)headerView.findViewById(R.id.navi_header);
+        nav_header= headerView.findViewById(R.id.navi_header);
         ThemeSwither.onActivityCreateSetTheme(this,nav_header);
         setContentView(R.layout.activity_main);
          dayProgress=new String[4];//=getResources().getStringArray(R.array.DayComments);
         pb=new ProgressDialog(this);
         firebaseAuth=FirebaseAuth.getInstance();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar24);
+        Toolbar toolbar = findViewById(R.id.toolbar24);
       setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -163,13 +163,13 @@ private Utils utils=new Utils(this);
         firebaseDatabase=FirebaseDatabase.getInstance();
         myRefrence=firebaseDatabase.getReference();
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
 
 
 
@@ -182,23 +182,23 @@ private Utils utils=new Utils(this);
 
 
         navigationView.addHeaderView(headerView);
-        Dayprogress=(TextView)findViewById(R.id.dayProgress);
+        Dayprogress= findViewById(R.id.dayProgress);
         // navigationView.addView(tailView);
-        username= (TextView)headerView.findViewById(R.id.user);
-        hbot_main=(ImageView)findViewById(R.id.hBot_main);
+        username= headerView.findViewById(R.id.user);
+        hbot_main= findViewById(R.id.hBot_main);
         AlertDialog.Builder dialogBuilder=new AlertDialog.Builder(context);
         LayoutInflater inflater=getLayoutInflater();
         View dialogView=inflater.inflate(R.layout.color_dialog,null);
-        aqua=(Button)dialogView.findViewById(R.id.theme_aqua);
-        lava=(Button)dialogView.findViewById(R.id.theme_lava);
-        midnight=(Button)dialogView.findViewById(R.id.theme_midnight);
-        forest=(Button)dialogView.findViewById(R.id.theme_forest);
-        main_header=(LinearLayout)findViewById(R.id.main_header);
+        aqua= dialogView.findViewById(R.id.theme_aqua);
+        lava= dialogView.findViewById(R.id.theme_lava);
+        midnight= dialogView.findViewById(R.id.theme_midnight);
+        forest= dialogView.findViewById(R.id.theme_forest);
+        main_header= findViewById(R.id.main_header);
        // main_activity_view=(ScrollView)findViewById(R.id.main_activity_view);
-        nav_header=(LinearLayout)headerView.findViewById(R.id.navi_header);
-        fullscreen=(RelativeLayout)findViewById(R.id.fullScreen);
-        msin_toolbar=(Toolbar)findViewById(R.id.toolbar24);
-        emailView=(TextView)headerView.findViewById(R.id.email);
+        nav_header= headerView.findViewById(R.id.navi_header);
+        fullscreen= findViewById(R.id.fullScreen);
+        msin_toolbar= findViewById(R.id.toolbar24);
+        emailView= headerView.findViewById(R.id.email);
        //pp=(ImageButton) headerView.findViewById(R.id.PROFILEPICTUREBTN);
         eventViwer=findViewById(R.id.mainRV);
       initViews();
@@ -207,8 +207,8 @@ private Utils utils=new Utils(this);
 
 
 
-        email=(TextView)findViewById(R.id.email);
-        welcome_to=(TextView)findViewById(R.id.welcomeTo);
+        email= findViewById(R.id.email);
+        welcome_to= findViewById(R.id.welcomeTo);
 
         dialogBuilder.setView(dialogView);
         AlertDialog alertDialog=dialogBuilder.create();
@@ -227,7 +227,7 @@ private Utils utils=new Utils(this);
        // fullscreen.setBackgroundColor(THEME_COLOUR_PRIMARY);
        // main_header.setBackgroundColor(THEME_COLOUR_SECONDARY);
        // main_activity_view.setBackgroundColor(THEME_COLOUR_PRIMARY);
-        //System.out.println(THEME);
+        ////System.out.println()(THEME);
 
 
 
@@ -260,22 +260,22 @@ private Utils utils=new Utils(this);
 
                                     }
                                 }
-                                else System.out.println(AllEvents.get(3).get(i)+" ,NO II CANT ");
+                                else //System.out.println()(AllEvents.get(3).get(i)+" ,NO II CANT ");
                             }*/
 
-                            TextView tdate = (TextView) findViewById(R.id.main_date);
-                            TextView ttime = (TextView) findViewById(R.id.main_time);
+                            TextView tdate = findViewById(R.id.main_date);
+                            TextView ttime = findViewById(R.id.main_time);
 
                             long date = System.currentTimeMillis();
                             Date c = new Date();
                             long nowTime = c.getTime() % (24 * 60 * 60 * 1000L);
-                            ////System.out.println("Time: " + nowTime + "\nDayTime: 86400000 \nProgress: " + (nowTime * 100) / 86400000);
+                            //////System.out.println()("Time: " + nowTime + "\nDayTime: 86400000 \nProgress: " + (nowTime * 100) / 86400000);
                             int rst=(int)(100-((nowTime * 100) / 82800000));
-                           // //System.out.println(rst);
+                           // ////System.out.println()(rst);
                             Dayprogress.setText(getString(R.string.progress,+rst+"% "));
                             goOn = false;
                             currenttime=nowTime;
-                            ProgressBar daySeek = (ProgressBar) findViewById(R.id.dayscale);
+                            ProgressBar daySeek = findViewById(R.id.dayscale);
                             if (daySeek != null && tdate != null && ttime != null) {
                                 daySeek.setProgress((int) ((nowTime * 100) / 82800000));
 
@@ -331,7 +331,7 @@ private Utils utils=new Utils(this);
                                 } else {
                                     daySeek.setProgressTintList(ColorStateList.valueOf(R.attr.colorAccent));
                                     main_header.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-                                    //System.out.println("haha");
+                                    ////System.out.println()("haha");
                                 }
 
 
@@ -368,7 +368,7 @@ private Utils utils=new Utils(this);
 
         //email.setText(mail);
         //pp.setBackground(image);
-        //System.out.println("Username "+welcome_to.getText().toString()+"\nEmail "+email);
+        ////System.out.println()("Username "+welcome_to.getText().toString()+"\nEmail "+email);
     }ArrayList<Long>ev=new ArrayList<>();
 
     private void updateAlarm(long nowTime) {
@@ -440,8 +440,8 @@ private Utils utils=new Utils(this);
                             List<CE> eventList = new ArrayList<>();
 
                             for(DocumentSnapshot doc : task.getResult()){
-                                System.out.println("{{"+doc.getData().values());
-                                System.out.println("-->"+doc.getData().values().contains("SOCIAL"));
+                                //System.out.println()("{{"+doc.getData().values());
+                                //System.out.println()("-->"+doc.getData().values().contains("SOCIAL"));
                                 if(doc.getData().values().contains("SOCIAL"))
                                 {
                                     Social e=doc.toObject(Social.class);
@@ -471,7 +471,7 @@ private Utils utils=new Utils(this);
                                 }
 
                             }
-                            System.out.println(wp+"\n"+sl+"\n"+st);
+                            //System.out.println()(wp+"\n"+sl+"\n"+st);
                             for(WorkoutPlan w: wp) {
                                 if(!w.getName().equalsIgnoreCase("unknown"))
                                 {AllEvents.get(0).add(w.getName());
@@ -525,10 +525,10 @@ private Utils utils=new Utils(this);
                                 AllEvents.get(4).add(Color.YELLOW+"");
                                 wp.add(new WorkoutPlan());
                             }
-                            System.out.println(qua);
+                            //System.out.println()(qua);
                             for(QuickAdd s:qua)
                             {
-                                System.out.println("!!!!"+s);
+                                //System.out.println()("!!!!"+s);
                                 AllEvents.get(0).add("Quick Add");
                                 AllEvents.get(1).add(s.getDescription());
                                 AllEvents.get(2).add(new SimpleDateFormat("HH:mm", Locale.getDefault()).format(s.getStartTime()));
@@ -538,7 +538,7 @@ private Utils utils=new Utils(this);
                                 ev.add(s.getEndTime());
                                 wp.add(new WorkoutPlan());
                             }
-                            System.out.println(AllEvents);
+                            //System.out.println()(AllEvents);
                             if(context!=null)
                             {
                                 mainAdapter=new MainAdapter(context,AllEvents,wp);
@@ -567,7 +567,7 @@ private Utils utils=new Utils(this);
                             List<CE> eventList = new ArrayList<>();
 
                             for(DocumentSnapshot doc : task.getResult()){
-                                System.out.println("-->"+doc.getData().values().contains("SOCIAL"));
+                                //System.out.println()("-->"+doc.getData().values().contains("SOCIAL"));
                                 if(doc.getData().values().contains("GYM"))
                                 {
                                     WorkoutPlan e=doc.toObject(WorkoutPlan.class);
@@ -576,7 +576,7 @@ private Utils utils=new Utils(this);
 
                                 }
                             }
-                            System.out.println(wp+"\n"+sl+"\n"+st);
+                            //System.out.println()(wp+"\n"+sl+"\n"+st);
                             for(WorkoutPlan w: wp) {
                                 AllEvents.get(0).add(w.getName());
                                 //  for(Workout ww:w.getWorkouts())
@@ -613,7 +613,7 @@ private Utils utils=new Utils(this);
                             List<CE> eventList = new ArrayList<>();
 
                             for(DocumentSnapshot doc : task.getResult()){
-                                System.out.println("-->"+doc.getData().values().contains("SOCIAL"));
+                                //System.out.println()("-->"+doc.getData().values().contains("SOCIAL"));
                                 if(doc.getData().values().contains("GYM"))
                                 {
                                     WorkoutPlan e=doc.toObject(WorkoutPlan.class);
@@ -622,7 +622,7 @@ private Utils utils=new Utils(this);
 
                                 }
                             }
-                            System.out.println(wp+"\n"+sl+"\n"+st);
+                            //System.out.println()(wp+"\n"+sl+"\n"+st);
                             for(WorkoutPlan w: wp) {
                                 AllEvents.get(0).add(w.getName());
                                 //  for(Workout ww:w.getWorkouts())
@@ -683,12 +683,12 @@ public void startAlarm(long start)
     }
     public String getEmojiByUnicode(int unicode)
     {
-        //System.out.println(unicode);
+        ////System.out.println()(unicode);
        String s="";
        try{
         s=new String(Character.toChars(unicode));
        }catch (IllegalArgumentException e){
-           //System.out.println(e.getCause());
+           ////System.out.println()(e.getCause());
        }
        //System.out.print(s);
        return s;
@@ -704,7 +704,7 @@ public void startAlarm(long start)
 
         }
         //int x="0x11F601";
-        ////System.out.println(x);
+        //////System.out.println()(x);
         String str="";
         welcomes.add(getString(R.string.w1,usr));
         welcomes.add(getString(R.string.w2,usr));
@@ -717,42 +717,42 @@ public void startAlarm(long start)
         dayProgress[3]=getString(R.string.dm4,usr);
         for (String s:welcomes)
         {
-            //System.out.println(s);
+            ////System.out.println()(s);
             if(s.contains(getString(R.string.happyEm)))
             {
                str=s.replace(getString(R.string.happyEm),getEmojiByUnicode(0x11F601));
-                        //System.out.println(str);
+                        ////System.out.println()(str);
                 temp.add(str);
             }
             else if(s.contains(getString(R.string.sadEm)))
             {
                 str=s.replace(getString(R.string.sadEm),getEmojiByUnicode(0x11F612));
-                //System.out.println(str);
+                ////System.out.println()(str);
                 temp.add(str);
             }
             else if(s.contains(getString(R.string.cockyem)))
             {
                str= s.replace(getString(R.string.cockyem),getEmojiByUnicode(0x11F60C));
-                //System.out.println(str);
+                ////System.out.println()(str);
                 temp.add(str);
             }
             else if(s.contains(getString(R.string.wantingEm)))
             {
                 str=s.replace(getString(R.string.wantingEm),getEmojiByUnicode(0x11F612));
-                //System.out.println(str);
+                ////System.out.println()(str);
                 temp.add(str);
             }
             else if(s.contains(getString(R.string.panicEm)))
             {
                 str=s.replace(getString(R.string.panicEm),getEmojiByUnicode(0x11F304));
-                //System.out.println(str);
+                ////System.out.println()(str);
                 temp.add(str);
             }
             else
                 temp.add(s);
         }
         int rand=(int)(Math.random()*7);
-        //System.out.println(welcomes);
+        ////System.out.println()(welcomes);
         return welcomes.get(rand);
     }
     public Bitmap covertLinkToImg(String imgUrl)
@@ -783,8 +783,8 @@ public void startAlarm(long start)
     {
         View popupContentView = LayoutInflater.from(MainActivity.this).inflate(R.layout.sign_out, null);
        Button yes,no;
-       yes=(Button)popupContentView.findViewById(R.id.signout_confirmBtn);
-       no=(Button)popupContentView.findViewById(R.id.signout_cancelBtn);
+       yes= popupContentView.findViewById(R.id.signout_confirmBtn);
+       no= popupContentView.findViewById(R.id.signout_cancelBtn);
 
         PopupWindow popupWindow = new PopupWindow(context);
         popupWindow.setContentView(popupContentView);
@@ -814,8 +814,8 @@ public void startAlarm(long start)
     {
         View popupContentView = LayoutInflater.from(MainActivity.this).inflate(R.layout.sign_out, null);
         Button yes,no;
-        yes=(Button)popupContentView.findViewById(R.id.signout_confirmBtn);
-        no=(Button)popupContentView.findViewById(R.id.signout_cancelBtn);
+        yes= popupContentView.findViewById(R.id.signout_confirmBtn);
+        no= popupContentView.findViewById(R.id.signout_cancelBtn);
 
         PopupWindow popupWindow = new PopupWindow(context);
         popupWindow.setContentView(popupContentView);
@@ -851,7 +851,7 @@ public void startAlarm(long start)
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if(drawer!=null) {
             if (drawer.isDrawerOpen(GravityCompat.START)) {
                 drawer.closeDrawer(GravityCompat.START);
@@ -962,7 +962,7 @@ public void startAlarm(long start)
             startActivity(new Intent(this, RegisterActivity.class));
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -1025,7 +1025,7 @@ public void startAlarm(long start)
                    Log.d("MainActivity","User: \n"+userInfo1.toString());
                    name = (userInfo1.getFirstName() + " \u00B7 " + userInfo1.getLastName());
                    userInfo = userInfo1;
-                   //System.out.println(userInfo + "\nUserInfo2\n" + userInfo1);
+                   ////System.out.println()(userInfo + "\nUserInfo2\n" + userInfo1);
                    dayProgress[0]=getString(R.string.dm,userInfo.getUsername());
                    dayProgress[1]=getString(R.string.dm2,userInfo.getUsername());
                    dayProgress[2]=getString(R.string.dm3,userInfo.getUsername());
@@ -1046,27 +1046,27 @@ public void startAlarm(long start)
                   // img=userInfo.getImage();
                    RoundImage ri=new RoundImage(covertLinkToImg(userInfo.getImage()));
 
-                   //System.out.println("This is my profile Picture..."+userInfo.getImage());
+                   ////System.out.println()("This is my profile Picture..."+userInfo.getImage());
                    if(pp!=null)
                    {
-                       //System.out.println("Profile Icon is not null***: "+pp.getId());
+                       ////System.out.println()("Profile Icon is not null***: "+pp.getId());
                               }
                    else{
-                       //System.out.println("ProfileIcon is not assigned at this time...");
+                       ////System.out.println()("ProfileIcon is not assigned at this time...");
                        /**Assigning profile icon*/
                         //TODO:Fix headerBackground and profile pic ture low priority.
                        pp= headerView.findViewById(R.id.PROFILEPICTUREBTN);
 
                        try{
-                           //System.out.println(nav_header.getId());
-                           //System.out.println("HeaderView ID: "+headerView.getId());
-                           //System.out.println("assigned ID: "+pp);
+                           ////System.out.println()(nav_header.getId());
+                           ////System.out.println()("HeaderView ID: "+headerView.getId());
+                           ////System.out.println()("assigned ID: "+pp);
                            pp.setImageDrawable(ri);
 
-                       }catch (NullPointerException e){ //System.out.println("A Few objects are empty \n"+e.getLocalizedMessage());
+                       }catch (NullPointerException e){ ////System.out.println()("A Few objects are empty \n"+e.getLocalizedMessage());
                            }
                    }
-                   System.out.println("IMAGE: "+img);
+                   //System.out.println()("IMAGE: "+img);
                }else{LOGGED=false;
                     userInfo1=new UserInformation();
                     userInfo1.setFirstName("Guest");
@@ -1077,7 +1077,7 @@ public void startAlarm(long start)
                     userInfo1.setImage(getResources().getDrawable(R.drawable.hbot).toString());
                    name = (userInfo1.getFirstName() + " \u00B7 " + userInfo1.getLastName());
                    userInfo = userInfo1;
-                   //System.out.println(userInfo + "\nUserInfo2\n" + userInfo1);
+                   ////System.out.println()(userInfo + "\nUserInfo2\n" + userInfo1);
                    welcome_to.setText(getString(R.string.welcomeUser, userInfo.getUsername()));
                    username.setText(name);
                    emailView.setText(userInfo.getEmail());
@@ -1092,12 +1092,12 @@ public void startAlarm(long start)
            public void onCancelled(DatabaseError databaseError) {
 
            }
-       });////System.out.println(">>>"+userInfo.getUsername());
+       });//////System.out.println()(">>>"+userInfo.getUsername());
        /* if(!(img==null||img.equals("")))
         {
             //ImageView iv=createRoundedImageFromDrawable(pp);
             photoUrl=img;
-            //System.out.println("IMG: "+img);
+            ////System.out.println()("IMG: "+img);
             //loadImage(img,pp,60,60);
         }else
             loadImage("gs://hours-1a681.appspot.com/profile_pic/hbot_wave.png",pp,60,60);
@@ -1109,7 +1109,7 @@ public void startAlarm(long start)
 
         }
         }
-        //System.out.println("Looged? "+LOGGED);
+        ////System.out.println()("Looged? "+LOGGED);
     }
     public Bitmap createRoundedImageFromDrawable(Bitmap img)
     {
@@ -1121,7 +1121,7 @@ public void startAlarm(long start)
     }
     public void loadImage(String url,ImageView imgContainer,int w,int h)
     {
-        //System.out.println(">>>>>"+url);
+        ////System.out.println()(">>>>>"+url);
         Picasso.get()
                 .load(url)
                 .resize(w,h)
@@ -1167,13 +1167,13 @@ public void startAlarm(long start)
             main_header.setBackgroundColor(Color.RED);
             noConMsg();
         }
-        //System.out.println(userInfo+"<");
+        ////System.out.println()(userInfo+"<");
       //  loadUserInformation();
 
 
 
 
 
-      //  //System.out.println("->>"+getEmail());
+      //  ////System.out.println()("->>"+getEmail());
     }
 }

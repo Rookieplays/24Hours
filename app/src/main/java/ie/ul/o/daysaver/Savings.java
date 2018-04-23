@@ -55,7 +55,7 @@ class Savings
     public Savings(String user,Context context)throws IOException
     {
     
-        System.out.println("__>"+user);
+        //System.out.println()("__>"+user);
         this.user=user;
         filePath = context.getFilesDir().getPath() + "/";
         this.date=new Date().getTime();
@@ -65,7 +65,7 @@ class Savings
     }
     public Savings(String user,double balance,Context context)throws IOException
     {
-        System.out.println("__>"+user);
+        //System.out.println()("__>"+user);
         this.user=user;
         filePath = context.getFilesDir().getPath() + "/";
         
@@ -148,15 +148,15 @@ class Savings
     else if(bal>=1000&&bal<1000000||(bal<=-1000&&bal>-1000000))
     {
         finalbal=nf.format(bal/1000)+"K";
-        System.out.println(finalbal);
+        //System.out.println()(finalbal);
     }
     else if(bal>=1000000&&bal<1000000000||(bal<=-1000000&&bal>-1000000000))
     {
         finalbal=nf.format(bal/1000000)+"M";
-        System.out.println(finalbal);
+        //System.out.println()(finalbal);
     }
     else
-        finalbal=nf.format(bal/1000000000)+"B";System.out.println(finalbal);
+        finalbal=nf.format(bal/1000000000)+"B";//System.out.println()(finalbal);
     return finalbal;
 }
     public String formatBal(double bal)throws IOException
@@ -174,15 +174,15 @@ class Savings
     else if(bal>=1000&&bal<1000000||(bal<=-1000&&bal>-1000000))
     {
         finalbal=nf.format(bal/1000)+"K";
-        System.out.println(finalbal);
+        //System.out.println()(finalbal);
     }
     else if(bal>=1000000&&bal<1000000000||(bal<=-1000000&&bal>-1000000000))
     {
         finalbal=nf.format(bal/1000000)+"M";
-        System.out.println(finalbal);
+        //System.out.println()(finalbal);
     }
     else
-        finalbal=nf.format(bal/1000000000)+"B";System.out.println(finalbal);
+        finalbal=nf.format(bal/1000000000)+"B";//System.out.println()(finalbal);
     return finalbal;
 }
     public double getBalance()throws IOException

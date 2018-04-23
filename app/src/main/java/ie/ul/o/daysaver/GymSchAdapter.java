@@ -47,11 +47,11 @@ public class GymSchAdapter extends RecyclerView.Adapter<GymSchAdapter.ViewHolder
         public ViewHolder(View v)
         {
             super(v);
-            mTextView=(TextView)v.findViewById(R.id.textView49);
-            aTextView=(TextView)v.findViewById(R.id.textView50);
-            setsView=(TextView)v.findViewById(R.id.textView51);
-            repsView=(TextView)v.findViewById(R.id.textView52);
-            mImageView=(ImageView)v.findViewById(R.id.imageView12);
+            mTextView= v.findViewById(R.id.textView49);
+            aTextView= v.findViewById(R.id.textView50);
+            setsView= v.findViewById(R.id.textView51);
+            repsView= v.findViewById(R.id.textView52);
+            mImageView= v.findViewById(R.id.imageView12);
             done=v.findViewById(R.id.checkBox);
 
 
@@ -121,7 +121,7 @@ public class GymSchAdapter extends RecyclerView.Adapter<GymSchAdapter.ViewHolder
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(compoundButton.isChecked())
                 {
-                    System.out.println("@"+position);
+                    //System.out.println()("@"+position);
                     //DONEWORKOUTS.add(workoutList.get(position));
                     removeItem(position);
                     compoundButton.setChecked(false);

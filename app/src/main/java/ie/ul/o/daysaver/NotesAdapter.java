@@ -65,10 +65,10 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
             super(view);
             view.setOnClickListener(this);
 
-            noteTitle = (TextView)view.findViewById(R.id.noteTitle);
-            dateCreated = (TextView)view.findViewById(R.id.notesCretedOn);
-            desc = (TextView)view.findViewById(R.id.noteDesc);
-            deleteBgtn=(ImageButton)view.findViewById(R.id.deleNote);
+            noteTitle = view.findViewById(R.id.noteTitle);
+            dateCreated = view.findViewById(R.id.notesCretedOn);
+            desc = view.findViewById(R.id.noteDesc);
+            deleteBgtn= view.findViewById(R.id.deleNote);
             editBtn=view.findViewById(R.id.editNote);
 
 
@@ -108,7 +108,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
 
         viewHolder.noteTitle.setText(mFilteredList.get(i).getTitle());
         viewHolder.dateCreated.setText(mFilteredList.get(i).getDateCreated());
-        System.out.println("Amount "+i);
+        //System.out.println()("Amount "+i);
        viewHolder.desc.setText(mFilteredList.get(i).getNotes());
        viewHolder.deleteBgtn.setOnClickListener(e->showconfirmationBox2(context,"Delete Note",context.getString(R.string.dele),i));
        viewHolder.editBtn.setOnClickListener(e->{editNote(mFilteredList.get(i));});
@@ -120,12 +120,12 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
     }
     private Long convertFromTimeToLong(String date) {
         long milliseconds = System.currentTimeMillis();
-        System.out.println("system Time: " + milliseconds);
+        //System.out.println()("system Time: " + milliseconds);
         SimpleDateFormat f = new SimpleDateFormat("HH:mm", Locale.getDefault());
         try {
             Date d = f.parse(date);
             milliseconds = d.getTime();
-            System.out.println("Date Time: " + milliseconds);
+            //System.out.println()("Date Time: " + milliseconds);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -158,11 +158,11 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
 
 
                                 String dayTime = hourOfDay + ":" + minute;
-                                System.out.println(dayTime);
+                                //System.out.println()(dayTime);
                                 //dateView.setText(day + " " + dayTime);
                                 //dayTimeToLong(day+" "+dayTime);
                                 eT = convertFromTimeToLong(dayTime);
-                                System.out.println(eT + "¢");
+                                //System.out.println()(eT + "¢");
                                 scheduleNotification(getNotification(msg,title),eT);
 
                             }
@@ -272,7 +272,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for(DataSnapshot ds: dataSnapshot.getChildren())
                     {
-                        System.out.println(ds+"1552");
+                        //System.out.println()(ds+"1552");
                         SubNotes n=ds.getValue(SubNotes.class);
                         if(n.getTitle().equals(SubNotes.getTitle())&&n.getNotes().equals(SubNotes.getNotes())&&n.getDateCreated().equals(SubNotes.getDateCreated()))
                         {
@@ -315,7 +315,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
                 }
             });
         }
-        System.out.println("Found: "+found+"\n"+SubNotes);
+        //System.out.println()("Found: "+found+"\n"+SubNotes);
 
         if(found)return SubNotes;
         else return null;

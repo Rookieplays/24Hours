@@ -57,31 +57,31 @@ public class WelcomeActivity extends FullscreenActivity implements gym_info.OnFr
        // sv=(OurView) findViewById(R.id.surfaceView);
 
 
-        start=(Button)findViewById(R.id.startButton);
-        skip=(Button)findViewById(R.id.skip);
+        start= findViewById(R.id.startButton);
+        skip= findViewById(R.id.skip);
         progressDialog=new ProgressDialog(this);
         progressDialog.setMessage(getString(R.string.saving_username));
-        welcomeDialog=(TextView)findViewById(R.id.welcomeDialog);
+        welcomeDialog= findViewById(R.id.welcomeDialog);
         welcomeDialog.setText(getString(R.string.welcome, this.username));
 
-        gymBox=(CheckBox)findViewById(R.id.selectGym);
-        studyBox=(CheckBox)findViewById(R.id.selectStudy);
-        meetingBox=(CheckBox)findViewById(R.id.selectMeeting);
-        socialBox=(CheckBox)findViewById(R.id.selectSocial);
-        chillBox=(CheckBox)findViewById(R.id.selectChill);
-        timetableBox=(CheckBox)findViewById(R.id.selectTimetable);
+        gymBox= findViewById(R.id.selectGym);
+        studyBox= findViewById(R.id.selectStudy);
+        meetingBox= findViewById(R.id.selectMeeting);
+        socialBox= findViewById(R.id.selectSocial);
+        chillBox= findViewById(R.id.selectChill);
+        timetableBox= findViewById(R.id.selectTimetable);
 
-        pageTwo=(ScrollView)findViewById(R.id.PageTwo);
+        pageTwo= findViewById(R.id.PageTwo);
 
-        welcomePage=(LinearLayout)findViewById(R.id.WelcomPage);
+        welcomePage= findViewById(R.id.WelcomPage);
 
-        img=(ImageView)findViewById(R.id.HbotFrame);
-        gym=(ImageButton)findViewById(R.id.gymBtn);
-        social=(ImageButton)findViewById(R.id.social);
-        study=(ImageButton)findViewById(R.id.study);
-        chill=(ImageButton)findViewById(R.id.chill);
-        meeting=(ImageButton)findViewById(R.id.meeting);
-        timetable=(ImageButton)findViewById(R.id.timetable);
+        img= findViewById(R.id.HbotFrame);
+        gym= findViewById(R.id.gymBtn);
+        social= findViewById(R.id.social);
+        study= findViewById(R.id.study);
+        chill= findViewById(R.id.chill);
+        meeting= findViewById(R.id.meeting);
+        timetable= findViewById(R.id.timetable);
 
 
         gym.setOnClickListener(e->{showGym_info();});
@@ -97,8 +97,8 @@ public class WelcomeActivity extends FullscreenActivity implements gym_info.OnFr
         AlertDialog.Builder dialogBuilder=new AlertDialog.Builder(context);
         LayoutInflater inflater=getLayoutInflater();
         View dialogView=inflater.inflate(R.layout.social_info,null);
-        Button default_si=(Button)dialogView.findViewById(R.id.skip);
-        Button si_setupnow=(Button)dialogView.findViewById(R.id.socail_addEvent);
+        Button default_si= dialogView.findViewById(R.id.skip);
+        Button si_setupnow= dialogView.findViewById(R.id.socail_addEvent);
         si_setupnow.setOnClickListener(e->{
             startActivity(new Intent("ie.ul.o.daysaver.GymActivity"));});
 
@@ -228,8 +228,8 @@ public class WelcomeActivity extends FullscreenActivity implements gym_info.OnFr
         AlertDialog.Builder dialogBuilder=new AlertDialog.Builder(context);
         LayoutInflater inflater=getLayoutInflater();
         View dialogView=inflater.inflate(R.layout.gym_information,null);/**Crash here*/
-        Button default_gi=(Button)dialogView.findViewById(R.id.gi_Default);
-        Button gi_setupnow=(Button)dialogView.findViewById(R.id.gi_setupnow);
+        Button default_gi= dialogView.findViewById(R.id.gi_Default);
+        Button gi_setupnow= dialogView.findViewById(R.id.gi_setupnow);
         gi_setupnow.setOnClickListener(e->{startActivity(new Intent("ie.ul.o.daysaver.GymActivity"));});
 
         dialogBuilder.setView(dialogView);

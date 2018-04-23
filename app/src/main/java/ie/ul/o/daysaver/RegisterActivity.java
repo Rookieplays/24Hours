@@ -99,15 +99,15 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         //Initialize FIREBASEAUTH.
         fAuthTask=FirebaseAuth.getInstance();
        user= fAuthTask.getCurrentUser();
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.regEmail);
+        mEmailView = findViewById(R.id.regEmail);
         populateAutoComplete();
-        resendBtn=(Button)findViewById(R.id.resendBtn);
-        confirmBtn=(Button)findViewById(R.id.confirm);
-        mPasswordView = (EditText) findViewById(R.id.regPassword);
-        cPasswordView=(EditText)findViewById(R.id.confirmPassword);
-        result=(TextView)findViewById(R.id.signUp);
-        wait1=(TextView)findViewById(R.id.w_d1);
-        ll=(LinearLayout)findViewById(R.id.LoginProgress);
+        resendBtn= findViewById(R.id.resendBtn);
+        confirmBtn= findViewById(R.id.confirm);
+        mPasswordView = findViewById(R.id.regPassword);
+        cPasswordView= findViewById(R.id.confirmPassword);
+        result= findViewById(R.id.signUp);
+        wait1= findViewById(R.id.w_d1);
+        ll= findViewById(R.id.LoginProgress);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -119,7 +119,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
             }
         });
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.regEmail_sign_in_button);
+        Button mEmailSignInButton = findViewById(R.id.regEmail_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -136,7 +136,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         //Check is user is signed in, and update ui
         super.onStart();
         FirebaseUser currentUser = fAuthTask.getCurrentUser();
-        System.out.println("Firebase is getting current user: "+currentUser);
+        //System.out.println()("Firebase is getting current user: "+currentUser);
         //updateUI(currentUser);
 
     }
@@ -272,7 +272,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
 
     private boolean isEmailValid() {
         //TODO: Replace this with your own logic
-        return reg.validemail(email,mEmailView);
+        return Registration.validemail(email,mEmailView);
 
     }
 
@@ -433,7 +433,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d(TAG, "createUserWithEmail:success");
                                user = fAuthTask.getCurrentUser();
-                               System.out.println(user.getEmail());
+                               //System.out.println()(user.getEmail());
                                 user.sendEmailVerification();
                                 emailVerification();reg.setUsername(email);
                                 reg.setPassword(password);
@@ -489,8 +489,8 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         AlertDialog.Builder dialogBuilder=new AlertDialog.Builder(context);
         LayoutInflater inflater=getLayoutInflater();
         View dialogView=inflater.inflate(R.layout.email_varification,null);
-        Button resenderBtn=(Button)dialogView.findViewById(R.id.rV_btn);
-        Button confirmerBtn=(Button)dialogView.findViewById(R.id.cV_btn);
+        Button resenderBtn= dialogView.findViewById(R.id.rV_btn);
+        Button confirmerBtn= dialogView.findViewById(R.id.cV_btn);
 
         dialogBuilder.setView(dialogView);
         AlertDialog alertDialog=dialogBuilder.create();
@@ -500,18 +500,18 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         }catch (Exception e){Toast.makeText(this,"Sorry something went wrong...",Toast.LENGTH_SHORT).show();}
         resenderBtn.setOnClickListener(e->{
             user.sendEmailVerification();
-            System.out.println("Resending Email...");
+            //System.out.println()("Resending Email...");
             Toast.makeText(RegisterActivity.this,"Resending Email...",Toast.LENGTH_LONG).show();
 
         });
 
         confirmerBtn.setOnClickListener(e->{
-            System.out.println(user.isEmailVerified());
-            fAuthTask.getInstance().getCurrentUser().reload().addOnCompleteListener(t->{System.out.println("****Ststus: "+user.isEmailVerified());
+            //System.out.println()(user.isEmailVerified());
+            FirebaseAuth.getInstance().getCurrentUser().reload().addOnCompleteListener(t->{//System.out.println()("****Ststus: "+user.isEmailVerified());
 
                     if (user.isEmailVerified()) {
 
-                        System.out.println(user.isEmailVerified());
+                        //System.out.println()(user.isEmailVerified());
                         Toast.makeText(RegisterActivity.this, "Email Verified " + getString(R.string.ok), Toast.LENGTH_LONG).show();
                         /**Log user in*/
                         alertDialog.dismiss();

@@ -97,12 +97,12 @@ public class slideAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-        return view==(RelativeLayout)object;
+        return view== object;
     }
     @Override
     public Object instantiateItem(ViewGroup container, int pos)
     {
-        layoutInflater =(LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+        layoutInflater =(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v=layoutInflater.inflate(R.layout.slide_layout_main,container,false);
         ImageView slideImageView=v.findViewById(R.id.slide_image);
         TextView slideHeading=v.findViewById(R.id.slide_headings);
