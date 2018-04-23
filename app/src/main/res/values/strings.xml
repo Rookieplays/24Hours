@@ -52,9 +52,9 @@
     <string name="eVarification">24H | E- Varification</string>
     <string name="wait1">\u23F3 Please Wait... While we register you</string>
     <string name="wait2">\u23F3 Hold On Just A few, Gettin\' you ready...</string>
-    <string name="wait3">Welcome To 24 %1$s</string>
+    <string name="wait3">Welcome To 24H</string>
     <string name="wait4">\u23F3 We Missed You, Setting you Up...</string>
-    <string name="wait5">Just a sec, %1$s</string>
+    <string name="wait5">Just a sec..</string>
 
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
@@ -267,10 +267,10 @@
         <item>Did u know u can change the theme by long pressing me</item>
     </string-array>
 
-    <string name="dm">0x11F304 Good Morning, %1$s</string>
-    <string name="dm2">0x11F304 Morning %1$s, You have a long day ahead of you </string>
-    <string name="dm3">0x11F31B Goodnight %1$s, What a Day!</string>
-    <string name="dm4">Night, %1$s i\'m popped 0x11F634</string>
+    <string name="dm">Good Morning, %1$s</string>
+    <string name="dm2">Morning %1$s, You have a long day ahead of you </string>
+    <string name="dm3">\u26C5 Goodnight %1$s, What a Day!</string>
+    <string name="dm4">Night, %1$s i\'m popped \u26A1</string>
     <string name="dayAlreadyChoosen">Sorry, This day was already selected</string>
     <string name="areyouSure">You will not be able to choose these days Again, Are You done?</string>
     <string name="beforeThat">Confirmation</string>
