@@ -267,10 +267,10 @@
         <item>Did u know u can change the theme by long pressing me</item>
     </string-array>
 
-    <string name="dm">Good Morning, %1$s</string>
-    <string name="dm2">Morning %1$s, You have a long day ahead of you </string>
-    <string name="dm3">\u26C5 Goodnight %1$s, What a Day!</string>
-    <string name="dm4">Night, %1$s i\'m popped \u26A1</string>
+    <string name="dm">\u26C5 Good Morning, %1$s</string>
+    <string name="dm2">\u26A1 Morning %1$s, You have a long day ahead of you </string>
+    <string name="dm3">Goodnight %1$s, What a Day!</string>
+    <string name="dm4">Night, %1$s i\'m popped </string>
     <string name="dayAlreadyChoosen">Sorry, This day was already selected</string>
     <string name="areyouSure">You will not be able to choose these days Again, Are You done?</string>
     <string name="beforeThat">Confirmation</string>

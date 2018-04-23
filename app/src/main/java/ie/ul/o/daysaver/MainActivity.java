@@ -270,14 +270,14 @@ private Utils utils=new Utils(this);
                             Date c = new Date();
                             long nowTime = c.getTime() % (24 * 60 * 60 * 1000L);
                             ////System.out.println("Time: " + nowTime + "\nDayTime: 86400000 \nProgress: " + (nowTime * 100) / 86400000);
-                            int rst=(int)(100-((nowTime * 100) / 86400000));
+                            int rst=(int)(100-((nowTime * 100) / 82800000));
                            // //System.out.println(rst);
                             Dayprogress.setText(getString(R.string.progress,+rst+"% "));
                             goOn = false;
                             currenttime=nowTime;
                             ProgressBar daySeek = (ProgressBar) findViewById(R.id.dayscale);
                             if (daySeek != null && tdate != null && ttime != null) {
-                                daySeek.setProgress((int) ((nowTime * 100) / 86400000));
+                                daySeek.setProgress((int) ((nowTime * 100) / 82800000));
 
 
                                 if (nowTime < 21600000 && nowTime >= 3600000) {
