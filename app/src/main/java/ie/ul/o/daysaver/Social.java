@@ -1,7 +1,10 @@
 package ie.ul.o.daysaver;
 
 import android.text.TextUtils;
+import android.util.Log;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -21,6 +24,7 @@ public class Social {
     private String Discription;
     private ArrayList<ShoppingList> obj;
     private  String id="SOCIAL";
+    public  long startAt,endAt;
 
     public Social(String heading, String location, String date, String startTime, String endTime, String val6, String val7, String val8, String type, ArrayList<ShoppingList> obj, String occurance,String id) {
         this.heading = heading;
@@ -35,6 +39,33 @@ public class Social {
         this.obj=obj;
         this.occurance = occurance;
         this.id=id;
+        try {
+            Log.d("Socail","Date: "+date);
+            this.startAt=(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm").parse(startTime).getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        try {
+            this.endAt=(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm").parse(endTime).getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public long getStartAt() {
+        return startAt;
+    }
+
+    public void setStartAt(long startAt) {
+        this.startAt = startAt;
+    }
+
+    public long getEndAt() {
+        return endAt;
+    }
+
+    public void setEndAt(long endAt) {
+        this.endAt = endAt;
     }
 
     public String getId() {
@@ -64,6 +95,16 @@ public class Social {
         this.val8 = val8;
         this.type = type;
         this.occurance = occurance;
+        try {  Log.d("Socail","Date: "+date);
+            startAt=(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm").parse(startTime).getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        try {
+            endAt=(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm").parse(endTime).getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public String getDiscription() {
@@ -120,6 +161,16 @@ public class Social {
         this.val7 = val7;
         this.val8 = val8;
         this.occurance = occurance;
+        try {  Log.d("Socail","Date: "+date);
+            startAt=(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm").parse(startTime).getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        try {
+            endAt=(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm").parse(endTime).getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public String occurance;
@@ -208,6 +259,16 @@ public class Social {
         this.val6 = val6;
         this.val7 = val7;
         this.val8 = val8;
+        try {  Log.d("Socail","Date: "+date);
+            startAt=(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm").parse(startTime).getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        try {
+            endAt=(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm").parse(endTime).getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public Social(String heading, String location, String date, String startTime, String endTime) {
@@ -217,5 +278,15 @@ public class Social {
         this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;
+        try {  Log.d("Socail","Date: "+date);
+            startAt=(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm").parse(startTime).getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        try {
+            endAt=(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm").parse(endTime).getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 }

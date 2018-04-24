@@ -78,6 +78,16 @@
                     android:text="Remove Subject"
                     android:textColor="@color/common_google_signin_btn_text_dark_default" />
 
+                <Button
+                    android:id="@+id/saveSubjects"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    android:background="@color/save_green"
+                    android:text="@string/next"
+                    android:textColor="@android:color/white" />
+
 
             </LinearLayout>
 
@@ -107,15 +117,6 @@
                 </LinearLayout>
 
             </ScrollView>
-
-            <Button
-                android:id="@+id/saveSubjects"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/save_green"
-                android:text="@string/next"
-                android:textColor="@android:color/white" />
 
         </LinearLayout>
     </LinearLayout>

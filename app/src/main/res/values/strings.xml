@@ -242,6 +242,11 @@
     <string name="workouts">Workouts</string>
     <string name="showAll">Show All Workouts</string>
     <string name="myWorkouts">Just My Workouts</string>
+    <string-array name="timetype">
+        <item>Hours</item>
+        <item>minutes</item>
+        <item>Seconds</item>
+    </string-array>
 
     <string name="Public">Public</string>
     <string name="Private">Private</string>
@@ -250,6 +255,9 @@
     <string name="newWorkout">Workout Name</string>
     <string name="error_for_incorrect_day">Day should be writen as (e.g Mon or Monday)</string>
     <string name="timeFormat">Format must be(00:00 or 00:00:00)</string>
+    <string name="hF">Format must be(00 or 00:00 or 00:00:00)</string>
+    <string name="mf">Format must be(00 or 00:00)</string>
+    <string name="sf">Format must be(00)</string>
     <string name="settme">Set time</string>
     <string name="acceptableDur">Choose from here: 0.10|0.20|0.30|0.40|0.50|1|1.10|1.20|1.30|1.40|1.50|2.00</string>
     <string name="chooseExercise">Chose Exercises </string>
@@ -333,4 +341,5 @@
     >
     ]]>
     <string name="info1"> Hey there, Remember..\nstep 1. Add Workout\nstep 2. Enter workout name\nstep 3. Do the extra bits\nstep 4.Save\nGot it?</string>
+    <string name="stop">Stop</string>
 </resources>

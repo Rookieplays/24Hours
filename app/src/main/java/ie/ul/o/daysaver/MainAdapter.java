@@ -16,6 +16,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.RingtoneManager;
 import android.os.Build;
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
@@ -30,6 +33,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -37,8 +41,11 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
@@ -54,6 +61,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     public Context context;
     static View itView;
     private RecyclerView rview;
+    private String t="Hours";
+
     public static class ViewHolder extends RecyclerView.ViewHolder
     {
         public TextView mTextView;
@@ -61,6 +70,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         public TextView mEndView;
         public CardView cardview;
         public ImageView icon;
+
         public ViewHolder(View v)
         {
             super(v);
@@ -133,6 +143,7 @@ this.context=context;
         holder.mStartView.setText("Start Time: "+mStartTime[position]);
         holder.mEndView.setText("End Time: "+mEndTime[position]);
         holder.cardview.setCardBackgroundColor(Integer.parseInt(mColor[position]));
+
 
         if(holder.mTextView.getText().toString().contains("Study")){
             bitmap= BitmapFactory.decodeResource(context.getResources(),st);
@@ -226,6 +237,7 @@ this.context=context;
                 public void onClick(DialogInterface adialog, int i) {
                     //adialog.dismiss();s
                     max=(long)(dur*60*60*1000);
+                    MAXTIME=max;
                     mTimeLeftInMillis=max;
 
                     showTimerMenu(dur);
@@ -243,6 +255,7 @@ this.context=context;
     ImageButton nM;
     private  TextView timer;
     private ProgressBar pb;
+    private TextView plusOne;
 
     private void showTimerMenu(double dur) {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
@@ -250,21 +263,41 @@ this.context=context;
         View dialogView = inflater.inflate(R.layout.timer_dialog, null);
         dialogBuilder.setView(dialogView);
 
+
         pb=dialogView.findViewById(R.id.progressBar2);
        timer=dialogView.findViewById(R.id.timerText);
          startTime=dialogView.findViewById(R.id.startTimer);
          resetTime=dialogView.findViewById(R.id.resetTimer);
          stopb=dialogView.findViewById(R.id.stopTimer);
-         stopb.setOnClickListener(e->{startPopUP(timer);});
+         plusOne=dialogView.findViewById(R.id.plusOne);
+         plusOne.setOnClickListener(e->{
+                     mTimeLeftInMillis=mTimeLeftInMillis+(60*1000);
+             if(mCountDownTimer!=null){
+             mCountDownTimer.cancel();
+             startTimer(2.0);
+            }
+             else  resetTimer(max);
+         });
+
+
+
          anim=startAnimation2(timer);
          nM=dialogView.findViewById(R.id.notifyMe);
+
         RelativeLayout bg=dialogView.findViewById(R.id.bg);
+        AlarmReceiver.STUDYMSG="Study Completed!";
+        AlarmReceiver.STUDYHEADING="Heads Up";
         nM.setOnClickListener(e->{
             if (notify) {
-                setUpNofication("24H.SP","Time's Up",R.drawable.study_small);
+                Toast.makeText(context,"Alarm Off",Toast.LENGTH_SHORT).show();
+                nM.setBackground(context.getDrawable(android.R.drawable.ic_lock_silent_mode_off));
+                notify=false;
 
             } else {
-                disableNotification();
+                Toast.makeText(context,"Alarm on",Toast.LENGTH_SHORT).show();
+                nM.setBackground(context.getDrawable(android.R.drawable.ic_lock_silent_mode));
+                notify=true;
+                //disableNotification();
             }
         });
 
@@ -276,9 +309,10 @@ this.context=context;
             }
         });
         resetTime.setOnClickListener(e->{
-            resetTimer(dur);
+            resetTimer(max);
         });
-        updateCountDownText(dur);
+        updateCountDownText(mTimeLeftInMillis);
+        stopb.setOnClickListener(e->{pauseTimer();startPopUP(timer);});
         AlertDialog adialog=dialogBuilder.create();
         adialog.show();
 
@@ -286,6 +320,7 @@ this.context=context;
     NotificationManager nnotificationManger;
     boolean isNotificationActive=false;
     int notificationId=24;
+    public Spinner type;
    public final String NOTIFICATION_ID="24H_SP";
    /*
 public void createnotificationChannel()
@@ -337,13 +372,77 @@ public void createnotificationChannel()
 
         mNotificationManager.notify(0, mBuilder.build());  nM.setBackground(context.getDrawable(android.R.drawable.ic_lock_silent_mode_off));
         notify=false;
-        setAlarm(max);
+
+
+    }
+
+    public void alarmer(Context context,String title)
+    {
+        MediaPlayer alarmRinging=new MediaPlayer();
+        try {
+            alarmRinging.setDataSource(context, RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        final AudioManager audioManager=(AudioManager)context.getSystemService(Context.AUDIO_SERVICE);
+        if(audioManager.getStreamVolume(AudioManager.STREAM_ALARM)!=0){
+            alarmRinging.setAudioStreamType(AudioManager.STREAM_ALARM);
+            alarmRinging.setLooping(true);
+            //alarm.prepare();
+            //TODO:Start Alarm
+
+        }
+        try {
+            alarmRinging.prepare();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        alarmRinging.start();
+        //Log.e("Alarmer","Alarm playing: "+alarmRinging.isPlaying());
+        AlertDialog.Builder builder=new AlertDialog.Builder(context);
+        builder.setMessage("Time's Up!").setTitle(title);
+        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                if(alarmRinging!=null&&alarmRinging.isPlaying()){
+                  alarmRinging.stop();alarmRinging.reset();alarmRinging.release();
+                }
+
+            }
+        });
+
+
+        builder.setNegativeButton("Snooze +5min", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface adialog, int i) {
+               MAXTIME=5*60*1000;
+               max=MAXTIME;
+               resetTimer(MAXTIME);
+               adialog.dismiss();
+
+
+
+
+            }
+        });
+            builder.setPositiveButton(R.string.stop, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface adialog, int i) {
+                    //adialog.dismiss();
+                    adialog.dismiss();
+
+
+
+
+                }
+            });
+        AlertDialog adialog=builder.create();
+        adialog.show();
 
     }
 
     private void disableNotification() {
-        nM.setBackground(context.getDrawable(android.R.drawable.ic_lock_silent_mode));
-        notify=true;
+
         if(isNotificationActive){
             nnotificationManger.cancel(notificationId);
         }
@@ -353,6 +452,7 @@ public void createnotificationChannel()
     private  long max;
     private long mTimeLeftInMillis=max;
     private CountDownTimer mCountDownTimer;
+
     private void startTimer(Double dur) {
         ////System.out.println()("£££ "+mTimeLeftInMillis);
         anim.removeAllListeners();
@@ -362,15 +462,31 @@ public void createnotificationChannel()
             @Override
             public void onTick(long millisUntilFinished) {
                 mTimeLeftInMillis = millisUntilFinished;
-                updateCountDownText(dur);
+                updateCountDownText(mTimeLeftInMillis);
+
             }
 
             @Override
             public void onFinish() {
                 mTimerRunning = false;
+                pb.setProgress(0);
                 startTime.setBackground(context.getDrawable(android.R.drawable.ic_media_play));
                 startTime.setVisibility(View.INVISIBLE);
                 resetTime.setVisibility(View.VISIBLE);
+                //TODO: start Alarmer;
+                if(notify==true)
+                {
+                    alarmer(context,"Study Task Completed!");
+                   // setUpNofication("24H.SP","Time's Up",R.drawable.study_small);
+                    setAlarm(max);
+                   // notify=false;
+                    //TODO: send Notification;
+                }
+                else{
+                    Toast.makeText(context,"Study's Up!",Toast.LENGTH_SHORT).show();
+                    //notify=true;
+                }
+
             }
         }.start();
 
@@ -380,6 +496,7 @@ public void createnotificationChannel()
     }
     private boolean notify=true;
     private void pauseTimer() {
+        if(mCountDownTimer!=null)
         mCountDownTimer.cancel();
         mTimerRunning = false;
         pb.setProgressTintList(ColorStateList.valueOf(Color.RED));
@@ -387,12 +504,17 @@ public void createnotificationChannel()
         startTime.setBackground(context.getDrawable(android.R.drawable.ic_media_play));
         resetTime.setVisibility(View.VISIBLE);
     }
+    private MediaPlayer ringAlarm() throws IOException {
+        MediaPlayer alarm=new MediaPlayer();
+
+        return  alarm;
+    }
     private AnimatorSet anim;
-    private void resetTimer(Double dur) {
-         max=(long)(dur*60*60*1000);
+    private void resetTimer(long ms) {
+
         timer.setAlpha(1f);
-        mTimeLeftInMillis=max;
-        updateCountDownText(dur);
+        mTimeLeftInMillis=MAXTIME;
+        updateCountDownText(ms);
 
         anim.removeAllListeners();
         anim.cancel();
@@ -400,9 +522,12 @@ public void createnotificationChannel()
         resetTime.setVisibility(View.INVISIBLE);
         startTime.setVisibility(View.VISIBLE);
     }
-    private void updateCountDownText(Double dur) {
-         max=(long)(dur*60*60*1000);
-        int rst = (int) (100 - (((max-mTimeLeftInMillis) * 100) / max));
+    private  long MAXTIME=max;
+    private void updateCountDownText(long dur) {
+         max=dur;
+
+
+        int rst = (int) (100 - (((MAXTIME-mTimeLeftInMillis) * 100) / MAXTIME));
         pb.setProgress((rst));
         ////System.out.println()(rst);
         //  //System.out.println()(milliUntilFinish);
@@ -469,6 +594,11 @@ private GymSchAdapter mAdapter;
     private RecyclerView recyclerView;
     private Button restore;
     private EditText newDur;
+    private long newD;
+    private final String p1="(([0-9]+:[0-9]+:[0-9]+)|([0-9]+:[0-9]+)|([0-9]+))";
+    private final String p2="(([0-9]+:[0-9]+)+|([0-9]+))";
+    private final String p3="([0-9]+)";
+
     private void startPopUP(View v) {
 
         View popupContentView = LayoutInflater.from(context).inflate(R.layout.changetimer, null);
@@ -476,6 +606,21 @@ private GymSchAdapter mAdapter;
 
         restore=popupContentView.findViewById(R.id.button14);
         newDur=popupContentView.findViewById(R.id.newDur);
+        type=popupContentView.findViewById(R.id.timeType);
+
+
+        type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                t=adapterView.getSelectedItem().toString();
+                newDur.setHint("Enter Duration in "+type.getSelectedItem());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         newDur.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -487,6 +632,21 @@ private GymSchAdapter mAdapter;
             if(TextUtils.isEmpty(charSequence))
             {
                 newDur.setError(context.getString(R.string.emptyField));
+                restore.setEnabled(false);
+            }
+            else if(t.equalsIgnoreCase("Hours")&&!(charSequence.toString().matches(p1)))
+            {
+                newDur.setError(context.getString(R.string.hF));
+                restore.setEnabled(false);
+            }
+            else if(t.equalsIgnoreCase("Minutes")&&!(charSequence.toString().matches(p2)))
+            {
+                newDur.setError(context.getString(R.string.mf));
+                restore.setEnabled(false);
+            }
+            else if(t.equalsIgnoreCase("Seconds")&&!(charSequence.toString().matches(p3)))
+            {
+                newDur.setError(context.getString(R.string.sf));
                 restore.setEnabled(false);
             }
             else{
@@ -512,8 +672,90 @@ private GymSchAdapter mAdapter;
         popupWindow.setFocusable(true);
         popupWindow.update();
         restore.setOnClickListener(e->{
+            long temp=mTimeLeftInMillis;
+            int hr,min,sec;
+            String tempA[];
+            String s=newDur.getText().toString();
             popupWindow.dismiss();
-            resetTimer(Double.parseDouble(newDur.getText().toString()));
+            if(t.equalsIgnoreCase("Hours"))
+            {
+               if(s.contains(":")||s.contains("\\."))
+               {
+                   s=s.replaceAll("\\.",":");
+                   tempA=s.split(":");
+                   if(tempA.length==1)
+                   {
+                       hr=Integer.parseInt(tempA[0]);
+                       temp=(long)(hr*60*60*1000);
+
+                   }
+                   if(tempA.length==2)
+                   {
+                       hr=Integer.parseInt(tempA[0]);
+                       min=Integer.parseInt(tempA[1]);
+                       temp=((long)(hr*60*60*1000))+((long)(min*60*1000));
+
+                   }
+                   else if(tempA.length==3)
+                   {
+                       hr=Integer.parseInt(tempA[0]);
+                       min=Integer.parseInt(tempA[1]);
+                       sec=Integer.parseInt(tempA[2]);
+                       temp=((long)(hr*60*60*1000))+((long)(min*60*1000))+((long)(sec*1000));
+
+                   }
+
+
+               }
+               else if(TextUtils.isEmpty(s))
+               {
+                   temp=mTimeLeftInMillis;
+               }
+               else{
+                   hr=Integer.parseInt(s);
+                   temp=(long)(hr*60*60*1000);
+
+               }
+            }
+            else if(t.equalsIgnoreCase("Minutes"))
+            {
+                if(s.contains(":")||s.contains("\\."))
+                {
+                    s=s.replaceAll("\\.",":");
+                    tempA=s.split(":");
+                    if(tempA.length==1)
+                    {
+                      min=Integer.parseInt(tempA[0]);
+                        temp=(long)(min*60*1000);
+
+                    }
+                    else if(tempA.length==2)
+                    {
+
+                        min=Integer.parseInt(tempA[0]);
+                        sec=Integer.parseInt(tempA[1]);
+                        temp=((long)(min*60*1000))+((long)(sec*1000));
+
+                    }
+
+
+                }
+                else{
+                    min=Integer.parseInt(s);
+                    temp=(long)(min*60*1000);
+
+                }
+            }
+            else if(t.equalsIgnoreCase("Seconds"))
+            {
+
+                sec=Integer.parseInt(s);
+                temp=(long)(sec*1000);
+            }
+            mTimeLeftInMillis=temp;
+            max=temp;
+            MAXTIME=max;
+            resetTimer(temp);
         });
 
     }

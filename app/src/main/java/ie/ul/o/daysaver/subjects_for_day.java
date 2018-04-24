@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,12 +48,13 @@ public class subjects_for_day extends RecyclerView.Adapter<subjects_for_day.View
     String days;
     public subjects_for_day(Context context, ArrayList<String>myDataset,String day)
     {
+        Log.e("subject_fo_day","Day: "+day+"\nSubjects\n"+myDataset);
         this.context=context;
 
         inflater=LayoutInflater.from(context);
         if(myDataset.size()==0)
         {
-            mDataset=new String[]{"Empty List"};
+            mDataset=new String[]{"Maths( as Default)"};
 
         }
         else{

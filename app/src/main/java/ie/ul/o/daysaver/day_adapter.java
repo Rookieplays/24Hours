@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,6 +64,7 @@ import java.util.ArrayList;
         public day_adapter(Context context, ArrayList<String>days, ArrayList<String>subs)
         {
             sub=subs;
+            Log.e("day_adapter",days+"\nCount: "+days.size());
             DAYS=days;
             this.context=context;
             inflater=LayoutInflater.from(context);
@@ -140,7 +142,16 @@ import java.util.ArrayList;
             holder.layer1.setVisibility(View.GONE);
             holder.layer2.setVisibility(View.VISIBLE);
             holder.mTextView.setText(mDataset[position]);
-            studies.get(position).setDuration(Double.parseDouble(holder.dur.getText().toString()));
+            if(position==0)
+            {
+                holder.mTextView.setEnabled(false);
+            }
+           if(position==4)
+           {
+               holder.mTextView.requestFocus();
+           }
+            try{ studies.get(position).setDuration(Double.parseDouble(holder.dur.getText().toString()));
+
             holder.dur.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -169,7 +180,8 @@ import java.util.ArrayList;
 
                 }
             });
-
+            }catch(NullPointerException e){}
+        /**Crash occurs when sub>5*/
          sfd=new subjects_for_day(context,sub,holder.mTextView.getText().toString());
          recyclerView.setAdapter(sfd);
             //holder.aTextView.setText(mDescSets[position]);
@@ -241,6 +253,7 @@ import java.util.ArrayList;
 
 
         }
+
 
     private void startAnimation2(View v) {
         v.setAlpha(1f);

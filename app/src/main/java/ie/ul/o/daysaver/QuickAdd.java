@@ -1,5 +1,6 @@
 package ie.ul.o.daysaver;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
@@ -14,8 +15,22 @@ public class QuickAdd {
     private long startTime;
     private long endTime;
     private String date;
+    private long startAt,endAt;
 
     public QuickAdd() {
+
+    }
+
+    public void setStartAt(long startAt) {
+        this.startAt = startAt;
+    }
+
+    public long getEndAt() {
+        return endAt;
+    }
+
+    public void setEndAt(long endAt) {
+        this.endAt = endAt;
     }
 
     public QuickAdd(String id, String title, String description, long startTime, long endTime, String date) {
@@ -25,6 +40,16 @@ public class QuickAdd {
         this.startTime = startTime;
         this.endTime = endTime;
         this.date = date;
+        try {
+            startAt=(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+startTime);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        try {
+            endAt=(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+endTime);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public String getId() {
@@ -84,5 +109,9 @@ public class QuickAdd {
         return
                 "description " + description;
 
+    }
+
+    public long getStartAt() {
+        return startAt;
     }
 }

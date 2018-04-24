@@ -372,13 +372,57 @@ private Utils utils=new Utils(this);
     }ArrayList<Long>ev=new ArrayList<>();
 
     private void updateAlarm(long nowTime) {
-        if(!ev.isEmpty())
+        String date=new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis());
+        String time=new SimpleDateFormat("HH:mm:ss").format(System.currentTimeMillis());
+        Log.w("If Loop","timesToSetAlerts: "+timesToSetAlerts.isEmpty());
+        if(!(timesToSetAlerts.isEmpty()&&timesToSetAlerts2.isEmpty()&&iconsList.isEmpty()&&eventInfo.isEmpty()))
         {
-            for(Long l:ev)
+
+            for(int i=0;i<timesToSetAlerts.size();i++)
             {
-                if(l==nowTime)
-                {
-                    startAlarm(l);
+                try {
+                    Log.e("For Loop","timesToSetAlerts: "+timesToSetAlerts.get(i)+"\nNow Time: "+(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm:ss").parse(time).getTime()));
+                    Log.w("For Loop","timesToSetAlerts2: "+timesToSetAlerts2.get(i)+"\nNow Time: "+(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm:ss").parse(time).getTime()));
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                };
+                try {
+                    if(timesToSetAlerts.get(i)==(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm:ss").parse(time).getTime()))
+                    {
+                        setAlarm(timesToSetAlerts.get(i),eventInfo.get(0).get(i),eventInfo.get(1).get(i),iconsList.get(i));
+
+                    }
+                    else  if(timesToSetAlerts2.get(i)-(15*60*1000)==(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm:ss").parse(time).getTime()))
+                    {
+                        eventInfo.get(2).set(i,"Event ending in 15 mins");
+
+                        setAlarm(timesToSetAlerts2.get(i)-(15*60*1000),eventInfo.get(2).get(i),eventInfo.get(3).get(i),iconsList.get(i));
+
+                    }
+                    else  if(timesToSetAlerts2.get(i)-(10*60*1000)==(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm:ss").parse(time).getTime()))
+                    {
+                        eventInfo.get(2).set(i,"Event ending in 10 mins");
+
+                        setAlarm(timesToSetAlerts2.get(i)-(15*60*1000),eventInfo.get(2).get(i),eventInfo.get(3).get(i),iconsList.get(i));
+
+                    }
+                    else  if(timesToSetAlerts2.get(i)-(5*60*1000)==(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm:ss").parse(time).getTime()))
+                    {
+                        eventInfo.get(2).set(i,"Event ending in 5 mins");
+
+                        setAlarm(timesToSetAlerts2.get(i)-(15*60*1000),eventInfo.get(2).get(i),eventInfo.get(3).get(i),iconsList.get(i));
+
+                    }
+                    else  if(timesToSetAlerts2.get(i)-(1*60*1000)==(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm:ss").parse(time).getTime()))
+                    {
+                        eventInfo.get(2).set(i,"Event ending in 1 mins");
+
+                        setAlarm(timesToSetAlerts2.get(i)-(15*60*1000),eventInfo.get(2).get(i),eventInfo.get(3).get(i),iconsList.get(i));
+
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
                 }
             }
         }
@@ -424,9 +468,17 @@ private Utils utils=new Utils(this);
 
 
     }
+    ArrayList<Long>timesToSetAlerts=new ArrayList<>();
+    ArrayList<Long>timesToSetAlerts2=new ArrayList<>();
+    ArrayList<ArrayList<String>>eventInfo=new ArrayList<>();
+    ArrayList<Integer>iconsList=new ArrayList<>();
     public void LoadMainEvents(String date)
     {
-        pb.setMessage(getString(R.string.wait5,username.getText().toString()));
+        eventInfo.add(new ArrayList<>());
+        eventInfo.add(new ArrayList<>());
+        eventInfo.add(new ArrayList<>());
+        eventInfo.add(new ArrayList<>());
+        pb.setMessage(getString(R.string.wait5));
         pb.show();
         System.out.printf(date);
         mFireStore.collection(UID)
@@ -446,12 +498,31 @@ private Utils utils=new Utils(this);
                                 {
                                     Social e=doc.toObject(Social.class);
                                     sl.add(e);
+                                    timesToSetAlerts.add(e.getStartAt());
+                                    timesToSetAlerts2.add(e.getEndAt());
+                                    Log.d("Social",e.getStartAt()+"");
+                                    eventInfo.get(0).add("Event: "+e.getType()+" Has Started!");
+                                    eventInfo.get(1).add(e.getDiscription());
+                                    eventInfo.get(2).add("Event: "+e.getType());
+                                    eventInfo.get(3).add(" This event is Ending in 15 minutes!!");
+                                    iconsList.add(R.drawable.ref5);
+
+
 
                                 }
                                 else if(doc.getData().values().contains("GYM"))
                                 {
                                     WorkoutPlan e=doc.toObject(WorkoutPlan.class);
                                     wp.add(e);
+                                    Log.d("STUDY",e.getStartAt()+"");
+                                    timesToSetAlerts.add(e.getStartAt());
+                                    timesToSetAlerts2.add(e.getEndAt());
+                                    eventInfo.get(0).add("Event: "+e.getName()+" Has Started!");
+                                    eventInfo.get(1).add("Click to begin");
+                                    eventInfo.get(2).add("Event: "+e.getName());
+                                    eventInfo.get(3).add(" This event is Ending in 15 minutes!!");
+                                    iconsList.add(R.drawable.female_runner_painted);
+
 
 
                                 }
@@ -459,6 +530,19 @@ private Utils utils=new Utils(this);
                                 {
                                     Study e=doc.toObject(Study.class);
                                     st.add(e);
+                                    String str="";
+                                    for(Subjects s:e.getSubjects())
+                                        str+="• "+s.getName()+"\n";
+                                    Log.d("STUDY",e.getStartAt()+"");
+                                    timesToSetAlerts.add(e.getStartAt());
+                                    timesToSetAlerts2.add(e.getEndAt());
+                                    eventInfo.get(0).add("Event: "+e.getName()+" Has Started!");
+                                    eventInfo.get(1).add("You have to study: "+str);
+                                    eventInfo.get(2).add("Event: "+e.getName());
+                                    eventInfo.get(3).add(" This event is Ending in 15 minutes!!");
+                                    iconsList.add(R.drawable.studying_gal);
+
+
 
 
                                 }
@@ -466,6 +550,14 @@ private Utils utils=new Utils(this);
                                 {
                                     QuickAdd e=doc.toObject(QuickAdd.class);
                                     qua.add(e);
+                                    timesToSetAlerts.add(e.getStartAt());
+                                    timesToSetAlerts2.add(e.getEndAt());
+                                    eventInfo.get(0).add("Event: "+e.getTitle()+" Has Started!");
+                                    eventInfo.get(1).add(e.getDescription());
+                                    eventInfo.get(2).add("Event: "+e.getTitle());
+                                    eventInfo.get(3).add(" This event is Ending in 15 minutes!!");
+                                    iconsList.add(R.drawable.studying_gal);
+
 
 
                                 }
@@ -544,14 +636,14 @@ private Utils utils=new Utils(this);
                                 mainAdapter=new MainAdapter(context,AllEvents,wp);
                                 eventViwer.setAdapter(mainAdapter);
                             }
-                            pb.dismiss();
+                          try{pb.dismiss();}catch (Exception e){}
                           //  Toast.makeText(context, "Events Loaded Success", Toast.LENGTH_SHORT).show();
 
 
                         } else {
                             Log.d("TAG", "Error getting documents: ", task.getException());
                             Toast.makeText(context, "Something went Wrong", Toast.LENGTH_SHORT).show();
-                            pb.dismiss();
+                          try{pb.dismiss();}catch (Exception e){}
                         }
                     }
                 });
@@ -1127,6 +1219,22 @@ public void startAlarm(long start)
                 .resize(w,h)
                 .centerCrop()
                 .into(imgContainer);
+    }
+
+    public void setAlarm(long timeinMillis,String heading,String msg,int ic)
+    {
+        long alertTime=timeinMillis;
+        //System.out.println()(alertTime);
+        AlarmReceiver.STUDYHEADING=heading;
+        AlarmReceiver.STUDYMSG=msg;
+        AlarmReceiver.setSTUDYHEADING(heading);
+        AlarmReceiver.setSTUDYMSG(msg);
+        AlarmReceiver.ICON=ic;
+        AlarmReceiver.setICON(ic);
+        Intent alertIntent=new Intent(context,AlarmReceiver.class);
+
+        AlarmManager alarmManager=(AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC_WAKEUP,alertTime,PendingIntent.getBroadcast(context,1,alertIntent,PendingIntent.FLAG_UPDATE_CURRENT));
     }
     public void noConMsg()
     {

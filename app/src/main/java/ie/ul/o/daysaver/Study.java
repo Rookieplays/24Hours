@@ -1,5 +1,7 @@
 package ie.ul.o.daysaver;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -14,6 +16,7 @@ public class Study {
     private double duration;
     private String date="";
     private String discription;
+    private long startAt,endAt;
 
     public double getDuration() {
         return duration;
@@ -27,6 +30,22 @@ public class Study {
         this.date = date;
     }
 
+    public void setDiscription(String discription) {
+        this.discription = discription;
+    }
+
+    public void setStartAt(long startAt) {
+        this.startAt = startAt;
+    }
+
+    public long getEndAt() {
+        return endAt;
+    }
+
+    public void setEndAt(long endAt) {
+        this.endAt = endAt;
+    }
+
     public Study(String name, String day, ArrayList<Subjects> subjects, double duration, String date) {
 
         this.name = name;
@@ -34,6 +53,16 @@ public class Study {
         this.subjects = subjects;
         this.duration = duration;
         this.date = date;
+        try {
+            startAt=(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm").parse("12:00").getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        try {
+            endAt=(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm").parse("09:00").getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setDuration(double duration) {
@@ -55,6 +84,16 @@ public class Study {
         this.day = day;
         this.subjects = subjects;
         this.duration=duration;
+        try {
+            startAt=(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm").parse("12:00").getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        try {
+            endAt=(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm").parse("09:00").getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public String getName() {
@@ -90,6 +129,16 @@ public class Study {
         this.name = name;
         this.day = day;
         this.subjects = subjects;
+        try {
+            startAt=(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm").parse("12:00").getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        try {
+            endAt=(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm").parse("09:00").getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public String getDiscription() {
@@ -101,5 +150,9 @@ public class Study {
         discription+="For "+duration+" Hours";
 
         return discription;
+    }
+
+    public long getStartAt() {
+        return startAt;
     }
 }

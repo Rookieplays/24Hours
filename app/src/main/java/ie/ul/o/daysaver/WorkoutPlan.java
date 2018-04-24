@@ -1,5 +1,6 @@
 package ie.ul.o.daysaver;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -20,6 +21,7 @@ public class WorkoutPlan {
     private String date=new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(System.currentTimeMillis());
     private String startTime="18:00";
     private String endTime="19:30";
+    public long startAt,endAt;
 
 
     public void setWorkout(ArrayList<Workout> Workouts) {
@@ -37,6 +39,16 @@ public class WorkoutPlan {
         this.id = id;
         this.startTime=startTime;
         this.endTime=endTime;
+        try {
+            startAt=(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm:ss").parse(startTime).getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        try {
+            endAt=(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm:ss").parse(endTime).getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public String getStartTime() {
@@ -139,5 +151,21 @@ public class WorkoutPlan {
     public WorkoutPlan() {
         Workouts.add(new Workout());
 
+    }
+
+    public void setStartAt(long startAt) {
+        this.startAt = startAt;
+    }
+
+    public long getEndAt() {
+        return endAt;
+    }
+
+    public void setEndAt(long endAt) {
+        this.endAt = endAt;
+    }
+
+    public long getStartAt() {
+        return startAt;
     }
 }

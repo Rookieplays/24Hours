@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -94,6 +95,8 @@ private ViewFlipper viewFlipper;
             dayChooser.setAdapter(da);
                     //viewFlipper.showNext();
             cSub.setVisibility(View.GONE);
+            Snackbar.make(nextPage,"IMPORTANT! Leave Duration on MONDAY",Snackbar.LENGTH_LONG).show();
+
             nextPage.setVisibility(View.VISIBLE);
 
           //  saveAll.setVisibility(View.VISIBLE);

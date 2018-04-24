@@ -16,16 +16,57 @@ public class AlarmReceiver extends BroadcastReceiver {
 
 
 
-    public static String NOTIFICATION_ID = "notification-id";
 
+    public static String NOTIFICATION_ID = "notification_id";
     public static String NOTIFICATION = "notification";
+    public static String STUDYMSG="Event Alert!";
+    public static String STUDYHEADING="Click to launch";
+    public static int ICON=R.drawable.ic_launcher;
 
+    public static int getICON() {
+        return ICON;
+    }
 
+    public static void setICON(int ICON) {
+        AlarmReceiver.ICON = ICON;
+    }
+
+    public static String getNotificationId() {
+        return NOTIFICATION_ID;
+    }
+
+    public static void setNotificationId(String notificationId) {
+        NOTIFICATION_ID = notificationId;
+    }
+
+    public static String getNOTIFICATION() {
+        return NOTIFICATION;
+    }
+
+    public static void setNOTIFICATION(String NOTIFICATION) {
+        AlarmReceiver.NOTIFICATION = NOTIFICATION;
+    }
+
+    public static String getSTUDYMSG() {
+        return STUDYMSG;
+    }
+
+    public static void setSTUDYMSG(String STUDYMSG) {
+        AlarmReceiver.STUDYMSG = STUDYMSG;
+    }
+
+    public static String getSTUDYHEADING() {
+        return STUDYHEADING;
+    }
+
+    public static void setSTUDYHEADING(String STUDYHEADING) {
+        AlarmReceiver.STUDYHEADING = STUDYHEADING;
+    }
 
     public void onReceive(Context context, Intent intent) {
 
 
-        createNotification(context,"Time's Up","Task Completed!","Alert");
+        createNotification(context,STUDYHEADING,STUDYMSG,"Alert");
 
 
     }
@@ -37,14 +78,14 @@ public class AlarmReceiver extends BroadcastReceiver {
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, ii, 0);
 
         NotificationCompat.BigTextStyle bigText = new NotificationCompat.BigTextStyle();
-        bigText.bigText(title);
-        bigText.setBigContentTitle(text);
-        bigText.setSummaryText("");
+        bigText.bigText("");
+        bigText.setBigContentTitle(STUDYHEADING);
+        bigText.setSummaryText(STUDYMSG);
 
         mBuilder.setContentIntent(pendingIntent);
-        mBuilder.setSmallIcon(R.mipmap.ic_launcher_round);
-        mBuilder.setContentTitle(title);
-        mBuilder.setContentText(text);
+        mBuilder.setSmallIcon(R.drawable.study_small);
+        mBuilder.setContentTitle(STUDYHEADING);
+        mBuilder.setContentText(STUDYMSG);
         mBuilder.setPriority(Notification.PRIORITY_MAX);
         mBuilder.setStyle(bigText);
 
