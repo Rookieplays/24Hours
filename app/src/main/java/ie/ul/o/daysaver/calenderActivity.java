@@ -51,7 +51,7 @@ public class calenderActivity extends MainActivity {
     private Calendar calendar;
     private Context context=this;
     private TextView dayNotice;
-    private SimpleDateFormat dateFormat=new SimpleDateFormat("MMM- yyyy", Locale.getDefault());
+    private SimpleDateFormat dateFormat=new SimpleDateFormat("MMM • yyyy", Locale.getDefault());
     private LinearLayout eventView;
     private FirebaseFirestore mFireStore;
     private final String UID= FirebaseAuth.getInstance().getCurrentUser().getUid();

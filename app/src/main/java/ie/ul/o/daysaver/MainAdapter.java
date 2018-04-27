@@ -62,6 +62,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     static View itView;
     private RecyclerView rview;
     private String t="Hours";
+    private String headingmsg;
 
     public static class ViewHolder extends RecyclerView.ViewHolder
     {
@@ -553,7 +554,7 @@ public void createnotificationChannel()
         long alertTime=timeinMillis;
         //System.out.println()(alertTime);
         Intent alertIntent=new Intent(context,AlarmReceiver.class);
-
+        alertIntent.putExtra(AlarmReceiver.STUDYHEADING,headingmsg);
         AlarmManager alarmManager=(AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP,alertTime,PendingIntent.getBroadcast(context,1,alertIntent,PendingIntent.FLAG_UPDATE_CURRENT));
     }

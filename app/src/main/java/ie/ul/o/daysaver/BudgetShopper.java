@@ -47,7 +47,7 @@ import java.util.ArrayList;
 import java.util.Currency;
 import java.util.Locale;
 
-public class BudgetShopper extends socialActivity implements  shopRecyclerItemTouchHelper.shopRecyclerItemTouchHelperListener {
+public class BudgetShopper extends MainActivity implements  shopRecyclerItemTouchHelper.shopRecyclerItemTouchHelperListener {
 
 
     private Button addshoppingLists;

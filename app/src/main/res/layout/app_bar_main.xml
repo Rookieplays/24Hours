@@ -24,6 +24,19 @@
 
     <include layout="@layout/content_main" />
 
+    <com.nightonke.boommenu.BoomMenuButton
+        android:id="@+id/bmb2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="bottom"
+        app:bmb_buttonEnum="simpleCircle"
+        app:bmb_buttonPlaceEnum="buttonPlace_sc_5_2"
+        app:bmb_normalColor="?attr/colorPrimaryDark"
+        app:bmb_piecePlaceEnum="piecePlace_dot_5_2" />
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"

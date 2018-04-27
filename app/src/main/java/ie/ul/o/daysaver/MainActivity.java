@@ -1,9 +1,13 @@
 package ie.ul.o.daysaver;
 
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -13,16 +17,22 @@ import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.RingtoneManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -30,6 +40,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.transition.Explode;
 import android.transition.Transition;
 import android.util.Log;
@@ -39,7 +52,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -47,6 +62,7 @@ import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -62,8 +78,13 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
+import com.nightonke.boommenu.BoomButtons.SimpleCircleButton;
+import com.nightonke.boommenu.BoomMenuButton;
+import com.nightonke.boommenu.Util;
 import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -71,6 +92,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import ie.ul.o.daysaver.utils.Utils;
 
@@ -270,7 +292,7 @@ private Utils utils=new Utils(this);
                             Date c = new Date();
                             long nowTime = c.getTime() % (24 * 60 * 60 * 1000L);
                             //////System.out.println()("Time: " + nowTime + "\nDayTime: 86400000 \nProgress: " + (nowTime * 100) / 86400000);
-                            int rst=(int)(100-((nowTime * 100) / 82800000));
+                            int rst=(int)(99-((nowTime * 100) / 82800000));
                            // ////System.out.println()(rst);
                             Dayprogress.setText(getString(R.string.progress,+rst+"% "));
                             goOn = false;
@@ -363,6 +385,83 @@ private Utils utils=new Utils(this);
         };
 
         t.start();
+        int[] imageResources = new int[]{
+                // R.drawable.female_runner_painted,
+                R.drawable.timer,
+                R.drawable.notes,
+                R.drawable.calculator,
+                R.drawable.quick_event,
+                R.drawable.bs_logo
+        };
+        int[] colorResourses=new int[]{
+                R.color.gym_primaryColor,
+                R.color.social_primaryColor,
+                R.color.colorPrimary,
+                R.color.colorPrimaryDark,
+                R.color.cardview_dark_background
+
+        };
+        BoomMenuButton bmb = findViewById(R.id.bmb2);
+        for (int i = 0; i < bmb.getPiecePlaceEnum().pieceNumber(); i++) {
+            SimpleCircleButton.Builder builder = new SimpleCircleButton.Builder()
+                    .listener(new OnBMClickListener() {
+                        @Override
+                        public void onBoomButtonClick(int index) {
+                            // When the boom-button corresponding this builder is clicked.
+                            if(index==0)
+                            {max=1;
+                              showTimerMenu(1);}
+                            else  if(index==1)
+                                startActivity(new Intent(MainActivity.this,createNote.class));
+                            else  if(index==2){}
+                               // startActivity(new Intent(MainActivity.this,QuickAddActivity.class));
+                            else  if(index==3)
+                                startActivity(new Intent(MainActivity.this,QuickAddActivity.class));
+                            else  if(index==4)
+                                startActivity(new Intent(MainActivity.this,BudgetShopper.class));
+
+
+                        }
+                    }).rotateImage(true)
+                    .shadowEffect(true).shadowOffsetX(20).shadowOffsetY(0).shadowRadius(Util.dp2px(20)).shadowCornerRadius(Util.dp2px(20)).shadowColor(Color.parseColor("#ee000000"))
+                    .normalImageRes(imageResources[i])
+                    .normalImageDrawable(getResources().getDrawable(imageResources[i],null))
+                   /* .highlightedImageRes(R.drawable.social_small)
+                    .highlightedImageDrawable(getResources().getDrawable(R.drawable.social_small,null))
+                    .unableImageRes(R.drawable.study_small)
+                    .unableImageDrawable(getResources().getDrawable(R.drawable.social_small,null))
+                    */.imageRect(new Rect(Util.dp2px(10), Util.dp2px(10), Util.dp2px(70), Util.dp2px(70)))
+                    .imagePadding(new Rect(0, 0, 0, 0))
+                    // Whether the boom-button should have a ripple effect.
+                    .rippleEffect(true)
+                    // The color of boom-button when it is at normal-state.
+                    .normalColor(colorResourses[i])
+                    // The resource of color of boom-button when it is at normal-state.
+                    .normalColorRes(colorResourses[i])
+                    // The color of boom-button when it is at highlighted-state.
+                    .highlightedColor(Color.BLUE)
+                    // The resource of color of boom-button when it is at highlighted-state.
+                    .highlightedColorRes(R.color.aqua_primary)
+                    // The color of boom-button when it is at unable-state.
+                    .unableColor(colorResourses[i])
+                    // The resource of color of boom-button when it is at unable-state.
+                    .unableColorRes(colorResourses[i])
+                    // The color of boom-button when it is just a piece.
+                    .pieceColor(colorResourses[i])
+                    // The resource of color of boom-button when it is just a piece.
+                    .pieceColorRes(colorResourses[i])
+                    // Whether the boom-button is unable, default value is false.
+                    .unable(false)
+                    // The radius of boom-button, in pixel.
+                    .buttonRadius(Util.dp2px(40))
+                    // Set the corner-radius of button.
+                    .buttonCornerRadius(Util.dp2px(20))
+                    // Whether the button is a circle shape.
+                    .isRound(true);
+            bmb.addBuilder(builder);
+        }
+
+
 
 
 
@@ -390,35 +489,34 @@ private Utils utils=new Utils(this);
                 try {
                     if(timesToSetAlerts.get(i)==(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm:ss").parse(time).getTime()))
                     {
-                        setAlarm(timesToSetAlerts.get(i),eventInfo.get(0).get(i),eventInfo.get(1).get(i),iconsList.get(i));
+                        setNotification("","",eventInfo.get(0).get(i),eventInfo.get(1).get(i),"",iconsList.get(i));
 
                     }
                     else  if(timesToSetAlerts2.get(i)-(15*60*1000)==(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm:ss").parse(time).getTime()))
                     {
                         eventInfo.get(2).set(i,"Event ending in 15 mins");
 
-                        setAlarm(timesToSetAlerts2.get(i)-(15*60*1000),eventInfo.get(2).get(i),eventInfo.get(3).get(i),iconsList.get(i));
+                        setNotification("","",eventInfo.get(2).get(i),eventInfo.get(3).get(i),"",iconsList.get(i));
 
                     }
                     else  if(timesToSetAlerts2.get(i)-(10*60*1000)==(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm:ss").parse(time).getTime()))
                     {
                         eventInfo.get(2).set(i,"Event ending in 10 mins");
-
-                        setAlarm(timesToSetAlerts2.get(i)-(15*60*1000),eventInfo.get(2).get(i),eventInfo.get(3).get(i),iconsList.get(i));
+                        setNotification("","",eventInfo.get(2).get(i),eventInfo.get(3).get(i),"",iconsList.get(i));
 
                     }
                     else  if(timesToSetAlerts2.get(i)-(5*60*1000)==(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm:ss").parse(time).getTime()))
                     {
                         eventInfo.get(2).set(i,"Event ending in 5 mins");
 
-                        setAlarm(timesToSetAlerts2.get(i)-(15*60*1000),eventInfo.get(2).get(i),eventInfo.get(3).get(i),iconsList.get(i));
+                        setNotification("","",eventInfo.get(2).get(i),eventInfo.get(3).get(i),"",iconsList.get(i));
 
                     }
                     else  if(timesToSetAlerts2.get(i)-(1*60*1000)==(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm:ss").parse(time).getTime()))
                     {
                         eventInfo.get(2).set(i,"Event ending in 1 mins");
 
-                        setAlarm(timesToSetAlerts2.get(i)-(15*60*1000),eventInfo.get(2).get(i),eventInfo.get(3).get(i),iconsList.get(i));
+                        setNotification("","",eventInfo.get(2).get(i),eventInfo.get(3).get(i),"",iconsList.get(i));
 
                     }
                 } catch (ParseException e) {
@@ -427,7 +525,519 @@ private Utils utils=new Utils(this);
             }
         }
     }
+    private void showTimerMenu(double dur) {
+        android.support.v7.app.AlertDialog.Builder dialogBuilder = new android.support.v7.app.AlertDialog.Builder(context);
+        LayoutInflater inflater =LayoutInflater.from(context);//getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.timer_dialog, null);
+        dialogBuilder.setView(dialogView);
 
+
+        pbb=dialogView.findViewById(R.id.progressBar2);
+        timer=dialogView.findViewById(R.id.timerText);
+        startTime=dialogView.findViewById(R.id.startTimer);
+        resetTime=dialogView.findViewById(R.id.resetTimer);
+        stopb=dialogView.findViewById(R.id.stopTimer);
+        plusOne=dialogView.findViewById(R.id.plusOne);
+        plusOne.setOnClickListener(e->{
+            mTimeLeftInMillis=mTimeLeftInMillis+(60*1000);
+            if(mCountDownTimer!=null){
+                mCountDownTimer.cancel();
+                startTimer(2.0);
+            }
+            else  resetTimer(max);
+        });
+
+
+
+        anim=startAnimation2(timer);
+        nM=dialogView.findViewById(R.id.notifyMe);
+
+        RelativeLayout bg=dialogView.findViewById(R.id.bg);
+        AlarmReceiver.STUDYMSG="Study Completed!";
+        AlarmReceiver.STUDYHEADING="Heads Up";
+        nM.setOnClickListener(e->{
+            if (notify) {
+                Toast.makeText(context,"Alarm Off",Toast.LENGTH_SHORT).show();
+                nM.setBackground(context.getDrawable(android.R.drawable.ic_lock_silent_mode_off));
+                notify=false;
+
+            } else {
+                Toast.makeText(context,"Alarm on",Toast.LENGTH_SHORT).show();
+                nM.setBackground(context.getDrawable(android.R.drawable.ic_lock_silent_mode));
+                notify=true;
+                //disableNotification();
+            }
+        });
+        setProgressNotification(R.drawable.timer,"",0,"");
+
+        startTime.setOnClickListener(e->{
+            if (mTimerRunning) {
+                pauseTimer();
+            } else {
+                startTimer(dur);
+            }
+        });
+        resetTime.setOnClickListener(e->{
+            resetTimer(max);
+        });
+
+        updateCountDownText(mTimeLeftInMillis);
+        stopb.setOnClickListener(e->{pauseTimer();startPopUP(timer);});
+        android.support.v7.app.AlertDialog adialog=dialogBuilder.create();
+        adialog.show();
+
+    }
+
+    boolean isNotificationActive=false;
+    int notificationId=24;
+    public Spinner type;
+    public final String NOTIFICATION_ID="24H_SP";
+
+    private void setUpNofication(String title,String text,int icon) {
+        title="Started Timer";
+        text="Study Time";
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(context, "notify_001");
+        Intent ii = new Intent(context, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, ii, 0);
+
+        NotificationCompat.BigTextStyle bigText = new NotificationCompat.BigTextStyle();
+        bigText.bigText(title);
+        bigText.setBigContentTitle(text);
+        bigText.setSummaryText("");
+
+        mBuilder.setContentIntent(pendingIntent);
+        mBuilder.setSmallIcon(R.mipmap.ic_launcher_round);
+        mBuilder.setContentTitle(title);
+        mBuilder.setContentText(text);
+        mBuilder.setPriority(Notification.PRIORITY_MAX);
+        mBuilder.setStyle(bigText);
+
+        NotificationManager mNotificationManager =
+                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("notify_001",
+                    "Channel human readable title",
+                    NotificationManager.IMPORTANCE_DEFAULT);
+            mNotificationManager.createNotificationChannel(channel);
+        }
+
+        mNotificationManager.notify(NOTIF_ID, mBuilder.build());  nM.setBackground(context.getDrawable(android.R.drawable.ic_lock_silent_mode_off));
+        notify=false;
+
+
+    }
+    public AnimatorSet startAnimation2(View v)
+    {
+
+        ObjectAnimator grow=ObjectAnimator.ofPropertyValuesHolder(v,
+                PropertyValuesHolder.ofFloat("alpha",1f,0f));
+
+        grow.setDuration(600);
+        ObjectAnimator shrink=ObjectAnimator.ofPropertyValuesHolder(v,
+                PropertyValuesHolder.ofFloat("alpha",0f,1f));
+        grow.setRepeatMode(ObjectAnimator.RESTART);
+        grow.setRepeatCount(ObjectAnimator.INFINITE);
+        AnimatorSet animatorSet2=new AnimatorSet();
+        animatorSet2.playSequentially(grow,shrink);
+        animatorSet2.setDuration(1000);
+
+        return  animatorSet2;
+    }
+    public void alarmer(Context context,String title)
+    {
+        MediaPlayer alarmRinging=new MediaPlayer();
+        try {
+            alarmRinging.setDataSource(context, RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        final AudioManager audioManager=(AudioManager)context.getSystemService(Context.AUDIO_SERVICE);
+        if(audioManager.getStreamVolume(AudioManager.STREAM_ALARM)!=0){
+            alarmRinging.setAudioStreamType(AudioManager.STREAM_ALARM);
+            alarmRinging.setLooping(true);
+            //alarm.prepare();
+            //TODO:Start Alarm
+
+        }
+        try {
+            alarmRinging.prepare();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        alarmRinging.start();
+        //Log.e("Alarmer","Alarm playing: "+alarmRinging.isPlaying());
+        android.support.v7.app.AlertDialog.Builder builder=new android.support.v7.app.AlertDialog.Builder(context);
+        builder.setMessage("Time's Up!").setTitle(title);
+        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                if(alarmRinging!=null&&alarmRinging.isPlaying()){
+                    alarmRinging.stop();alarmRinging.reset();alarmRinging.release();
+                }
+
+            }
+        });
+
+
+        builder.setNegativeButton("Snooze +5min", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface adialog, int i) {
+                MAXTIME=5*60*1000;
+                max=MAXTIME;
+                resetTimer(MAXTIME);
+                adialog.dismiss();
+
+
+
+
+            }
+        });
+        builder.setPositiveButton(R.string.stop, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface adialog, int i) {
+                //adialog.dismiss();
+                adialog.dismiss();
+
+
+
+
+            }
+        });
+        android.support.v7.app.AlertDialog adialog=builder.create();
+        adialog.show();
+
+    }
+
+    private void disableNotification() {
+
+        if(isNotificationActive){
+            notificationManager.cancel(notificationId);
+        }
+    }
+    private Button restore;
+    private EditText newDur;
+    private long newD;
+    private final String p1="(([0-9]+:[0-9]+:[0-9]+)|([0-9]+:[0-9]+)|([0-9]+))";
+    private final String p2="(([0-9]+:[0-9]+)+|([0-9]+))";
+    private final String p3="([0-9]+)";
+    private String t="";
+    private void startPopUP(View v) {
+
+        View popupContentView = LayoutInflater.from(context).inflate(R.layout.changetimer, null);
+
+
+        restore=popupContentView.findViewById(R.id.button14);
+        newDur=popupContentView.findViewById(R.id.newDur);
+        type=popupContentView.findViewById(R.id.timeType);
+
+
+        type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                t=adapterView.getSelectedItem().toString();
+                newDur.setHint("Enter Duration in "+type.getSelectedItem());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        newDur.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(TextUtils.isEmpty(charSequence))
+                {
+                    newDur.setError(context.getString(R.string.emptyField));
+                    restore.setEnabled(false);
+                }
+                else if(t.equalsIgnoreCase("Hours")&&!(charSequence.toString().matches(p1)))
+                {
+                    newDur.setError(context.getString(R.string.hF));
+                    restore.setEnabled(false);
+                }
+                else if(t.equalsIgnoreCase("Minutes")&&!(charSequence.toString().matches(p2)))
+                {
+                    newDur.setError(context.getString(R.string.mf));
+                    restore.setEnabled(false);
+                }
+                else if(t.equalsIgnoreCase("Seconds")&&!(charSequence.toString().matches(p3)))
+                {
+                    newDur.setError(context.getString(R.string.sf));
+                    restore.setEnabled(false);
+                }
+                else{
+                    newDur.setError(null);
+                    restore.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        PopupWindow popupWindow = new PopupWindow(context);
+        popupWindow.setContentView(popupContentView);
+        popupWindow.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setAnimationStyle(R.style.popup_window_animation_sign_out);
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.showAsDropDown(v,4,-10);
+        popupWindow.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+        popupWindow.setFocusable(true);
+        popupWindow.update();
+        restore.setOnClickListener(e->{
+            long temp=mTimeLeftInMillis;
+            int hr,min,sec;
+            String tempA[];
+            String s=newDur.getText().toString();
+            popupWindow.dismiss();
+            if(t.equalsIgnoreCase("Hours"))
+            {
+                if(s.contains(":")||s.contains("\\."))
+                {
+                    s=s.replaceAll("\\.",":");
+                    tempA=s.split(":");
+                    if(tempA.length==1)
+                    {
+                        hr=Integer.parseInt(tempA[0]);
+                        temp=(long)(hr*60*60*1000);
+
+                    }
+                    if(tempA.length==2)
+                    {
+                        hr=Integer.parseInt(tempA[0]);
+                        min=Integer.parseInt(tempA[1]);
+                        temp=((long)(hr*60*60*1000))+((long)(min*60*1000));
+
+                    }
+                    else if(tempA.length==3)
+                    {
+                        hr=Integer.parseInt(tempA[0]);
+                        min=Integer.parseInt(tempA[1]);
+                        sec=Integer.parseInt(tempA[2]);
+                        temp=((long)(hr*60*60*1000))+((long)(min*60*1000))+((long)(sec*1000));
+
+                    }
+
+
+                }
+                else if(TextUtils.isEmpty(s))
+                {
+                    temp=mTimeLeftInMillis;
+                }
+                else{
+                    hr=Integer.parseInt(s);
+                    temp=(long)(hr*60*60*1000);
+
+                }
+            }
+            else if(t.equalsIgnoreCase("Minutes"))
+            {
+                if(s.contains(":")||s.contains("\\."))
+                {
+                    s=s.replaceAll("\\.",":");
+                    tempA=s.split(":");
+                    if(tempA.length==1)
+                    {
+                        min=Integer.parseInt(tempA[0]);
+                        temp=(long)(min*60*1000);
+
+                    }
+                    else if(tempA.length==2)
+                    {
+
+                        min=Integer.parseInt(tempA[0]);
+                        sec=Integer.parseInt(tempA[1]);
+                        temp=((long)(min*60*1000))+((long)(sec*1000));
+
+                    }
+
+
+                }
+                else{
+                    min=Integer.parseInt(s);
+                    temp=(long)(min*60*1000);
+
+                }
+            }
+            else if(t.equalsIgnoreCase("Seconds"))
+            {
+
+                sec=Integer.parseInt(s);
+                temp=(long)(sec*1000);
+            }
+            mTimeLeftInMillis=temp;
+            max=temp;
+            MAXTIME=max;
+            resetTimer(temp);
+        });
+
+    }
+
+    private  long max=1;
+    private long mTimeLeftInMillis=max;
+    private CountDownTimer mCountDownTimer;
+    private boolean mTimerRunning;
+    private Button startTime,resetTime,stopb;
+    ImageButton nM;
+    private  TextView timer;
+    private ProgressBar pbb;
+    private TextView plusOne;
+
+    private void startTimer(Double dur) {
+        ////System.out.println()("£££ "+mTimeLeftInMillis);
+        anim.removeAllListeners();
+        anim.cancel();
+        timer.setAlpha(1f);
+        setProgressNotification(R.drawable.timer,"",0,"");
+        mCountDownTimer = new CountDownTimer(mTimeLeftInMillis, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                mTimeLeftInMillis = millisUntilFinished;
+                updateCountDownText(mTimeLeftInMillis);
+
+
+            }
+
+            @Override
+            public void onFinish() {
+                mTimerRunning = false;
+                pbb.setProgress(0);
+                startTime.setBackground(context.getDrawable(android.R.drawable.ic_media_play));
+                startTime.setVisibility(View.INVISIBLE);
+                resetTime.setVisibility(View.VISIBLE);
+                //TODO: start Alarmer;
+                if(notify==true)
+                {
+                    alarmer(context,"it's over!");
+                    notification.setContentText("Time's Up!");
+                    notificationManager.notify(NOTIF_ID, notification.build());
+                    // setUpNofication("24H.SP","Time's Up",R.drawable.study_small);
+                    setNotification("Timer","Time's up!","Your timer is Done!","","",R.drawable.timer);
+                    // notify=false;
+                    //TODO: send Notification;
+                }
+                else{
+                    Toast.makeText(context,"Time's Up!",Toast.LENGTH_SHORT).show();
+                    setNotification("Timer","Time's up!","Your timer is Done!","","",R.drawable.timer);
+                    //notify=true;
+                }
+
+            }
+        }.start();
+
+        mTimerRunning = true;
+        startTime.setBackground(context.getDrawable(android.R.drawable.ic_media_pause));
+        resetTime.setVisibility(View.INVISIBLE);
+    }
+    private boolean notify=true;
+    private void pauseTimer() {
+        if(mCountDownTimer!=null)
+            mCountDownTimer.cancel();
+        mTimerRunning = false;
+        pbb.setProgressTintList(ColorStateList.valueOf(Color.RED));
+        anim.start();
+        startTime.setBackground(context.getDrawable(android.R.drawable.ic_media_play));
+        resetTime.setVisibility(View.VISIBLE);
+    }
+    private MediaPlayer ringAlarm() throws IOException {
+        MediaPlayer alarm=new MediaPlayer();
+
+        return  alarm;
+    }
+    private AnimatorSet anim;
+    private void resetTimer(long ms) {
+
+        timer.setAlpha(1f);
+        mTimeLeftInMillis=MAXTIME;
+        updateCountDownText(ms);
+
+        anim.removeAllListeners();
+        anim.cancel();
+
+        resetTime.setVisibility(View.INVISIBLE);
+        startTime.setVisibility(View.VISIBLE);
+    }
+    private  long MAXTIME=max;
+    private int NOTIF_ID=0;
+    private void updateCountDownText(long dur) {
+        max=dur;
+
+
+        int rst = (int) (99 - (((MAXTIME-mTimeLeftInMillis) * 100) / MAXTIME));
+        pbb.setProgress((rst));
+        ////System.out.println()(rst);
+        //  //System.out.println()(milliUntilFinish);
+
+        int hr = (int) (TimeUnit.MILLISECONDS.toHours(mTimeLeftInMillis) % 24);
+        int min = (int) (TimeUnit.MILLISECONDS.toMinutes(mTimeLeftInMillis) % 60);
+        int sec = (int) (TimeUnit.MILLISECONDS.toSeconds(mTimeLeftInMillis) % 60);
+        ////System.out.println()(hr+":"+min+":"+sec);
+        timer.setText(hr + ":" + min + ":" + sec);
+        if (rst >= 50) {
+            pbb.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
+
+        } else if (rst >= 30 && rst < 50) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                pbb.setProgressTintList(ColorStateList.valueOf(context.getColor(R.color.lava_primary)));
+            }
+        } else if (rst >= 10 && rst < 80) {
+            pbb.setProgressTintList(ColorStateList.valueOf(Color.RED));
+        }
+        String tl="0";
+        String temp[]=null;
+        if(timer.getText().toString().contains(":"))
+        {
+           temp= timer.getText().toString().split(":");
+        }
+        assert temp != null;
+        if(Integer.parseInt(temp[0])>0)
+        {
+                tl=temp[0]+" hour(s)";
+                if(Integer.parseInt(temp[1])>0)
+                {
+
+                        tl+=temp[1]+" min(s)";
+                        if(Integer.parseInt(temp[2])>0)
+                        tl+=temp[2]+" sec(s)";
+
+
+            }
+        }
+        else  if(Integer.parseInt(temp[1])>0)
+        {
+
+                tl+=temp[1]+" min(s)";
+                if(Integer.parseInt(temp[2])>0)
+                    tl+=temp[2]+" sec(s)";
+
+
+        }
+        else  if(Integer.parseInt(temp[2])>0)
+        {
+                tl+=temp[2]+" sec(s)";
+
+
+        }
+
+        notification.setContentText(""+tl+" left");
+        notification.setProgress(100, pbb.getProgress(),false);
+       notification.setOnlyAlertOnce(true);
+        notificationManager.notify(NOTIF_ID, notification.build());
+
+
+    }
 
     private void startAnimation(View v,boolean start)
     {
@@ -1036,6 +1646,11 @@ public void startAlarm(long start)
         } else if (id == R.id.nav_send) {
             startActivity(new Intent(this,createNote.class));
         }
+        else if (id == R.id.calc) {
+            //startActivity(new Intent(this,StudyActivity.class));
+        } else if (id == R.id.timer) {
+            showTimerMenu(1);
+        }
         else if (id == R.id.nav_login) {
             if(LOGGED==false)
             {
@@ -1220,18 +1835,87 @@ public void startAlarm(long start)
                 .centerCrop()
                 .into(imgContainer);
     }
+    NotificationCompat.Builder notification;
+    NotificationManager notificationManager;
+
+    public void setProgressNotification(int ic, String title,int progress,String msg)
+    {
+        notification =
+                new NotificationCompat.Builder(context.getApplicationContext(), "notify_001");
+        Intent ii = new Intent(context.getApplicationContext(), MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, ii, 0);
+
+
+        notification.setContentIntent(pendingIntent);
+        notification.setProgress(100,progress,false);
+        notification.setSmallIcon(ic);
+        notification.setContentTitle(title);
+        notification.setContentText(msg);
+        notification.setPriority(Notification.PRIORITY_MAX);
+        notification.setAutoCancel(false);
+
+      notificationManager =
+                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("notify_001",
+                    "Channel human readable title",
+                    NotificationManager.IMPORTANCE_DEFAULT);
+            notificationManager.createNotificationChannel(channel);
+        }
+
+        notificationManager.notify(0, notification.build());
+
+
+}
+    public void setNotification(String heading,String msg,String BT,String sumText, String BCT,int ic)
+    {
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(context.getApplicationContext(), "notify_001");
+        Intent ii = new Intent(context.getApplicationContext(), MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, ii, 0);
+
+        NotificationCompat.BigTextStyle bigText = new NotificationCompat.BigTextStyle();
+        bigText.bigText(BT);
+        bigText.setBigContentTitle(BCT);
+        bigText.setSummaryText(sumText);
+
+        mBuilder.setContentIntent(pendingIntent);
+        mBuilder.setSmallIcon(ic);
+        mBuilder.setContentTitle(heading);
+        mBuilder.setContentText(msg);
+        mBuilder.setPriority(Notification.PRIORITY_MAX);
+        mBuilder.setStyle(bigText);
+
+        NotificationManager mNotificationManager =
+                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("notify_001",
+                    "Channel human readable title",
+                    NotificationManager.IMPORTANCE_DEFAULT);
+            mNotificationManager.createNotificationChannel(channel);
+        }
+
+        mNotificationManager.notify(0, mBuilder.build());
+    }
+
+
 
     public void setAlarm(long timeinMillis,String heading,String msg,int ic)
     {
         long alertTime=timeinMillis;
         //System.out.println()(alertTime);
+
+        Intent alertIntent=new Intent(context,AlarmReceiver.class);
         AlarmReceiver.STUDYHEADING=heading;
         AlarmReceiver.STUDYMSG=msg;
         AlarmReceiver.setSTUDYHEADING(heading);
         AlarmReceiver.setSTUDYMSG(msg);
         AlarmReceiver.ICON=ic;
         AlarmReceiver.setICON(ic);
-        Intent alertIntent=new Intent(context,AlarmReceiver.class);
 
         AlarmManager alarmManager=(AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP,alertTime,PendingIntent.getBroadcast(context,1,alertIntent,PendingIntent.FLAG_UPDATE_CURRENT));

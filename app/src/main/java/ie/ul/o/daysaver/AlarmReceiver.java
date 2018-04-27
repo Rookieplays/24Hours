@@ -21,7 +21,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     public static String NOTIFICATION = "notification";
     public static String STUDYMSG="Event Alert!";
     public static String STUDYHEADING="Click to launch";
-    public static int ICON=R.drawable.ic_launcher;
+    public static int ICON=R.drawable.timer;
 
     public static int getICON() {
         return ICON;
@@ -66,24 +66,24 @@ public class AlarmReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
 
 
-        createNotification(context,STUDYHEADING,STUDYMSG,"Alert");
+        createNotification(context);
 
 
     }
 
-    private void createNotification(Context context, String title, String text, String alert) {
+    private void createNotification(Context context) {
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(context, "notify_001");
         Intent ii = new Intent(context, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, ii, 0);
 
         NotificationCompat.BigTextStyle bigText = new NotificationCompat.BigTextStyle();
-        bigText.bigText("");
+        bigText.bigText(STUDYMSG);
         bigText.setBigContentTitle(STUDYHEADING);
         bigText.setSummaryText(STUDYMSG);
 
         mBuilder.setContentIntent(pendingIntent);
-        mBuilder.setSmallIcon(R.drawable.study_small);
+        mBuilder.setSmallIcon(ICON);
         mBuilder.setContentTitle(STUDYHEADING);
         mBuilder.setContentText(STUDYMSG);
         mBuilder.setPriority(Notification.PRIORITY_MAX);

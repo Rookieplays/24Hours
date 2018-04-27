@@ -19,7 +19,7 @@
             android:title="Study" />
         <item
             android:id="@+id/nav_share"
-            android:icon="@android:drawable/ic_menu_agenda"
+            android:icon="@drawable/quick_event"
             android:title="Fast Agenda" />
     </group>
 
@@ -33,6 +33,14 @@
                 android:id="@+id/tutorial"
                 android:icon="@android:drawable/ic_media_play"
                 android:title="24H TUT" />
+            <item
+                android:id="@+id/timer"
+                android:icon="@drawable/timer"
+                android:title="Timer" />
+            <item
+                android:id="@+id/calc"
+                android:icon="@drawable/calculator"
+                android:title="Calculator" />
         </menu>
     </item>
     <item android:title="User">
