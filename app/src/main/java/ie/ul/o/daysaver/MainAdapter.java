@@ -46,6 +46,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
@@ -130,7 +131,7 @@ this.context=context;
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
     }
-    String temp[];
+    String temp[];  long dur1,ct;
     @Override
     public void onBindViewHolder(ViewHolder holder, int position)
     {
@@ -187,15 +188,24 @@ this.context=context;
         //System.out.println()("W☺W"+str);
        //    if(!holder.mTextView.getText().toString().contains("Gym"))
          itView=holder.itemView;
+
         new Thread(new Runnable() {
             @Override
             public void run () {
+                //System.out.println(new SimpleDateFormat("HH:mm").format(System.currentTimeMillis()));
+                try {
+                    ct=new SimpleDateFormat("HH:mm:ss").parse(new SimpleDateFormat("HH:mm:ss").format(System.currentTimeMillis())).getTime();
+                            } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    if (ct>=(new SimpleDateFormat("HH:mm:ss").parse(mStartTime[position]).getTime())&&ct<(new SimpleDateFormat("HH:mm:ss").parse(mEndTime[position]).getTime())) {
+                               holder.itemView.setAlpha(1f);
 
-                if (new SimpleDateFormat("HH:mm").format(System.currentTimeMillis()).equalsIgnoreCase(mStartTime[position])) {
-                    while (!(new SimpleDateFormat("HH:mm").format(System.currentTimeMillis()).equalsIgnoreCase(mEndTime[position]))) {
-                        startAnimation(holder.itemView, true);
 
-                    }
+                    }else    holder.itemView.setAlpha(0.3f);
+                } catch (ParseException e) {
+                    e.printStackTrace();
                 }
 
             }

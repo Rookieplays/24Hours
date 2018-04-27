@@ -1194,10 +1194,12 @@ private SListAdapterAlpha mAdapter;
       //  getsO_invite_inside=(ImageButton)dialogView.findViewById(R.id.insideOfsOInvite);
         sOtag= dialogView.findViewById(R.id.shopping_Event_tag);
         sO_spinner= dialogView.findViewById(R.id.sO_spinner);
+        System.out.println("Type: "+type);
         if(type=='O'){
         rv= dialogView.findViewById(R.id.listviewer);
+        if (rv!=null){
         rv.setLayoutManager(new LinearLayoutManager(this));
-        LoadMyLists();}
+        LoadMyLists();}}
 
         ddatenameField= dialogView.findViewById(R.id.ddate__name_field);
         d_loc= dialogView.findViewById(R.id.ddate__location);

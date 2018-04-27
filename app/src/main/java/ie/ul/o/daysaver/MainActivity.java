@@ -473,51 +473,80 @@ private Utils utils=new Utils(this);
     private void updateAlarm(long nowTime) {
         String date=new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis());
         String time=new SimpleDateFormat("HH:mm:ss").format(System.currentTimeMillis());
-        Log.w("If Loop","timesToSetAlerts: "+timesToSetAlerts.isEmpty());
+      //  Log.w("If Loop","timesToSetAlerts: "+timesToSetAlerts.isEmpty());
         if(!(timesToSetAlerts.isEmpty()&&timesToSetAlerts2.isEmpty()&&iconsList.isEmpty()&&eventInfo.isEmpty()))
         {
 
+
             for(int i=0;i<timesToSetAlerts.size();i++)
             {
-                try {
-                    Log.e("For Loop","timesToSetAlerts: "+timesToSetAlerts.get(i)+"\nNow Time: "+(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm:ss").parse(time).getTime()));
-                    Log.w("For Loop","timesToSetAlerts2: "+timesToSetAlerts2.get(i)+"\nNow Time: "+(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm:ss").parse(time).getTime()));
+               /* try {
+                    //Log.e("For Loop","timesToSetAlerts: "+timesToSetAlerts.get(i)+"\nNow Time: "+(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm:ss").parse(time).getTime()));
+                    //Log.w("For Loop","timesToSetAlerts2: "+timesToSetAlerts2.get(i)+"\nNow Time: "+(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm:ss").parse(time).getTime()));
 
                 } catch (ParseException e) {
                     e.printStackTrace();
-                };
+                };*/
                 try {
                     if(timesToSetAlerts.get(i)==(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm:ss").parse(time).getTime()))
                     {
-                        setNotification("","",eventInfo.get(0).get(i),eventInfo.get(1).get(i),"",iconsList.get(i));
+                        setNotification("","",eventInfo.get(0).get(i),"...",eventInfo.get(1).get(i),iconsList.get(i));
+                      //  setAlarm(timesToSetAlerts.get(i),NOTIF_ID,false,0);
+                    }
+                    else  if(timesToSetAlerts.get(i)-(15*60*1000)==(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm:ss").parse(time).getTime()))
+                    {
+                        eventInfo.get(1).set(i,"Event Starting in 15 mins");
+
+                        setNotification("","",eventInfo.get(0).get(i),"",eventInfo.get(1).get(i),iconsList.get(i));
 
                     }
+                    else  if(timesToSetAlerts.get(i)-(10*60*1000)==(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm:ss").parse(time).getTime()))
+                    {
+                        eventInfo.get(1).set(i,"Event Starting in 10 mins");
+                        setNotification("","",eventInfo.get(0).get(i),"",eventInfo.get(1).get(i),iconsList.get(i));
+
+                    }
+                    else  if(timesToSetAlerts.get(i)-(5*60*1000)==(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm:ss").parse(time).getTime()))
+                    {
+                        eventInfo.get(1).set(i,"Event Starting in 5 mins");
+
+                        setNotification("","",eventInfo.get(0).get(i),"",eventInfo.get(1).get(i),iconsList.get(i));
+
+                    }
+
                     else  if(timesToSetAlerts2.get(i)-(15*60*1000)==(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm:ss").parse(time).getTime()))
                     {
                         eventInfo.get(2).set(i,"Event ending in 15 mins");
 
-                        setNotification("","",eventInfo.get(2).get(i),eventInfo.get(3).get(i),"",iconsList.get(i));
+                        setNotification("","",eventInfo.get(2).get(i),"",eventInfo.get(3).get(i),iconsList.get(i));
 
                     }
                     else  if(timesToSetAlerts2.get(i)-(10*60*1000)==(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm:ss").parse(time).getTime()))
                     {
                         eventInfo.get(2).set(i,"Event ending in 10 mins");
-                        setNotification("","",eventInfo.get(2).get(i),eventInfo.get(3).get(i),"",iconsList.get(i));
+                        setNotification("","",eventInfo.get(2).get(i),"",eventInfo.get(3).get(i),iconsList.get(i));
 
                     }
                     else  if(timesToSetAlerts2.get(i)-(5*60*1000)==(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm:ss").parse(time).getTime()))
                     {
                         eventInfo.get(2).set(i,"Event ending in 5 mins");
 
-                        setNotification("","",eventInfo.get(2).get(i),eventInfo.get(3).get(i),"",iconsList.get(i));
+                        setNotification("","",eventInfo.get(2).get(i),"",eventInfo.get(3).get(i),iconsList.get(i));
 
                     }
                     else  if(timesToSetAlerts2.get(i)-(1*60*1000)==(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm:ss").parse(time).getTime()))
                     {
                         eventInfo.get(2).set(i,"Event ending in 1 mins");
 
-                        setNotification("","",eventInfo.get(2).get(i),eventInfo.get(3).get(i),"",iconsList.get(i));
+                        setNotification("","",eventInfo.get(2).get(i),"",eventInfo.get(3).get(i),iconsList.get(i));
 
+                    }
+                    else  if(timesToSetAlerts2.get(i)==(new SimpleDateFormat("dd/MM/yyyy").parse(date).getTime()+new SimpleDateFormat("HH:mm:ss").parse(time).getTime()))
+                    {
+                        eventInfo.get(2).set(i,"Event is Over!!");
+
+                        setNotification("","",eventInfo.get(2).get(i),"",eventInfo.get(3).get(i),iconsList.get(i));
+                        MainAdapter.itView.setAlpha(0.4f);
                     }
                 } catch (ParseException e) {
                     e.printStackTrace();
@@ -1080,8 +1109,12 @@ private Utils utils=new Utils(this);
     }
     ArrayList<Long>timesToSetAlerts=new ArrayList<>();
     ArrayList<Long>timesToSetAlerts2=new ArrayList<>();
+   public static  ArrayList<Long>ST=new ArrayList<>();
+    public static ArrayList<Long>ET=new ArrayList<>();
     ArrayList<ArrayList<String>>eventInfo=new ArrayList<>();
+    public static ArrayList<ArrayList<String>>EVENTS=new ArrayList<>();
     ArrayList<Integer>iconsList=new ArrayList<>();
+    public static ArrayList<Integer>ICL=new ArrayList<>();
     public void LoadMainEvents(String date)
     {
         eventInfo.add(new ArrayList<>());
@@ -1108,13 +1141,20 @@ private Utils utils=new Utils(this);
                                 {
                                     Social e=doc.toObject(Social.class);
                                     sl.add(e);
+                                    try {
+                                        e.setStartAt(new SimpleDateFormat("dd/MM/yyyy").parse(e.getDate()).getTime()+new SimpleDateFormat("HH:mm").parse(e.getStartTime()).getTime());
+
+                                        e.setEndAt(new SimpleDateFormat("dd/MM/yyyy").parse(e.getDate()).getTime()+new SimpleDateFormat("HH:mm").parse(e.getEndTime()).getTime());
+                                    } catch (ParseException ex) {
+                                        ex.printStackTrace();
+                                    }
                                     timesToSetAlerts.add(e.getStartAt());
                                     timesToSetAlerts2.add(e.getEndAt());
                                     Log.d("Social",e.getStartAt()+"");
                                     eventInfo.get(0).add("Event: "+e.getType()+" Has Started!");
                                     eventInfo.get(1).add(e.getDiscription());
                                     eventInfo.get(2).add("Event: "+e.getType());
-                                    eventInfo.get(3).add(" This event is Ending in 15 minutes!!");
+                                    eventInfo.get(3).add("Round up!");
                                     iconsList.add(R.drawable.ref5);
 
 
@@ -1125,12 +1165,19 @@ private Utils utils=new Utils(this);
                                     WorkoutPlan e=doc.toObject(WorkoutPlan.class);
                                     wp.add(e);
                                     Log.d("STUDY",e.getStartAt()+"");
+                                    try {
+                                        e.setStartAt(new SimpleDateFormat("dd/MM/yyyy").parse(e.getDate()).getTime()+new SimpleDateFormat("HH:mm").parse(e.getStartTime()).getTime());
+
+                                        e.setEndAt(new SimpleDateFormat("dd/MM/yyyy").parse(e.getDate()).getTime()+new SimpleDateFormat("HH:mm").parse(e.getEndTime()).getTime());
+                                    } catch (ParseException ex) {
+                                        ex.printStackTrace();
+                                    }
                                     timesToSetAlerts.add(e.getStartAt());
                                     timesToSetAlerts2.add(e.getEndAt());
                                     eventInfo.get(0).add("Event: "+e.getName()+" Has Started!");
                                     eventInfo.get(1).add("Click to begin");
                                     eventInfo.get(2).add("Event: "+e.getName());
-                                    eventInfo.get(3).add(" This event is Ending in 15 minutes!!");
+                                    eventInfo.get(3).add("Round up!");
                                     iconsList.add(R.drawable.female_runner_painted);
 
 
@@ -1144,12 +1191,19 @@ private Utils utils=new Utils(this);
                                     for(Subjects s:e.getSubjects())
                                         str+="• "+s.getName()+"\n";
                                     Log.d("STUDY",e.getStartAt()+"");
+                                    try {
+                                        e.setStartAt(new SimpleDateFormat("dd/MM/yyyy").parse(e.getDate()).getTime()+new SimpleDateFormat("HH:mm").parse("12:00").getTime());
+
+                                        e.setEndAt(new SimpleDateFormat("dd/MM/yyyy").parse(e.getDate()).getTime()+new SimpleDateFormat("HH:mm").parse("00:00").getTime());
+                                    } catch (ParseException ex) {
+                                        ex.printStackTrace();
+                                    }
                                     timesToSetAlerts.add(e.getStartAt());
                                     timesToSetAlerts2.add(e.getEndAt());
                                     eventInfo.get(0).add("Event: "+e.getName()+" Has Started!");
                                     eventInfo.get(1).add("You have to study: "+str);
                                     eventInfo.get(2).add("Event: "+e.getName());
-                                    eventInfo.get(3).add(" This event is Ending in 15 minutes!!");
+                                    eventInfo.get(3).add("Round up!");
                                     iconsList.add(R.drawable.studying_gal);
 
 
@@ -1165,8 +1219,8 @@ private Utils utils=new Utils(this);
                                     eventInfo.get(0).add("Event: "+e.getTitle()+" Has Started!");
                                     eventInfo.get(1).add(e.getDescription());
                                     eventInfo.get(2).add("Event: "+e.getTitle());
-                                    eventInfo.get(3).add(" This event is Ending in 15 minutes!!");
-                                    iconsList.add(R.drawable.studying_gal);
+                                    eventInfo.get(3).add("Round up!");
+                                    iconsList.add(R.drawable.quick_event);
 
 
 
@@ -1248,7 +1302,10 @@ private Utils utils=new Utils(this);
                             }
                           try{pb.dismiss();}catch (Exception e){}
                           //  Toast.makeText(context, "Events Loaded Success", Toast.LENGTH_SHORT).show();
-
+                            EVENTS.addAll(eventInfo);
+                            ST.addAll(timesToSetAlerts);
+                            ET.addAll(timesToSetAlerts2);
+                            ICL.addAll(iconsList);
 
                         } else {
                             Log.d("TAG", "Error getting documents: ", task.getException());
@@ -1865,7 +1922,7 @@ public void startAlarm(long start)
             notificationManager.createNotificationChannel(channel);
         }
 
-        notificationManager.notify(0, notification.build());
+       // notificationManager.notify(0, notification.build());
 
 
 }
@@ -1904,22 +1961,21 @@ public void startAlarm(long start)
 
 
 
-    public void setAlarm(long timeinMillis,String heading,String msg,int ic)
-    {
+    public void setAlarm(final long timeinMillis, final int REQUEST_CODE, final boolean setRepeating, final long repeatAfter) {
+
         long alertTime=timeinMillis;
         //System.out.println()(alertTime);
 
         Intent alertIntent=new Intent(context,AlarmReceiver.class);
-        AlarmReceiver.STUDYHEADING=heading;
-        AlarmReceiver.STUDYMSG=msg;
-        AlarmReceiver.setSTUDYHEADING(heading);
-        AlarmReceiver.setSTUDYMSG(msg);
-        AlarmReceiver.ICON=ic;
-        AlarmReceiver.setICON(ic);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, REQUEST_CODE, alertIntent, 0);
+
+
 
         AlarmManager alarmManager=(AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC_WAKEUP,alertTime,PendingIntent.getBroadcast(context,1,alertIntent,PendingIntent.FLAG_UPDATE_CURRENT));
+        alarmManager.set(AlarmManager.RTC_WAKEUP, timeinMillis, pendingIntent);
+        if (setRepeating == true && repeatAfter >= 60000){ alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, timeinMillis, repeatAfter, pendingIntent);    }
     }
+
     public void noConMsg()
     {
         android.support.v7.app.AlertDialog.Builder builder=new android.support.v7.app.AlertDialog.Builder(this);
