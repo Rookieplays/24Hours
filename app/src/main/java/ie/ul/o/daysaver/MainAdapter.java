@@ -64,6 +64,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     private RecyclerView rview;
     private String t="Hours";
     private String headingmsg;
+    private int NOTIF_ID=0;
 
     public static class ViewHolder extends RecyclerView.ViewHolder
     {
@@ -88,6 +89,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     {
 this.context=context;
         inflater=LayoutInflater.from(context);
+        Organizeby organiseby=new Organizeby(myDataset);
+       // myDataset=organiseby.ascendingOrder(2);
+      //  Collections.sort((List)myDataset);
         if(myDataset.size()==0)
         {
             mDataset=new String[]{"Empty List"};
@@ -131,7 +135,7 @@ this.context=context;
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
     }
-    String temp[];  long dur1,ct;
+    String temp[];  long dur1,ct;AnimatorSet curentEventAnim;
     @Override
     public void onBindViewHolder(ViewHolder holder, int position)
     {
@@ -188,23 +192,34 @@ this.context=context;
         //System.out.println()("W☺W"+str);
        //    if(!holder.mTextView.getText().toString().contains("Gym"))
          itView=holder.itemView;
-
+        curentEventAnim=startAnimation(holder.itemView);
         new Thread(new Runnable() {
             @Override
             public void run () {
                 //System.out.println(new SimpleDateFormat("HH:mm").format(System.currentTimeMillis()));
                 try {
-                    ct=new SimpleDateFormat("HH:mm:ss").parse(new SimpleDateFormat("HH:mm:ss").format(System.currentTimeMillis())).getTime();
+                    ct=new SimpleDateFormat("HH:mm").parse(new SimpleDateFormat("HH:mm").format(System.currentTimeMillis())).getTime();
                             } catch (ParseException e) {
                     e.printStackTrace();
                 }
                 try {
-                    if (ct>=(new SimpleDateFormat("HH:mm:ss").parse(mStartTime[position]).getTime())&&ct<(new SimpleDateFormat("HH:mm:ss").parse(mEndTime[position]).getTime())) {
+                    if (ct>=(new SimpleDateFormat("HH:mm").parse(mStartTime[position]).getTime())&&ct<(new SimpleDateFormat("HH:mm").parse(mEndTime[position]).getTime())) {
                                holder.itemView.setAlpha(1f);
+                               curentEventAnim.start();
 
 
-                    }else    holder.itemView.setAlpha(0.3f);
-                } catch (ParseException e) {
+                    }else if(ct>(new SimpleDateFormat("HH:mm").parse(mEndTime[position]).getTime()))
+                    {
+                        holder.itemView.setAlpha(0.18f);
+                        curentEventAnim.cancel();
+                        curentEventAnim.removeAllListeners();
+                    }
+                    else    {
+                        holder.itemView.setAlpha(0.6f);
+                        curentEventAnim.cancel();
+                        curentEventAnim.removeAllListeners();
+                    }
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
@@ -212,6 +227,7 @@ this.context=context;
         }).start();
 
     }
+
     private void startAnimation(View v,boolean start)
     {
 
@@ -311,6 +327,7 @@ this.context=context;
                 //disableNotification();
             }
         });
+        setProgressNotification(R.drawable.timer,"",0,"");
 
         startTime.setOnClickListener(e->{
             if (mTimerRunning) {
@@ -333,23 +350,39 @@ this.context=context;
     int notificationId=24;
     public Spinner type;
    public final String NOTIFICATION_ID="24H_SP";
-   /*
-public void createnotificationChannel()
-{
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        // Create the NotificationChannel, but only on API 26+ because
-        // the NotificationChannel class is new and not in the support library
-        CharSequence name = NOTIFICATION_ID;
-        String description = NOTIFICATION_ID+"A";
-        int importance;
-        importance= NotificationManager.IMPORTANCE_DEFAULT;
-        NotificationChannel channel = new NotificationChannel(NOTIFICATION_ID, name, importance);
-        channel.setDescription(description);
-        // Register the channel with the system
-        NotificationManager notificationManager = NotificationManager.from(context);
-        notificationManager.createNotificationChannel(channel);
+    NotificationCompat.Builder notification;
+    NotificationManager notificationManager;
+    public void setProgressNotification(int ic, String title,int progress,String msg)
+    {
+        notification =
+                new NotificationCompat.Builder(context.getApplicationContext(), "notify_001");
+        Intent ii = new Intent(context.getApplicationContext(), MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, ii, 0);
+
+
+        notification.setContentIntent(pendingIntent);
+        notification.setProgress(100,progress,false);
+        notification.setSmallIcon(ic);
+        notification.setContentTitle(title);
+        notification.setContentText(msg);
+        notification.setPriority(Notification.PRIORITY_MAX);
+        notification.setAutoCancel(false);
+
+        notificationManager =
+                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("notify_001",
+                    "Channel human readable title",
+                    NotificationManager.IMPORTANCE_DEFAULT);
+            notificationManager.createNotificationChannel(channel);
+        }
+
+        // notificationManager.notify(0, notification.build());
+
+
     }
-}*/
     private void setUpNofication(String title,String text,int icon) {
         title="Started Timer";
         text="Study Time";
@@ -535,10 +568,10 @@ public void createnotificationChannel()
     }
     private  long MAXTIME=max;
     private void updateCountDownText(long dur) {
-         max=dur;
+        max=dur;
 
 
-        int rst = (int) (100 - (((MAXTIME-mTimeLeftInMillis) * 100) / MAXTIME));
+        int rst = (int) (99 - (((MAXTIME-mTimeLeftInMillis) * 100) / MAXTIME));
         pb.setProgress((rst));
         ////System.out.println()(rst);
         //  //System.out.println()(milliUntilFinish);
@@ -558,6 +591,48 @@ public void createnotificationChannel()
         } else if (rst >= 10 && rst < 80) {
             pb.setProgressTintList(ColorStateList.valueOf(Color.RED));
         }
+        String tl="0";
+        String temp[]=null;
+        if(timer.getText().toString().contains(":"))
+        {
+            temp= timer.getText().toString().split(":");
+        }
+        assert temp != null;
+        if(Integer.parseInt(temp[0])>0)
+        {
+            tl=temp[0]+" hour(s)";
+            if(Integer.parseInt(temp[1])>0)
+            {
+
+                tl+=temp[1]+" min(s)";
+                if(Integer.parseInt(temp[2])>0)
+                    tl+=temp[2]+" sec(s)";
+
+
+            }
+        }
+        else  if(Integer.parseInt(temp[1])>0)
+        {
+
+            tl+=temp[1]+" min(s)";
+            if(Integer.parseInt(temp[2])>0)
+                tl+=temp[2]+" sec(s)";
+
+
+        }
+        else  if(Integer.parseInt(temp[2])>0)
+        {
+            tl+=temp[2]+" sec(s)";
+
+
+        }
+
+        notification.setContentText(""+tl+" left");
+        notification.setProgress(100, pb.getProgress(),false);
+        notification.setOnlyAlertOnce(true);
+        notificationManager.notify(NOTIF_ID, notification.build());
+
+
     }
     public void setAlarm(long timeinMillis)
     {
@@ -776,8 +851,8 @@ private GymSchAdapter mAdapter;
     {
 
         ObjectAnimator grow=ObjectAnimator.ofPropertyValuesHolder(v,
-                PropertyValuesHolder.ofFloat("scaleY",1.5f),
-                PropertyValuesHolder.ofFloat("scaleX",1.5f));
+                PropertyValuesHolder.ofFloat("scaleY",1.25f),
+                PropertyValuesHolder.ofFloat("scaleX",1.25f));
 
         grow.setDuration(1000);
         ObjectAnimator shrink=ObjectAnimator.ofPropertyValuesHolder(v,
@@ -788,7 +863,7 @@ private GymSchAdapter mAdapter;
 
         AnimatorSet animatorSet2=new AnimatorSet();
         animatorSet2.playSequentially(grow,shrink);
-        animatorSet2.setDuration(1000);
+        animatorSet2.setDuration(1500);
        return animatorSet2;
     }
     public AnimatorSet startAnimation2(View v)

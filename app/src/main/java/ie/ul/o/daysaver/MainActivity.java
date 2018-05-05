@@ -35,6 +35,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -96,8 +97,8 @@ import java.util.concurrent.TimeUnit;
 
 import ie.ul.o.daysaver.utils.Utils;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener
+        , NavigationView.OnNavigationItemSelectedListener {
     private ImageButton pp;
     private boolean  goOn;
     private TextView username;
@@ -154,11 +155,7 @@ private Utils utils=new Utils(this);
             getWindow().setExitTransition(ts);
         }
         super.onCreate(savedInstanceState);
-        AllEvents.add(new ArrayList<>());//Name/Title
-        AllEvents.add(new ArrayList<>());//Description
-        AllEvents.add(new ArrayList<>());//Start Time
-        AllEvents.add(new ArrayList<>());//End Time
-        AllEvents.add(new ArrayList<>());//Color in String
+
         LayoutInflater inflaterV=getLayoutInflater();
         headerView=inflaterV.inflate(R.layout.nav_header_main,null);
         nav_header= headerView.findViewById(R.id.navi_header);
@@ -261,7 +258,7 @@ private Utils utils=new Utils(this);
 
 
 
-        hbot_main.setOnLongClickListener(e->{ alertDialog.show();return true;});if(FirebaseAuth.getInstance().getCurrentUser()!=null)LoadEventsForToday();
+        hbot_main.setOnLongClickListener(e->{ alertDialog.show();return true;});if(FirebaseAuth.getInstance().getCurrentUser()!=null);//LoadEventsForToday();
         Thread t = new Thread() {
 
             @Override
@@ -460,6 +457,22 @@ private Utils utils=new Utils(this);
                     .isRound(true);
             bmb.addBuilder(builder);
         }
+        mSwipeRefreshLayout =findViewById(R.id.activity_main_swipe_refresh_layout1);
+        mSwipeRefreshLayout.setOnRefreshListener(this);
+
+
+
+
+
+        mSwipeRefreshLayout.post(new Runnable() {
+                                     @Override
+                                     public void run() {
+                                         mSwipeRefreshLayout.setRefreshing(true);
+
+                                         fetchPlans();
+                                     }
+                                 }
+        );
 
 
 
@@ -554,6 +567,7 @@ private Utils utils=new Utils(this);
             }
         }
     }
+    SwipeRefreshLayout mSwipeRefreshLayout;
     private void showTimerMenu(double dur) {
         android.support.v7.app.AlertDialog.Builder dialogBuilder = new android.support.v7.app.AlertDialog.Builder(context);
         LayoutInflater inflater =LayoutInflater.from(context);//getLayoutInflater();
@@ -614,6 +628,27 @@ private Utils utils=new Utils(this);
         stopb.setOnClickListener(e->{pauseTimer();startPopUP(timer);});
         android.support.v7.app.AlertDialog adialog=dialogBuilder.create();
         adialog.show();
+
+    }
+    @Override
+    public void onRefresh() {
+        fetchPlans();
+    }
+
+    private void fetchPlans() {
+        AllEvents.clear();
+        wp.clear();
+        sl.clear();
+        st.clear();
+        qua.clear();
+        timesToSetAlerts.clear();
+        timesToSetAlerts2.clear();
+        eventInfo.clear();
+        iconsList.clear();
+       LoadEventsForToday();
+        if(mainAdapter!=null)
+            mainAdapter.notifyDataSetChanged();
+        mSwipeRefreshLayout.setRefreshing(false);
 
     }
 
@@ -977,6 +1012,7 @@ private Utils utils=new Utils(this);
         mTimerRunning = false;
         pbb.setProgressTintList(ColorStateList.valueOf(Color.RED));
         anim.start();
+        notification.setContentText("Paused: "+tl);
         startTime.setBackground(context.getDrawable(android.R.drawable.ic_media_play));
         resetTime.setVisibility(View.VISIBLE);
     }
@@ -999,7 +1035,7 @@ private Utils utils=new Utils(this);
         startTime.setVisibility(View.VISIBLE);
     }
     private  long MAXTIME=max;
-    private int NOTIF_ID=0;
+    private int NOTIF_ID=0; String tl="0";
     private void updateCountDownText(long dur) {
         max=dur;
 
@@ -1024,7 +1060,7 @@ private Utils utils=new Utils(this);
         } else if (rst >= 10 && rst < 80) {
             pbb.setProgressTintList(ColorStateList.valueOf(Color.RED));
         }
-        String tl="0";
+
         String temp[]=null;
         if(timer.getText().toString().contains(":"))
         {
@@ -1117,6 +1153,12 @@ private Utils utils=new Utils(this);
     public static ArrayList<Integer>ICL=new ArrayList<>();
     public void LoadMainEvents(String date)
     {
+        AllEvents.add(new ArrayList<>());//Name/Title
+        AllEvents.add(new ArrayList<>());//Description
+        AllEvents.add(new ArrayList<>());//Start Time
+        AllEvents.add(new ArrayList<>());//End Time
+        AllEvents.add(new ArrayList<>());//Color in String
+
         eventInfo.add(new ArrayList<>());
         eventInfo.add(new ArrayList<>());
         eventInfo.add(new ArrayList<>());
@@ -1297,7 +1339,8 @@ private Utils utils=new Utils(this);
                             //System.out.println()(AllEvents);
                             if(context!=null)
                             {
-                                mainAdapter=new MainAdapter(context,AllEvents,wp);
+                               mainAdapter=new MainAdapter(context,AllEvents,wp);
+
                                 eventViwer.setAdapter(mainAdapter);
                             }
                           try{pb.dismiss();}catch (Exception e){}
@@ -1330,7 +1373,8 @@ private Utils utils=new Utils(this);
                                 if(doc.getData().values().contains("GYM"))
                                 {
                                     WorkoutPlan e=doc.toObject(WorkoutPlan.class);
-                                    wp.add(e);
+                                    if(!newWorkout(e,wp))
+                                        wp.add(e);
 
 
                                 }
@@ -1375,7 +1419,9 @@ private Utils utils=new Utils(this);
                                 //System.out.println()("-->"+doc.getData().values().contains("SOCIAL"));
                                 if(doc.getData().values().contains("GYM"))
                                 {
+
                                     WorkoutPlan e=doc.toObject(WorkoutPlan.class);
+                                    if(!newWorkout(e,wp))
                                     wp.add(e);
 
 
@@ -1410,7 +1456,22 @@ private Utils utils=new Utils(this);
 
 
     }
-public void startAlarm(long start)
+
+    private boolean newWorkout(WorkoutPlan e,ArrayList<WorkoutPlan> wp) {
+        for(WorkoutPlan w:wp) {
+            if (w.getName().equalsIgnoreCase(e.getName())) {
+                if (w.getEndTime().equalsIgnoreCase(e.getEndTime())) {
+                    if (w.getStartTime().equalsIgnoreCase(e.getStartTime())) {
+                        if (w.getDiscription().equalsIgnoreCase(e.getDiscription())) {
+                            return true;
+                        } else return false;
+                    } else return false;
+                } else return false;
+            } else return false;
+        }return false;
+    }
+
+    public void startAlarm(long start)
 {
     AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
